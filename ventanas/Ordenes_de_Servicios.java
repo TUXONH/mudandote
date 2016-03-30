@@ -1,3 +1,5 @@
+package ventanas;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -304,9 +306,6 @@ public class Ordenes_de_Servicios extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.getAccessibleContext().setAccessibleName("1");
-        jPanel3.getAccessibleContext().setAccessibleName("2");
-        jPanel4.getAccessibleContext().setAccessibleName("Busqueda por "); // NOI18N
         jPanel5.getAccessibleContext().setAccessibleName("X Origen Destino");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

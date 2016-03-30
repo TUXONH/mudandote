@@ -1,3 +1,5 @@
+package ventanas;
+
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -5,7 +7,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import mudandote.Main;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,6 +18,7 @@ import mudandote.Main;
  *
  * @author deam
  */
+import clases.conexion;
 public class Login extends javax.swing.JFrame {
 
     /**

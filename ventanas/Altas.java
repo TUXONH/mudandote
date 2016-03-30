@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author josegonzalez
  */
+import clases.conexion;
 public class Altas extends javax.swing.JFrame {
 
     /**
@@ -33,7 +34,7 @@ public class Altas extends javax.swing.JFrame {
     conexion con;
     public Altas() {
         initComponents();
-        con= new conexion();
+        con = new conexion();
         con.getConnection();
           Ver();
         llenar_est();
