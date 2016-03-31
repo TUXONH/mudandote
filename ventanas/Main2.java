@@ -15,7 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.table.DefaultTableColumnModel;
 
 /**
  *
@@ -28,11 +28,11 @@ public class Main2 extends javax.swing.JFrame {
      * Creates new form Main
      */
     
-   public int tipo_maestra;
+    public int tipo_maestra;
     public int tipo_Ventas;
-   public String Ventas=Encapsuladas.getAuxVentas();
+    public String Ventas=Encapsuladas.getAuxVentas();
     String Maestra;
-    
+    String select1=null;  
     public Main2() {
         initComponents();
         
@@ -323,38 +323,48 @@ public class Main2 extends javax.swing.JFrame {
         combo3.removeAllItems();
         combo2.addItem("*");
         
-        String select1=null;        
+              
         if (combo1.getSelectedItem()=="Clientes")
         {
-            select1="Clientes";
-            select="Select * from Clientes"; 
+            select1="catclientes";
+            select="Select * from catclientes"; 
         }
         if (combo1.getSelectedItem()=="Cotización")
         {
-            select1="Cotización";
-            select="Select * from Cotización";                        
+            select1="catcotizacion";
+            select="Select * from catcotizacion";                        
         }
         if (combo1.getSelectedItem()=="Reservacion")
         {
-            select1="";
-            select="Select * from Cotización";
+            select1="ordenesservicio";
+            select="Select * from ordenesservicio";
             
         }
         if (combo1.getSelectedItem()=="Unidades")
         {
-            select1="Unidades";
-            select="Select * from Unidades";
+            select1="catunidades";
+            select="Select * from catunidades";
             
         }
         if (combo1.getSelectedItem()=="Choferes")
         {
-            select1="Choferes";
-            select="Select * from Choferes";
+            select1="catchoferes";
+            select="Select * from catchoferes";
         }
         if (combo1.getSelectedItem()=="Articulos")
         {
-            select1="";
-            select="Select * from Cotización";
+            select1="catarticulos";
+            select="Select * from catarticulos";
+        }     
+        if (combo1.getSelectedItem()=="Usuarios")
+        {
+            select1="catusuarios";
+            select="SELECT catusuarios.nombre_usuario,catusuarios.password,catusuarios.plaza,catusuarios.serie,estados.nombre,municipios.mun_nombre from catusuarios LEFT JOIN estados ON estados.id_estado=catusuarios.id_estado LEFT JOIN municipios ON municipios.id_municipio=catusuarios.id_municipio";
+            tabla.removeAll();
+            String Titulos[]={"Usuario","Contraseña","Plaza","Serie","Estado","Municipio"};
+            DefaultTableModel m = new DefaultTableModel(null,Titulos);
+            tabla.setModel(m);
+           
         }          
           
           try {                             
@@ -370,7 +380,7 @@ public class Main2 extends javax.swing.JFrame {
     private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
         combo3.removeAllItems();
         
-        String filas="SELECT "+combo2.getSelectedItem()+" FROM "+combo1.getSelectedItem();                        
+        String filas="SELECT "+combo2.getSelectedItem()+" FROM "+select1;                        
         try {
             pasar_filas_combo(combo3,filas);        
             pasar_valores(tabla,select);   
@@ -380,7 +390,7 @@ public class Main2 extends javax.swing.JFrame {
     }//GEN-LAST:event_combo2ActionPerformed
 
     private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
-        select = "SELECT *"+" FROM "+combo1.getSelectedItem()+" WHERE "+combo2.getSelectedItem()+" = \""+combo3.getSelectedItem()+"\"";
+        select = "SELECT *"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+combo3.getSelectedItem()+"\"";
         try {
             pasar_valores(tabla,select);
         } catch (SQLException ex) {
@@ -391,7 +401,7 @@ public class Main2 extends javax.swing.JFrame {
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ENTER && combo2.getSelectedItem()!="*")
         {            
-            String select2 = "SELECT *"+" FROM "+combo1.getSelectedItem()+" WHERE "+combo2.getSelectedItem()+" = \""+jTextField1.getText()+"\"";
+            String select2 = "SELECT *"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+jTextField1.getText()+"\"";
             try {
                 pasar_valores(tabla,select2);
             } catch (SQLException ex) {
