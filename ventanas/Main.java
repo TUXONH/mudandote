@@ -26,8 +26,23 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
+   public int tipo_maestra;
+    public int tipo_Ventas;
+    
     public Main() {
         initComponents();
+        Login log = new Login();
+        
+        tipo_maestra=Integer.parseInt(log.aux_maestra);
+        tipo_Ventas=Integer.parseInt(log.aux_ventas);
+          if(tipo_Ventas==1)
+        {
+            cotizacion.setVisible(false);
+        
+        
+        }
+        
+        
     }
 
     /**
@@ -483,6 +498,7 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+      
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);

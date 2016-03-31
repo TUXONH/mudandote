@@ -24,6 +24,8 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+   public String aux_maestra;
+   public String aux_ventas;
     conexion con;
     Main form = new Main();
     public Login() {
@@ -107,10 +109,14 @@ public class Login extends javax.swing.JFrame {
        
         try {
               PreparedStatement   pstm = (PreparedStatement)
-              con.getConnection().prepareStatement("SELECT nombre_usuario,password from catusuarios WHERE nombre_usuario='"+jTextField1.getText()+"'and password='"+jTextField2.getText()+"'");
+              con.getConnection().prepareStatement("SELECT maestra,ventas,nombre_usuario,password from catusuarios WHERE nombre_usuario='"+jTextField1.getText()+"'and password='"+jTextField2.getText()+"'");
               ResultSet res = pstm.executeQuery();
               
+      
+              
               if(res.next()){ 
+                 aux_maestra = res.getObject("maestra").toString();
+                 aux_ventas = res.getObject("ventas").toString();
                 form.setVisible(true);
                 this.hide();
               }
