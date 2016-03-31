@@ -27,7 +27,7 @@ public class Login extends javax.swing.JFrame {
    public String aux_maestra;
    public String aux_ventas;
     conexion con;
-    Main form = new Main();
+    Main2 form = new Main2();
     public Login() {
         initComponents();
          con= new conexion();

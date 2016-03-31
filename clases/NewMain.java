@@ -5,7 +5,7 @@
  */
 package clases;
 
-import ventanas.Splash;
+
 
 /**
  *
@@ -17,8 +17,7 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-            Splash frame = new Splash();
-    frame.setVisible(true);
+
     }
     
 }

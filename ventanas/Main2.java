@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author danielandrademaglioni
  */
-public class Main extends javax.swing.JFrame {
+public class Main2 extends javax.swing.JFrame {
     String select=null;
     
     /**
@@ -29,7 +29,7 @@ public class Main extends javax.swing.JFrame {
    public int tipo_maestra;
     public int tipo_Ventas;
     
-    public Main() {
+    public Main2() {
         initComponents();
         Login log = new Login();
         
@@ -350,7 +350,7 @@ public class Main extends javax.swing.JFrame {
                 pasar_valores(tabla,select);   
                 
             } catch (SQLException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
             }
 
     }//GEN-LAST:event_combo1ActionPerformed
@@ -363,7 +363,7 @@ public class Main extends javax.swing.JFrame {
             pasar_filas_combo(combo3,filas);        
             pasar_valores(tabla,select);   
         } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_combo2ActionPerformed
 
@@ -372,7 +372,7 @@ public class Main extends javax.swing.JFrame {
         try {
             pasar_valores(tabla,select);
         } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_combo3ActionPerformed
 
@@ -383,7 +383,7 @@ public class Main extends javax.swing.JFrame {
             try {
                 pasar_valores(tabla,select2);
             } catch (SQLException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (evt.getKeyCode()==KeyEvent.VK_ENTER && combo2.getSelectedItem()=="*")
@@ -487,22 +487,20 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
       
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Main2().setVisible(true);
         });
     }
 
