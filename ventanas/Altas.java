@@ -31,6 +31,8 @@ public class Altas extends javax.swing.JFrame {
      */
     DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
+    public int maestra;
+    public int ventas;
     conexion con;
     public Altas() {
         initComponents();
@@ -43,6 +45,30 @@ public class Altas extends javax.swing.JFrame {
            llenar_muni((String) jComboBox1.getSelectedItem());
           }
          });  
+         jRadioButton1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent arg) {
+            if(jRadioButton1.isSelected()==true)
+        {
+            maestra =1;
+        }
+        else
+        {
+             maestra=0;
+        }
+          }
+         });
+          jRadioButton2.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent arg) {
+            if(jRadioButton1.isSelected()==true)
+        {
+            ventas =1;
+        }
+        else
+        {
+             ventas=0;
+        }
+          }
+         });
        
     }
 
@@ -114,7 +140,7 @@ public class Altas extends javax.swing.JFrame {
 
         jButton3.setText("Editar");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Origenes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 12), new java.awt.Color(255, 102, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Origenes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 12), new java.awt.Color(255, 102, 0))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel5.setText("Estado");
@@ -156,11 +182,16 @@ public class Altas extends javax.swing.JFrame {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 12), new java.awt.Color(255, 102, 0))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tipo usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 12), new java.awt.Color(255, 102, 0))); // NOI18N
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jRadioButton1.setText("Administrador");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
@@ -261,38 +292,40 @@ public class Altas extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addGap(73, 73, 73)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(37, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton3)
+                        .addGap(44, 44, 44)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -303,20 +336,23 @@ public class Altas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 8, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 8, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -324,14 +360,35 @@ public class Altas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
+        NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
         Ver();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int idx = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
+        
+        try
+        {
+            PreparedStatement pstm =(PreparedStatement)
+            con.getConnection().prepareStatement("DELETE FROM catusuarios WHERE cve_usuario="+idx);
+            int variable = pstm.executeUpdate();
+            if(variable>0)
+            {
+                System.out.println("Se elimino");
+            }
+            
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(Altas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     Ver();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,7 +438,7 @@ public class Altas extends javax.swing.JFrame {
     public void Ver()
 {
 //con.getConnection();
-        String Titulos[]={"Usuario","Contraseña","Plaza","Serie","Estado","Municipio"};
+        String Titulos[]={"Clave","Usuario","Contraseña","Plaza","Serie","Ventas","Maestra","Estado","Municipio"};
         DefaultTableModel m = new DefaultTableModel(null,Titulos);
         jTable1.setModel(m);
         int registro=0;
@@ -401,26 +458,32 @@ public class Altas extends javax.swing.JFrame {
         } catch (SQLException e) {
            System.out.println(e);
         }
-        Object [][] datos = new String[registro][6];
+        Object [][] datos = new String[registro][9];
         
         try {
                     PreparedStatement   pstm = (PreparedStatement)
-                    con.getConnection().prepareStatement("SELECT catusuarios.nombre_usuario,catusuarios.password,catusuarios.plaza,catusuarios.serie,estados.nombre,municipios.mun_nombre from catusuarios LEFT JOIN estados ON estados.id_estado=catusuarios.id_estado LEFT JOIN municipios ON municipios.id_municipio=catusuarios.id_municipio");
+                    con.getConnection().prepareStatement("SELECT catusuarios.cve_usuario,catusuarios.nombre_usuario,catusuarios.password,catusuarios.plaza,catusuarios.serie,catusuarios.ventas,catusuarios.maestra,estados.nombre,municipios.mun_nombre from catusuarios LEFT JOIN estados ON estados.id_estado=catusuarios.id_estado LEFT JOIN municipios ON municipios.id_municipio=catusuarios.id_municipio");
                       ResultSet res = pstm.executeQuery();
                       int i=0;
                       while(res.next()){
+                          String ClaveUs = res.getString("catusuarios.cve_usuario");
                           String nombreUs = res.getString("catusuarios.nombre_usuario");
                           String PassU = res.getString("catusuarios.password");
                           String PlazaU = res.getString("catusuarios.plaza");
                           String SerieU = res.getString("catusuarios.serie");
+                           String VentasU = res.getString("catusuarios.ventas");
+                            String MaestraU = res.getString("catusuarios.maestra");
                            String Municipio  = res.getString("municipios.mun_nombre");
-                          String Estado = res.getString("nombre");
-                          datos[i][0]=nombreUs;
-                          datos[i][1]=PassU;
-                          datos[i][2]=PlazaU;
-                          datos[i][3]=SerieU;
-                           datos[i][4]=Municipio;
-                            datos[i][5]=Estado;
+                          String Estado = res.getString("estados.nombre");
+                          datos[i][0]=ClaveUs;
+                          datos[i][1]=nombreUs;
+                          datos[i][2]=PassU;
+                          datos[i][3]=PlazaU;
+                          datos[i][4]=SerieU;
+                          datos[i][5]=VentasU;
+                          datos[i][6]=MaestraU;
+                           datos[i][7]=Municipio;
+                            datos[i][8]=Estado;
                           m.addRow(datos[i]);
                           i++;
                       
@@ -431,7 +494,7 @@ public class Altas extends javax.swing.JFrame {
              System.out.println(ex);
         }
 }
-    public void NuevoProducto(String TMPnombre_usuario,String TMPpassword,String TMPplaza,String TMPserie,String TMPid_estado,String TMPid_municipio)
+    public void NuevoProducto(String TMPnombre_usuario,String TMPpassword,String TMPplaza,String TMPserie,int TMPmaestra,int TMPventas,String TMPid_estado,String TMPid_municipio)
 {
     try{
        // PreparedStatement PreparedStatement = null;
@@ -442,7 +505,7 @@ public class Altas extends javax.swing.JFrame {
        String aux_idmun = res1.getObject("id_municipio").toString();
         String aux_idest = res1.getObject("id_estado").toString();
         System.out.println("Valor "+ TMPnombre_usuario);
-       pstm = con.getConnection().prepareStatement("insert into catusuarios (nombre_usuario,password,plaza,serie,id_municipio,id_estado) values ('"+TMPnombre_usuario+"','"+TMPpassword+"','"+TMPplaza+"','"+TMPserie+"',"+aux_idmun+","+aux_idest+")");
+       pstm = con.getConnection().prepareStatement("insert into catusuarios (nombre_usuario,password,plaza,serie,ventas,maestra,id_municipio,id_estado) values ('"+TMPnombre_usuario+"','"+TMPpassword+"','"+TMPplaza+"','"+TMPserie+"',"+TMPventas+","+TMPmaestra+","+aux_idmun+","+aux_idest+")");
        pstm.execute();   
        pstm.close();
            
