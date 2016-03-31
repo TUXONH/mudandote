@@ -16,6 +16,12 @@ public class Splash extends javax.swing.JFrame {
      */
     public Splash() {
         initComponents();
+        iniciar();
+    }
+    public void iniciar()
+    {
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -27,6 +33,7 @@ public class Splash extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -39,6 +46,23 @@ public class Splash extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+=======
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(683, 472));
+        setUndecorated(true);
+        getContentPane().setLayout(null);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mudandote.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(200, 40, 250, 210);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/negro.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 680, 360);
+>>>>>>> 32b38d8ccb8ecc0430c69f1ca354ca18f9ef290a
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +103,10 @@ public class Splash extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+=======
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+>>>>>>> 32b38d8ccb8ecc0430c69f1ca354ca18f9ef290a
     // End of variables declaration//GEN-END:variables
 }
