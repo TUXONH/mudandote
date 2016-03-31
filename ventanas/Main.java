@@ -16,13 +16,13 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
-
 /**
  *
  * @author danielandrademaglioni
  */
 public class Main extends javax.swing.JFrame {
     String select=null;
+    
     /**
      * Creates new form Main
      */
