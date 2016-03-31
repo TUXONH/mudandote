@@ -1,3 +1,5 @@
+package ventanas;
+
 
 import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
@@ -6,22 +8,9 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Pablo Delfin
- */
+import clases.conexion;
 public class CatVivienda extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CatVivienda
-     */
-    
     public conexion con = new conexion();
     public void llenar()
     {

@@ -1,3 +1,5 @@
+package clases;
+
 
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.sql.PreparedStatement;
@@ -20,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Pablo Delfin
  */
+import clases.conexion;
 public class Estado_Municipio {
     
   

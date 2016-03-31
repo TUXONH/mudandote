@@ -1,3 +1,4 @@
+package ventanas;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.sql.PreparedStatement;
@@ -12,17 +13,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.table.DefaultTableModel;
+import clases.conexion;
+import clases.Estado_Municipio;
+import clases.Encapsuladas;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Pablo Delfin
- */
 public class Cotizaciones extends javax.swing.JFrame {
     
    public double Servicios=0;
