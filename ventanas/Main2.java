@@ -114,7 +114,7 @@ public class Main2 extends javax.swing.JFrame {
         reservacion.setText("Reservacion");
 
         combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "*" }));
-        combo2.setToolTipText("Buscar Por Filas");
+        combo2.setToolTipText("Buscar Por Columnas");
         combo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo2ActionPerformed(evt);
@@ -139,7 +139,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jLabel2.setText("Buscar por :");
 
-        jTextField1.setToolTipText("Buscar");
+        jTextField1.setToolTipText("Buscar segun el nombre de columna");
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
@@ -301,7 +301,8 @@ public class Main2 extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuariosActionPerformed
 
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
-        
+        Clientes cliente = new Clientes();
+        cliente.setVisible(true);
     }//GEN-LAST:event_ClientesActionPerformed
 
     private void CotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CotizacionesActionPerformed
