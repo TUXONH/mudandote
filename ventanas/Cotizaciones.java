@@ -35,6 +35,7 @@ public class Cotizaciones extends javax.swing.JFrame {
    public double TotalFinal=0;
    public double Anticipo=0;
    public double Saldo=0;
+   public double  SinPorcentaje=0;
    
    
     
@@ -168,7 +169,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         txtTotalFinal = new javax.swing.JTextField();
         txtAnticipo = new javax.swing.JTextField();
-        txtSaldo = new javax.swing.JTextField();
+        txtSalto = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jCheckBox3 = new javax.swing.JCheckBox();
         ChkSeguro = new javax.swing.JCheckBox();
@@ -291,6 +292,11 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel18.setText("Transporte");
 
         txtTransporte.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtTransporte.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTransporteKeyTyped(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel19.setText("Almacenaje");
@@ -322,6 +328,11 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel24.setText("*Maniobras");
 
         txtManiobras.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtManiobras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtManiobrasKeyTyped(evt);
+            }
+        });
 
         jLabel25.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel25.setText("Sub Total");
@@ -356,8 +367,13 @@ public class Cotizaciones extends javax.swing.JFrame {
         txtTotalFinal.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
         txtAnticipo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtAnticipo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnticipoKeyTyped(evt);
+            }
+        });
 
-        txtSaldo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtSalto.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -399,7 +415,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                             .addComponent(txtTotal)
                             .addComponent(txtTotalFinal)
                             .addComponent(txtAnticipo)
-                            .addComponent(txtSaldo)
+                            .addComponent(txtSalto)
                             .addComponent(txtRetencion)
                             .addComponent(txtManiobras))))
                 .addContainerGap())
@@ -461,7 +477,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31)
-                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtSalto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 12), new java.awt.Color(255, 102, 0))); // NOI18N
@@ -1491,18 +1507,17 @@ public class Cotizaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_TablaArticulosMouseClicked
   
     
-    public  void Porcentaje(double numero)
+    
+    
+    
+    public void Salto()
     {
-       
-         double Seg=0;
-        String Porcentaje = (String) ComboSeguro.getSelectedItem(); 
-        Seg = Double.parseDouble(Porcentaje);
-        Seg = ((Seg * numero) / 100);
-        
-        txtSeguro.setText(""+Seg);
-        
-        
-        
+        if(!txtAnticipo.getText().equals(""))
+            {
+                Saldo = Double.parseDouble(txtAnticipo.getText());
+            Saldo =  Double.parseDouble(txtTotalFinal.getText())-Saldo;
+            txtSalto.setText(""+Saldo);
+            }
     }
    public String Costo="";
     
@@ -1514,12 +1529,14 @@ public class Cotizaciones extends javax.swing.JFrame {
             Total=0;
             TotalFinal = 0;
             Saldo = 0;
+            
             Variable = 0;
               comienza=false;
 
             
        for(int i=0;i<TablaArticulos.getRowCount();i++)
        {
+           
            Costo =TablaArticulos.getValueAt(i, 3).toString();
          
          Costo=Costo.substring(1);
@@ -1531,6 +1548,8 @@ public class Cotizaciones extends javax.swing.JFrame {
             Total=Total+Double.parseDouble(Costo);
             TotalFinal = TotalFinal +Double.parseDouble(Costo);
             Saldo = Saldo + Double.parseDouble(Costo);
+            SinPorcentaje= Total;
+            
 
            
          if(comienza)
@@ -1539,14 +1558,43 @@ public class Cotizaciones extends javax.swing.JFrame {
              
 
         }
+         
+         
   
        }
-
-       txtSaldo.setText(""+Saldo);
+       
+       if(txtTransporte.getText().equals(""))
+       {
+           txtSalto.setText(""+Saldo);
             txtTotalFinal.setText(""+TotalFinal);
             txtTotal.setText(""+Total);
             caja.setText(""+Variable);
             txtSubtotal.setText(""+SubTotal);
+       }
+       
+       else
+       {
+          
+       }
+
+       if(txtSeguro.getText().equals(""))
+       {
+           txtSalto.setText(""+Saldo);
+            txtTotalFinal.setText(""+TotalFinal);
+            txtTotal.setText(""+Total);
+            caja.setText(""+Variable);
+            txtSubtotal.setText(""+SubTotal);
+       }
+       else
+       {
+           
+            double numero = Integer.parseInt(txtSumaAsegurada.getText());
+                Porcentaje(numero);
+        
+       }
+       
+            
+            Salto();
    }
     private void TablaArticulosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaArticulosKeyTyped
        
@@ -1598,21 +1646,18 @@ public class Cotizaciones extends javax.swing.JFrame {
         }
        
         }
-        
           int mas=(int)CteclaPresionada;
-        //JOptionPane.showMessageDialog(null, (int)mas);
+
         if(mas==43)
         {
-            cantid = TablaArticulos.getValueAt(Encapsuladas.getPosicionTabla(), 0).toString();
+           cantid = TablaArticulos.getValueAt(Encapsuladas.getPosicionTabla(), 0).toString();
             Cantidad = 1+ Integer.parseInt(cantid);
              TablaArticulos.setValueAt(Cantidad, Encapsuladas.getPosicionTabla(), 0);
-             
-       // JOptionPane.showMessageDialog(null, "Entro");
         }
         
          if(mas==45)
         {
-        //JOptionPane.showMessageDialog(null, "Entro");
+
             
              cantid = TablaArticulos.getValueAt(Encapsuladas.getPosicionTabla(), 0).toString();
             Cantidad = Integer.parseInt(cantid)-1;
@@ -1644,6 +1689,10 @@ public class Cotizaciones extends javax.swing.JFrame {
                 {
                     double numero = Integer.parseInt(txtSumaAsegurada.getText());
                 Porcentaje(numero);
+                double Porcentaje=0;
+                
+                Porcentaje = SinPorcentaje +Seg;
+                txtSubtotal.setText(""+Porcentaje);
                 }
                     
 
@@ -1651,9 +1700,49 @@ public class Cotizaciones extends javax.swing.JFrame {
         else
         {
             txtSeguro.setText("");
+            txtSalto.setText(""+SinPorcentaje);
+            txtTotalFinal.setText(""+SinPorcentaje);
+            txtTotal.setText(""+SinPorcentaje);
+           // caja.setText(""+Variable);
+            txtSubtotal.setText(""+SinPorcentaje);
         }
     }//GEN-LAST:event_ChkSeguroMouseClicked
-
+    public double Seg=0;
+      public double Seguros=0;
+    public  void Porcentaje(double numero)
+    {
+       
+         
+        String Porcentaje = (String) ComboSeguro.getSelectedItem(); 
+        Seg = Double.parseDouble(Porcentaje);
+        Seg = ((Seg * numero) / 100);
+        
+          Seguros=0;
+        
+        if(txtSeguro.getText().equals(""))
+        {
+            txtSeguro.setText(""+Seg);
+            Seguro = Double.parseDouble(txtSeguro.getText()) + Double.parseDouble(txtSubtotal.getText());
+            
+        }
+        else
+        {
+            Seguro=0;
+           
+            Seguro = Seg+SinPorcentaje;
+            
+        }
+        
+        txtSalto.setText(""+Seguro);
+            txtTotalFinal.setText(""+Seguro);
+            txtTotal.setText(""+Seguro);
+           // caja.setText(""+Variable);
+            txtSubtotal.setText(""+Seguro);
+        
+        
+        txtSeguro.setText(""+Seg);
+        
+    }
     private void txtSumaAseguradaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSumaAseguradaKeyTyped
         
         char CteclaPresionada=evt.getKeyChar();
@@ -1671,6 +1760,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 {
                     double numero = Integer.parseInt(txtSumaAsegurada.getText());
                 Porcentaje(numero);
+              
                 }
                     
 
@@ -1679,6 +1769,8 @@ public class Cotizaciones extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null,"Aun no permite aceptar el seguro");
         }
+       
+        Salto();
         }
     }//GEN-LAST:event_txtSumaAseguradaKeyTyped
 
@@ -1700,6 +1792,86 @@ public class Cotizaciones extends javax.swing.JFrame {
     private void txtSumaAseguradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSumaAseguradaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSumaAseguradaActionPerformed
+
+    private void txtAnticipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnticipoKeyTyped
+        char CteclaPresionada=evt.getKeyChar();
+       // String colum = TablaArticulos.getValueAt(TablaArticulos.getSelectedRow(),TablaArticulos.getSelectedColumn());
+        if(CteclaPresionada==KeyEvent.VK_ENTER)
+        {
+            Saldo = Double.parseDouble(txtAnticipo.getText());
+            Saldo =  Double.parseDouble(txtTotalFinal.getText())-Saldo;
+            txtSalto.setText(""+Saldo);
+        }
+    }//GEN-LAST:event_txtAnticipoKeyTyped
+
+    private void txtTransporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTransporteKeyTyped
+       
+        char CteclaPresionada=evt.getKeyChar();
+        
+        if(CteclaPresionada==KeyEvent.VK_ENTER)
+        {
+             Transporte =0;
+            if(txtSeguro.getText().equals(""))
+            {
+                Transporte = SinPorcentaje  + Double.parseDouble(txtTransporte.getText());
+                txtSubtotal.setText(""+Transporte);
+                txtTotalFinal.setText(""+Transporte);
+                txtTotal.setText(""+Transporte);
+                if(!txtAnticipo.getText().equals(""))
+                {
+                    Saldo = Double.parseDouble(txtAnticipo.getText());
+            Saldo =  Double.parseDouble(txtTotalFinal.getText())-Saldo;
+            txtSalto.setText(""+Saldo);
+                }
+                
+                else
+                {
+                    txtSalto.setText(""+Transporte);
+                }
+                
+                
+            }
+            else
+            {
+                Transporte = SinPorcentaje + Double.parseDouble(txtTransporte.getText())+Seg;
+                txtSubtotal.setText(""+Transporte);
+                txtTotalFinal.setText(""+Transporte);
+                txtTotal.setText(""+Transporte);
+                txtSalto.setText(""+Transporte);
+            }
+
+        }
+        
+        
+    }//GEN-LAST:event_txtTransporteKeyTyped
+
+    
+    private void txtManiobrasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtManiobrasKeyTyped
+       
+         char CteclaPresionada=evt.getKeyChar();
+        Maniobras=0;
+        if(CteclaPresionada==KeyEvent.VK_ENTER)
+        {
+            Maniobras=0;
+            if(txtTransporte.getText().equals(""))
+            {
+                
+                 Maniobras = SinPorcentaje  + Double.parseDouble(txtManiobras.getText());
+                txtSubtotal.setText(""+Maniobras);
+                txtTotalFinal.setText(""+Maniobras);
+                txtTotal.setText(""+Maniobras);
+            }
+            else
+            {
+                
+            }
+            
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_txtManiobrasKeyTyped
 
     /**
      * @param args the command line arguments
@@ -1868,7 +2040,7 @@ public class Cotizaciones extends javax.swing.JFrame {
     private javax.swing.JTextField txtNumeros;
     private javax.swing.JTextField txtRentas;
     private javax.swing.JTextField txtRetencion;
-    private javax.swing.JTextField txtSaldo;
+    private javax.swing.JTextField txtSalto;
     private javax.swing.JTextField txtSeguro;
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtSumaAsegurada;
