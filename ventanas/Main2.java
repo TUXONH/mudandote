@@ -5,6 +5,7 @@
  */
 package ventanas;
 
+import clases.Encapsuladas;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.*;
@@ -26,19 +27,29 @@ public class Main2 extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
+    
    public int tipo_maestra;
     public int tipo_Ventas;
+   public String Ventas=Encapsuladas.getAuxVentas();
+    String Maestra;
     
     public Main2() {
         initComponents();
-        Login log = new Login();
         
-        tipo_maestra=Integer.parseInt(log.aux_maestra);
-        tipo_Ventas=Integer.parseInt(log.aux_ventas);
-          if(tipo_Ventas==1)
+//        Maestra=Encapsuladas.getAuxMaestra().toString();
+          //Ventas =Encapsuladas.getAuxVentas();
+          System.out.println(Ventas+"estas main");
+//        tipo_maestra=Integer.parseInt(Maestra);
+//        tipo_Ventas=Integer.parseInt(Ventas);
+          String[] items={"Clientes", "Cotización", "Reservacion", "Unidades", "Choferes", "Articulos"};
+          if(Ventas=="true")
         {
             cotizacion.setVisible(false);
-        
+            reservacion.setVisible(false);
+            jMenu2.setVisible(false);
+            combo1.removeAllItems();
+            for (int i =0; i<items.length; i++)
+            combo1.addItem(items[i]);
         
         }
         
@@ -118,7 +129,7 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
 
-        combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes", "Cotización", "Reservacion", "Unidades", "Choferes", "Articulos" }));
+        combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes", "Cotización", "Reservacion", "Unidades", "Choferes", "Articulos", "Usuarios" }));
         combo1.setToolTipText("Buscar Todo");
         combo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,7 +296,8 @@ public class Main2 extends javax.swing.JFrame {
     }//GEN-LAST:event_EmpresaActionPerformed
 
     private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
-        
+       Altas usuario = new Altas(); 
+       usuario.setVisible(true);
     }//GEN-LAST:event_UsuariosActionPerformed
 
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed

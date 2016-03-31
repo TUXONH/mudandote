@@ -13,6 +13,8 @@ package clases;
 public class Encapsuladas {
     
     private static String Municipio;
+    private static String auxMaestra;
+    private static String auxVentas;
 
     /**
      * @return the Municipio
@@ -106,6 +108,34 @@ public class Encapsuladas {
      */
     public static void setColumna(int aColumna) {
         Columna = aColumna;
+    }
+
+    /**
+     * @return the auxMaestra
+     */
+    public static String getAuxMaestra() {
+        return auxMaestra;
+    }
+
+    /**
+     * @param aAuxMaestra the auxMaestra to set
+     */
+    public static void setAuxMaestra(String aAuxMaestra) {
+        auxMaestra = aAuxMaestra;
+    }
+
+    /**
+     * @return the auxVentas
+     */
+    public static String getAuxVentas() {
+        return auxVentas;
+    }
+
+    /**
+     * @param aAuxVentas the auxVentas to set
+     */
+    public static void setAuxVentas(String aAuxVentas) {
+        auxVentas = aAuxVentas;
     }
     
 }

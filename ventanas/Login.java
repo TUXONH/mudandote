@@ -1,6 +1,7 @@
 package ventanas;
 
 
+import clases.Encapsuladas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,14 +25,16 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-   public String aux_maestra;
-   public String aux_ventas;
+   String aux_maestra;
+   String aux_ventas;
     conexion con;
-    Main2 form = new Main2();
+    //Main2 form ;
     public Login() {
         initComponents();
          con= new conexion();
         con.getConnection();
+        //form = new Main2();
+       
     }
 
     /**
@@ -111,14 +114,21 @@ public class Login extends javax.swing.JFrame {
               PreparedStatement   pstm = (PreparedStatement)
               con.getConnection().prepareStatement("SELECT maestra,ventas,nombre_usuario,password from catusuarios WHERE nombre_usuario='"+jTextField1.getText()+"'and password='"+jTextField2.getText()+"'");
               ResultSet res = pstm.executeQuery();
-              
+             
+//                  Encapsuladas.setAuxMaestra(aux_maestra.toString());
+//                  Encapsuladas.setAuxVentas(aux_ventas.toString());
       
               
               if(res.next()){ 
-                 aux_maestra = res.getObject("maestra").toString();
-                 aux_ventas = res.getObject("ventas").toString();
-                form.setVisible(true);
+                aux_maestra = res.getObject("maestra").toString();
+                aux_ventas = res.getObject("ventas").toString();
+                System.out.println(aux_ventas+" "+aux_maestra);
+                Encapsuladas.setAuxVentas(aux_ventas.toString());
+                Main2 m = new Main2();
+                m.setVisible(true);
+                //form.setVisible(true);
                 this.hide();
+                 
               }
               else
               {
