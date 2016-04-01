@@ -1,5 +1,13 @@
 package ventanas;
 
+import clases.conexion;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,8 +23,25 @@ public class Plazas extends javax.swing.JFrame {
     /**
      * Creates new form Plazas
      */
+     conexion con;
+     public int Activo;
     public Plazas() {
         initComponents();
+         con = new conexion();
+        con.getConnection();
+         Ver();
+         jCheckBox1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent arg) {
+            if(jCheckBox1.isSelected()==true)
+        {
+           Activo =1;
+        }
+        else
+        {
+             Activo=0;
+        }
+          }
+         });
     }
 
     /**
@@ -184,6 +209,11 @@ public class Plazas extends javax.swing.JFrame {
         );
 
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Modificar");
 
@@ -243,17 +273,19 @@ public class Plazas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 180, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -261,9 +293,95 @@ public class Plazas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         NuevoProducto(jTextField1.getText(),jTextField4.getText(),jTextField5.getText(),jTextField2.getText(),jTextField3.getText(),Activo,jTextField6.getText());
+         Ver();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    public void Nada()
+    {}
+ public void Ver() 
+ {
+
+        String Titulos[]={"Clave","Plaza","Descripcion","Baja","Direccion1","Direccion2","Serie"};
+        DefaultTableModel m = new DefaultTableModel(null,Titulos);
+        jTable3.setModel(m);
+        int registro=0;
+       
+        try{
+            
+         PreparedStatement pstm =(PreparedStatement)
+         con.getConnection().prepareStatement("SELECT count(1) as total FROM catplazas");
+         ResultSet res = pstm.executeQuery();
+         res.next();
+         registro = res.getInt("total");
+         System.out.println(registro);
+         res.close();
+         
+        
+        
+        } catch (SQLException e) {
+           System.out.println(e);
+        }
+        Object [][] datos = new String[registro][7];
+        
+        try {
+                    PreparedStatement   pstm = (PreparedStatement)
+                    con.getConnection().prepareStatement("SELECT clave,nombre_plaza,DescripCorta,Baja,Direccion1,Direccion2,SerieDocs FROM catplazas");
+                      ResultSet res = pstm.executeQuery();
+                      int i=0;
+                      while(res.next()){
+                          String ClavePla = res.getString("clave");
+                          String nombrePla = res.getString("nombre_plaza");
+                          String DescripCortaPla = res.getString("DescripCorta");
+                          String BajaPla = res.getString("Baja");
+                          String Direccion1Pla = res.getString("Direccion1");
+                          String Dieccion2Pla = res.getString("Direccion2");
+                           String SerieDocsPla = res.getString("SerieDocs");
+                            
+                          datos[i][0]=ClavePla;
+                          datos[i][1]=nombrePla;
+                           datos[i][2]=DescripCortaPla;
+                          datos[i][3]=BajaPla;
+                          datos[i][4]=Direccion1Pla;
+                          datos[i][5]=Dieccion2Pla;
+                          datos[i][6]=SerieDocsPla;
+                          
+                          m.addRow(datos[i]);
+                          i++;
+                      
+                      
+                      }
+                    
+        } catch (SQLException ex) {
+             System.out.println(ex);
+        }
+}
+
+    public void NuevoProducto(String TMPClave,String TMPDireccion1,String TMPDireccion2,String TMPNombre_plaza,String TMPDescripCorta,int TMPBaja,String TMPSerieDocs)
+{
+    try{
+       // PreparedStatement PreparedStatement = null;
+       System.out.println("paso 1");
+        PreparedStatement pstm =(PreparedStatement)
+                
+        con.getConnection().prepareStatement("insert into catplazas (clave,Direccion1,Direccion2,nombre_plaza,DescripCorta,Baja,SerieDocs) values ('"+TMPClave+"','"+TMPDireccion1+"','"+TMPDireccion2+"','"+TMPNombre_plaza+"','"+TMPDescripCorta+"',"+TMPBaja+",'"+TMPSerieDocs+"')");
+       System.out.println("paso 2");
+        pstm.executeUpdate(); 
+        System.out.println("paso 3");
+       pstm.close();
+          System.out.println("paso 4");  
+    
+    }catch(SQLException e){
+            
+                System.out.println(e);
+            }
+
+}
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
