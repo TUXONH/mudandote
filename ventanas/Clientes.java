@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,7 +28,9 @@ public class Clientes extends javax.swing.JFrame {
      */
     DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
+     public int activo;
      conexion con;
+    
     public Clientes() {
         initComponents();
          con = new conexion();
@@ -38,6 +42,18 @@ public class Clientes extends javax.swing.JFrame {
            llenar_muni((String) jComboBox1.getSelectedItem());
           }
          });  
+          jCheckBox1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent arg) {
+            if(jCheckBox1.isSelected()==true)
+        {
+           activo =1;
+        }
+        else
+        {
+             activo=0;
+        }
+          }
+         });
     }
 
     /**
@@ -283,8 +299,18 @@ public class Clientes extends javax.swing.JFrame {
         );
 
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Borrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Modificar");
 
@@ -370,6 +396,33 @@ public class Clientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),activo,jTextField6.getText(),jTextField7.getText(),jTextField8.getText(),jTextField9.getText(),jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
+        Ver();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         int idx = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
+        
+        try
+        {
+            PreparedStatement pstm =(PreparedStatement)
+            con.getConnection().prepareStatement("DELETE FROM catclientes WHERE FolioCliente="+idx);
+            int variable = pstm.executeUpdate();
+            if(variable>0)
+            {
+                System.out.println("Se elimino");
+            }
+            
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(Altas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    Ver();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -483,6 +536,29 @@ public class Clientes extends javax.swing.JFrame {
         } catch (SQLException ex) {
              System.out.println(ex);
         } 
+}
+      
+    public void NuevoProducto(String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPMovil,String TMPid_estado,String TMPid_municipio)
+{
+    try{
+       // PreparedStatement PreparedStatement = null;
+        PreparedStatement pstm =(PreparedStatement)
+        con.getConnection().prepareStatement("Select id_municipio,id_estado from municipios where mun_nombre= '"+TMPid_municipio+"'");
+        ResultSet res1 = pstm.executeQuery();
+        res1.next();
+       String aux_idmun = res1.getObject("id_municipio").toString();
+        String aux_idest = res1.getObject("id_estado").toString();
+        //System.out.println("Valor "+ TMPCorreoElectronico);
+       pstm = con.getConnection().prepareStatement("insert into catclientes(CorreoElectronico,RFC,NombreContacto,NombreComercial,RazonSocial,Direccion,Activo,TelCasa,TelOficina,Movil,id_estado,id_municipio) values ('"+TMPCorreoElectronico+"','"+TMPRFC+"','"+TMPNombreContacto+"','"+TMPNombreComercial+"','"+TMPRazonSocial+"','"+TMPDireccion+"',"+TMPActivo+",'"+TMPTelCasa+"','"+TMPTelOficna+"','"+TMPMovil+"',"+aux_idest+","+aux_idmun+")");
+       pstm.execute();   
+       pstm.close();
+           
+    
+    }catch(SQLException e){
+            
+                System.out.println(e);
+            }
+
 }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
