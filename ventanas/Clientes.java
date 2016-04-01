@@ -5,6 +5,16 @@
  */
 package ventanas;
 
+import clases.conexion;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author josegonzalez
@@ -14,8 +24,20 @@ public class Clientes extends javax.swing.JFrame {
     /**
      * Creates new form Clientes
      */
+    DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
+    DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
+     conexion con;
     public Clientes() {
         initComponents();
+         con = new conexion();
+        con.getConnection();
+          Ver();
+           llenar_est();
+        jComboBox1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent arg) {
+           llenar_muni((String) jComboBox1.getSelectedItem());
+          }
+         });  
     }
 
     /**
@@ -123,20 +145,19 @@ public class Clientes extends javax.swing.JFrame {
                     .addComponent(jTextField4)
                     .addComponent(jTextField1)
                     .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel5)
                             .addGap(108, 108, 108)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
-                        .addGap(62, 62, 62)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(117, 117, 117)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                     .addComponent(jTextField3)
@@ -274,7 +295,7 @@ public class Clientes extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
@@ -285,8 +306,9 @@ public class Clientes extends javax.swing.JFrame {
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2))
-                            .addComponent(jButton3))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton3))
+                        .addGap(0, 318, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,17 +318,18 @@ public class Clientes extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton1)
+                                    .addComponent(jButton2))
+                                .addGap(26, 26, 26)
+                                .addComponent(jButton3)))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -329,8 +352,10 @@ public class Clientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1226, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -338,9 +363,9 @@ public class Clientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         pack();
@@ -349,6 +374,116 @@ public class Clientes extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+     public void Ver()
+{
+//con.getConnection();
+        String Titulos[]={"Clave","Email","RFC","Nom.Contacto","Nom.Comercial","RS","Direccion","Tel.Casa","Tel.Oficina","Movil","Activo","Estado","Municipio"};
+        DefaultTableModel m = new DefaultTableModel(null,Titulos);
+        jTable1.setModel(m);
+        int registro=0;
+       
+        try{
+            
+         PreparedStatement pstm =(PreparedStatement)
+         con.getConnection().prepareStatement("SELECT count(1) as total FROM catclientes ");
+         ResultSet res = pstm.executeQuery();
+         res.next();
+         registro = res.getInt("total");
+         System.out.println(registro);
+         res.close();
+         
+        
+        
+        } catch (SQLException e) {
+           System.out.println(e);
+        }
+        Object [][] datos = new String[registro][13];
+        
+        try {
+                    PreparedStatement   pstm = (PreparedStatement)
+                        con.getConnection().prepareStatement("SELECT catclientes.FolioCliente,catclientes.CorreoElectronico,catclientes.RFC,catclientes.NombreContacto,catclientes.NombreComercial,catclientes.RazonSocial,catclientes.Direccion,catclientes.TelCasa,catclientes.TelOficina,catclientes.Movil,catclientes.Activo,estados.nombre,municipios.mun_nombre from catclientes LEFT JOIN estados ON estados.id_estado=catclientes.id_estado LEFT JOIN municipios ON municipios.id_municipio=catclientes.id_municipio");
+                      ResultSet res = pstm.executeQuery();
+                      int i=0;
+                      while(res.next()){
+                          String ClaveC = res.getString("catclientes.FolioCliente");
+                          String CorreoElectronicoC = res.getString("catclientes.CorreoElectronico");
+                          String RFCC = res.getString("catclientes.RFC");
+                          String NombreContactoC = res.getString("catclientes.NombreContacto");
+                          String NombreComercialC = res.getString("catclientes.NombreComercial");
+                           String RazonSocialC = res.getString("catclientes.RazonSocial");
+                            String DireccionC = res.getString("catclientes.Direccion");
+                            String TelCasaC = res.getString("catclientes.TelCasa");
+                            String TelOficinaC = res.getString("catclientes.TelOficina");
+                            String MovilC = res.getString("catclientes.Movil");
+                             String ActivoC = res.getString("catclientes.Activo");
+                           String Municipio  = res.getString("municipios.mun_nombre");
+                          String Estado = res.getString("estados.nombre");
+                          datos[i][0]=ClaveC;
+                          datos[i][1]=CorreoElectronicoC;
+                          datos[i][2]=RFCC;
+                          datos[i][3]=NombreContactoC;
+                          datos[i][4]=NombreComercialC;
+                          datos[i][5]=RazonSocialC;
+                          datos[i][6]=DireccionC;
+                          datos[i][7]=TelCasaC ;
+                          datos[i][8]=TelOficinaC;
+                          datos[i][9]= MovilC;
+                          datos[i][10]=ActivoC;
+                           datos[i][11]=Municipio;
+                            datos[i][12]=Estado;
+                          m.addRow(datos[i]);
+                          i++;
+                      
+                      
+                      }
+                    
+        } catch (SQLException ex) {
+             System.out.println(ex);
+        }
+}
+     public void llenar_est() {
+        try {
+            this.jComboBox1.removeAllItems();
+             //System.out.println("Error 3");
+           // Class.forName("com.mysql.jdbc.Driver");
+           //  System.out.println("Error 4");
+           // Connection conexion =DriverManager.getConnection("jdbc:mysql://localhost/mudandote", "root", "");
+            Statement st = con.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM estados");
+            modeloCombo.addElement("Seleccione un Estado");
+            this.jComboBox1.setModel(modeloCombo);
+            while (rs.next()) {
+                modeloCombo.addElement(rs.getObject("nombre"));
+                this.jComboBox1.setModel(modeloCombo);
+            }
+ 
+            st.close();
+        } catch (SQLException ex) {
+            System.out.println("Error 1");
+            System.out.println(ex);
+        } 
+      }
+      public void llenar_muni(String est){
+    this.jComboBox2.setEnabled(true);
+    this.jComboBox2.removeAllItems();
+ try {
+           // Class.forName("com.mysql.jdbc.Driver");
+          //  Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/mudandote", "root", "");
+            Statement st = con.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = st.executeQuery("SELECT * FROM municipios,estados where municipios.id_estado=estados.id_estado and estados.nombre='"+est+"'");
+            modeloCombo2.addElement("Seleccione un Municipio");
+            this.jComboBox2.setModel(modeloCombo2);
+            while (rs.next()) {
+                modeloCombo2.addElement(rs.getObject("mun_nombre"));
+                this.jComboBox2.setModel(modeloCombo2);
+            }
+ 
+            st.close();
+        } catch (SQLException ex) {
+             System.out.println(ex);
+        } 
+}
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
