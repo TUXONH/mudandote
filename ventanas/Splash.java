@@ -53,8 +53,8 @@ public final class Splash extends javax.swing.JFrame {
             j+=2;
         }
     }
-    if(progreso.getValue()==100){
-        Main2 v=new Main2();
+    if(progreso.getValue() == 100){
+        Login v=new Login();
         v.setVisible(true);
         this.dispose();
     }
