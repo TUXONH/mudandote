@@ -46,18 +46,28 @@ public final class Splash extends javax.swing.JFrame {
     }
     private void progresoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_progresoStateChanged
 
-            if(progreso.getValue()==i){
-        if(j!=101){
-            AWTUtilities.setWindowOpacity(this, Float.valueOf((100-j)/100+"f"));
-            i++;
-            j+=2;
+        if(progreso.getValue()==i)
+        {
+            if(j!=101){
+                AWTUtilities.setWindowOpacity(this, Float.valueOf((100-j)/100+"f"));
+                i++;
+                j+=2;
+            }
+         }
+        if(progreso.getValue()==100){
+            Main2 v = new Main2();
+            v.setVisible(true);
+            this.dispose();
         }
+<<<<<<< HEAD
     }
     if(progreso.getValue() == 100){
         Login v=new Login();
         v.setVisible(true);
         this.dispose();
     }
+=======
+>>>>>>> ba72ae11b180e07aa7cefa1eca6a2e5818af395a
     }//GEN-LAST:event_progresoStateChanged
 
     public static void main(String args[]) {
