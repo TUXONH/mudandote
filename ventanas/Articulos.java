@@ -21,7 +21,11 @@ import javax.swing.JOptionPane;
  * @author danielandrademaglioni
  */
 public class Articulos extends javax.swing.JFrame {
-    String sql2 = "SELECT * FROM catarticulos";    
+    String sql2 = "SELECT * FROM catarticulos";  
+    String description;
+    String family;
+    String mm3;
+    String services;
     /**
      * Creates new form Articulos
      */
@@ -59,7 +63,12 @@ public class Articulos extends javax.swing.JFrame {
         aceptar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jLabel1.setText("Familia:");
 
@@ -89,6 +98,11 @@ public class Articulos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabla);
 
         familia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CAMA", "COLCHONES", "COMEDORES", "ELECTRONICA", "OTROS", "SALAS", "SERVICIOS EXCLUSIVOS", "VEHICULOS" }));
@@ -113,7 +127,7 @@ public class Articulos extends javax.swing.JFrame {
             }
         });
 
-        modificar.setText("Modificar");
+        modificar.setText("Editar");
         modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarActionPerformed(evt);
@@ -156,24 +170,27 @@ public class Articulos extends javax.swing.JFrame {
                                 .addGap(20, 20, 20)
                                 .addComponent(jLabel3))
                             .addComponent(jLabel2)
-                            .addComponent(m3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(m3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(agregar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(modificar))
+                                        .addComponent(modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(aceptar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
-                                .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(21, 21, 21)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -274,20 +291,20 @@ public class Articulos extends javax.swing.JFrame {
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         if (tabla.getSelectedRow()!=-1)
         {
-            String description = (String) tabla.getValueAt(tabla.getSelectedRow(),1);
-            String family = (String) tabla.getValueAt(tabla.getSelectedRow(),2);
-            String mm3 = (String) tabla.getValueAt(tabla.getSelectedRow(),3);
-            String services = (String) tabla.getValueAt(tabla.getSelectedRow(),4);
+//            description = (String) tabla.getValueAt(tabla.getSelectedRow(),1);
+//            family = (String) tabla.getValueAt(tabla.getSelectedRow(),2);
+//            mm3 = (String) tabla.getValueAt(tabla.getSelectedRow(),3);
+//            services = (String) tabla.getValueAt(tabla.getSelectedRow(),4);
             //buscar.setVisible(false);
             eliminar.setVisible(false);
             agregar.setVisible(false);
             modificar.setVisible(false);
             aceptar.setVisible(true);
             cancelar.setVisible(true);
-            descripcion.setText(description);
-            familia.setSelectedItem(family);
-            m3.setText(mm3);
-            Servicios.setSelectedItem(services);
+//            descripcion.setText(description);
+//            familia.setSelectedItem(family);
+//            m3.setText(mm3);
+//            Servicios.setSelectedItem(services);
         }
         else {
             JOptionPane.showMessageDialog(null,"Para Modificar primero debes seleccionar en la tabla que registro quieres modificar");
@@ -333,6 +350,24 @@ public class Articulos extends javax.swing.JFrame {
         m3.setText("");
         Servicios.setSelectedIndex(0);        
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        description = (String) tabla.getValueAt(tabla.getSelectedRow(),1);
+        family = (String) tabla.getValueAt(tabla.getSelectedRow(),2);
+        mm3 = (String) tabla.getValueAt(tabla.getSelectedRow(),3);
+        services = (String) tabla.getValueAt(tabla.getSelectedRow(),4);    
+        descripcion.setText(description);    
+        familia.setSelectedItem(family);
+        m3.setText(mm3);
+        Servicios.setSelectedItem(services); 
+    }//GEN-LAST:event_tablaMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        descripcion.setText("");
+        familia.setSelectedIndex(0);
+        m3.setText("");
+        Servicios.setSelectedIndex(0);  
+    }//GEN-LAST:event_formMouseClicked
 
     /**
      * @param args the command line arguments

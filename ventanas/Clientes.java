@@ -560,6 +560,32 @@ public class Clientes extends javax.swing.JFrame {
             }
 
 }
+     public void Modificar(int idx,String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPMovil,String TMPid_estado,String TMPid_municipio)
+   {
+   
+    // TODO add your handling code here:
+          
+      
+        try {            
+            PreparedStatement pst =(PreparedStatement)     
+           con.getConnection().prepareStatement("Select id_municipio,id_estado from municipios where mun_nombre= '"+TMPid_municipio+"'");
+             ResultSet res1 = pst.executeQuery();
+             res1.next();
+            String aux_idmun = res1.getObject("id_municipio").toString();
+             String aux_idest = res1.getObject("id_estado").toString();
+            pst=con.getConnection().prepareStatement("UPDATE catusuarios SET CorreoElectronico='"+TMPCorreoElectronico+"',RFC='"+TMPRFC+"',RazonSocial='"+TMPRazonSocial+"',Activo="+TMPActivo+",Direccion='"+TMPDireccion+"',TelCasa='"+TMPTelCasa+"',TelOficina='"+TMPTelOficna+"',Movil='"+TMPMovil+"',id_municipio="+aux_idmun+",id_estado="+aux_idest+",Movil="+TMPMovil+" WHERE FolioCliente="+idx);                                                        
+            pst.executeUpdate();
+            pst.close();
+         
+            //JOptionPane.showMessageDialog(null,"Se modifico el registro con exito!");
+            
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+   
+   }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
