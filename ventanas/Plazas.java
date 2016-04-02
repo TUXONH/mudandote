@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -44,6 +45,9 @@ public class Plazas extends javax.swing.JFrame {
         }
           }
          });
+         jButton4.setVisible(false);
+          jButton5.setVisible(false);
+         
     }
 
     /**
@@ -78,6 +82,8 @@ public class Plazas extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
 
@@ -184,22 +190,17 @@ public class Plazas extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
@@ -220,6 +221,11 @@ public class Plazas extends javax.swing.JFrame {
         });
 
         jButton2.setText("Modificar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Borrador");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -227,6 +233,15 @@ public class Plazas extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        jButton4.setText("Aceptar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -239,11 +254,18 @@ public class Plazas extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(106, 106, 106)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jButton4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)))))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -258,7 +280,11 @@ public class Plazas extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addComponent(jButton2)
                         .addComponent(jButton3)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addContainerGap())
         );
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -326,6 +352,69 @@ public class Plazas extends javax.swing.JFrame {
         }
     Ver();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (jTable3.getSelectedRow()!=-1)
+        {
+            String Clave = (String) jTable3.getValueAt(jTable3.getSelectedRow(),0);
+            String NombrePlaza = (String) jTable3.getValueAt(jTable3.getSelectedRow(),1);
+            String Descripcion = (String) jTable3.getValueAt(jTable3.getSelectedRow(),2);
+            String Direccion = (String) jTable3.getValueAt(jTable3.getSelectedRow(),4);
+            String Direccion2 = (String) jTable3.getValueAt(jTable3.getSelectedRow(),5);
+            String Serie = (String) jTable3.getValueAt(jTable3.getSelectedRow(),6);
+             String Baja = (String) jTable3.getValueAt(jTable3.getSelectedRow(),3);
+           int Bajaint=Integer.parseInt(Baja.toString());
+             boolean bandera;
+            System.out.println("Baja: "+Baja);
+            if (Bajaint==1)
+            {
+                bandera=true;
+            }else
+            {
+                bandera=false;
+            }
+            
+            //buscar.setVisible(false);
+            jButton1.setVisible(false);
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
+            jButton4.setVisible(true);
+            jButton5.setVisible(true);
+            jTextField1.setText(Clave);
+            jTextField2.setText(NombrePlaza);
+            jTextField3.setText(Descripcion);
+            jTextField4.setText(Direccion);
+             jTextField5.setText(Direccion2);
+              jTextField6.setText(Serie);
+             jCheckBox1.setSelected(bandera);
+             
+             
+             
+             
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(null,"Para Modificar primero debes seleccionar en la tabla que registro quieres modificar");
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       String idx = jTable3.getValueAt(jTable3.getSelectedRow(),0).toString();
+        Modificar(idx,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),jTextField6.getText(),Activo);
+        Ver();
+           jButton4.setVisible(false);
+            jButton5.setVisible(false);
+           
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
+           jButton3.setVisible(true);
+//            descripcion.setText("");
+//        familia.setSelectedIndex(0);
+//        m3.setText("");
+//        Servicios.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,7 +488,7 @@ public class Plazas extends javax.swing.JFrame {
                 
         con.getConnection().prepareStatement("insert into catplazas (clave,Direccion1,Direccion2,nombre_plaza,DescripCorta,Baja,SerieDocs) values ('"+TMPClave+"','"+TMPDireccion1+"','"+TMPDireccion2+"','"+TMPNombre_plaza+"','"+TMPDescripCorta+"',"+TMPBaja+",'"+TMPSerieDocs+"')");
        System.out.println("paso 2");
-        pstm.executeUpdate(); 
+        pstm.execute(); 
         System.out.println("paso 3");
        pstm.close();
           System.out.println("paso 4");  
@@ -410,6 +499,27 @@ public class Plazas extends javax.swing.JFrame {
             }
 
 }
+   public void Modificar(String idx,String TMPClave,String TMPnombrePlaza,String TMPDescripcion,String TMPDireccion,String TMPDireccion2,String TMPSerieDoc,int TMPBaja)
+   {
+   
+    // TODO add your handling code here:
+          
+      
+        try {            
+            PreparedStatement pst =(PreparedStatement)                    
+            con.getConnection().prepareStatement("UPDATE catplazas SET clave='"+TMPClave+"',nombre_plaza='"+TMPnombrePlaza+"',DescripCorta='"+TMPDescripcion+"',Direccion1='"+TMPDireccion+"',Direccion2='"+TMPDireccion2+"',SerieDocs='"+TMPSerieDoc+"',Baja="+TMPBaja+" WHERE clave='"+idx+"'");                                                        
+            pst.executeUpdate();
+            pst.close();
+         
+            //JOptionPane.showMessageDialog(null,"Se modifico el registro con exito!");
+            
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+   
+   }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -446,6 +556,8 @@ public class Plazas extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
