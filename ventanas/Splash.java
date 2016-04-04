@@ -5,17 +5,26 @@
  */
 package ventanas;
 
-/**
- *
- * @author 210913
- */
-public class Splash extends javax.swing.JFrame {
+import clases.cargar;
+import com.sun.awt.AWTUtilities;
 
-    /**
-     * Creates new form Splash
-     */
+
+public final class Splash extends javax.swing.JFrame 
+{
+    double i=50, j=1;
+    cargar hilo;
+
     public Splash() {
         initComponents();
+        iniciar();
+    }
+    public void iniciar()
+    {
+        setLocationRelativeTo(null);
+        getProgreso().setVisible(false);
+        hilo = new cargar(getProgreso());
+        hilo.start();
+        hilo=null;
     }
 
     /**
@@ -27,21 +36,44 @@ public class Splash extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        progreso = new javax.swing.JProgressBar();
+        fondo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(585, 374));
+        setUndecorated(true);
+        getContentPane().setLayout(null);
+
+        progreso.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                progresoStateChanged(evt);
+            }
+        });
+        getContentPane().add(progreso);
+        progreso.setBounds(200, 340, 148, 14);
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background.png"))); // NOI18N
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 585, 374);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void progresoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_progresoStateChanged
+        // TODO add your handling code here:
+            if(progreso.getValue()==i){
+        if(j!=101){
+            AWTUtilities.setWindowOpacity(this, Float.valueOf((100-j)/100+"f"));
+            i++;
+            j+=2;
+        }
+    }
+    if(progreso.getValue()==100){
+        Login v = new Login();
+        v.setVisible(true);
+        this.dispose();
+    }
+    }//GEN-LAST:event_progresoStateChanged
 
     /**
      * @param args the command line arguments
@@ -79,5 +111,22 @@ public class Splash extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fondo;
+    private javax.swing.JProgressBar progreso;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the progreso
+     */
+    public javax.swing.JProgressBar getProgreso() {
+        return progreso;
+    }
+
+    /**
+     * @param progreso the progreso to set
+     */
+    public void setProgreso(javax.swing.JProgressBar progreso) {
+        this.progreso = progreso;
+    }
 }
+
