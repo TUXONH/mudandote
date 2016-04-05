@@ -284,8 +284,13 @@ public class Main2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void UnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnidadesActionPerformed
-        Unidades unidad = new Unidades();
-        unidad.show(true);
+        try {
+            // Unidades unidad = new Unidades();
+            Unidades unidad = new Unidades();
+            unidad.show(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_UnidadesActionPerformed
 
     private void EmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpresaActionPerformed

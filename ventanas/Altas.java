@@ -34,6 +34,8 @@ public class Altas extends javax.swing.JFrame {
     DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
     public int maestra;
     public int ventas;
+    public boolean bandera;
+    public boolean bandera2;
     conexion con;
     public Altas() {
         initComponents();
@@ -51,10 +53,12 @@ public class Altas extends javax.swing.JFrame {
             if(jRadioButton1.isSelected()==true)
         {
             maestra =1;
+            bandera=true;
         }
         else
         {
              maestra=0;
+             bandera=false;
         }
           }
          });
@@ -63,13 +67,17 @@ public class Altas extends javax.swing.JFrame {
             if(jRadioButton1.isSelected()==true)
         {
             ventas =1;
+            bandera2=true;
         }
         else
         {
              ventas=0;
+             bandera2=false;
         }
           }
          });
+          jButton4.setVisible(false);
+          jButton5.setVisible(false);
        
     }
 
@@ -110,7 +118,7 @@ public class Altas extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -422,7 +430,25 @@ public class Altas extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true)
+        {
+            maestra=1;
+        }
+        else
+        {
+            maestra=0;
+        }
+        if(jRadioButton2.isSelected()==true)
+        {
+            ventas=1;
+        }
+        else
+        {
+            ventas=0;
+        }
+   
         int idx =Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
+      System.out.println("Ventas: "+ventas+" Maestra: "+maestra);
         Modificar(idx,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
         Ver();
            jButton4.setVisible(false);
@@ -447,25 +473,25 @@ public class Altas extends javax.swing.JFrame {
               String Municipio = (String) jTable1.getValueAt(jTable1.getSelectedRow(),8);
            int Bajaint=Integer.parseInt(Ventas.toString());
            int Bajaint2=Integer.parseInt(Maestra.toString());
-             boolean bandera;
-              boolean bandera2;
-           System.out.println("Estado: "+Estado+" Muncipio: "+Municipio);
-            if (Bajaint==1)
-            {
-                bandera=true;
-            }else
-            {
-                bandera=false;
-            }
-             if (Bajaint2==1)
-            {
-                bandera2=true;
-            }else
-            {
-                bandera2=false;
-            }
-            
-            //buscar.setVisible(false);
+           boolean Baja,Baja1;
+         
+          if(Bajaint==1)
+          {
+              Baja=true;
+          }
+          else
+          {
+              Baja=false;
+          }
+          if(Bajaint2==1)
+          {
+              Baja1=true;
+          }
+          else
+          {
+              Baja1=false;
+          }
+       System.out.println("Ventas: "+Baja+" Maestra: "+Baja1);
             jButton1.setVisible(false);
             jButton2.setVisible(false);
             jButton3.setVisible(false);
@@ -477,8 +503,8 @@ public class Altas extends javax.swing.JFrame {
             jTextField4.setText(Serie);
             jComboBox1.setSelectedItem(Estado);
             jComboBox2.setSelectedItem(Municipio);
-            jRadioButton1.setSelected(bandera2);
-            jRadioButton2.setSelected(bandera);
+            jRadioButton1.setSelected(Baja1);
+            jRadioButton2.setSelected(Baja);
              
              
              

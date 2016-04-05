@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,6 +30,7 @@ public class Clientes extends javax.swing.JFrame {
     DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
      public int activo;
+     public boolean bandera;
      conexion con;
     
     public Clientes() {
@@ -47,10 +49,12 @@ public class Clientes extends javax.swing.JFrame {
             if(jCheckBox1.isSelected()==true)
         {
            activo =1;
+           bandera=true;
         }
         else
         {
              activo=0;
+             bandera=false;
         }
           }
          });
@@ -95,6 +99,8 @@ public class Clientes extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -313,6 +319,15 @@ public class Clientes extends javax.swing.JFrame {
         });
 
         jButton3.setText("Modificar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("jButton4");
+
+        jButton5.setText("jButton5");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -332,8 +347,12 @@ public class Clientes extends javax.swing.JFrame {
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2))
-                            .addComponent(jButton3))
-                        .addGap(0, 318, Short.MAX_VALUE)))
+                            .addComponent(jButton3)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jButton4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5)))
+                        .addGap(0, 306, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -354,8 +373,12 @@ public class Clientes extends javax.swing.JFrame {
                                     .addComponent(jButton1)
                                     .addComponent(jButton2))
                                 .addGap(26, 26, 26)
-                                .addComponent(jButton3)))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                                .addComponent(jButton3)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton4)
+                                    .addComponent(jButton5))))))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -423,6 +446,56 @@ public class Clientes extends javax.swing.JFrame {
         }
     Ver();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         if (jTable1.getSelectedRow()!=-1)
+        {
+            String Comercial = (String) jTable1.getValueAt(jTable1.getSelectedRow(),4);
+            String CorreoElectronico = (String) jTable1.getValueAt(jTable1.getSelectedRow(),1);
+            String RFC = (String) jTable1.getValueAt(jTable1.getSelectedRow(),2);
+            String Contacto = (String) jTable1.getValueAt(jTable1.getSelectedRow(),3);
+            String RazonSocial = (String) jTable1.getValueAt(jTable1.getSelectedRow(),5);
+            String Direccion = (String) jTable1.getValueAt(jTable1.getSelectedRow(),6);
+             String TelCasa = (String) jTable1.getValueAt(jTable1.getSelectedRow(),7);
+              String TelOficina = (String) jTable1.getValueAt(jTable1.getSelectedRow(),8);
+               String Movil = (String) jTable1.getValueAt(jTable1.getSelectedRow(),9);
+                String Activo = (String) jTable1.getValueAt(jTable1.getSelectedRow(),10);
+                 String Estado = (String) jTable1.getValueAt(jTable1.getSelectedRow(),11);
+                 String Municipio = (String) jTable1.getValueAt(jTable1.getSelectedRow(),12);
+                int Bajaint=Integer.parseInt(Activo);
+          // int Bajaint2=Integer.parseInt(Maestra.toString());
+            
+           System.out.println("Estado: "+Estado+" Muncipio: "+Municipio);
+         
+            jButton1.setVisible(false);
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
+            jButton4.setVisible(true);
+            jButton5.setVisible(true);
+            jTextField1.setText(CorreoElectronico);
+            jTextField2.setText(RFC);
+            jTextField3.setText(Contacto);
+            jTextField4.setText(Comercial);
+            jTextField5.setText(RazonSocial);
+            jTextField6.setText(Direccion);
+            jTextField7.setText(TelCasa);
+            jTextField8.setText(TelOficina);
+            jTextField9.setText(Movil);
+            jComboBox1.setSelectedItem(Estado);
+            jComboBox2.setSelectedItem(Municipio);
+            jCheckBox1.setSelected(bandera);
+            
+             
+             
+             
+             
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(null,"Para Modificar primero debes seleccionar en la tabla que registro quieres modificar");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -573,7 +646,7 @@ public class Clientes extends javax.swing.JFrame {
              res1.next();
             String aux_idmun = res1.getObject("id_municipio").toString();
              String aux_idest = res1.getObject("id_estado").toString();
-            pst=con.getConnection().prepareStatement("UPDATE catusuarios SET CorreoElectronico='"+TMPCorreoElectronico+"',RFC='"+TMPRFC+"',RazonSocial='"+TMPRazonSocial+"',Activo="+TMPActivo+",Direccion='"+TMPDireccion+"',TelCasa='"+TMPTelCasa+"',TelOficina='"+TMPTelOficna+"',Movil='"+TMPMovil+"',id_municipio="+aux_idmun+",id_estado="+aux_idest+",Movil="+TMPMovil+" WHERE FolioCliente="+idx);                                                        
+            pst=con.getConnection().prepareStatement("UPDATE catclientes SET CorreoElectronico='"+TMPCorreoElectronico+"',RFC='"+TMPRFC+"',RazonSocial='"+TMPRazonSocial+"',Activo="+TMPActivo+",Direccion='"+TMPDireccion+"',TelCasa='"+TMPTelCasa+"',TelOficina='"+TMPTelOficna+"',Movil='"+TMPMovil+"',id_municipio="+aux_idmun+",id_estado="+aux_idest+",Movil="+TMPMovil+" WHERE FolioCliente="+idx);                                                        
             pst.executeUpdate();
             pst.close();
          
@@ -622,6 +695,8 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
