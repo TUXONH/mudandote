@@ -303,14 +303,19 @@ public class Altas extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Aceptar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("jButton5");
+        jButton5.setText("Cancelar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -325,18 +330,20 @@ public class Altas extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton5)
-                                    .addComponent(jButton4))))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                                .addGap(73, 73, 73)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(jButton4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5)))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,17 +356,13 @@ public class Altas extends javax.swing.JFrame {
                         .addContainerGap(37, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton5)
                             .addComponent(jButton4))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jButton5)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(44, 44, 44)))
+                        .addGap(103, 103, 103)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -457,6 +460,12 @@ public class Altas extends javax.swing.JFrame {
             jButton1.setVisible(true);
             jButton2.setVisible(true);
            jButton3.setVisible(true);
+           jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jRadioButton1.setSelected(false);
+            jRadioButton2.setSelected(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -469,8 +478,8 @@ public class Altas extends javax.swing.JFrame {
             String Plaza = (String) jTable1.getValueAt(jTable1.getSelectedRow(),3);
             String Ventas = (String) jTable1.getValueAt(jTable1.getSelectedRow(),5);
             String Maestra = (String) jTable1.getValueAt(jTable1.getSelectedRow(),6);
-             String Estado = (String) jTable1.getValueAt(jTable1.getSelectedRow(),7);
-              String Municipio = (String) jTable1.getValueAt(jTable1.getSelectedRow(),8);
+             String Estado = (String) jTable1.getValueAt(jTable1.getSelectedRow(),8);
+              String Municipio = (String) jTable1.getValueAt(jTable1.getSelectedRow(),7);
            int Bajaint=Integer.parseInt(Ventas.toString());
            int Bajaint2=Integer.parseInt(Maestra.toString());
            boolean Baja,Baja1;
@@ -500,7 +509,7 @@ public class Altas extends javax.swing.JFrame {
             jTextField1.setText(NombreUsuario);
             jTextField2.setText(Contraseña);
             jTextField3.setText(Plaza);
-            jTextField4.setText(Serie);
+            jTextField4.setText(Serie); 
             jComboBox1.setSelectedItem(Estado);
             jComboBox2.setSelectedItem(Municipio);
             jRadioButton1.setSelected(Baja1);
@@ -516,6 +525,22 @@ public class Altas extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        jButton4.setVisible(false);
+            jButton5.setVisible(false);
+           
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
+           jButton3.setVisible(true);
+           jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jRadioButton1.setSelected(false);
+            jRadioButton2.setSelected(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -565,7 +590,7 @@ public class Altas extends javax.swing.JFrame {
     public void Ver()
 {
 //con.getConnection();
-        String Titulos[]={"Clave","Usuario","Contraseña","Plaza","Serie","Ventas","Maestra","Estado","Municipio"};
+        String Titulos[]={"Clave","Usuario","Contraseña","Plaza","Serie","Ventas","Maestra","Municipio","Estado"};
         DefaultTableModel m = new DefaultTableModel(null,Titulos);
         jTable1.setModel(m);
         int registro=0;

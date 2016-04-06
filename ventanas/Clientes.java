@@ -58,6 +58,9 @@ public class Clientes extends javax.swing.JFrame {
         }
           }
          });
+          jButton4.setVisible(false);
+          jButton5.setVisible(false);
+           
     }
 
     /**
@@ -325,9 +328,19 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Aceptar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("jButton5");
+        jButton5.setText("Cancelar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -346,13 +359,14 @@ public class Clientes extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addComponent(jButton3)
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jButton4)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton5)))
-                        .addGap(0, 306, Short.MAX_VALUE)))
+                        .addGap(0, 225, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -371,14 +385,13 @@ public class Clientes extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton1)
-                                    .addComponent(jButton2))
-                                .addGap(26, 26, 26)
-                                .addComponent(jButton3)
+                                    .addComponent(jButton2)
+                                    .addComponent(jButton3))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton4)
                                     .addComponent(jButton5))))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -461,9 +474,19 @@ public class Clientes extends javax.swing.JFrame {
               String TelOficina = (String) jTable1.getValueAt(jTable1.getSelectedRow(),8);
                String Movil = (String) jTable1.getValueAt(jTable1.getSelectedRow(),9);
                 String Activo = (String) jTable1.getValueAt(jTable1.getSelectedRow(),10);
-                 String Estado = (String) jTable1.getValueAt(jTable1.getSelectedRow(),11);
-                 String Municipio = (String) jTable1.getValueAt(jTable1.getSelectedRow(),12);
+                 String Estado = (String) jTable1.getValueAt(jTable1.getSelectedRow(),12);
+                 String Municipio = (String) jTable1.getValueAt(jTable1.getSelectedRow(),11);
                 int Bajaint=Integer.parseInt(Activo);
+                  boolean Baja;
+         
+          if(Bajaint==1)
+          {
+              Baja=true;
+          }
+          else
+          {
+              Baja=false;
+          }
           // int Bajaint2=Integer.parseInt(Maestra.toString());
             
            System.out.println("Estado: "+Estado+" Muncipio: "+Municipio);
@@ -484,7 +507,7 @@ public class Clientes extends javax.swing.JFrame {
             jTextField9.setText(Movil);
             jComboBox1.setSelectedItem(Estado);
             jComboBox2.setSelectedItem(Municipio);
-            jCheckBox1.setSelected(bandera);
+            jCheckBox1.setSelected(Baja);
             
              
              
@@ -497,6 +520,58 @@ public class Clientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+         if(jCheckBox1.isSelected()==true)
+        {
+            activo=1;
+        }
+        else
+        {
+            activo=0;
+        }
+          int idx =Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
+         Modificar(idx,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),activo,jTextField6.getText(),jTextField7.getText(),jTextField8.getText(),jTextField9.getText(),jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
+          Ver();
+           jButton4.setVisible(false);
+            jButton5.setVisible(false);
+           
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
+           jButton3.setVisible(true);
+           jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jCheckBox1.setSelected(false);
+                                                                 
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+          jButton4.setVisible(false);
+            jButton5.setVisible(false);
+           
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
+           jButton3.setVisible(true);
+           jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jCheckBox1.setSelected(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -504,7 +579,7 @@ public class Clientes extends javax.swing.JFrame {
      public void Ver()
 {
 //con.getConnection();
-        String Titulos[]={"Clave","Email","RFC","Nom.Contacto","Nom.Comercial","RS","Direccion","Tel.Casa","Tel.Oficina","Movil","Activo","Estado","Municipio"};
+        String Titulos[]={"Clave","Email","RFC","Nom.Contacto","Nom.Comercial","RS","Direccion","Tel.Casa","Tel.Oficina","Movil","Activo","Municipio","Estado"};
         DefaultTableModel m = new DefaultTableModel(null,Titulos);
         jTable1.setModel(m);
         int registro=0;
@@ -646,7 +721,7 @@ public class Clientes extends javax.swing.JFrame {
              res1.next();
             String aux_idmun = res1.getObject("id_municipio").toString();
              String aux_idest = res1.getObject("id_estado").toString();
-            pst=con.getConnection().prepareStatement("UPDATE catclientes SET CorreoElectronico='"+TMPCorreoElectronico+"',RFC='"+TMPRFC+"',RazonSocial='"+TMPRazonSocial+"',Activo="+TMPActivo+",Direccion='"+TMPDireccion+"',TelCasa='"+TMPTelCasa+"',TelOficina='"+TMPTelOficna+"',Movil='"+TMPMovil+"',id_municipio="+aux_idmun+",id_estado="+aux_idest+",Movil="+TMPMovil+" WHERE FolioCliente="+idx);                                                        
+            pst=con.getConnection().prepareStatement("UPDATE catclientes SET CorreoElectronico='"+TMPCorreoElectronico+"',RFC='"+TMPRFC+"',NombreContacto='"+TMPNombreContacto+"',NombreComercial='"+TMPNombreComercial+"',RazonSocial='"+TMPRazonSocial+"',Activo="+TMPActivo+",Direccion='"+TMPDireccion+"',TelCasa='"+TMPTelCasa+"',TelOficina='"+TMPTelOficna+"',Movil='"+TMPMovil+"',id_municipio="+aux_idmun+",id_estado="+aux_idest+",Movil="+TMPMovil+" WHERE FolioCliente="+idx);                                                        
             pst.executeUpdate();
             pst.close();
          
