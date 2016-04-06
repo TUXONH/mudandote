@@ -33,23 +33,24 @@ public class Main2 extends javax.swing.JFrame {
     public String Ventas=Encapsuladas.getAuxVentas();
     String Maestra;
     String select1=null;  
-    public Main2() {
+    public Main2() 
+    {
         initComponents();
-        
-//        Maestra=Encapsuladas.getAuxMaestra().toString();
+        setLocationRelativeTo(null);
+         //      Maestra=Encapsuladas.getAuxMaestra().toString();
           //Ventas =Encapsuladas.getAuxVentas();
           System.out.println(Ventas+"estas main");
-//        tipo_maestra=Integer.parseInt(Maestra);
-//        tipo_Ventas=Integer.parseInt(Ventas);
+         //        tipo_maestra=Integer.parseInt(Maestra);
+         //        tipo_Ventas=Integer.parseInt(Ventas);
           String[] items={"Clientes", "Cotización", "Reservacion", "Unidades", "Choferes", "Articulos"};
           if(Ventas=="true")
         {
             cotizacion.setVisible(false);
-            reservacion.setVisible(false);
+            cotizacion.setVisible(false);
             jMenu2.setVisible(false);
-            combo1.removeAllItems();
+            combo3.removeAllItems();
             for (int i =0; i<items.length; i++)
-            combo1.addItem(items[i]);
+            combo3.addItem(items[i]);
         
         }
         
@@ -65,16 +66,14 @@ public class Main2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cotizacion = new org.edisoncor.gui.button.ButtonColoredAction();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        cotizacion = new javax.swing.JButton();
-        reservacion = new javax.swing.JButton();
-        combo2 = new javax.swing.JComboBox<>();
-        combo3 = new javax.swing.JComboBox<>();
-        combo1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        combo3 = new org.edisoncor.gui.comboBox.ComboBoxRound();
+        combo1 = new org.edisoncor.gui.comboBox.ComboBoxRound();
+        combo2 = new org.edisoncor.gui.comboBox.ComboBoxRound();
+        reservacion1 = new org.edisoncor.gui.button.ButtonColoredAction();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Empresa = new javax.swing.JMenuItem();
@@ -90,6 +89,17 @@ public class Main2 extends javax.swing.JFrame {
         Unidades = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1211, 458));
+        setUndecorated(true);
+        setSize(new java.awt.Dimension(1211, 458));
+        getContentPane().setLayout(null);
+
+        cotizacion.setBackground(new java.awt.Color(51, 51, 51));
+        cotizacion.setText("Reservacion");
+        cotizacion.setActionCommand("");
+        cotizacion.setColorDeSombra(new java.awt.Color(51, 51, 51));
+        getContentPane().add(cotizacion);
+        cotizacion.setBounds(10, 190, 116, 35);
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,51 +114,70 @@ public class Main2 extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
-        cotizacion.setText("Cotizacion");
-        cotizacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cotizacionActionPerformed(evt);
-            }
-        });
-
-        reservacion.setText("Reservacion");
-
-        combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "*" }));
-        combo2.setToolTipText("Buscar Por Columnas");
-        combo2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo2ActionPerformed(evt);
-            }
-        });
-
-        combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "*" }));
-        combo3.setToolTipText("Buscar por Elementos");
-        combo3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo3ActionPerformed(evt);
-            }
-        });
-
-        combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes", "Cotización", "Reservacion", "Unidades", "Choferes", "Articulos", "Usuarios" }));
-        combo1.setToolTipText("Buscar Todo");
-        combo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo1ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Buscar por :");
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(130, 130, 1062, 254);
 
         jTextField1.setToolTipText("Buscar segun el nombre de columna");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
             }
         });
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(450, 100, 103, 20);
 
+        combo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "*", " " }));
+        combo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(combo3);
+        combo3.setBounds(340, 100, 80, 20);
+
+        combo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clientes", "Cotización", "Reservacion", "Unidades", "Choferes", "Articulos", "Usuarios" }));
+        combo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(combo1);
+        combo1.setBounds(140, 100, 100, 20);
+
+        combo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "*", " " }));
+        combo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(combo2);
+        combo2.setBounds(250, 100, 80, 20);
+
+        reservacion1.setBackground(new java.awt.Color(51, 51, 51));
+        reservacion1.setText("Reservacion");
+        reservacion1.setActionCommand("");
+        reservacion1.setColorDeSombra(new java.awt.Color(51, 51, 51));
+        getContentPane().add(reservacion1);
+        reservacion1.setBounds(10, 130, 116, 35);
+
+        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setBorder(null);
+        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setBorderPainted(false);
+
+        jMenu1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("Seleccionar Empresa");
+        jMenu1.setOpaque(true);
 
         Empresa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        Empresa.setBackground(new java.awt.Color(51, 51, 51));
+        Empresa.setForeground(new java.awt.Color(255, 255, 255));
         Empresa.setText("Agregar");
         Empresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,9 +188,14 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
         jMenu2.setText("Usuarios");
+        jMenu2.setOpaque(true);
 
         Usuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        Usuarios.setBackground(new java.awt.Color(51, 51, 51));
+        Usuarios.setForeground(new java.awt.Color(255, 255, 255));
         Usuarios.setText("Agregar");
         Usuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,9 +206,14 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("Clientes");
+        jMenu3.setOpaque(true);
 
         Clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Clientes.setBackground(new java.awt.Color(51, 51, 51));
+        Clientes.setForeground(new java.awt.Color(255, 255, 255));
         Clientes.setText("Agregar");
         Clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,9 +224,14 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu4.setForeground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("Cotizaciones");
+        jMenu4.setOpaque(true);
 
         Cotizaciones.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        Cotizaciones.setBackground(new java.awt.Color(51, 51, 51));
+        Cotizaciones.setForeground(new java.awt.Color(255, 255, 255));
         Cotizaciones.setText("Agregar");
         Cotizaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,9 +242,14 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu5.setForeground(new java.awt.Color(255, 255, 255));
         jMenu5.setText("Reservaciones");
+        jMenu5.setOpaque(true);
 
         Reservaciones.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        Reservaciones.setBackground(new java.awt.Color(51, 51, 51));
+        Reservaciones.setForeground(new java.awt.Color(255, 255, 255));
         Reservaciones.setText("Agregar");
         Reservaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,9 +260,14 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu6.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu6.setForeground(new java.awt.Color(255, 255, 255));
         jMenu6.setText("Unidades");
+        jMenu6.setOpaque(true);
 
         Unidades.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Unidades.setBackground(new java.awt.Color(51, 51, 51));
+        Unidades.setForeground(new java.awt.Color(255, 255, 255));
         Unidades.setText("Agregar");
         Unidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,60 +279,6 @@ public class Main2 extends javax.swing.JFrame {
         jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cotizacion)
-                    .addComponent(reservacion))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(combo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(combo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(134, 134, 134)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1062, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(combo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cotizacion)
-                        .addGap(18, 18, 18)
-                        .addComponent(reservacion)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -315,110 +315,42 @@ public class Main2 extends javax.swing.JFrame {
         c.setVisible(true);
     }//GEN-LAST:event_CotizacionesActionPerformed
 
-    private void ReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservacionesActionPerformed
-        
-    }//GEN-LAST:event_ReservacionesActionPerformed
-
-    private void cotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cotizacionActionPerformed
-        Cotizaciones cotiza = new Cotizaciones();
-        cotiza.setVisible(true);      
-    }//GEN-LAST:event_cotizacionActionPerformed
-
-    private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
-        combo2.removeAllItems();
-        combo3.removeAllItems();
-        combo2.addItem("*");
-        
-              
-        if (combo1.getSelectedItem()=="Clientes")
-        {
-            select1="catclientes";
-            select="Select * from catclientes"; 
-        }
-        if (combo1.getSelectedItem()=="Cotización")
-        {
-            select1="catcotizacion";
-            select="Select * from catcotizacion";                        
-        }
-        if (combo1.getSelectedItem()=="Reservacion")
-        {
-            select1="ordenesservicio";
-            select="Select * from ordenesservicio";
-            
-        }
-        if (combo1.getSelectedItem()=="Unidades")
-        {
-            select1="catunidades";
-            select="Select * from catunidades";
-            
-        }
-        if (combo1.getSelectedItem()=="Choferes")
-        {
-            select1="catchoferes";
-            select="Select * from catchoferes";
-        }
-        if (combo1.getSelectedItem()=="Articulos")
-        {
-            select1="catarticulos";
-            select="Select * from catarticulos";
-        }     
-        if (combo1.getSelectedItem()=="Usuarios")
-        {
-            select1="catusuarios";
-            select="SELECT catusuarios.nombre_usuario,catusuarios.password,catusuarios.plaza,catusuarios.serie,estados.nombre,municipios.mun_nombre from catusuarios LEFT JOIN estados ON estados.id_estado=catusuarios.id_estado LEFT JOIN municipios ON municipios.id_municipio=catusuarios.id_municipio";
-            tabla.removeAll();
-            String Titulos[]={"Usuario","Contraseña","Plaza","Serie","Estado","Municipio"};
-            DefaultTableModel m = new DefaultTableModel(null,Titulos);
-            tabla.setModel(m);
-           
-        }          
-          
-          try {                             
-                pasar_valores_combo(combo2,select);
-                pasar_valores(tabla,select);   
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-    }//GEN-LAST:event_combo1ActionPerformed
-
-    private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
-        combo3.removeAllItems();
-        
-        String filas="SELECT "+combo2.getSelectedItem()+" FROM "+select1;                        
-        try {
-            pasar_filas_combo(combo3,filas);        
-            pasar_valores(tabla,select);   
-        } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_combo2ActionPerformed
-
-    private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
-        select = "SELECT *"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+combo3.getSelectedItem()+"\"";
-        try {
-            pasar_valores(tabla,select);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_combo3ActionPerformed
-
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER && combo2.getSelectedItem()!="*")
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER && combo3.getSelectedItem()!="*")
         {            
-            String select2 = "SELECT *"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+jTextField1.getText()+"\"";
+            String select2 = "SELECT *"+" FROM "+select1+" WHERE "+combo3.getSelectedItem()+" = \""+jTextField1.getText()+"\"";
             try {
+                JTable JTable1;
                 pasar_valores(tabla,select2);
             } catch (SQLException ex) {
                 Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER && combo2.getSelectedItem()=="*")
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER && combo3.getSelectedItem()=="*")
         {
             JOptionPane.showMessageDialog(null, "Antes debes seleccionar la columna donde buscar");
         }
     }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void ReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservacionesActionPerformed
+
+    }//GEN-LAST:event_ReservacionesActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo3ActionPerformed
+
+    private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo1ActionPerformed
+
+    private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -539,12 +471,10 @@ public class Main2 extends javax.swing.JFrame {
     private javax.swing.JMenuItem Reservaciones;
     private javax.swing.JMenuItem Unidades;
     private javax.swing.JMenuItem Usuarios;
-    private javax.swing.JComboBox<String> combo1;
-    private javax.swing.JComboBox<String> combo2;
-    private javax.swing.JComboBox<String> combo3;
-    private javax.swing.JButton cotizacion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private org.edisoncor.gui.comboBox.ComboBoxRound combo1;
+    private org.edisoncor.gui.comboBox.ComboBoxRound combo2;
+    private org.edisoncor.gui.comboBox.ComboBoxRound combo3;
+    private org.edisoncor.gui.button.ButtonColoredAction cotizacion;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -554,7 +484,7 @@ public class Main2 extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton reservacion;
+    private org.edisoncor.gui.button.ButtonColoredAction reservacion1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

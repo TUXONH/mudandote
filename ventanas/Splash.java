@@ -16,11 +16,11 @@ public final class Splash extends javax.swing.JFrame
 
     public Splash() {
         initComponents();
+        setLocationRelativeTo(null);
         iniciar();
     }
     public void iniciar()
     {
-        setLocationRelativeTo(null);
         getProgreso().setVisible(false);
         hilo = new cargar(getProgreso());
         hilo.start();
