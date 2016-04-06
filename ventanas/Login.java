@@ -9,47 +9,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author deam
- */
 import clases.conexion;
-public class Login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Login
-     */
+public class Login extends javax.swing.JFrame 
+{
    String aux_maestra;
    String aux_ventas;
-    conexion con;
-    //Main2 form ;
+   conexion con;
     public Login() {
         setLocationRelativeTo(null);
         initComponents();
          con= new conexion();
         con.getConnection();
-        
-        //form = new Main2();
-       
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jXLoginPane1 = new org.jdesktop.swingx.JXLoginPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 204));
+        setUndecorated(true);
         getContentPane().setLayout(null);
 
         jButton1.setText("Ingresar");
@@ -59,21 +40,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(113, 405, 82, 26);
-
-        jLabel1.setText("Usuario");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(136, 0, 44, 16);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(390, 50, 149, 20);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(390, 100, 149, 20);
-
-        jLabel2.setText("Contrasena");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(126, 54, 66, 16);
+        jButton1.setBounds(150, 170, 82, 26);
         getContentPane().add(jXLoginPane1);
-        jXLoginPane1.setBounds(330, 170, 400, 169);
+        jXLoginPane1.setBounds(0, 0, 400, 169);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -104,8 +73,8 @@ public class Login extends javax.swing.JFrame {
               else
               {
                 JOptionPane.showMessageDialog(null,"Error de contraseña o usuario");
-                jTextField1.setText("");
-                jTextField2.setText("");
+                jXLoginPane1.setUserName("");
+                jXLoginPane1.setPassword(null);
               }
              
        
@@ -154,10 +123,6 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private org.jdesktop.swingx.JXLoginPane jXLoginPane1;
     // End of variables declaration//GEN-END:variables
 }
