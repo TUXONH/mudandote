@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import clases.conexion;
+import java.util.Arrays;
 public class Login extends javax.swing.JFrame 
 {
    String aux_maestra;
@@ -40,44 +41,74 @@ public class Login extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(150, 170, 82, 26);
+        jButton1.setBounds(150, 170, 73, 23);
         getContentPane().add(jXLoginPane1);
-        jXLoginPane1.setBounds(0, 0, 400, 169);
+        jXLoginPane1.setBounds(0, 0, 400, 164);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+ 
+       char [] pass = jXLoginPane1.getPassword();
+       String a = String.valueOf(pass);
        
+        String value1=jXLoginPane1.getUserName();
+       String value2=a;
+       
+       String user1="";
+       String pass1="";
         try {
+            
               PreparedStatement   pstm = (PreparedStatement)
-              con.getConnection().prepareStatement("SELECT maestra,ventas,nombre_usuario,password from catusuarios WHERE nombre_usuario='"+jXLoginPane1.getUserName()+"'and password='"+jXLoginPane1.getPassword()+"'");
+              con.getConnection().prepareStatement("SELECT maestra,ventas,nombre_usuario,password from catusuarios WHERE nombre_usuario='"+value1+"' && password='"+value2+"'");
               ResultSet res = pstm.executeQuery();
              
 //                  Encapsuladas.setAuxMaestra(aux_maestra.toString());
 //                  Encapsuladas.setAuxVentas(aux_ventas.toString());
-      
-              
-              if(res.next()){ 
+             while (res.next()) {
+                user1 = res.getString("nombre_usuario");
+                pass1 = res.getString("password");
                 aux_maestra = res.getObject("maestra").toString();
                 aux_ventas = res.getObject("ventas").toString();
-                System.out.println(aux_ventas+" "+aux_maestra);
+            }
+            if (value1.equals(user1) && value2.equals(pass1)) {
+            JOptionPane.showMessageDialog(this,"correct");
+             
+               
                 Encapsuladas.setAuxVentas(aux_ventas.toString());
                 Main2 m = new Main2();
                 m.setVisible(true);
-                //form.setVisible(true);
+               //form.setVisible(true);
                 this.hide();
-                 
-              }
-              else
-              {
-                JOptionPane.showMessageDialog(null,"Error de contraseña o usuario");
-                jXLoginPane1.setUserName("");
-                jXLoginPane1.setPassword(null);
-              }
-             
-       
+            }
+            else{
+            JOptionPane.showMessageDialog(this,"Incorrect login or password","Error",JOptionPane.ERROR_MESSAGE);
+            jXLoginPane1.setUserName("");
+             jXLoginPane1.setPassword(null);
+            }
+            JOptionPane.showMessageDialog(null, "COMMITED SUCCESSFULLY!");
+              
+//              if(res.next()){ 
+//                aux_maestra = res.getObject("maestra").toString();
+//                aux_ventas = res.getObject("ventas").toString();
+//               
+//                Encapsuladas.setAuxVentas(aux_ventas.toString());
+//                Main2 m = new Main2();
+//                m.setVisible(true);
+//                //form.setVisible(true);
+//                this.hide();
+//                 
+//              }
+//              else
+//              {
+//                JOptionPane.showMessageDialog(null,"Error de contraseña o usuario");
+//                jXLoginPane1.setUserName("");
+//                jXLoginPane1.setPassword(null);
+//              }
+//             
+//       
             
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
