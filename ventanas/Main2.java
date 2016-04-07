@@ -5,6 +5,7 @@
  */
 package ventanas;
 
+import UpperEssential.UpperEssentialLookAndFeel;
 import clases.Encapsuladas;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -14,6 +15,8 @@ import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableColumnModel;
 
@@ -433,7 +436,7 @@ public class Main2 extends javax.swing.JFrame {
     catch (ClassNotFoundException|SQLException ce) {}
   }
     
-    public static void main(String args[]) {
+    public static void main(String args[]) throws UnsupportedLookAndFeelException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -458,7 +461,7 @@ public class Main2 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-      
+      UIManager.setLookAndFeel(new UpperEssentialLookAndFeel("C://Users//210913//Documents//NetBeansProjects//Mudandote//src//jars//gris.theme"));
         java.awt.EventQueue.invokeLater(() -> {
             new Main2().setVisible(true);
         });
