@@ -280,7 +280,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         jComboBox5 = new javax.swing.JComboBox<>();
         jLabel44 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 255));
 
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
