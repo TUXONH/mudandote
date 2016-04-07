@@ -119,6 +119,8 @@ public class Altas extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Usuario");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,6 +135,7 @@ public class Altas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButton1.setText("Agregar");
@@ -234,6 +237,7 @@ public class Altas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel4.setBackground(java.awt.Color.lightGray);
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 11), new java.awt.Color(255, 153, 51))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
@@ -403,6 +407,7 @@ public class Altas extends javax.swing.JFrame {
         // TODO add your handling code here:
         NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
         Ver();
+            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

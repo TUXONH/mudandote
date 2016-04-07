@@ -5,6 +5,11 @@
  */
 package ventanas;
 
+import clases.conexion;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author josegonzalez
@@ -14,8 +19,10 @@ public class Reservacion extends javax.swing.JFrame {
     /**
      * Creates new form Reservacion
      */
+    conexion con;
     public Reservacion() {
         initComponents();
+        con =  new conexion();
     }
 
     /**
@@ -68,6 +75,7 @@ public class Reservacion extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
@@ -118,7 +126,7 @@ public class Reservacion extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 329, Short.MAX_VALUE)
+            .addGap(0, 332, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Cobranza", jPanel3);
@@ -217,7 +225,7 @@ public class Reservacion extends javax.swing.JFrame {
                     .addComponent(jLabel31))
                 .addGap(30, 30, 30)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Destino", jPanel4);
@@ -281,6 +289,13 @@ public class Reservacion extends javax.swing.JFrame {
 
         jLabel10.setText("Folio O.S.:");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -315,7 +330,9 @@ public class Reservacion extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel10)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -337,7 +354,8 @@ public class Reservacion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -634,11 +652,34 @@ public class Reservacion extends javax.swing.JFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+          try{
+       // PreparedStatement PreparedStatement = null;
+        PreparedStatement pstm =(PreparedStatement)
+        con.getConnection().prepareStatement("Select * from reservaciones_info where FolioServicio= '"+jTextField10.getText()+"'");
+        ResultSet res1 = pstm.executeQuery();
+        res1.next();
+       String aux_clientes = res1.getObject("id_municipio").toString();
+        String aux_idest = res1.getObject("id_estado").toString();
+        //System.out.println("Valor "+ TMPnombre_usuario);
+     //  pstm = con.getConnection().prepareStatement("insert into catusuarios (nombre_usuario,password,plaza,serie,ventas,maestra,id_municipio,id_estado) values ('"+TMPnombre_usuario+"','"+TMPpassword+"','"+TMPplaza+"','"+TMPserie+"',"+TMPventas+","+TMPmaestra+","+aux_idmun+","+aux_idest+")");
+       pstm.execute();   
+       pstm.close();
+           
+    
+    }catch(SQLException e){
+            
+                System.out.println(e);
+            }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -676,6 +717,7 @@ public class Reservacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
