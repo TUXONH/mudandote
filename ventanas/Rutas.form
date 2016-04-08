@@ -98,7 +98,10 @@
                 <Column editable="true" title="Title 4" type="java.lang.Object"/>
               </Table>
             </Property>
+<<<<<<< HEAD
             <Property name="autoResizeMode" type="int" value="0"/>
+=======
+>>>>>>> 188bed218e0406d404db36508f97a7280b4b5cbf
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaMouseClicked"/>
