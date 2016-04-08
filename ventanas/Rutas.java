@@ -16,7 +16,11 @@ import static sun.management.Agent.error;
 public class Rutas extends javax.swing.JFrame {
     Main2 main = new Main2();
     String x,y,x2,y2;        
+<<<<<<< HEAD
+    
+=======
     String sql="Select * from catcotizacion";
+>>>>>>> 188bed218e0406d404db36508f97a7280b4b5cbf
     String sqlOrigen="Select FolioOrdenServicio,Serie,Usuario,CveTipoViviendaOrigen,EstadoOrigen,MunicipioOrigen,FechaOrdServ,FechaServicio,FolioCliente,NombreCteOrigen,Ape_PatOrigen,Ape_MatOrigen,DirOrigen,ColPoblOrigen,RefOrigen,TelOrigen,TelCelOrigen,NumPisosOrigen,NombreRecibe,FechaCotizacion,HoraServicio,ComentariosCte,Maniobras,Menaje,Almacenaje,ServAgreg,VentasArt,Anticipo,Saldo,SubTotal,IVA,Total,VolTotal,Observaciones,Facturado,Pagado,NoFactura,CoordenadaXOrigen,CoordenadaYOrigen,CoordenadaXDestino,CoordenadaYDestino from CatOrdenesServicio";
     String sqlDestino="Select FolioOrdenServicio,Serie,Usuario,EstadoDestino,MunicipioDestino,FechaOrdServ,FechaServicio,FolioCliente,NombreRecibe,DirDestino,ColPoblDest,RefDest,TelDest,TelCelDestino,NumPisosDest,FechaCotizacion,HoraServicio,ComentariosCte,Maniobras,Menaje,Almacenaje,ServAgreg,VentasArt,Anticipo,Saldo,SubTotal,IVA,Total,VolTotal,Observaciones,Facturado,Pagado,NoFactura,CoordenadaXDestino,CoordenadaYDestino from CatOrdenesServicio";
     /**
@@ -58,6 +62,10 @@ public class Rutas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+<<<<<<< HEAD
+        tabla.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+=======
+>>>>>>> 188bed218e0406d404db36508f97a7280b4b5cbf
         tabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaMouseClicked(evt);
@@ -127,29 +135,78 @@ public class Rutas extends javax.swing.JFrame {
     }//GEN-LAST:event_combo1ActionPerformed
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+<<<<<<< HEAD
+//        x=(String) tabla.getValueAt(tabla.getSelectedRow(),37);
+//        y=(String) tabla.getValueAt(tabla.getSelectedRow(),38);
+//        x2=(String) tabla.getValueAt(tabla.getSelectedRow(),39);
+//        y2=(String) tabla.getValueAt(tabla.getSelectedRow(),40);
+        
+=======
         x=(String) tabla.getValueAt(tabla.getSelectedRow(),37);
         y=(String) tabla.getValueAt(tabla.getSelectedRow(),38);
         x2=(String) tabla.getValueAt(tabla.getSelectedRow(),39);
         y2=(String) tabla.getValueAt(tabla.getSelectedRow(),40);
+>>>>>>> 188bed218e0406d404db36508f97a7280b4b5cbf
         if (combo1.getSelectedItem()=="Ver Origen")
         {
             x=(String) tabla.getValueAt(tabla.getSelectedRow(),37);
             y=(String) tabla.getValueAt(tabla.getSelectedRow(),38);            
             x2=(String) tabla.getValueAt(tabla.getSelectedRow(),39);
             y2=(String) tabla.getValueAt(tabla.getSelectedRow(),40);
+<<<<<<< HEAD
+            StreetView ObjStreet=new StreetView();
+        try {
+            
+            Image imgResultado=ObjStreet.getStreetView(x+","+y, new Dimension(300,300),            
+                    90, 100, -100);            
+            ImageIcon icon = new ImageIcon(imgResultado);
+            streetview.setIcon(icon);
+            //System.out.println("La URL asociada a la imagen es: " + MapsJava.getLastRequestURL());
+        } catch (Exception e) {
+            error("Street View");
+        }
+        }
+        if (combo1.getSelectedItem()=="Ver Destino")
+        {
+            x2=(String) tabla.getValueAt(tabla.getSelectedRow(),33);
+            y2=(String) tabla.getValueAt(tabla.getSelectedRow(),34);            
+            StreetView ObjStreet=new StreetView();
+            
+        try {
+            //Image imgResultado=ObjStreet.getStreetView("Madrid, Puerta del Sol", new Dimension(300,300),            
+                    //90, 100, -100);
+            Image imgResultado=ObjStreet.getStreetView(x2+","+y2, new Dimension(300,300),            
+                    90, 100, -100);            
+            ImageIcon icon = new ImageIcon(imgResultado);
+            streetview.setIcon(icon);
+            //System.out.println("La URL asociada a la imagen es: " + MapsJava.getLastRequestURL());
+        } catch (Exception e) {
+            error("Street View");
+        }
+=======
         }
         if (combo1.getSelectedItem()=="Ver Destino")
         {
             x=(String) tabla.getValueAt(tabla.getSelectedRow(),34);
             y=(String) tabla.getValueAt(tabla.getSelectedRow(),35);            
+>>>>>>> 188bed218e0406d404db36508f97a7280b4b5cbf
         }
         
         //System.out.println("Buscaremos la ruta que hay que recorrer a coche entre Madrid y Barcelona (en coche)");
         Route ObjRout=new Route();
         DefaultListModel model = new DefaultListModel();
+<<<<<<< HEAD
+        char a='"';
+        String xy=x+", "+y;
+        String xy1=x2+", "+y2;
+        try {
+            //String[][] resultado=ObjRout.getRoute("Madrid", "Barcelona", null, Boolean.TRUE, Route.mode.driving, Route.avoids.nothing);
+            String[][] resultado=ObjRout.getRoute(a+xy+a, a+xy1+a, null, Boolean.TRUE, Route.mode.driving, Route.avoids.nothing);
+=======
         try {
             //String[][] resultado=ObjRout.getRoute("Madrid", "Barcelona", null, Boolean.TRUE, Route.mode.driving, Route.avoids.nothing);
             String[][] resultado=ObjRout.getRoute(x+y,x2+y2, null, Boolean.TRUE, Route.mode.driving, Route.avoids.nothing);
+>>>>>>> 188bed218e0406d404db36508f97a7280b4b5cbf
             for(int i=0;i<resultado.length;i++){
                 //System.out.println("Tramo " + i + ":");
                 model.addElement("Tramo "+i+":");

@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ventanas;
-
 import UpperEssential.UpperEssentialLookAndFeel;
 import clases.Encapsuladas;
 import java.awt.event.KeyEvent;
