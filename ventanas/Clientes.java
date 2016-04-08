@@ -5,6 +5,19 @@
  */
 package ventanas;
 
+import clases.conexion;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author josegonzalez
@@ -14,8 +27,40 @@ public class Clientes extends javax.swing.JFrame {
     /**
      * Creates new form Clientes
      */
+    DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
+    DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
+     public int activo;
+     public boolean bandera;
+     conexion con;
+    
     public Clientes() {
         initComponents();
+         con = new conexion();
+        con.getConnection();
+          Ver();
+           llenar_est();
+        jComboBox1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent arg) {
+           llenar_muni((String) jComboBox1.getSelectedItem());
+          }
+         });  
+          jCheckBox1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent arg) {
+            if(jCheckBox1.isSelected()==true)
+        {
+           activo =1;
+           bandera=true;
+        }
+        else
+        {
+             activo=0;
+             bandera=false;
+        }
+          }
+         });
+          jButton4.setVisible(false);
+          jButton5.setVisible(false);
+           
     }
 
     /**
@@ -57,6 +102,8 @@ public class Clientes extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -123,20 +170,19 @@ public class Clientes extends javax.swing.JFrame {
                     .addComponent(jTextField4)
                     .addComponent(jTextField1)
                     .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel5)
                             .addGap(108, 108, 108)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
-                        .addGap(62, 62, 62)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(117, 117, 117)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                     .addComponent(jTextField3)
@@ -262,10 +308,39 @@ public class Clientes extends javax.swing.JFrame {
         );
 
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Borrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Modificar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Aceptar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Cancelar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -274,7 +349,7 @@ public class Clientes extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
@@ -284,9 +359,15 @@ public class Clientes extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addComponent(jButton3))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jButton4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5)))
+                        .addGap(0, 225, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,17 +377,21 @@ public class Clientes extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton1)
+                                    .addComponent(jButton2)
+                                    .addComponent(jButton3))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton4)
+                                    .addComponent(jButton5))))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -329,8 +414,10 @@ public class Clientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1226, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -338,17 +425,315 @@ public class Clientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),activo,jTextField6.getText(),jTextField7.getText(),jTextField8.getText(),jTextField9.getText(),jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
+        Ver();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         int idx = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
+        
+        try
+        {
+            PreparedStatement pstm =(PreparedStatement)
+            con.getConnection().prepareStatement("DELETE FROM catclientes WHERE FolioCliente="+idx);
+            int variable = pstm.executeUpdate();
+            if(variable>0)
+            {
+                System.out.println("Se elimino");
+            }
+            
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(Altas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    Ver();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         if (jTable1.getSelectedRow()!=-1)
+        {
+            String Comercial = (String) jTable1.getValueAt(jTable1.getSelectedRow(),4);
+            String CorreoElectronico = (String) jTable1.getValueAt(jTable1.getSelectedRow(),1);
+            String RFC = (String) jTable1.getValueAt(jTable1.getSelectedRow(),2);
+            String Contacto = (String) jTable1.getValueAt(jTable1.getSelectedRow(),3);
+            String RazonSocial = (String) jTable1.getValueAt(jTable1.getSelectedRow(),5);
+            String Direccion = (String) jTable1.getValueAt(jTable1.getSelectedRow(),6);
+             String TelCasa = (String) jTable1.getValueAt(jTable1.getSelectedRow(),7);
+              String TelOficina = (String) jTable1.getValueAt(jTable1.getSelectedRow(),8);
+               String Movil = (String) jTable1.getValueAt(jTable1.getSelectedRow(),9);
+                String Activo = (String) jTable1.getValueAt(jTable1.getSelectedRow(),10);
+                 String Estado = (String) jTable1.getValueAt(jTable1.getSelectedRow(),12);
+                 String Municipio = (String) jTable1.getValueAt(jTable1.getSelectedRow(),11);
+                int Bajaint=Integer.parseInt(Activo);
+                  boolean Baja;
+         
+          if(Bajaint==1)
+          {
+              Baja=true;
+          }
+          else
+          {
+              Baja=false;
+          }
+          // int Bajaint2=Integer.parseInt(Maestra.toString());
+            
+           System.out.println("Estado: "+Estado+" Muncipio: "+Municipio);
+         
+            jButton1.setVisible(false);
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
+            jButton4.setVisible(true);
+            jButton5.setVisible(true);
+            jTextField1.setText(CorreoElectronico);
+            jTextField2.setText(RFC);
+            jTextField3.setText(Contacto);
+            jTextField4.setText(Comercial);
+            jTextField5.setText(RazonSocial);
+            jTextField6.setText(Direccion);
+            jTextField7.setText(TelCasa);
+            jTextField8.setText(TelOficina);
+            jTextField9.setText(Movil);
+            jComboBox1.setSelectedItem(Estado);
+            jComboBox2.setSelectedItem(Municipio);
+            jCheckBox1.setSelected(Baja);
+            
+             
+             
+             
+             
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(null,"Para Modificar primero debes seleccionar en la tabla que registro quieres modificar");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+         if(jCheckBox1.isSelected()==true)
+        {
+            activo=1;
+        }
+        else
+        {
+            activo=0;
+        }
+          int idx =Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
+         Modificar(idx,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),activo,jTextField6.getText(),jTextField7.getText(),jTextField8.getText(),jTextField9.getText(),jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
+          Ver();
+           jButton4.setVisible(false);
+            jButton5.setVisible(false);
+           
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
+           jButton3.setVisible(true);
+           jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jCheckBox1.setSelected(false);
+                                                                 
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+          jButton4.setVisible(false);
+            jButton5.setVisible(false);
+           
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
+           jButton3.setVisible(true);
+           jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jCheckBox1.setSelected(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
+     public void Ver()
+{
+//con.getConnection();
+        String Titulos[]={"Clave","Email","RFC","Nom.Contacto","Nom.Comercial","RS","Direccion","Tel.Casa","Tel.Oficina","Movil","Activo","Municipio","Estado"};
+        DefaultTableModel m = new DefaultTableModel(null,Titulos);
+        jTable1.setModel(m);
+        int registro=0;
+       
+        try{
+            
+         PreparedStatement pstm =(PreparedStatement)
+         con.getConnection().prepareStatement("SELECT count(1) as total FROM catclientes ");
+         ResultSet res = pstm.executeQuery();
+         res.next();
+         registro = res.getInt("total");
+         System.out.println(registro);
+         res.close();
+         
+        
+        
+        } catch (SQLException e) {
+           System.out.println(e);
+        }
+        Object [][] datos = new String[registro][13];
+        
+        try {
+                    PreparedStatement   pstm = (PreparedStatement)
+                        con.getConnection().prepareStatement("SELECT catclientes.FolioCliente,catclientes.CorreoElectronico,catclientes.RFC,catclientes.NombreContacto,catclientes.NombreComercial,catclientes.RazonSocial,catclientes.Direccion,catclientes.TelCasa,catclientes.TelOficina,catclientes.Movil,catclientes.Activo,estados.nombre,municipios.mun_nombre from catclientes LEFT JOIN estados ON estados.id_estado=catclientes.id_estado LEFT JOIN municipios ON municipios.id_municipio=catclientes.id_municipio");
+                      ResultSet res = pstm.executeQuery();
+                      int i=0;
+                      while(res.next()){
+                          String ClaveC = res.getString("catclientes.FolioCliente");
+                          String CorreoElectronicoC = res.getString("catclientes.CorreoElectronico");
+                          String RFCC = res.getString("catclientes.RFC");
+                          String NombreContactoC = res.getString("catclientes.NombreContacto");
+                          String NombreComercialC = res.getString("catclientes.NombreComercial");
+                           String RazonSocialC = res.getString("catclientes.RazonSocial");
+                            String DireccionC = res.getString("catclientes.Direccion");
+                            String TelCasaC = res.getString("catclientes.TelCasa");
+                            String TelOficinaC = res.getString("catclientes.TelOficina");
+                            String MovilC = res.getString("catclientes.Movil");
+                             String ActivoC = res.getString("catclientes.Activo");
+                           String Municipio  = res.getString("municipios.mun_nombre");
+                          String Estado = res.getString("estados.nombre");
+                          datos[i][0]=ClaveC;
+                          datos[i][1]=CorreoElectronicoC;
+                          datos[i][2]=RFCC;
+                          datos[i][3]=NombreContactoC;
+                          datos[i][4]=NombreComercialC;
+                          datos[i][5]=RazonSocialC;
+                          datos[i][6]=DireccionC;
+                          datos[i][7]=TelCasaC ;
+                          datos[i][8]=TelOficinaC;
+                          datos[i][9]= MovilC;
+                          datos[i][10]=ActivoC;
+                           datos[i][11]=Municipio;
+                            datos[i][12]=Estado;
+                          m.addRow(datos[i]);
+                          i++;
+                      
+                      
+                      }
+                    
+        } catch (SQLException ex) {
+             System.out.println(ex);
+        }
+}
+     public void llenar_est() {
+        try {
+            this.jComboBox1.removeAllItems();
+             //System.out.println("Error 3");
+           // Class.forName("com.mysql.jdbc.Driver");
+           //  System.out.println("Error 4");
+           // Connection conexion =DriverManager.getConnection("jdbc:mysql://localhost/mudandote", "root", "");
+            Statement st = con.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM estados");
+            modeloCombo.addElement("Seleccione un Estado");
+            this.jComboBox1.setModel(modeloCombo);
+            while (rs.next()) {
+                modeloCombo.addElement(rs.getObject("nombre"));
+                this.jComboBox1.setModel(modeloCombo);
+            }
+ 
+            st.close();
+        } catch (SQLException ex) {
+            System.out.println("Error 1");
+            System.out.println(ex);
+        } 
+      }
+      public void llenar_muni(String est){
+    this.jComboBox2.setEnabled(true);
+    this.jComboBox2.removeAllItems();
+ try {
+           // Class.forName("com.mysql.jdbc.Driver");
+          //  Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/mudandote", "root", "");
+            Statement st = con.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = st.executeQuery("SELECT * FROM municipios,estados where municipios.id_estado=estados.id_estado and estados.nombre='"+est+"'");
+            modeloCombo2.addElement("Seleccione un Municipio");
+            this.jComboBox2.setModel(modeloCombo2);
+            while (rs.next()) {
+                modeloCombo2.addElement(rs.getObject("mun_nombre"));
+                this.jComboBox2.setModel(modeloCombo2);
+            }
+ 
+            st.close();
+        } catch (SQLException ex) {
+             System.out.println(ex);
+        } 
+}
+      
+    public void NuevoProducto(String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPMovil,String TMPid_estado,String TMPid_municipio)
+{
+    try{
+       // PreparedStatement PreparedStatement = null;
+        PreparedStatement pstm =(PreparedStatement)
+        con.getConnection().prepareStatement("Select id_municipio,id_estado from municipios where mun_nombre= '"+TMPid_municipio+"'");
+        ResultSet res1 = pstm.executeQuery();
+        res1.next();
+       String aux_idmun = res1.getObject("id_municipio").toString();
+        String aux_idest = res1.getObject("id_estado").toString();
+        //System.out.println("Valor "+ TMPCorreoElectronico);
+       pstm = con.getConnection().prepareStatement("insert into catclientes(CorreoElectronico,RFC,NombreContacto,NombreComercial,RazonSocial,Direccion,Activo,TelCasa,TelOficina,Movil,id_estado,id_municipio) values ('"+TMPCorreoElectronico+"','"+TMPRFC+"','"+TMPNombreContacto+"','"+TMPNombreComercial+"','"+TMPRazonSocial+"','"+TMPDireccion+"',"+TMPActivo+",'"+TMPTelCasa+"','"+TMPTelOficna+"','"+TMPMovil+"',"+aux_idest+","+aux_idmun+")");
+       pstm.execute();   
+       pstm.close();
+           
+    
+    }catch(SQLException e){
+            
+                System.out.println(e);
+            }
+
+}
+     public void Modificar(int idx,String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPMovil,String TMPid_estado,String TMPid_municipio)
+   {
+   
+    // TODO add your handling code here:
+          
+      
+        try {            
+            PreparedStatement pst =(PreparedStatement)     
+           con.getConnection().prepareStatement("Select id_municipio,id_estado from municipios where mun_nombre= '"+TMPid_municipio+"'");
+             ResultSet res1 = pst.executeQuery();
+             res1.next();
+            String aux_idmun = res1.getObject("id_municipio").toString();
+             String aux_idest = res1.getObject("id_estado").toString();
+            pst=con.getConnection().prepareStatement("UPDATE catclientes SET CorreoElectronico='"+TMPCorreoElectronico+"',RFC='"+TMPRFC+"',NombreContacto='"+TMPNombreContacto+"',NombreComercial='"+TMPNombreComercial+"',RazonSocial='"+TMPRazonSocial+"',Activo="+TMPActivo+",Direccion='"+TMPDireccion+"',TelCasa='"+TMPTelCasa+"',TelOficina='"+TMPTelOficna+"',Movil='"+TMPMovil+"',id_municipio="+aux_idmun+",id_estado="+aux_idest+",Movil="+TMPMovil+" WHERE FolioCliente="+idx);                                                        
+            pst.executeUpdate();
+            pst.close();
+         
+            //JOptionPane.showMessageDialog(null,"Se modifico el registro con exito!");
+            
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+   
+   }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -385,6 +770,8 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;

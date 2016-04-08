@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
  * @author josegonzalez
  */
 import clases.conexion;
+import javax.swing.JOptionPane;
 public class Altas extends javax.swing.JFrame {
 
     /**
@@ -33,6 +34,8 @@ public class Altas extends javax.swing.JFrame {
     DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
     public int maestra;
     public int ventas;
+    public boolean bandera;
+    public boolean bandera2;
     conexion con;
     public Altas() {
         initComponents();
@@ -50,10 +53,12 @@ public class Altas extends javax.swing.JFrame {
             if(jRadioButton1.isSelected()==true)
         {
             maestra =1;
+            bandera=true;
         }
         else
         {
              maestra=0;
+             bandera=false;
         }
           }
          });
@@ -62,13 +67,17 @@ public class Altas extends javax.swing.JFrame {
             if(jRadioButton1.isSelected()==true)
         {
             ventas =1;
+            bandera2=true;
         }
         else
         {
              ventas=0;
+             bandera2=false;
         }
           }
          });
+          jButton4.setVisible(false);
+          jButton5.setVisible(false);
        
     }
 
@@ -106,8 +115,12 @@ public class Altas extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Usuario");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,6 +135,7 @@ public class Altas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButton1.setText("Agregar");
@@ -139,6 +153,11 @@ public class Altas extends javax.swing.JFrame {
         });
 
         jButton3.setText("Editar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Origenes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 12), new java.awt.Color(255, 102, 0))); // NOI18N
 
@@ -218,6 +237,7 @@ public class Altas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel4.setBackground(java.awt.Color.lightGray);
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 3, 11), new java.awt.Color(255, 153, 51))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
@@ -287,6 +307,20 @@ public class Altas extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        jButton4.setText("Aceptar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Cancelar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -300,12 +334,20 @@ public class Altas extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(jButton4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5)))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,12 +358,15 @@ public class Altas extends javax.swing.JFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap(37, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(44, 44, 44)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton5)
+                            .addComponent(jButton4))
+                        .addGap(103, 103, 103)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -352,7 +397,7 @@ public class Altas extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -362,6 +407,7 @@ public class Altas extends javax.swing.JFrame {
         // TODO add your handling code here:
         NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
         Ver();
+            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -389,6 +435,117 @@ public class Altas extends javax.swing.JFrame {
         // TODO add your handling code here:
        
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true)
+        {
+            maestra=1;
+        }
+        else
+        {
+            maestra=0;
+        }
+        if(jRadioButton2.isSelected()==true)
+        {
+            ventas=1;
+        }
+        else
+        {
+            ventas=0;
+        }
+   
+        int idx =Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
+      System.out.println("Ventas: "+ventas+" Maestra: "+maestra);
+        Modificar(idx,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
+        Ver();
+           jButton4.setVisible(false);
+            jButton5.setVisible(false);
+           
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
+           jButton3.setVisible(true);
+           jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jRadioButton1.setSelected(false);
+            jRadioButton2.setSelected(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         if (jTable1.getSelectedRow()!=-1)
+        {
+            String Serie = (String) jTable1.getValueAt(jTable1.getSelectedRow(),4);
+            String NombreUsuario = (String) jTable1.getValueAt(jTable1.getSelectedRow(),1);
+            String Contraseña = (String) jTable1.getValueAt(jTable1.getSelectedRow(),2);
+            String Plaza = (String) jTable1.getValueAt(jTable1.getSelectedRow(),3);
+            String Ventas = (String) jTable1.getValueAt(jTable1.getSelectedRow(),5);
+            String Maestra = (String) jTable1.getValueAt(jTable1.getSelectedRow(),6);
+             String Estado = (String) jTable1.getValueAt(jTable1.getSelectedRow(),8);
+              String Municipio = (String) jTable1.getValueAt(jTable1.getSelectedRow(),7);
+           int Bajaint=Integer.parseInt(Ventas.toString());
+           int Bajaint2=Integer.parseInt(Maestra.toString());
+           boolean Baja,Baja1;
+         
+          if(Bajaint==1)
+          {
+              Baja=true;
+          }
+          else
+          {
+              Baja=false;
+          }
+          if(Bajaint2==1)
+          {
+              Baja1=true;
+          }
+          else
+          {
+              Baja1=false;
+          }
+       System.out.println("Ventas: "+Baja+" Maestra: "+Baja1);
+            jButton1.setVisible(false);
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
+            jButton4.setVisible(true);
+            jButton5.setVisible(true);
+            jTextField1.setText(NombreUsuario);
+            jTextField2.setText(Contraseña);
+            jTextField3.setText(Plaza);
+            jTextField4.setText(Serie); 
+            jComboBox1.setSelectedItem(Estado);
+            jComboBox2.setSelectedItem(Municipio);
+            jRadioButton1.setSelected(Baja1);
+            jRadioButton2.setSelected(Baja);
+             
+             
+             
+             
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(null,"Para Modificar primero debes seleccionar en la tabla que registro quieres modificar");
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        jButton4.setVisible(false);
+            jButton5.setVisible(false);
+           
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
+           jButton3.setVisible(true);
+           jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jRadioButton1.setSelected(false);
+            jRadioButton2.setSelected(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,7 +595,7 @@ public class Altas extends javax.swing.JFrame {
     public void Ver()
 {
 //con.getConnection();
-        String Titulos[]={"Clave","Usuario","Contraseña","Plaza","Serie","Ventas","Maestra","Estado","Municipio"};
+        String Titulos[]={"Clave","Usuario","Contraseña","Plaza","Serie","Ventas","Maestra","Municipio","Estado"};
         DefaultTableModel m = new DefaultTableModel(null,Titulos);
         jTable1.setModel(m);
         int registro=0;
@@ -516,6 +673,32 @@ public class Altas extends javax.swing.JFrame {
             }
 
 }
+     public void Modificar(int idx,String TMPnombre_usuario,String TMPpassword,String TMPplaza,String TMPserie,int TMPmaestra,int TMPventas,String TMPid_estado,String TMPid_municipio)
+   {
+   
+    // TODO add your handling code here:
+          
+      
+        try {            
+            PreparedStatement pst =(PreparedStatement)     
+           con.getConnection().prepareStatement("Select id_municipio,id_estado from municipios where mun_nombre= '"+TMPid_municipio+"'");
+             ResultSet res1 = pst.executeQuery();
+             res1.next();
+            String aux_idmun = res1.getObject("id_municipio").toString();
+             String aux_idest = res1.getObject("id_estado").toString();
+            pst=con.getConnection().prepareStatement("UPDATE catusuarios SET nombre_usuario='"+TMPnombre_usuario+"',password='"+TMPpassword+"',plaza='"+TMPplaza+"',serie='"+TMPserie+"',maestra="+TMPmaestra+",ventas="+TMPventas+",id_estado="+aux_idest+",id_municipio="+aux_idmun+" WHERE cve_usuario="+idx);                                                        
+            pst.executeUpdate();
+            pst.close();
+         
+            //JOptionPane.showMessageDialog(null,"Se modifico el registro con exito!");
+            
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+   
+   }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -554,6 +737,8 @@ public class Altas extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
