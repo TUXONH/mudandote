@@ -461,7 +461,7 @@ public class Main2 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-      UIManager.setLookAndFeel(new UpperEssentialLookAndFeel("C://Users//210913//Documents//NetBeansProjects//Mudandote//src//jars//gris.theme"));
+      UIManager.setLookAndFeel(new UpperEssentialLookAndFeel("src//jars//gris.theme"));
         java.awt.EventQueue.invokeLater(() -> {
             new Main2().setVisible(true);
         });
