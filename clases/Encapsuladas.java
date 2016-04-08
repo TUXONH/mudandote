@@ -138,4 +138,21 @@ public class Encapsuladas {
         auxVentas = aAuxVentas;
     }
     
+    private static String CorreoElectronico="";
+
+    /**
+     * @return the CorreoElectronico
+     */
+    public static String getCorreoElectronico() {
+        return CorreoElectronico;
+    }
+
+    /**
+     * @param aCorreoElectronico the CorreoElectronico to set
+     */
+    public static void setCorreoElectronico(String aCorreoElectronico) {
+        CorreoElectronico = aCorreoElectronico;
+    }
+   
+    
 }
