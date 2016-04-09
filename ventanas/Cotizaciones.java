@@ -24,6 +24,7 @@ import java.util.Calendar;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
 
 
 public class Cotizaciones extends javax.swing.JFrame {
@@ -84,18 +85,19 @@ public class Cotizaciones extends javax.swing.JFrame {
        //Calendar fecha = Calendar.getInstance();
        Calendar fecha = new GregorianCalendar();
       Date date ;
-       
-        int año = fecha.get(Calendar.YEAR);
-        int mes = fecha.get(Calendar.MONTH);
-        int dia = fecha.get(Calendar.DAY_OF_MONTH);
-        int hora = fecha.get(Calendar.HOUR_OF_DAY);
-        int minuto = fecha.get(Calendar.MINUTE);
-        int segundo = fecha.get(Calendar.SECOND);
-        String  Hoy= "";
         date = Date.valueOf(LocalDate.now());
         txtFechaActual.setDate(date);
         FechaProbable.setDate(date);
         FechaVisita.setDate(date);
+       // int año = FechaProbable.getDate().getYear();
+       // System.out.println(""+año);
+       /* int mes = fecha.get(Calendar.MONTH);
+        int dia = fecha.get(Calendar.DAY_OF_MONTH);
+        int hora = fecha.get(Calendar.HOUR_OF_DAY);
+        int minuto = fecha.get(Calendar.MINUTE);
+        int segundo = fecha.get(Calendar.SECOND);
+        String  FechaServicio= año+"/"+mes+"/"+dia;
+       
         //FechaActual1.setDate(date);
        /* System.out.println("Fecha Actual: "
                            + dia + "/" + (mes+1) + "/" + año);
@@ -331,6 +333,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 255));
@@ -1482,6 +1485,13 @@ public class Cotizaciones extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Dar cotizacion de alta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1504,7 +1514,9 @@ public class Cotizaciones extends javax.swing.JFrame {
                         .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1522,7 +1534,9 @@ public class Cotizaciones extends javax.swing.JFrame {
                                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -1537,40 +1551,6 @@ public class Cotizaciones extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtTelCasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelCasaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelCasaActionPerformed
-
-    private void ComboEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboEstadoActionPerformed
-       
-        ComboMunicipio.removeAllItems();
-        String Estado = (String) ComboEstado.getSelectedItem();
-       
-        estado_municipio.itemsCombo2(Estado,ComboMunicipio,txtCveEstado,txtCveMunicipio);
-        
-        
-        
-        
-    }//GEN-LAST:event_ComboEstadoActionPerformed
-
-    private void ComboMunicipio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMunicipio2ActionPerformed
-          String Municipio = (String) ComboMunicipio2.getSelectedItem();
-       
-        estado_municipio.itemsCombo3(Municipio,ComboMunicipio2,txtCveMunicipioDestino);
-        
-    }//GEN-LAST:event_ComboMunicipio2ActionPerformed
-
-    private void ComboEstado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboEstado2ActionPerformed
-        
-         ComboMunicipio2.removeAllItems();
-        String Estado = (String) ComboEstado2.getSelectedItem();
-       
-        estado_municipio.itemsCombo2(Estado,ComboMunicipio2,txtCVeEstado,txtCveMunicipioDestino);
-        
-        
-        
-    }//GEN-LAST:event_ComboEstado2ActionPerformed
         
     
     
@@ -1592,30 +1572,6 @@ public class Cotizaciones extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_txtArticulosKeyTyped
-
-    private void ComboViviendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboViviendasActionPerformed
-
-        String Vivienda = (String) ComboViviendas.getSelectedItem();
-       
-        estado_municipio.CveVivienda(Vivienda,txtCveVivienda);
-    }//GEN-LAST:event_ComboViviendasActionPerformed
-
-    private void ComboVivienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboVivienda2ActionPerformed
-           
-        String Vivienda = (String) ComboVivienda2.getSelectedItem();
-       
-        estado_municipio.CveVivienda(Vivienda,txtViviendaDestino);
-    }//GEN-LAST:event_ComboVivienda2ActionPerformed
-
-    private void ComboMunicipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMunicipioActionPerformed
-
-        
-        String Municipio = (String) ComboMunicipio.getSelectedItem();
-       
-        estado_municipio.itemsCombo3(Municipio,ComboMunicipio,txtCveMunicipio);
-        
-        
-    }//GEN-LAST:event_ComboMunicipioActionPerformed
 
     private void TablaArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaArticulosMouseClicked
  
@@ -2384,10 +2340,6 @@ public class Cotizaciones extends javax.swing.JFrame {
     
     
     
-    private void txtApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyTyped
-  
-    }//GEN-LAST:event_txtApellidosKeyTyped
-
     
     int esta=0;
     int muni=0;
@@ -2486,32 +2438,20 @@ public class Cotizaciones extends javax.swing.JFrame {
     
     
     
-    private void txtCorreoElectronicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoKeyTyped
-         
-         char CteclaPresionada=evt.getKeyChar();
-      
-        if(CteclaPresionada==KeyEvent.VK_ENTER)
-        {
-            
-            buscar();
-             ComboMunicipio.removeAllItems();
-        String Estado = (String) ComboEstado.getSelectedItem();
-       
-        estado_municipio.itemsCombo2(String.valueOf(esta),ComboMunicipio,txtCveEstado,txtCveMunicipio);
-            
-        }
-    }//GEN-LAST:event_txtCorreoElectronicoKeyTyped
-
-    private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
-        String fech = txtFechaActual.getDate().toString();
-        System.out.println(fech);
+         int año = FechaProbable.getCalendar().get(Calendar.YEAR);
+   
+       int mes = 1+ FechaProbable.getCalendar().get(Calendar.MONTH);
+        int dia = FechaProbable.getCalendar().get(Calendar.DAY_OF_MONTH);
+        String FechaServicio = año+"-"+mes+"-"+dia;
         
-
+          año = txtFechaActual.getCalendar().get(Calendar.YEAR);
+   
+        mes = 1+ txtFechaActual.getCalendar().get(Calendar.MONTH);
+         dia = txtFechaActual.getCalendar().get(Calendar.DAY_OF_MONTH);
+        String FechaActual = año+"-"+mes+"-"+dia;
+    
 
         if(txtTotal.getText().equals(""))
         JOptionPane.showMessageDialog(null,"Favor de ingresar las cantidades");
@@ -2533,23 +2473,31 @@ public class Cotizaciones extends javax.swing.JFrame {
             conexion con = new conexion();
              try{
         PreparedStatement pstmc=(PreparedStatement)
-        con.getConnection().prepareStatement("INSERT INTO cattipovivienda VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?"//15
-                + ",?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?"//60
-                + ",?)");
+                //con.getConnection().prepareStatement("INSERT INTO cotizaciones (CvePlaza, Serie, FolioCliente, NombreQuienCotiza, FechaCotizacion, FechaProbServ, Usuario, CveTipoViviendaOrigen, EstadoOrigen, MunicipioOrigen, DirOrigen, PlantaBajaOrigen, NoPisosOrigen, ElevadorOrigen, EscaleraOrigen, TelOrigen, TelCelOrigen, RefOrigen, CveTipoViviendaDestino, NombreRecibe, EstadoDestino, MunicipioDestino, DirDestino, PlantaBajaDestino, NoPisosDestino, ElevadorDestino, EscaleraDestino, TelDestino, TelCelDestino, RefDestino, Maniobras, Menaje, Almacenaje, ServAgreg, Rentas, VentasArt, Seguro, PorcSeguro, SumaAseg, Anticipo, Saldo, Subtotal, IVA, Total, Retencion, VolTotal, CostoCriterioXUser, TipoPresup, Observaciones, Nota1, Nota2, Generada, Baja, IdVisita, TipoOrdenNoR, NumOrdenNoR, TipoMud, Cancelada, VtaXVisita, UltimoUsuario, CorreoElectronico) VALUES ('Casa','C','1','Jose','2016-04-06','2016-05-06','Admin','Casa','1','1','Reg.228 M.20 L.20','0','1','0','0','132-51-29','9981018163','Frente a casa blanca','Casa','Juan escutia','1','1','Direccion del destino','0','1','0','0','132-23-33','9981223344','Frente a casa destino','100','200','300','400','500','600','700','7.0','800','900','1000','1100','1200','1300','1400','1500','1700','1','Se va a llevar a una que es prueba','nota1','nota2','0','0','1','R','1','M','0','0','UltimoUs','pablodelhip@gmail.com')");
+        con.getConnection().prepareStatement("INSERT INTO cotizaciones (CvePlaza, Serie, FolioCliente, "//3
+                + "NombreQuienCotiza, FechaCotizacion, FechaProbServ, Usuario, CveTipoViviendaOrigen,"//8
+                + " EstadoOrigen, MunicipioOrigen, DirOrigen, PlantaBajaOrigen, NoPisosOrigen,"//13
+                + " ElevadorOrigen, EscaleraOrigen, TelOrigen, TelCelOrigen, RefOrigen, CveTipoViviendaDestino,"//19
+                + " NombreRecibe, EstadoDestino, MunicipioDestino, DirDestino, PlantaBajaDestino, NoPisosDestino,"//25
+                + "ElevadorDestino, EscaleraDestino, TelDestino, TelCelDestino, RefDestino, Maniobras, Menaje,"//32
+                + "Almacenaje, ServAgreg, Rentas, VentasArt, Seguro, PorcSeguro, SumaAseg, Anticipo, Saldo,"//41
+                + " Subtotal, IVA, Total, Retencion, VolTotal, CostoCriterioXUser, TipoPresup, Observaciones,"//49
+                + "Nota1, Nota2, Generada, Baja, IdVisita, TipoOrdenNoR, NumOrdenNoR, TipoMud, Cancelada,"//58
+                + "VtaXVisita, UltimoUsuario)  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
       
-       pstmc.setString(1,"CNC");//claveplaza
+       pstmc.setString(1,"CASA");//claveplaza
         pstmc.setString(2, "C");//Serie
         pstmc.setString(3, "2");//folioCliente
         pstmc.setString(4, "Admin");//Nombre de quien cotiza
-        pstmc.setDate(5,new java.sql.Date(txtFechaActual.getDate().toString()));
-        pstmc.setString(6, new java.sql.Date(txtFechaActual.getDate()));
+        pstmc.setString(5,FechaActual);
+        pstmc.setString(6, FechaServicio);
         pstmc.setString(7, "Admin");//Usuario
         pstmc.setString(8, txtCveVivienda.getText());//ClavetipoViviendaOrigen
         pstmc.setString(9, txtCveEstado.getText());//EstadoOrigen
         pstmc.setString(10, txtCveMunicipio.getText());//EstadoOrigen
         pstmc.setString(11, txtDireccion.getText());//DireccionOrigen
         pstmc.setString(12, "0");//PlantaBajaOrigen
-        pstmc.setString(13, "0");//NuymeroDePisosOrigen
+        pstmc.setString(13, "1");//NuymeroDePisosOrigen
         pstmc.setString(14, "0");//ElevadorOrigen
         pstmc.setString(15, "0");//EscaleraOrigen
         pstmc.setString(16, txtTelCasa.getText());//TelOrigen
@@ -2561,47 +2509,48 @@ public class Cotizaciones extends javax.swing.JFrame {
         pstmc.setString(22, txtCveMunicipioDestino.getText());//MunicipioDestino
         pstmc.setString(23, txtDireccionDestino.getText());//DirDestino
         pstmc.setString(24, "0");//PlantaBajaDestino
-        pstmc.setString(25, "0");//NumeroPisosDestino
+        pstmc.setString(25, "1");//NumeroPisosDestino
         pstmc.setString(26, "0");//ElevadorDestino
         pstmc.setString(27, "0");//EscaleraDestino
         pstmc.setString(28, txtTelCasaDestino.getText());//TelDestino
         pstmc.setString(29, txtTelCelDestino.getText());//TelCelDestino
         pstmc.setString(30, "ReferenciaDestino");//RefDestino
         pstmc.setString(31, txtManiobras.getText());//Maniobras
-        pstmc.setString(32, AyudaVenta);//Menaje
-        pstmc.setString(33, "0");//Alamacenaje
-        pstmc.setString(34, CveVivienda);//ServAgreg
-        pstmc.setString(35, Descripcion);//Rentas
-        pstmc.setString(36, AyudaVenta);//VentasArt
-        pstmc.setString(37, "0");//Seguro
-        pstmc.setString(38, CveVivienda);//PorcSeguro
-        pstmc.setString(39, Descripcion);//SumaAseg
-        pstmc.setString(40, AyudaVenta);//Anticipo
-        pstmc.setString(41, "0");//Saldo
-        pstmc.setString(42, CveVivienda);//Subtotal
-        pstmc.setString(43, Descripcion);//IVA
-        pstmc.setString(44, AyudaVenta);//Total
+        pstmc.setString(32, "0");//Menaje
+        pstmc.setString(33, txtAlmacenaje.getText());//Alamacenaje
+        pstmc.setString(34, "0");//ServAgreg
+        pstmc.setString(35, txtRentas.getText());//Rentas
+        pstmc.setString(36, "0");//VentasArt
+        pstmc.setString(37, txtSumaAsegurada.getText());//Seguro
+        pstmc.setString(38, txtSeguro.getText());//PorcSeguro
+        pstmc.setString(39,"10" );//SumaAseg
+        pstmc.setString(40, txtAnticipo.getText());//Anticipo
+        pstmc.setString(41, txtSalto.getText());//Saldo
+        pstmc.setString(42, txtSubtotal.getText());//Subtotal
+        pstmc.setString(43, txtIVA.getText());//IVA
+        pstmc.setString(44, txtTotal.getText());//Total
         pstmc.setString(45, "0");//Retencion
-        pstmc.setString(46, CveVivienda);//VolTotal
-        pstmc.setString(47, Descripcion);//CostoCriterio
-        pstmc.setString(48, AyudaVenta);//TipoPresupuesto
-        pstmc.setString(49, "0");//Observacion
-        pstmc.setString(50, CveVivienda);//Nota1
-        pstmc.setString(51, Descripcion);//Nota2
-        pstmc.setString(52, AyudaVenta);//Generada
+        pstmc.setString(46, txtVolumenTotal.getText());//VolTotal
+        pstmc.setString(47, "0");//CostoCriterio
+        pstmc.setString(48, "1");//TipoPresupuesto
+        pstmc.setString(49, "observa");//Observacion
+        pstmc.setString(50, "nota1");//Nota1
+        pstmc.setString(51, "nota2");//Nota2
+        pstmc.setString(52, "0");//Generada
         pstmc.setString(53, "0");//BAja
-        pstmc.setString(54, CveVivienda);//idVisita
-        pstmc.setString(55, Descripcion);//TipoOrdenNoR
-        pstmc.setString(56, AyudaVenta);//NumOrdenNoR
-        pstmc.setString(57, "0");//TipoMud
-        pstmc.setString(58, CveVivienda);//Cancela
-        pstmc.setString(59, Descripcion);//VtaXVisita
-        pstmc.setString(60, AyudaVenta);//UltimoUsuario
-        pstmc.setString(61, "0");//CorreoElectronico
+        pstmc.setString(54, "1");//idVisita
+        pstmc.setString(55, "R");//TipoOrdenNoR
+        pstmc.setString(56, "2");//NumOrdenNoR
+        pstmc.setString(57, "M");//TipoMud
+        pstmc.setString(58, "0");//Cancela
+        pstmc.setString(59, "0");//VtaXVisita
+        pstmc.setString(60, "User");//UltimoUsuario
+      // pstmc.setString(61, "unoooo");//txtCorreoElectronico.getText());//CorreoElectronico
+       
         
         pstmc.execute();
         pstmc.close();
-         System.out.println("Datos Agregados");
+         JOptionPane.showMessageDialog(null, "La cotizacion a sido guardada correctamente");
         }
         
         
@@ -2612,6 +2561,86 @@ public class Cotizaciones extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void ComboVivienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboVivienda2ActionPerformed
+
+        String Vivienda = (String) ComboVivienda2.getSelectedItem();
+
+        estado_municipio.CveVivienda(Vivienda,txtViviendaDestino);
+    }//GEN-LAST:event_ComboVivienda2ActionPerformed
+
+    private void ComboMunicipio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMunicipio2ActionPerformed
+        String Municipio = (String) ComboMunicipio2.getSelectedItem();
+
+        estado_municipio.itemsCombo3(Municipio,ComboMunicipio2,txtCveMunicipioDestino);
+
+    }//GEN-LAST:event_ComboMunicipio2ActionPerformed
+
+    private void ComboEstado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboEstado2ActionPerformed
+
+        ComboMunicipio2.removeAllItems();
+        String Estado = (String) ComboEstado2.getSelectedItem();
+
+        estado_municipio.itemsCombo2(Estado,ComboMunicipio2,txtCVeEstado,txtCveMunicipioDestino);
+
+    }//GEN-LAST:event_ComboEstado2ActionPerformed
+
+    private void ComboViviendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboViviendasActionPerformed
+
+        String Vivienda = (String) ComboViviendas.getSelectedItem();
+
+        estado_municipio.CveVivienda(Vivienda,txtCveVivienda);
+    }//GEN-LAST:event_ComboViviendasActionPerformed
+
+    private void ComboMunicipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMunicipioActionPerformed
+
+        String Municipio = (String) ComboMunicipio.getSelectedItem();
+
+        estado_municipio.itemsCombo3(Municipio,ComboMunicipio,txtCveMunicipio);
+
+    }//GEN-LAST:event_ComboMunicipioActionPerformed
+
+    private void ComboEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboEstadoActionPerformed
+
+        ComboMunicipio.removeAllItems();
+        String Estado = (String) ComboEstado.getSelectedItem();
+
+        estado_municipio.itemsCombo2(Estado,ComboMunicipio,txtCveEstado,txtCveMunicipio);
+
+    }//GEN-LAST:event_ComboEstadoActionPerformed
+
+    private void txtTelCasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelCasaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelCasaActionPerformed
+
+    private void txtCorreoElectronicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoKeyTyped
+
+        char CteclaPresionada=evt.getKeyChar();
+
+        if(CteclaPresionada==KeyEvent.VK_ENTER)
+        {
+
+            buscar();
+            ComboMunicipio.removeAllItems();
+            String Estado = (String) ComboEstado.getSelectedItem();
+
+            estado_municipio.itemsCombo2(String.valueOf(esta),ComboMunicipio,txtCveEstado,txtCveMunicipio);
+
+        }
+    }//GEN-LAST:event_txtCorreoElectronicoKeyTyped
+
+    private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
+
+    private void txtApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyTyped
+
+    }//GEN-LAST:event_txtApellidosKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Reservacion abrir = new Reservacion();
+        abrir.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2664,6 +2693,7 @@ public class Cotizaciones extends javax.swing.JFrame {
     private javax.swing.JTable TablaArticulos;
     private javax.swing.JButton btnGuardar;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
