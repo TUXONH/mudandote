@@ -6,9 +6,15 @@
 package ventanas;
 
 import clases.conexion;
+import com.toedter.calendar.JDateChooser;
+//import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -20,9 +26,14 @@ public class Reservacion extends javax.swing.JFrame {
      * Creates new form Reservacion
      */
     conexion con;
+    //String date;
+    //Date fecha;
     public Reservacion() {
         initComponents();
         con =  new conexion();
+        Ver();
+      
+        
     }
 
     /**
@@ -60,22 +71,21 @@ public class Reservacion extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField5 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel10 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
@@ -89,7 +99,6 @@ public class Reservacion extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
@@ -102,7 +111,6 @@ public class Reservacion extends javax.swing.JFrame {
         jTextField18 = new javax.swing.JTextField();
         jTextField19 = new javax.swing.JTextField();
         jTextField20 = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
         jTextField22 = new javax.swing.JTextField();
         jTextField23 = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
@@ -257,8 +265,6 @@ public class Reservacion extends javax.swing.JFrame {
 
         jTextField4.setEnabled(false);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel5.setText("Piso");
 
         jTextField6.setEnabled(false);
@@ -271,8 +277,6 @@ public class Reservacion extends javax.swing.JFrame {
 
         jLabel7.setText("Fecha Servicio");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel8.setText("Hora de servicio");
 
         jLabel9.setText("No.presupuesto");
@@ -284,9 +288,9 @@ public class Reservacion extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel7)
-                .addGap(27, 27, 27)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,13 +304,14 @@ public class Reservacion extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel8)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -319,6 +324,13 @@ public class Reservacion extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -326,44 +338,43 @@ public class Reservacion extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel1))
-                                        .addGap(35, 35, 35)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                                            .addComponent(jTextField2)
-                                            .addComponent(jTextField3)
-                                            .addComponent(jTextField4)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(35, 35, 35)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                                    .addComponent(jTextField2)
+                                    .addComponent(jTextField3)
+                                    .addComponent(jTextField4)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(71, 71, 71))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,17 +400,15 @@ public class Reservacion extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(63, 63, 63)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Origen", jPanel2);
@@ -408,10 +417,10 @@ public class Reservacion extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,9 +475,6 @@ public class Reservacion extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel20.setText("Retencion");
 
-        jLabel21.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
-        jLabel21.setText("Total final");
-
         jLabel22.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel22.setText("Anticipo");
 
@@ -476,32 +482,44 @@ public class Reservacion extends javax.swing.JFrame {
         jLabel23.setText("Saldo");
 
         jTextField11.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField11.setEnabled(false);
 
         jTextField12.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField12.setEnabled(false);
 
         jTextField13.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField13.setEnabled(false);
 
         jTextField14.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField14.setEnabled(false);
 
         jTextField15.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField15.setEnabled(false);
 
         jTextField16.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField16.setEnabled(false);
 
         jTextField17.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField17.setEnabled(false);
 
         jTextField18.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField18.setEnabled(false);
 
         jTextField19.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField19.setEnabled(false);
 
         jTextField20.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
-
-        jTextField21.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField20.setEnabled(false);
 
         jTextField22.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField22.setEnabled(false);
 
         jTextField23.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField23.setEnabled(false);
 
         jLabel33.setText("Total");
+
+        jTextField33.setEnabled(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -521,7 +539,6 @@ public class Reservacion extends javax.swing.JFrame {
                         .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(jLabel20)
-                    .addComponent(jLabel21)
                     .addComponent(jLabel22)
                     .addComponent(jLabel23)
                     .addComponent(jLabel33))
@@ -537,7 +554,6 @@ public class Reservacion extends javax.swing.JFrame {
                     .addComponent(jTextField18)
                     .addComponent(jTextField19)
                     .addComponent(jTextField20)
-                    .addComponent(jTextField21)
                     .addComponent(jTextField22)
                     .addComponent(jTextField23)
                     .addComponent(jTextField33))
@@ -586,14 +602,10 @@ public class Reservacion extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
                     .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -602,7 +614,7 @@ public class Reservacion extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
                     .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46))
+                .addGap(63, 63, 63))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -667,9 +679,9 @@ public class Reservacion extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -688,27 +700,44 @@ public class Reservacion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+public static String fechaMySQL(JDateChooser jDateChooser1){
+
+String fech=jDateChooser1.getCalendar().toString();
+
+JDateChooser fechas=new JDateChooser();
+
+int anio = jDateChooser1.getCalendar().get(Calendar.YEAR);
+//Get(Calendar. YEAR)
+int mes = jDateChooser1.getCalendar().get(Calendar.MONTH) + 1;
+int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
+
+
+return anio+"/"+mes+"/"+dia;
+}
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+     
+      
+         Ver(jTextField10.getText());
           try{
        // PreparedStatement PreparedStatement = null;
         PreparedStatement pstm =(PreparedStatement)
-        con.getConnection().prepareStatement("Select NombreCteOrigen,DirOrigen,RefOrigen,ColPoblOrigen,NumPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,ColPoblDestino,TelDest,NumPisoDest,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,Rentas,IVA,SubTotal,Total,TotalFinal,Retencion,Anticipo,PorcSeguro from catordenesservicios where FolioOrdenServicio= '"+jTextField10.getText()+"'");
+        con.getConnection().prepareStatement("Select NombreQuienCotiza,DirOrigen,RefOrigen,NoPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDestino,NoPisosDestino,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,Rentas,IVA,SubTotal,Total,Retencion,Anticipo,Seguro,VentasArt,Rentas from cotizaciones where FolioCotizacion= '"+jTextField10.getText()+"'");
         ResultSet res1 = pstm.executeQuery();
         res1.next();
-       String aux_clientes = res1.getObject("NombreCteOrigen").toString();
+       String aux_clientes = res1.getObject("NombreQuienCotiza").toString();
        String aux_dirOrigen=res1.getObject("DirOrigen").toString();
          String aux_refOrigen=res1.getObject("RefOrigen").toString();
-       String aux_ColPoblOrigen=res1.getObject("ColPoblOrigen").toString();
-        String aux_PisosOrigen=res1.getObject("NumPisosOrigen").toString();
+     //  String aux_ColPoblOrigen=res1.getObject("ColPoblOrigen").toString();
+        String aux_PisosOrigen=res1.getObject("NoPisosOrigen").toString();
         String aux_TelOrigen=res1.getObject("TelOrigen").toString();
         String aux_NombreRecibe=res1.getObject("NombreRecibe").toString();
         String aux_DirDestino=res1.getObject("DirDestino").toString();
         String aux_refDestino=res1.getObject("RefDestino").toString();
-        String aux_ColPoblDestino=res1.getObject("ColPoblDestino").toString();
-        String aux_TelDest=res1.getObject("TelDest").toString();
-        String aux_NumPisosDest=res1.getObject("NumPisoDest").toString();
+       // String aux_ColPoblDestino=res1.getObject("ColPoblDestino").toString();
+        String aux_TelDest=res1.getObject("TelDestino").toString();
+        String aux_NumPisosDest=res1.getObject("NoPisosDestino").toString();
          String aux_Almacenaje=res1.getObject("Almacenaje").toString();
         String aux_Maniobras=res1.getObject("Maniobras").toString();
           String aux_Saldo=res1.getObject("Saldo").toString();
@@ -716,34 +745,38 @@ public class Reservacion extends javax.swing.JFrame {
         String aux_Total=res1.getObject("Total").toString();
         String aux_SubTotal=res1.getObject("SubTotal").toString();
         String aux_IVA=res1.getObject("IVA").toString();
-        String aux_TotalFinal=res1.getObject("TotalFinal").toString();
+       // String aux_TotalFinal=res1.getObject("TotalFinal").toString();
         String aux_Retencion=res1.getObject("Retencion").toString();
          String aux_Anticipo=res1.getObject("Anticipo").toString();
-         String aux_PorcSeguro=res1.getObject("PorcSeguro").toString();
+         String aux_PorcSeguro=res1.getObject("Seguro").toString();
         String aux_Menaje=res1.getObject("Menaje").toString();
+        String aux_Renta=res1.getObject("Rentas").toString();
       jTextField1.setText(aux_clientes);
       jTextField2.setText(aux_dirOrigen);
       jTextField3.setText(aux_refOrigen);
-      jTextField4.setText(aux_ColPoblOrigen);
+     // jTextField4.setText(aux_ColPoblOrigen);
       jTextField6.setText(aux_PisosOrigen);
       jTextField7.setText(aux_TelOrigen);
       jTextField12.setText(aux_Almacenaje);
-      jTextField14.setText(aux_VentasArt);
+      jTextField13.setText(aux_Menaje);
+      jTextField14.setText(aux_Renta);
+      jTextField15.setText(aux_VentasArt);
       jTextField16.setText(aux_PorcSeguro);
       jTextField23.setText(aux_Saldo);
       jTextField33.setText(aux_Total);
       jTextField18.setText(aux_SubTotal);
       jTextField19.setText(aux_IVA);
       jTextField20.setText(aux_Retencion);
-      jTextField21.setText(aux_TotalFinal);
+   //   jTextField21.setText(aux_TotalFinal);
        jTextField22.setText(aux_Anticipo);
       jTextField17.setText(aux_Maniobras);
       jTextField24.setText(aux_NombreRecibe);
       jTextField28.setText(aux_DirDestino);
       jTextField29.setText(aux_refDestino);
-      jTextField30.setText(aux_ColPoblDestino);
+     // jTextField30.setText(aux_ColPoblDestino);
       jTextField31.setText(aux_TelDest);
        jTextField32.setText(aux_NumPisosDest);
+      
      pstm.execute();   
        pstm.close();
            
@@ -752,9 +785,138 @@ public class Reservacion extends javax.swing.JFrame {
             
                 System.out.println(e);
             }
+          
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+     JDateChooser fechas = new JDateChooser();   
+    // fechas = jDateChooser1.getDate();
+       
+       // System.out.println("Fecha: "+date);
+        NuevoProducto((Date) jDateChooser1.getDate());
+    }//GEN-LAST:event_jButton2ActionPerformed
+    public void Ver(String id)
+{
+//con.getConnection();
+        String Titulos[]={"Descripcion","Total","Grupo","Confirmado"};
+        DefaultTableModel m = new DefaultTableModel(null,Titulos);
+        jTable1.setModel(m);
+        int registro=0;
+       
+        try{
+            
+         PreparedStatement pstm =(PreparedStatement)
+         con.getConnection().prepareStatement("SELECT count(1) as total FROM catusuarios ");
+         ResultSet res = pstm.executeQuery();
+         res.next();
+         registro = res.getInt("total");
+         System.out.println(registro);
+         res.close();
+         
+        
+        
+        } catch (SQLException e) {
+           System.out.println(e);
+        }
+        Object [][] datos = new String[registro][4];
+        
+        try {
+                    PreparedStatement   pstm = (PreparedStatement)
+                    con.getConnection().prepareStatement("SELECT  Observaciones,Confirmado,Total,TipoOrdenNoR from cotizaciones where FolioCotizacion='"+id+"'");
+                      ResultSet res = pstm.executeQuery();
+                      int i=0;
+                      while(res.next()){
+                          String Observaciones = res.getString("Observaciones");
+                         String Total = res.getString("Total");
+                          String TipoOrden = res.getString("TipoOrdenNoR");
+                          String Confirmado = res.getString("Confirmado");
+                         System.out.println("Observaciones: "+Observaciones+"Total: "+Total+"Tipo: "+TipoOrden+"Confirmado: "+Confirmado);
+                          datos[i][0]=Observaciones;
+                          datos[i][1]=Total;
+                          datos[i][2]=TipoOrden;
+                          datos[i][3]=Confirmado;
+                        
+                          m.addRow(datos[i]);
+                          i++;
+                      
+                      
+                      }
+                    
+        } catch (SQLException ex) {
+             System.out.println(ex);
+        }
+}
+     public void Ver()
+{
+//con.getConnection();
+        String Titulos[]={"Descripcion","Total","Grupo","Confirmado"};
+        DefaultTableModel m = new DefaultTableModel(null,Titulos);
+        jTable1.setModel(m);
+        int registro=0;
+       
+        try{
+            
+         PreparedStatement pstm =(PreparedStatement)
+         con.getConnection().prepareStatement("SELECT count(1) as total FROM catusuarios ");
+         ResultSet res = pstm.executeQuery();
+         res.next();
+         registro = res.getInt("total");
+         System.out.println(registro);
+         res.close();
+         
+        
+        
+        } catch (SQLException e) {
+           System.out.println(e);
+        }
+        Object [][] datos = new String[registro][4];
+        
+        try {
+                    PreparedStatement   pstm = (PreparedStatement)
+                    con.getConnection().prepareStatement("SELECT  Observaciones,Confirmado,Total,TipoOrdenNoR from cotizaciones ");
+                      ResultSet res = pstm.executeQuery();
+                      int i=0;
+                      while(res.next()){
+                          String Observaciones = res.getString("Observaciones");
+                         String Total = res.getString("Total");
+                          String TipoOrden = res.getString("TipoOrdenNoR");
+                          String Confirmado = res.getString("Confirmado");
+                         System.out.println("Observaciones: "+Observaciones+"Total: "+Total+"Tipo: "+TipoOrden+"Confirmado: "+Confirmado);
+                          datos[i][0]=Observaciones;
+                          datos[i][1]=Total;
+                          datos[i][2]=TipoOrden;
+                          datos[i][3]=Confirmado;
+                        
+                          m.addRow(datos[i]);
+                          i++;
+                      
+                      
+                      }
+                    
+        } catch (SQLException ex) {
+             System.out.println(ex);
+        }
+}
+      public void NuevoProducto(Date TMPnombre_usuario)
+{
+    
+    try{
+       // PreparedStatement PreparedStatement = null;
+        PreparedStatement pstm =(PreparedStatement)
+      
+      con.getConnection().prepareStatement("insert into cotizaciones (FechaFinServ) values ('"+TMPnombre_usuario+"')");
+       pstm.execute();   
+       pstm.close();
+           
+    
+    }catch(SQLException e){
+            
+                System.out.println(e);
+            }
+
+}
     /**
      * @param args the command line arguments
      */
@@ -792,9 +954,9 @@ public class Reservacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox4;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -808,7 +970,6 @@ public class Reservacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -852,7 +1013,6 @@ public class Reservacion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
@@ -867,7 +1027,6 @@ public class Reservacion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
