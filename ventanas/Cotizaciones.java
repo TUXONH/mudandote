@@ -83,7 +83,7 @@ public class Cotizaciones extends javax.swing.JFrame {
       
        //Calendar fecha = Calendar.getInstance();
        Calendar fecha = new GregorianCalendar();
-       Date date;
+      Date date ;
        
         int año = fecha.get(Calendar.YEAR);
         int mes = fecha.get(Calendar.MONTH);
@@ -275,8 +275,8 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         ComboMunicipio2 = new javax.swing.JComboBox<>();
-        jTextField40 = new javax.swing.JTextField();
-        jTextField41 = new javax.swing.JTextField();
+        txtCVeEstado = new javax.swing.JTextField();
+        txtCveMunicipioDestino = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
         jTextField42 = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
@@ -1085,9 +1085,9 @@ public class Cotizaciones extends javax.swing.JFrame {
                                             .addComponent(txtTelCelDestino, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(ComboMunicipio2, javax.swing.GroupLayout.Alignment.LEADING, 0, 127, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCVeEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(txtCveMunicipioDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -1125,8 +1125,8 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ComboEstado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboMunicipio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCVeEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCveMunicipioDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1416,6 +1416,10 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel37.setForeground(new java.awt.Color(102, 0, 0));
         jLabel37.setText("Fecha");
 
+        txtFechaActual.setDateFormatString("yyyy-MMM-dd");
+        txtFechaActual.setMaxSelectableDate(new java.util.Date(253370790096000L));
+        txtFechaActual.setMinSelectableDate(new java.util.Date(-62135744304000L));
+
         jLabel38.setFont(new java.awt.Font("SansSerif", 3, 12)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(102, 0, 0));
         jLabel38.setText("No. Identificacion del cliente");
@@ -1551,6 +1555,9 @@ public class Cotizaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboEstadoActionPerformed
 
     private void ComboMunicipio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMunicipio2ActionPerformed
+          String Municipio = (String) ComboMunicipio2.getSelectedItem();
+       
+        estado_municipio.itemsCombo3(Municipio,ComboMunicipio2,txtCveMunicipioDestino);
         
     }//GEN-LAST:event_ComboMunicipio2ActionPerformed
 
@@ -1559,7 +1566,7 @@ public class Cotizaciones extends javax.swing.JFrame {
          ComboMunicipio2.removeAllItems();
         String Estado = (String) ComboEstado2.getSelectedItem();
        
-        estado_municipio.itemsCombo2(Estado,ComboMunicipio2,txtCveEstado,txtCveMunicipio);
+        estado_municipio.itemsCombo2(Estado,ComboMunicipio2,txtCVeEstado,txtCveMunicipioDestino);
         
         
         
@@ -2500,6 +2507,12 @@ public class Cotizaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
+        String fech = txtFechaActual.getDate().toString();
+        System.out.println(fech);
+        
+
+
         if(txtTotal.getText().equals(""))
         JOptionPane.showMessageDialog(null,"Favor de ingresar las cantidades");
         //////////////////////
@@ -2515,7 +2528,88 @@ public class Cotizaciones extends javax.swing.JFrame {
         else if(txtApellidos.getText().equals(""))
         JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
         
+        else
+        {
+            conexion con = new conexion();
+             try{
+        PreparedStatement pstmc=(PreparedStatement)
+        con.getConnection().prepareStatement("INSERT INTO cattipovivienda VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?"//15
+                + ",?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?"//60
+                + ",?)");
+      
+       pstmc.setString(1,"CNC");//claveplaza
+        pstmc.setString(2, "C");//Serie
+        pstmc.setString(3, "2");//folioCliente
+        pstmc.setString(4, "Admin");//Nombre de quien cotiza
+        pstmc.setDate(5,new java.sql.Date(txtFechaActual.getDate().toString()));
+        pstmc.setString(6, new java.sql.Date(txtFechaActual.getDate()));
+        pstmc.setString(7, "Admin");//Usuario
+        pstmc.setString(8, txtCveVivienda.getText());//ClavetipoViviendaOrigen
+        pstmc.setString(9, txtCveEstado.getText());//EstadoOrigen
+        pstmc.setString(10, txtCveMunicipio.getText());//EstadoOrigen
+        pstmc.setString(11, txtDireccion.getText());//DireccionOrigen
+        pstmc.setString(12, "0");//PlantaBajaOrigen
+        pstmc.setString(13, "0");//NuymeroDePisosOrigen
+        pstmc.setString(14, "0");//ElevadorOrigen
+        pstmc.setString(15, "0");//EscaleraOrigen
+        pstmc.setString(16, txtTelCasa.getText());//TelOrigen
+        pstmc.setString(17, txtMovil.getText());//TelCelOrigen
+        pstmc.setString(18, "Referencia");//RefOrigen
+        pstmc.setString(19, txtCveVivienda.getText());//CveTipoViviendaDestino
+        pstmc.setString(20, "Admin");//NombreRecibe
+        pstmc.setString(21, txtCVeEstado.getText());//EstadoDestino
+        pstmc.setString(22, txtCveMunicipioDestino.getText());//MunicipioDestino
+        pstmc.setString(23, txtDireccionDestino.getText());//DirDestino
+        pstmc.setString(24, "0");//PlantaBajaDestino
+        pstmc.setString(25, "0");//NumeroPisosDestino
+        pstmc.setString(26, "0");//ElevadorDestino
+        pstmc.setString(27, "0");//EscaleraDestino
+        pstmc.setString(28, txtTelCasaDestino.getText());//TelDestino
+        pstmc.setString(29, txtTelCelDestino.getText());//TelCelDestino
+        pstmc.setString(30, "ReferenciaDestino");//RefDestino
+        pstmc.setString(31, txtManiobras.getText());//Maniobras
+        pstmc.setString(32, AyudaVenta);//Menaje
+        pstmc.setString(33, "0");//Alamacenaje
+        pstmc.setString(34, CveVivienda);//ServAgreg
+        pstmc.setString(35, Descripcion);//Rentas
+        pstmc.setString(36, AyudaVenta);//VentasArt
+        pstmc.setString(37, "0");//Seguro
+        pstmc.setString(38, CveVivienda);//PorcSeguro
+        pstmc.setString(39, Descripcion);//SumaAseg
+        pstmc.setString(40, AyudaVenta);//Anticipo
+        pstmc.setString(41, "0");//Saldo
+        pstmc.setString(42, CveVivienda);//Subtotal
+        pstmc.setString(43, Descripcion);//IVA
+        pstmc.setString(44, AyudaVenta);//Total
+        pstmc.setString(45, "0");//Retencion
+        pstmc.setString(46, CveVivienda);//VolTotal
+        pstmc.setString(47, Descripcion);//CostoCriterio
+        pstmc.setString(48, AyudaVenta);//TipoPresupuesto
+        pstmc.setString(49, "0");//Observacion
+        pstmc.setString(50, CveVivienda);//Nota1
+        pstmc.setString(51, Descripcion);//Nota2
+        pstmc.setString(52, AyudaVenta);//Generada
+        pstmc.setString(53, "0");//BAja
+        pstmc.setString(54, CveVivienda);//idVisita
+        pstmc.setString(55, Descripcion);//TipoOrdenNoR
+        pstmc.setString(56, AyudaVenta);//NumOrdenNoR
+        pstmc.setString(57, "0");//TipoMud
+        pstmc.setString(58, CveVivienda);//Cancela
+        pstmc.setString(59, Descripcion);//VtaXVisita
+        pstmc.setString(60, AyudaVenta);//UltimoUsuario
+        pstmc.setString(61, "0");//CorreoElectronico
         
+        pstmc.execute();
+        pstmc.close();
+         System.out.println("Datos Agregados");
+        }
+        
+        
+        catch(SQLException e)
+        {
+              System.out.println(e);
+        }
+        }
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -2653,8 +2747,6 @@ public class Cotizaciones extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField34;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
     private javax.swing.JTextField jTextField42;
     private javax.swing.JTextField jTextField46;
     private javax.swing.JTextField jTextField5;
@@ -2663,9 +2755,11 @@ public class Cotizaciones extends javax.swing.JFrame {
     private javax.swing.JTextField txtAnticipo;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtArticulos;
+    private javax.swing.JTextField txtCVeEstado;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtCveEstado;
     private javax.swing.JTextField txtCveMunicipio;
+    private javax.swing.JTextField txtCveMunicipioDestino;
     private javax.swing.JTextField txtCveVivienda;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDireccionDestino;

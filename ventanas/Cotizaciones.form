@@ -1267,9 +1267,9 @@
                                                   <Component id="ComboMunicipio2" alignment="0" pref="127" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField40" min="-2" pref="43" max="-2" attributes="0"/>
+                                              <Component id="txtCVeEstado" min="-2" pref="43" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField41" min="-2" pref="52" max="-2" attributes="0"/>
+                                              <Component id="txtCveMunicipioDestino" min="-2" pref="52" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -1324,8 +1324,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ComboEstado2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ComboMunicipio2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField40" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField41" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCVeEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCveMunicipioDestino" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField42" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1431,9 +1431,9 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField40">
+            <Component class="javax.swing.JTextField" name="txtCVeEstado">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField41">
+            <Component class="javax.swing.JTextField" name="txtCveMunicipioDestino">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel49">
               <Properties>
@@ -2123,6 +2123,15 @@
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="txtFechaActual">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MMM-dd"/>
+            <Property name="maxSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
+              <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,0,0,-26,112,123,-16,-84,-128,120"/>
+            </Property>
+            <Property name="minSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
+              <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,-1,-1,-57,124,-27,8,108,-128,120"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel38">
           <Properties>
