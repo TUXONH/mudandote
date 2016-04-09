@@ -301,23 +301,7 @@ public class Rutas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
-//        if (combo1.getSelectedItem()=="Ver Origen")
-//        {
-//            try {
-//                main.pasar_valores(tabla, sqlOrigen);
-//                //37,38
-//                
-//            } catch (SQLException ex) {
-//                Logger.getLogger(Rutas.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//        else{
-//            try {
-//                main.pasar_valores(tabla, sqlDestino);
-//            } catch (SQLException ex) {
-//                Logger.getLogger(Rutas.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
+        
     }//GEN-LAST:event_combo3ActionPerformed
 
     private void jButton_Peticiones1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Peticiones1ActionPerformed
