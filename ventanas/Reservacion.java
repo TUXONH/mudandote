@@ -11,12 +11,14 @@ import com.toedter.calendar.JDateChooser;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -28,12 +30,14 @@ public class Reservacion extends javax.swing.JFrame {
      * Creates new form Reservacion
      */
     conexion con;
+    DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
     //String date;
     //Date fecha;
     public Reservacion() {
         initComponents();
         con =  new conexion();
         Ver();
+        VerCombo();
       
         
     }
@@ -69,7 +73,6 @@ public class Reservacion extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel10 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -119,13 +122,11 @@ public class Reservacion extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jTextField33 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        jTextField25 = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jTextField26 = new javax.swing.JTextField();
-        jTextField27 = new javax.swing.JTextField();
         jComboBox4 = new javax.swing.JComboBox<>();
         jLabel24 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,8 +168,6 @@ public class Reservacion extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00" }));
 
-        jCheckBox1.setText("Confirmado");
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -182,13 +181,11 @@ public class Reservacion extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,8 +196,7 @@ public class Reservacion extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addComponent(jLabel9)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBox1))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel7)
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -632,34 +628,35 @@ public class Reservacion extends javax.swing.JFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel25.setText("Presupuesto");
-
         jLabel26.setText("Ultimo Usuario");
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
 
         jLabel24.setText("Vendedor");
+
+        jCheckBox1.setText("Confirmado");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(106, 106, 106)
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel25)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(59, 59, 59)
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField27)
-                .addGap(14, 14, 14))
+                .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -668,11 +665,9 @@ public class Reservacion extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24)
-                    .addComponent(jLabel25)
-                    .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26)
                     .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCheckBox1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -798,13 +793,17 @@ int anio = jDateChooser1.getCalendar().get(Calendar.YEAR);
 int mes = jDateChooser1.getCalendar().get(Calendar.MONTH) + 1;
 int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
  String fecha =  anio+"/"+mes+"/"+dia;
- NuevoProducto(fecha,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField6.getText(),jTextField7.getText(),jTextField24.getText(),jTextField28.getText(),jTextField29.getText(),jTextField31.getText(),jTextField32.getText(),jTextField12.getText(),jTextField13.getText(),jTextField17.getText(),jTextField15.getText(),jTextField23.getText(),jTextField19.getText(),jTextField18.getText(),jTextField33.getText(),jTextField20.getText(),jTextField22.getText(),jTextField16.getText(),jTextField14.getText());
+ NuevoProducto(fecha,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField6.getText(),jTextField7.getText(),jTextField24.getText(),jTextField28.getText(),jTextField29.getText(),jTextField31.getText(),jTextField32.getText(),jTextField12.getText(),jTextField13.getText(),jTextField17.getText(),jTextField15.getText(),jTextField23.getText(),jTextField19.getText(),jTextField18.getText(),jTextField33.getText(),jTextField20.getText(),jTextField22.getText(),jTextField16.getText(),jTextField14.getText(),jComboBox1.getSelectedItem().toString(),jTextField26.getText(),jComboBox4.getSelectedItem().toString(),jTextField9.getText());
     //   NuevoProducto(fecha, jTextField1.getText(), jTextField2.getText(), jTextField3.getText(),jTextField6.getText(),jTextField7.getText(),jTextField24.getText(),jTextField28.getText(),jTextField29.getText(),jTextField31.getText(),jTextField32.getText(),jTextField12.getText(),jTextField13.getText(),jTextField17.getText(),jTextField15.getText(),jTextField23.getText(),jTextField19.getText(),jTextField18.getText(),jTextField33.getText(),jTextField20.getText(),jTextField22.getText(),jTextField16.getText(),jTextField14.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+ VerCombo();
+    }//GEN-LAST:event_jComboBox4ActionPerformed
     public void Ver(String id)
 {
 //con.getConnection();
-        String Titulos[]={"Descripcion","Total","Grupo","Confirmado"};
+        String Titulos[]={"Descripcion","Volumen","Total","GrupoCosto","Comision"};
         DefaultTableModel m = new DefaultTableModel(null,Titulos);
         jTable1.setModel(m);
         int registro=0;
@@ -812,7 +811,7 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
         try{
             
          PreparedStatement pstm =(PreparedStatement)
-         con.getConnection().prepareStatement("SELECT count(1) as total FROM catusuarios ");
+         con.getConnection().prepareStatement("SELECT count(1) as total FROM tablaarticulos ");
          ResultSet res = pstm.executeQuery();
          res.next();
          registro = res.getInt("total");
@@ -824,23 +823,25 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
         } catch (SQLException e) {
            System.out.println(e);
         }
-        Object [][] datos = new String[registro][4];
+        Object [][] datos = new String[registro][5];
         
         try {
                     PreparedStatement   pstm = (PreparedStatement)
-                    con.getConnection().prepareStatement("SELECT  Observaciones,Confirmado,Total,TipoOrdenNoR from cotizaciones where FolioCotizacion='"+id+"'");
+                    con.getConnection().prepareStatement("SELECT  Descripcion,Volumen,PrecioTotal,GrupoCosto,Comision from tablaarticulos WHERE FolioCotizacion='"+id+"'");
                       ResultSet res = pstm.executeQuery();
                       int i=0;
                       while(res.next()){
-                          String Observaciones = res.getString("Observaciones");
-                         String Total = res.getString("Total");
-                          String TipoOrden = res.getString("TipoOrdenNoR");
-                          String Confirmado = res.getString("Confirmado");
-                         System.out.println("Observaciones: "+Observaciones+"Total: "+Total+"Tipo: "+TipoOrden+"Confirmado: "+Confirmado);
-                          datos[i][0]=Observaciones;
-                          datos[i][1]=Total;
-                          datos[i][2]=TipoOrden;
-                          datos[i][3]=Confirmado;
+                          String Descripcion = res.getString("Descripcion");
+                         String Volumen = res.getString("Volumen");
+                          String PrecioTotal = res.getString("PrecioTotal");
+                          String GrupoCosto = res.getString("GrupoCosto");
+                          String Comision = res.getString("Comision");
+                        // System.out.println("Observaciones: "+Observaciones+"Total: "+Total+"Tipo: "+TipoOrden+"Confirmado: "+Confirmado);
+                          datos[i][0]=Descripcion;
+                          datos[i][1]=Volumen;
+                          datos[i][2]=PrecioTotal;
+                          datos[i][3]=GrupoCosto;
+                          datos[i][4]=Comision;
                         
                           m.addRow(datos[i]);
                           i++;
@@ -855,7 +856,7 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
      public void Ver()
 {
 //con.getConnection();
-        String Titulos[]={"Descripcion","Total","Grupo","Confirmado"};
+        String Titulos[]={"Descripcion","Volumen","Total","GrupoCosto","Comision"};
         DefaultTableModel m = new DefaultTableModel(null,Titulos);
         jTable1.setModel(m);
         int registro=0;
@@ -863,7 +864,7 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
         try{
             
          PreparedStatement pstm =(PreparedStatement)
-         con.getConnection().prepareStatement("SELECT count(1) as total FROM catusuarios ");
+         con.getConnection().prepareStatement("SELECT count(1) as total FROM tablaarticulos ");
          ResultSet res = pstm.executeQuery();
          res.next();
          registro = res.getInt("total");
@@ -875,23 +876,25 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
         } catch (SQLException e) {
            System.out.println(e);
         }
-        Object [][] datos = new String[registro][4];
+        Object [][] datos = new String[registro][5];
         
         try {
                     PreparedStatement   pstm = (PreparedStatement)
-                    con.getConnection().prepareStatement("SELECT  Observaciones,Confirmado,Total,TipoOrdenNoR from cotizaciones ");
+                    con.getConnection().prepareStatement("SELECT  Descripcion,Volumen,PrecioTotal,GrupoCosto,Comision from tablaarticulos ");
                       ResultSet res = pstm.executeQuery();
                       int i=0;
                       while(res.next()){
-                          String Observaciones = res.getString("Observaciones");
-                         String Total = res.getString("Total");
-                          String TipoOrden = res.getString("TipoOrdenNoR");
-                          String Confirmado = res.getString("Confirmado");
-                         System.out.println("Observaciones: "+Observaciones+"Total: "+Total+"Tipo: "+TipoOrden+"Confirmado: "+Confirmado);
-                          datos[i][0]=Observaciones;
-                          datos[i][1]=Total;
-                          datos[i][2]=TipoOrden;
-                          datos[i][3]=Confirmado;
+                          String Descripcion = res.getString("Descripcion");
+                         String Volumen = res.getString("Volumen");
+                          String PrecioTotal = res.getString("PrecioTotal");
+                          String GrupoCosto = res.getString("GrupoCosto");
+                          String Comision = res.getString("Comision");
+                        // System.out.println("Observaciones: "+Observaciones+"Total: "+Total+"Tipo: "+TipoOrden+"Confirmado: "+Confirmado);
+                          datos[i][0]=Descripcion;
+                          datos[i][1]=Volumen;
+                          datos[i][2]=PrecioTotal;
+                          datos[i][3]=GrupoCosto;
+                          datos[i][4]=Comision;
                         
                           m.addRow(datos[i]);
                           i++;
@@ -903,14 +906,14 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
              System.out.println(ex);
         }
 }
-       public void NuevoProducto(String TMPfecha,String NombreCteOrigen,String DirOrigen,String RefOrigen,String NumPisosOrigen,String TelOrigen,String NombreRecibe,String DirDestino,String RefDestino,String TelDest,String NumPisoDest,String Almacenaje,String Menaje,String Maniobras,String VentasArt,String Saldo,String IVA,String SubTotal,String Total,String Retencion,String Anticipo,String Seguro,String Rentas)
+       public void NuevoProducto(String TMPfecha,String NombreCteOrigen,String DirOrigen,String RefOrigen,String NumPisosOrigen,String TelOrigen,String NombreRecibe,String DirDestino,String RefDestino,String TelDest,String NumPisoDest,String Almacenaje,String Menaje,String Maniobras,String VentasArt,String Saldo,String IVA,String SubTotal,String Total,String Retencion,String Anticipo,String Seguro,String Rentas,String HoraServicio,String UltimoUsuario,String Vendedor,String NoPresupuesto)
 {
     
     try{
        // PreparedStatement PreparedStatement = null;
         PreparedStatement pstm =(PreparedStatement)
       
-      con.getConnection().prepareStatement("insert into catordenesservicios (FechaServicio,NombreCteOrigen,DirOrigen,RefOrigen,NumPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDest,NumPisoDest,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,IVA,SubTotal,Total,Retencion,Anticipo,PorcSeguro,Rentas) values ('"+TMPfecha+"','"+NombreCteOrigen+"','"+DirOrigen+"','"+RefOrigen+"','"+NumPisosOrigen+"','"+TelOrigen+"','"+NombreRecibe+"','"+DirDestino+"','"+RefDestino+"','"+TelDest+"','"+NumPisoDest+"',"+Almacenaje+","+Menaje+","+Maniobras+","+VentasArt+","+Saldo+","+IVA+","+SubTotal+","+Total+","+Retencion+","+Anticipo+","+Seguro+","+Rentas+")");
+      con.getConnection().prepareStatement("insert into catordenesservicios (FechaServicio,NombreCteOrigen,DirOrigen,RefOrigen,NumPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDest,NumPisoDest,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,IVA,SubTotal,Total,Retencion,Anticipo,PorcSeguro,Rentas,HoraServicio,UltimoUsuario,Vendedor,NoPresupuesto) values ('"+TMPfecha+"','"+NombreCteOrigen+"','"+DirOrigen+"','"+RefOrigen+"','"+NumPisosOrigen+"','"+TelOrigen+"','"+NombreRecibe+"','"+DirDestino+"','"+RefDestino+"','"+TelDest+"','"+NumPisoDest+"',"+Almacenaje+","+Menaje+","+Maniobras+","+VentasArt+","+Saldo+","+IVA+","+SubTotal+","+Total+","+Retencion+","+Anticipo+","+Seguro+","+Rentas+",'"+HoraServicio+"','"+UltimoUsuario+"','"+Vendedor+"',"+NoPresupuesto+")");
        pstm.execute();   
        pstm.close();
            
@@ -921,46 +924,32 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
             }
 
 }
-    /*  public void NuevoProducto(String TMPfecha,String NombreCteOrigen,String DirOrigen,String RefOrigen,String NumPisosOrigen,String TelOrigen,String NombreRecibe,String DirDestino,String RefDestino,String TelDest,String NumPisosDest,String Almacenaje,String Menaje,String Maniobras,String VentasArt,String Saldo,String IVA,String SubTotal,String Total,String Retencion,String Anticipo,String Seguro,String Rentas)
+public void VerCombo()
 {
     
     try{
        // PreparedStatement PreparedStatement = null;
-        PreparedStatement pstm =(PreparedStatement)
-      
-      con.getConnection().prepareStatement("insert into catordenesservicios (FechaServicio,NombreCteOrigen,DirOrigen,RefOrigen,NumPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDest,NumPisosDest,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,Rentas,IVA,SubTotal,Total,Retencion,Anticipo,Seguro,Rentas) values ('"+TMPfecha+"','"+NombreCteOrigen+"','"+DirOrigen+"','"+RefOrigen+"','"+NumPisosOrigen+"',"+TelOrigen+",'"+NombreRecibe+"','"+DirDestino+"','"+RefDestino+"',"+TelDest+",'"+NumPisosDest+"',"+Almacenaje+","+Menaje+","+Maniobras+","+VentasArt+","+Saldo+","+IVA+","+SubTotal+","+Total+","+Retencion+","+Anticipo+","+Seguro+","+Rentas+")");
-       pstm.execute();   
-       pstm.close();
+        Statement st = con.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+     ResultSet rs= st.executeQuery("SELECT nombre_usuario FROM catusuarios");
+          modeloCombo2.addElement("Seleccione un Usuario");
+            this.jComboBox4.setModel(modeloCombo2);
+            while (rs.next()) {
+                modeloCombo2.addElement(rs.getObject("nombre_usuario"));
+                this.jComboBox4.setModel(modeloCombo2);
+            }
+ 
+         
+       st.close();
            
     
     }catch(SQLException e){
             
                 System.out.println(e);
             }
+      // TODO add your handling code here:
 
-}*/
-        public void Modificar(String idx,String TMPFecha,String TMPhora)
-   {
-   
-    // TODO add your handling code here:
-          
-      
-        try {            
-            PreparedStatement pst =(PreparedStatement)     
-           con.getConnection().prepareStatement("UPDATE cotizaciones SET FechaFinServ='"+TMPFecha+"'  WHERE FolioCotizacion ='"+idx+"'");                                                        
-            pst.executeUpdate();
-            pst.close();
-         
-            //JOptionPane.showMessageDialog(null,"Se modifico el registro con exito!");
-            
-        
-        } catch (SQLException ex) {
-            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-   
-   
-   }
-      
+}
+  
     /**
      * @param args the command line arguments
      */
@@ -1019,7 +1008,6 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -1062,9 +1050,7 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField3;
