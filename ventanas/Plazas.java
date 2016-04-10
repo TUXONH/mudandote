@@ -1,6 +1,7 @@
 package ventanas;
 
 import clases.conexion;
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -9,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -576,6 +578,14 @@ public class Plazas extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+                  try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+      {
+      e.printStackTrace();
+    }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

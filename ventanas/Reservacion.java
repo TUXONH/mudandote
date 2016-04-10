@@ -9,6 +9,7 @@ import UpperEssential.UpperEssentialLookAndFeel;
 import clases.conexion;
 import com.toedter.calendar.JDateChooser;
 import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
+<<<<<<< HEAD
 import java.awt.Desktop;
 import java.awt.geom.Point2D;
 import java.io.IOException;
@@ -16,6 +17,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+=======
+>>>>>>> d96d50242ac7ced1a04c370b3f9afc586f3e0e02
 //import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -1150,6 +1153,14 @@ public void VerCombo()
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+    try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+      {
+      e.printStackTrace();
+    }
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
