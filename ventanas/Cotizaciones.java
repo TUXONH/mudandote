@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import clases.conexion;
 import clases.Estado_Municipio;
 import clases.Encapsuladas;
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import java.awt.Image;
 import static java.lang.Thread.sleep;
 import java.sql.Date;
@@ -25,6 +26,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
+import javax.swing.UIManager;
 
 
 public class Cotizaciones extends javax.swing.JFrame {
@@ -2669,6 +2671,14 @@ public class Cotizaciones extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+                  try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+      {
+      e.printStackTrace();
+    }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
