@@ -18,6 +18,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableColumnModel;
+ import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 
 /**
  *
@@ -68,14 +69,14 @@ public class Main2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cotizacion = new org.edisoncor.gui.button.ButtonColoredAction();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        combo3 = new org.edisoncor.gui.comboBox.ComboBoxRound();
-        combo1 = new org.edisoncor.gui.comboBox.ComboBoxRound();
-        combo2 = new org.edisoncor.gui.comboBox.ComboBoxRound();
-        reservacion1 = new org.edisoncor.gui.button.ButtonColoredAction();
+        cotizacion = new javax.swing.JButton();
+        reservacion = new javax.swing.JButton();
+        combo1 = new javax.swing.JComboBox<>();
+        combo2 = new javax.swing.JComboBox<>();
+        combo3 = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Empresa = new javax.swing.JMenuItem();
@@ -95,13 +96,6 @@ public class Main2 extends javax.swing.JFrame {
         setUndecorated(true);
         setSize(new java.awt.Dimension(1211, 458));
         getContentPane().setLayout(null);
-
-        cotizacion.setBackground(new java.awt.Color(51, 51, 51));
-        cotizacion.setText("Reservacion");
-        cotizacion.setActionCommand("");
-        cotizacion.setColorDeSombra(new java.awt.Color(51, 51, 51));
-        getContentPane().add(cotizacion);
-        cotizacion.setBounds(10, 190, 116, 35);
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,39 +127,25 @@ public class Main2 extends javax.swing.JFrame {
         getContentPane().add(jTextField1);
         jTextField1.setBounds(450, 100, 103, 20);
 
-        combo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "*", " " }));
-        combo3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(combo3);
-        combo3.setBounds(340, 100, 80, 20);
+        cotizacion.setText("jButton1");
+        getContentPane().add(cotizacion);
+        cotizacion.setBounds(30, 190, 81, 26);
 
-        combo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clientes", "Cotización", "Reservacion", "Unidades", "Choferes", "Articulos", "Usuarios" }));
-        combo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo1ActionPerformed(evt);
-            }
-        });
+        reservacion.setText("jButton1");
+        getContentPane().add(reservacion);
+        reservacion.setBounds(30, 140, 81, 26);
+
+        combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(combo1);
-        combo1.setBounds(140, 100, 100, 20);
+        combo1.setBounds(130, 100, 63, 25);
 
-        combo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "*", " " }));
-        combo2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo2ActionPerformed(evt);
-            }
-        });
+        combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(combo2);
-        combo2.setBounds(250, 100, 80, 20);
+        combo2.setBounds(220, 90, 63, 25);
 
-        reservacion1.setBackground(new java.awt.Color(51, 51, 51));
-        reservacion1.setText("Reservacion");
-        reservacion1.setActionCommand("");
-        reservacion1.setColorDeSombra(new java.awt.Color(51, 51, 51));
-        getContentPane().add(reservacion1);
-        reservacion1.setBounds(10, 130, 116, 35);
+        combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(combo3);
+        combo3.setBounds(340, 90, 63, 25);
 
         jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
         jMenuBar1.setBorder(null);
@@ -342,18 +322,6 @@ public class Main2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_combo3ActionPerformed
-
-    private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_combo1ActionPerformed
-
-    private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_combo2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -460,7 +428,16 @@ public class Main2 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-      UIManager.setLookAndFeel(new UpperEssentialLookAndFeel("src//jars//gris.theme"));
+       try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+    {
+      e.printStackTrace();
+    }
+
+
         java.awt.EventQueue.invokeLater(() -> {
             new Main2().setVisible(true);
         });
@@ -473,10 +450,10 @@ public class Main2 extends javax.swing.JFrame {
     private javax.swing.JMenuItem Reservaciones;
     private javax.swing.JMenuItem Unidades;
     private javax.swing.JMenuItem Usuarios;
-    private org.edisoncor.gui.comboBox.ComboBoxRound combo1;
-    private org.edisoncor.gui.comboBox.ComboBoxRound combo2;
-    private org.edisoncor.gui.comboBox.ComboBoxRound combo3;
-    private org.edisoncor.gui.button.ButtonColoredAction cotizacion;
+    private javax.swing.JComboBox<String> combo1;
+    private javax.swing.JComboBox<String> combo2;
+    private javax.swing.JComboBox<String> combo3;
+    private javax.swing.JButton cotizacion;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -486,7 +463,7 @@ public class Main2 extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private org.edisoncor.gui.button.ButtonColoredAction reservacion1;
+    private javax.swing.JButton reservacion;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }
