@@ -2459,11 +2459,9 @@ public class Cotizaciones extends javax.swing.JFrame {
        
         }
     
-<<<<<<< HEAD
 public void guardarDatos()
 {
      int año = FechaProbable.getCalendar().get(Calendar.YEAR);
-=======
     
     private void CodiGeograficaOrigen() throws UnsupportedEncodingException, MalformedURLException{
        if(!this.txtDireccion.getText().isEmpty()){
@@ -2482,10 +2480,9 @@ public void guardarDatos()
         }        
     }
     
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         
          int año = FechaProbable.getCalendar().get(Calendar.YEAR);
->>>>>>> 948f664ba30055c2af5e3149dd836d347779b019
    
        int mes = 1+ FechaProbable.getCalendar().get(Calendar.MONTH);
         int dia = FechaProbable.getCalendar().get(Calendar.DAY_OF_MONTH);
