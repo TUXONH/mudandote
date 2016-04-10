@@ -21,8 +21,7 @@ public final class Splash extends javax.swing.JFrame
     }
     public void iniciar()
     {
-        getProgreso().setVisible(false);
-        hilo = new cargar(getProgreso());
+        hilo = new cargar(getProgreso(), porciento);
         hilo.start();
         hilo=null;
     }
@@ -37,10 +36,11 @@ public final class Splash extends javax.swing.JFrame
     private void initComponents() {
 
         progreso = new javax.swing.JProgressBar();
-        fondo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        porciento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(585, 374));
+        setMinimumSize(new java.awt.Dimension(415, 480));
         setUndecorated(true);
         getContentPane().setLayout(null);
 
@@ -50,11 +50,15 @@ public final class Splash extends javax.swing.JFrame
             }
         });
         getContentPane().add(progreso);
-        progreso.setBounds(200, 340, 148, 14);
+        progreso.setBounds(10, 460, 350, 14);
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background.png"))); // NOI18N
-        getContentPane().add(fondo);
-        fondo.setBounds(0, 0, 585, 374);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atlas.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 0, 400, 430);
+
+        porciento.setText("100%");
+        getContentPane().add(porciento);
+        porciento.setBounds(370, 460, 30, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,7 +115,8 @@ public final class Splash extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel porciento;
     private javax.swing.JProgressBar progreso;
     // End of variables declaration//GEN-END:variables
 

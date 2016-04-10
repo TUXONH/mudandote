@@ -136,7 +136,7 @@
                                           <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jTextField1" pref="326" max="32767" attributes="0"/>
-                                              <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="DireccionOrigen" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
                                           </Group>
@@ -182,7 +182,7 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="DireccionOrigen" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -221,7 +221,7 @@
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="DireccionOrigen">
                   <Properties>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
@@ -410,7 +410,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Component id="jTextField28" max="32767" attributes="0"/>
+                                      <Component id="DireccionDestino" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
@@ -455,7 +455,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField28" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="DireccionDestino" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -488,7 +488,7 @@
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField28">
+                <Component class="javax.swing.JTextField" name="DireccionDestino">
                   <Properties>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>

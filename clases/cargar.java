@@ -5,13 +5,16 @@
  */
 package clases;
 
+import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
 public class cargar extends Thread {
     JProgressBar progreso;
-    public cargar(JProgressBar progreso)
+    JLabel porcentaje;
+    public cargar(JProgressBar progreso, JLabel porcentaje)
     {
         super();
+        this.porcentaje = porcentaje;
         this.progreso = progreso;
     }
     @Override
@@ -20,6 +23,7 @@ public class cargar extends Thread {
         for(int i= 1; i<=100; i++)
         {
             progreso.setValue(i);
+            porcentaje.setText(i+"&");
             pausa(30);
         }
     }

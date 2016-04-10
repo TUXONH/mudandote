@@ -129,11 +129,11 @@ public class Main2 extends javax.swing.JFrame {
 
         cotizacion.setText("jButton1");
         getContentPane().add(cotizacion);
-        cotizacion.setBounds(30, 190, 81, 26);
+        cotizacion.setBounds(11, 190, 100, 60);
 
         reservacion.setText("cotizacion");
         getContentPane().add(reservacion);
-        reservacion.setBounds(30, 140, 92, 26);
+        reservacion.setBounds(22, 140, 100, 40);
 
         combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(combo1);
@@ -141,18 +141,23 @@ public class Main2 extends javax.swing.JFrame {
 
         combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(combo2);
-        combo2.setBounds(220, 90, 63, 25);
+        combo2.setBounds(230, 100, 63, 25);
 
         combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(combo3);
-        combo3.setBounds(340, 90, 63, 25);
+        combo3.setBounds(320, 100, 63, 25);
 
-        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setBackground(new java.awt.Color(255, 102, 0));
         jMenuBar1.setBorder(null);
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setBorderPainted(false);
 
-        jMenu1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu1.setBackground(new java.awt.Color(255, 102, 0));
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("Seleccionar Empresa");
         jMenu1.setOpaque(true);
@@ -170,7 +175,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu2.setBackground(new java.awt.Color(255, 102, 0));
         jMenu2.setForeground(new java.awt.Color(255, 255, 255));
         jMenu2.setText("Usuarios");
         jMenu2.setOpaque(true);
@@ -188,7 +193,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu3.setBackground(new java.awt.Color(255, 102, 0));
         jMenu3.setForeground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("Clientes");
         jMenu3.setOpaque(true);
@@ -206,7 +211,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu4.setBackground(new java.awt.Color(255, 102, 0));
         jMenu4.setForeground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("Cotizaciones");
         jMenu4.setOpaque(true);
@@ -224,7 +229,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu5.setBackground(new java.awt.Color(255, 102, 0));
         jMenu5.setForeground(new java.awt.Color(255, 255, 255));
         jMenu5.setText("Reservaciones");
         jMenu5.setOpaque(true);
@@ -242,7 +247,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu6.setBackground(new java.awt.Color(255, 102, 0));
         jMenu6.setForeground(new java.awt.Color(255, 255, 255));
         jMenu6.setText("Unidades");
         jMenu6.setOpaque(true);
@@ -321,6 +326,10 @@ public class Main2 extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo3ActionPerformed
 
     /**
      * @param args the command line arguments
