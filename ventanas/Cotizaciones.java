@@ -2542,7 +2542,7 @@ public void guardarDatos()
          distance=String.valueOf(distancia);
     } 
     
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
        String[] coordenadas = null,coordenadas2 = null;
        
        try {
@@ -3134,9 +3134,9 @@ public void guardarDatos()
 
     }//GEN-LAST:event_txtApellidosKeyTyped
 
-    private void txtDireccionDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionDestinoActionPerformed
+    private void txtDireccionDestinoActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionDestinoActionPerformed
+    }                                                   
 
     private void txtDireccionDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionDestinoKeyTyped
         // TODO add your handling code here:
