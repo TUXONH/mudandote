@@ -6,8 +6,21 @@
 package ventanas;
 
 import UpperEssential.UpperEssentialLookAndFeel;
+import clases.Geocoding;
+import clases.Route;
 import clases.conexion;
 import com.toedter.calendar.JDateChooser;
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
+
+import java.awt.Desktop;
+import java.awt.geom.Point2D;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+
 //import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,16 +28,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-<<<<<<< HEAD
+
 import javax.swing.JOptionPane;
-=======
+
 import javax.swing.UIManager;
->>>>>>> 22ca5ab7078b3f6cbd9bf5d7d9341f98c60e7bb2
+import javax.swing.table.TableModel;
+import maps.java.ShowMaps;
+import org.jsoup.Jsoup;
+
 
 /**
  *
@@ -35,10 +52,20 @@ public class Reservacion extends javax.swing.JFrame {
     /**
      * Creates new form Reservacion
      */
-    conexion con;
+     
+   conexion con;
     DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
     //String date;
     //Date fecha;
+    //private ShowMaps ObjShowMaps=new ShowMaps();
+    //private ShowMaps ObjShowMaps=new ShowMaps();
+    //private Geocoding ObjGeocoding=new Geocoding();
+    //private Geocoding ObjGeocoding = new Geocoding();
+    //private Route ObjRoute = new Route();
+    clases.ShowMaps ObjShowMaps=new clases.ShowMaps();
+    clases.Geocoding ObjGeocoding=new clases.Geocoding();
+    clases.Route ObjRoute = new clases.Route();
+    String lat,lon,lat2,lon2,time,distance; 
     public Reservacion() {
         initComponents();
         con =  new conexion();
@@ -62,7 +89,7 @@ public class Reservacion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        DireccionOrigen = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
@@ -84,7 +111,7 @@ public class Reservacion extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jTextField24 = new javax.swing.JTextField();
-        jTextField28 = new javax.swing.JTextField();
+        DireccionDestino = new javax.swing.JTextField();
         jTextField29 = new javax.swing.JTextField();
         jTextField30 = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
@@ -152,7 +179,7 @@ public class Reservacion extends javax.swing.JFrame {
 
         jTextField1.setEnabled(false);
 
-        jTextField2.setEnabled(false);
+        DireccionOrigen.setEnabled(false);
 
         jLabel2.setText("Recoger en:");
 
@@ -246,7 +273,7 @@ public class Reservacion extends javax.swing.JFrame {
                                 .addGap(35, 35, 35)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                                    .addComponent(jTextField2)
+                                    .addComponent(DireccionOrigen)
                                     .addComponent(jTextField3)
                                     .addComponent(jTextField4)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -267,7 +294,7 @@ public class Reservacion extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +307,7 @@ public class Reservacion extends javax.swing.JFrame {
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DireccionOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -306,7 +333,7 @@ public class Reservacion extends javax.swing.JFrame {
 
         jTextField24.setEnabled(false);
 
-        jTextField28.setEnabled(false);
+        DireccionDestino.setEnabled(false);
 
         jTextField29.setEnabled(false);
 
@@ -356,7 +383,7 @@ public class Reservacion extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel28)
                             .addGap(26, 26, 26)
-                            .addComponent(jTextField28))
+                            .addComponent(DireccionDestino))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel29)
                             .addGap(24, 24, 24)
@@ -389,7 +416,7 @@ public class Reservacion extends javax.swing.JFrame {
                     .addComponent(jLabel27))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DireccionDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -833,7 +860,7 @@ public class Reservacion extends javax.swing.JFrame {
         String aux_Renta=res1.getObject("Rentas").toString();
         String aux_Orden=res1.getObject("NumOrdenNoR").toString();
       jTextField1.setText(aux_clientes);
-      jTextField2.setText(aux_dirOrigen);
+      DireccionOrigen.setText(aux_dirOrigen);
       jTextField3.setText(aux_refOrigen);
      // jTextField4.setText(aux_ColPoblOrigen);
       jTextField6.setText(aux_PisosOrigen);
@@ -855,7 +882,7 @@ public class Reservacion extends javax.swing.JFrame {
       jTextField17.setText(aux_Maniobras);
       jTextField24.setText(aux_NombreRecibe);
       jTextArea1.setText(aux_Observacion);
-      jTextField28.setText(aux_DirDestino);
+      DireccionDestino.setText(aux_DirDestino);
       jTextField29.setText(aux_refDestino);
      // jTextField30.setText(aux_ColPoblDestino);
       jTextField31.setText(aux_TelDest);
@@ -877,15 +904,101 @@ public class Reservacion extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+     private void mostrarMapa(String direccion) throws IOException, URISyntaxException{
+        String direccionMapa=ObjShowMaps.getURLMap(direccion);
+        Desktop.getDesktop().browse(new URI(direccionMapa));
+    }
+    private void CodiGeograficaOrigen() throws UnsupportedEncodingException, MalformedURLException{
+       if(!this.DireccionOrigen.getText().isEmpty()){
+            //JText_CD_DireEnc.setText("");
+            Point2D.Double resultado=ObjGeocoding.getCoordinates(DireccionOrigen.getText());
+            System.out.println("Direccion origen :"+DireccionOrigen.getText());
+            lat= (String.valueOf(resultado.x));
+            lon= (String.valueOf(resultado.y));
+        }        
+    }
+    private void CodiGeograficaDestino() throws UnsupportedEncodingException, MalformedURLException{
+       if(!this.DireccionDestino.getText().isEmpty()){
+            //JText_CD_DireEnc.setText("");
+            Point2D.Double resultado=ObjGeocoding.getCoordinates(DireccionDestino.getText());
+            System.out.println("Direccion origen :"+DireccionDestino.getText());
+            lat2= (String.valueOf(resultado.x));
+            lon2= (String.valueOf(resultado.y));
+        }        
+    }
+     private void rellenarTablaRuta(String[][] ruta){
+        String[] columnas=new String[5];
+        columnas[0]="Duración tramo";columnas[1]="Distancia tramo";columnas[2]="Indicaciones";columnas[3]="Latitud";columnas[4]="Longitud";
+        for(int i=0;i<ruta.length;i++){
+            try {
+                 ruta[i][2]=Jsoup.parse(ruta[i][2]).text();
+            } catch (Exception e) {
+            }
+        }
+        TableModel tableModel=new DefaultTableModel(ruta, columnas);
+        //this.jTable_Ruta_Tramos.setModel(tableModel);
+    }
+    private void rellenarDatosrRuta(){
+//         this.JLabel_Ruta_Copyright.setText("");
+//         this.JLabel_Ruta_Resumen.setText("");
+//         this.JText_Ruta_Tiempo.setText("");
+//         this.JText_Ruta_Distancia.setText("");
+         //this.JLabel_Ruta_Status.setText(MapsJava.getLastRequestStatus());
+         ArrayList<Integer> tiempoTotal=ObjRoute.getTotalTime();
+         int tiempoAux=0;
+         for(Integer item:tiempoTotal){
+             tiempoAux+=item;
+         }
+         ArrayList<Integer> distanciaTotal=ObjRoute.getTotalDistance();
+         int distanciaAux=0;
+         for(Integer item:distanciaTotal){
+             distanciaAux+=item;
+         }
+         double tiempo=(double)(tiempoAux);
+         tiempo=(tiempo/60)/60;
+         tiempo=redondeoDosDecimales(tiempo);
+         double distancia=(double)(distanciaAux);
+         distancia=distancia/1000;
+//         this.JLabel_Ruta_Copyright.setText(ObjRoute.getCopyright());
+//         this.JLabel_Ruta_Resumen.setText(ObjRoute.getSummary());
+         time = (String.valueOf(tiempo));
+         distance = (String.valueOf(distancia));
+
+    } 
+    double redondeoDosDecimales(double d) {
+        return Math.rint(d*1000)/1000;
+    }
+    private void crearRuta() throws MalformedURLException, UnsupportedEncodingException{
+         if(!DireccionOrigen.getText().isEmpty() && !DireccionDestino.getText().isEmpty()){
+             ArrayList<String> hitos=new ArrayList<>();
+             //if(jCheckBox_Ruta_Hito.isSelected() && !JText_Ruta_Hito.getText().isEmpty()){
+             //    hitos.add(JText_Ruta_Hito.getText());
+             //}
+             String[][] arrayRoute=ObjRoute.getRoute(DireccionOrigen.getText(), DireccionDestino.getText(),
+                     hitos, Boolean.TRUE,clases.Route.mode.driving,clases.Route.avoids.nothing);               
+             
+//,
+//hitos, Boolean.TRUE,this.seleccionarModoRuta(),this.seleccionarRestricciones());  
+             rellenarTablaRuta(arrayRoute);
+             rellenarDatosrRuta();
+            
+         }
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    
+
         if(jDateChooser1.getDate()!=null && !jTextField26.getText().equals("")){
-           if(jComboBox4.getSelectedItem().equals("Selecione un Usuario")){
+           if(!jComboBox4.getSelectedItem().equals("Selecione un Usuario")){
                 int anio = jDateChooser1.getCalendar().get(Calendar.YEAR);
                 int mes = jDateChooser1.getCalendar().get(Calendar.MONTH) + 1;
                 int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
                  String fecha =  anio+"/"+mes+"/"+dia;
-                 NuevoProducto(fecha,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField6.getText(),jTextField7.getText(),jTextField24.getText(),jTextField28.getText(),jTextField29.getText(),jTextField31.getText(),jTextField32.getText(),jTextField12.getText(),jTextField13.getText(),jTextField17.getText(),jTextField15.getText(),jTextField23.getText(),jTextField19.getText(),jTextField18.getText(),jTextField33.getText(),jTextField20.getText(),jTextField22.getText(),jTextField16.getText(),jTextField14.getText(),jComboBox1.getSelectedItem().toString(),jTextField26.getText(),jComboBox4.getSelectedItem().toString(),jTextField9.getText());
+               try {
+                   NuevoProducto(fecha,jTextField1.getText(),DireccionOrigen.getText(),jTextField3.getText(),jTextField6.getText(),jTextField7.getText(),jTextField24.getText(),DireccionDestino.getText(),jTextField29.getText(),jTextField31.getText(),jTextField32.getText(),jTextField12.getText(),jTextField13.getText(),jTextField17.getText(),jTextField15.getText(),jTextField23.getText(),jTextField19.getText(),jTextField18.getText(),jTextField33.getText(),jTextField20.getText(),jTextField22.getText(),jTextField16.getText(),jTextField14.getText(),jComboBox1.getSelectedItem().toString(),jTextField26.getText(),jComboBox4.getSelectedItem().toString(),jTextField9.getText());
+               } catch (UnsupportedEncodingException ex) {
+                   Logger.getLogger(Reservacion.class.getName()).log(Level.SEVERE, null, ex);
+               } catch (MalformedURLException ex) {
+                   Logger.getLogger(Reservacion.class.getName()).log(Level.SEVERE, null, ex);
+               }
               }
            else
            {
@@ -899,15 +1012,32 @@ public class Reservacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
- VerCombo();
+    //VerCombo();
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
        double NuevoSaldo=Double.parseDouble(jTextField8.getText())-Integer.parseInt(jTextField5.getText());
        System.out.println(NuevoSaldo);
-       String SaldoS= Double.toString(NuevoSaldo);
-       jTextField21.setText(SaldoS);
+       jTextField21.setText(Double.toString(NuevoSaldo));
+       double AnticipoA=Double.parseDouble(jTextField22.getText())+Double.parseDouble(jTextField5.getText());
+       jTextField23.setText(Double.toString(NuevoSaldo));
+        jTextField22.setText(Double.toString(AnticipoA));
+       try {            
+            PreparedStatement pst =(PreparedStatement)     
+          
+            con.getConnection().prepareStatement("UPDATE cotizaciones SET Anticipo="+AnticipoA+",Saldo="+NuevoSaldo+" WHERE FolioCotizacion="+jTextField10.getText());                                                        
+           
+            pst.executeUpdate();
+            pst.close();
+         
+            //JOptionPane.showMessageDialog(null,"Se modifico el registro con exito!");
+            
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
        
     }//GEN-LAST:event_jButton3ActionPerformed
     public void Ver(String id)
@@ -1016,17 +1146,22 @@ public class Reservacion extends javax.swing.JFrame {
              System.out.println(ex);
         }
 }
-       public void NuevoProducto(String TMPfecha,String NombreCteOrigen,String DirOrigen,String RefOrigen,String NumPisosOrigen,String TelOrigen,String NombreRecibe,String DirDestino,String RefDestino,String TelDest,String NumPisoDest,String Almacenaje,String Menaje,String Maniobras,String VentasArt,String Saldo,String IVA,String SubTotal,String Total,String Retencion,String Anticipo,String Seguro,String Rentas,String HoraServicio,String UltimoUsuario,String Vendedor,String NoPresupuesto)
+       public void NuevoProducto(String TMPfecha,String NombreCteOrigen,String DirOrigen,String RefOrigen,String NumPisosOrigen,String TelOrigen,String NombreRecibe,String DirDestino,String RefDestino,String TelDest,String NumPisoDest,String Almacenaje,String Menaje,String Maniobras,String VentasArt,String Saldo,String IVA,String SubTotal,String Total,String Retencion,String Anticipo,String Seguro,String Rentas,String HoraServicio,String UltimoUsuario,String Vendedor,String NoPresupuesto) throws UnsupportedEncodingException, MalformedURLException
 {
     
     try{
+        CodiGeograficaOrigen();
+        CodiGeograficaDestino();
+        crearRuta();
+        rellenarDatosrRuta();
        // PreparedStatement PreparedStatement = null;
-        PreparedStatement pstm =(PreparedStatement)
-      
-      con.getConnection().prepareStatement("insert into catordenesservicios (FechaServicio,NombreCteOrigen,DirOrigen,RefOrigen,NumPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDest,NumPisoDest,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,IVA,SubTotal,Total,Retencion,Anticipo,PorcSeguro,Rentas,HoraServicio,UltimoUsuario,Vendedor,NoPresupuesto) values ('"+TMPfecha+"','"+NombreCteOrigen+"','"+DirOrigen+"','"+RefOrigen+"','"+NumPisosOrigen+"','"+TelOrigen+"','"+NombreRecibe+"','"+DirDestino+"','"+RefDestino+"','"+TelDest+"','"+NumPisoDest+"',"+Almacenaje+","+Menaje+","+Maniobras+","+VentasArt+","+Saldo+","+IVA+","+SubTotal+","+Total+","+Retencion+","+Anticipo+","+Seguro+","+Rentas+",'"+HoraServicio+"','"+UltimoUsuario+"','"+Vendedor+"',"+NoPresupuesto+")");
-       pstm.execute();   
-       pstm.close();
-           
+        PreparedStatement pstm =(PreparedStatement)        
+        con.getConnection().prepareStatement("insert into catordenesservicios (FechaServicio,NombreCteOrigen,DirOrigen,RefOrigen,NumPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDest,NumPisoDest,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,IVA,SubTotal,Total,Retencion,Anticipo,PorcSeguro,Rentas,HoraServicio,UltimoUsuario,Vendedor,NoPresupuesto,CoordenadaXOrigen,CoordenadaYOrigen,CoordenadaXDestino,CoordenadaYDestino,Tiempo,Distancia) values ('"+TMPfecha+"','"+NombreCteOrigen+"','"+DirOrigen+"','"+RefOrigen+"','"+NumPisosOrigen+"','"+TelOrigen+"','"+NombreRecibe+"','"+DirDestino+"','"+RefDestino+"','"+TelDest+"','"+NumPisoDest+"',"+Almacenaje+","+Menaje+","+Maniobras+","+VentasArt+","+Saldo+","+IVA+","+SubTotal+","+Total+","+Retencion+","+Anticipo+","+Seguro+","+Rentas+",'"+HoraServicio+"','"+UltimoUsuario+"','"+Vendedor+"',"+NoPresupuesto+",'"+lat+"','"+lon+"','"+lat2+"','"+lon2+"','"+time+"','"+distance+"')");
+        pstm.execute();   
+        pstm.close();
+        JOptionPane.showMessageDialog(null,"Tiempo :"+time+" Distancia :"+distance);
+        
+        JOptionPane.showMessageDialog(null,"Se agregaron los datos!");
     
     }catch(SQLException e){
             
@@ -1064,6 +1199,14 @@ public void VerCombo()
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+    try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+      {
+      e.printStackTrace();
+    }
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1088,7 +1231,14 @@ public void VerCombo()
         //</editor-fold>
 
         /* Create and display the form */
-         
+               try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+          {
+      e.printStackTrace();
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Reservacion().setVisible(true);
@@ -1097,6 +1247,8 @@ public void VerCombo()
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DireccionDestino;
+    private javax.swing.JTextField DireccionOrigen;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1163,14 +1315,12 @@ public void VerCombo()
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;

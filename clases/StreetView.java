@@ -8,7 +8,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import javax.imageio.ImageIO;
 import javax.xml.xpath.XPath;
-import maps.java.MapsJava;
 import org.w3c.dom.Document;
 
 /**
