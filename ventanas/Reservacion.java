@@ -20,11 +20,11 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-<<<<<<< HEAD
+
 import javax.swing.JOptionPane;
-=======
+
 import javax.swing.UIManager;
->>>>>>> 22ca5ab7078b3f6cbd9bf5d7d9341f98c60e7bb2
+
 
 /**
  *
@@ -908,6 +908,9 @@ public class Reservacion extends javax.swing.JFrame {
        System.out.println(NuevoSaldo);
        String SaldoS= Double.toString(NuevoSaldo);
        jTextField21.setText(SaldoS);
+      String  Anticipo= jTextField22.getText();
+       String SaldoA=jTextField5.getText();
+       double AnticipoA=Double.parseDouble(jTextField22.getText())+Double.parseDouble(jTextField5.getText());
        
     }//GEN-LAST:event_jButton3ActionPerformed
     public void Ver(String id)
