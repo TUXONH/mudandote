@@ -1087,7 +1087,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                                 .addComponent(jLabel46)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(txtDireccionDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                .addComponent(txtDireccionDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
                                 .addGap(180, 180, 180))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1218,7 +1218,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(336, Short.MAX_VALUE)
+                .addContainerGap(485, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addComponent(jCheckBox9)
@@ -1501,7 +1501,8 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Save.png"))); // NOI18N
+        btnGuardar.setText("Guardar ");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -1538,9 +1539,9 @@ public class Cotizaciones extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)
+                        .addGap(81, 81, 81)
+                        .addComponent(btnGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -2459,7 +2460,6 @@ public class Cotizaciones extends javax.swing.JFrame {
        
         }
     
-<<<<<<< HEAD
 public void guardarDatos()
 {
      int año = FechaProbable.getCalendar().get(Calendar.YEAR);
@@ -2484,13 +2484,11 @@ public void guardarDatos()
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         
          int año = FechaProbable.getCalendar().get(Calendar.YEAR);
-=======
 
 public void guardarDatos()      
 {
      int año = FechaProbable.getCalendar().get(Calendar.YEAR);
 
->>>>>>> 727798e609d79fe8f08b3cfb2f91b5fb83b86f82
    
        int mes = 1+ FechaProbable.getCalendar().get(Calendar.MONTH);
         int dia = FechaProbable.getCalendar().get(Calendar.DAY_OF_MONTH);

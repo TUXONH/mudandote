@@ -131,9 +131,9 @@ public class Main2 extends javax.swing.JFrame {
         getContentPane().add(cotizacion);
         cotizacion.setBounds(30, 190, 81, 26);
 
-        reservacion.setText("jButton1");
+        reservacion.setText("cotizacion");
         getContentPane().add(reservacion);
-        reservacion.setBounds(30, 140, 81, 26);
+        reservacion.setBounds(30, 140, 92, 26);
 
         combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(combo1);
