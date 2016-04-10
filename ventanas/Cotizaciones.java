@@ -18,7 +18,10 @@ import clases.Estado_Municipio;
 import clases.Encapsuladas;
 import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import java.awt.Image;
+import java.awt.geom.Point2D;
+import java.io.UnsupportedEncodingException;
 import static java.lang.Thread.sleep;
+import java.net.MalformedURLException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -26,7 +29,12 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
+<<<<<<< HEAD
+import java.util.logging.Level;
+import java.util.logging.Logger;
+=======
 import javax.swing.UIManager;
+>>>>>>> 22ca5ab7078b3f6cbd9bf5d7d9341f98c60e7bb2
 
 
 public class Cotizaciones extends javax.swing.JFrame {
@@ -47,8 +55,8 @@ public class Cotizaciones extends javax.swing.JFrame {
    public double Anticipo=0;
    public double Saldo=0;
    public double  SinPorcentaje=0;
-   
-   
+   String lat,lon,lat2,lon2;
+   clases.Geocoding ObjGeocoding=new clases.Geocoding();
     
     Estado_Municipio estado_municipio = new Estado_Municipio();
     
@@ -973,6 +981,16 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel46.setText("*Direccion");
 
         txtDireccionDestino.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDireccionDestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionDestinoActionPerformed(evt);
+            }
+        });
+        txtDireccionDestino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionDestinoKeyTyped(evt);
+            }
+        });
 
         ComboEstado2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         ComboEstado2.addActionListener(new java.awt.event.ActionListener() {
@@ -1409,6 +1427,9 @@ public class Cotizaciones extends javax.swing.JFrame {
             }
         });
         TablaArticulos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TablaArticulosKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 TablaArticulosKeyTyped(evt);
             }
@@ -2438,11 +2459,33 @@ public class Cotizaciones extends javax.swing.JFrame {
        
         }
     
+<<<<<<< HEAD
+public void guardarDatos()
+{
+     int año = FechaProbable.getCalendar().get(Calendar.YEAR);
+=======
     
+    private void CodiGeograficaOrigen() throws UnsupportedEncodingException, MalformedURLException{
+       if(!this.txtDireccion.getText().isEmpty()){
+            //JText_CD_DireEnc.setText("");
+            Point2D.Double resultado=ObjGeocoding.getCoordinates(txtDireccion.getText());
+            lat= (String.valueOf(resultado.x));
+            lon= (String.valueOf(resultado.y));
+        }        
+    }
+    private void CodiGeograficaDestino() throws UnsupportedEncodingException, MalformedURLException{
+       if(!this.txtDireccionDestino.getText().isEmpty()){
+            //JText_CD_DireEnc.setText("");
+            Point2D.Double resultado=ObjGeocoding.getCoordinates(txtDireccionDestino.getText());
+            lat2= (String.valueOf(resultado.x));
+            lon2= (String.valueOf(resultado.y));
+        }        
+    }
     
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
          int año = FechaProbable.getCalendar().get(Calendar.YEAR);
+>>>>>>> 948f664ba30055c2af5e3149dd836d347779b019
    
        int mes = 1+ FechaProbable.getCalendar().get(Calendar.MONTH);
         int dia = FechaProbable.getCalendar().get(Calendar.DAY_OF_MONTH);
@@ -2560,8 +2603,200 @@ public class Cotizaciones extends javax.swing.JFrame {
         {
               System.out.println(e);
         }
+             try{
+                 CodiGeograficaOrigen();
+                CodiGeograficaDestino();
+                JOptionPane.showMessageDialog(null,"Latitud origen = "+lat+" Longitud origen = "+lon+" Latitud Destino = "+lat2+" Longitud Destino = "+lon2);
+                System.out.println("Latitud origen = "+lat+" Longitud origen = "+lon+" Latitud Destino = "+lat2+" Longitud Destino = "+lon2); 
+                PreparedStatement pstmc=(PreparedStatement)
+                con.getConnection().prepareStatement("INSERT INTO CatOrdenesServicio (Serie,Usuario,CveTipoViviendaOrigen,EstadoOrigen,MunicipioOrigen,FolioCliente,NombreCteOrigen,Ape_PatOrigen,Ape_MatOrigen,DirOrigen,RefOrigen,TelOrigen,TelCelOrigen,NumPisosOrigen,NombreRecibe,Maniobras,CoordenadaXOrigen,CoordenadaYOrigen,CoordenadaXDestino,CoordenadaYDestino,EstadoDestino,MunicipioDestino,DirDestino,RefDest,TelDest,TelCelDestino,NumPisosDest) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");//27                      
+                //pstmc.setString(1,"CNC");//claveplaza
+                pstmc.setString(1, "C");//Serie*
+                pstmc.setString(2, "Admin");//Usuario
+                pstmc.setString(3, txtCveVivienda.getText());//ClavetipoViviendaOrigen
+                pstmc.setString(4, txtCveEstado.getText());//EstadoOrigen
+                pstmc.setString(5, txtCveMunicipio.getText());//EstadoOrigen        
+                pstmc.setString(6, "2");//folioCliente
+                pstmc.setString(7, txtNombre.getText());//NombreCliente
+                String[] apellidos = txtApellidos.getText().split(" ");
+                //JOptionPane.showMessageDialog(null,"Apellido paterno "+apellidos[0]);
+                //JOptionPane.showMessageDialog(null,"Apellido materno "+apellidos[1]);
+                pstmc.setString(8,apellidos[0]);//ApellidoPaternoCliente
+                pstmc.setString(9,apellidos[1]);//ApellidoMaternoCliente
+                pstmc.setString(10, txtDireccion.getText());//DireccionOrigen
+                pstmc.setString(11, "Referencia");//RefOrigen
+                pstmc.setString(12, txtTelCasa.getText());//TelOrigen
+                pstmc.setString(13, txtMovil.getText());//TelCelOrigen
+                pstmc.setString(14, "0");//NuymeroDePisosOrigen
+                pstmc.setString(15, txtNombreDestino.getText());//NombreRecibe
+                pstmc.setString(16, txtManiobras.getText());//Maniobras
+                pstmc.setString(17, lat);//DirDestino
+                pstmc.setString(18, lon);//DirDestino
+                pstmc.setString(19, lat2);//DirDestino
+                pstmc.setString(20, lon2);//DirDestino
+                pstmc.setString(21, txtCVeEstado.getText());//EstadoDestino
+                pstmc.setString(22, txtCveMunicipioDestino.getText());//MunicipioDestino
+                pstmc.setString(23, txtDireccionDestino.getText());//DirDestino
+                pstmc.setString(24, "ReferenciaDestino");//RefDestino
+                pstmc.setString(25, txtTelCasaDestino.getText());//TelDestino
+                pstmc.setString(26, txtTelCelDestino.getText());//TelCelDestino
+                pstmc.setString(27, "0");//NumeroPisosDestino
+        //        
+        //        pstmc.setString(4, "Admin");//Nombre de quien cotiza
+        //        //pstmc.setString(5,new java.sql.Date(txtFechaActual.getDate.toString()));
+        //        //pstmc.setString(6, new java.sql.Date(txtFechaActual.getDate()));
+        //        //        //        //        
+        //        pstmc.setString(12, "0");//PlantaBajaOrigen
+        //        
+        //        pstmc.setString(14, "0");//ElevadorOrigen
+        //        pstmc.setString(15, "0");//EscaleraOrigen
+        //        
+        //        
+        //        pstmc.setString(19, txtCveVivienda.getText());//CveTipoViviendaDestino
+        //        pstmc.setString(20, "Admin");//NombreRecibe
+        //        
+        //        
+        //        pstmc.setString(24, "0");//PlantaBajaDestino
+        //        
+        //        pstmc.setString(26, "0");//ElevadorDestino
+        //        pstmc.setString(27, "0");//EscaleraDestino                        
+        //        pstmc.setString(32, AyudaVenta);//Menaje
+        //        pstmc.setString(33, "0");//Alamacenaje
+        //        pstmc.setString(34, CveVivienda);//ServAgreg
+        //        pstmc.setString(35, Descripcion);//Rentas
+        //        pstmc.setString(36, AyudaVenta);//VentasArt
+        //        pstmc.setString(37, "0");//Seguro
+        //        pstmc.setString(38, CveVivienda);//PorcSeguro
+        //        pstmc.setString(39, Descripcion);//SumaAseg
+        //        pstmc.setString(40, AyudaVenta);//Anticipo
+        //        pstmc.setString(41, "0");//Saldo
+        //        pstmc.setString(42, CveVivienda);//Subtotal
+        //        pstmc.setString(43, Descripcion);//IVA
+        //        pstmc.setString(44, AyudaVenta);//Total
+        //        pstmc.setString(45, "0");//Retencion
+        //        pstmc.setString(46, CveVivienda);//VolTotal
+        //        pstmc.setString(47, Descripcion);//CostoCriterio
+        //        pstmc.setString(48, AyudaVenta);//TipoPresupuesto
+        //        pstmc.setString(49, "0");//Observacion
+        //        pstmc.setString(50, CveVivienda);//Nota1
+        //        pstmc.setString(51, Descripcion);//Nota2
+        //        pstmc.setString(52, AyudaVenta);//Generada
+        //        pstmc.setString(53, "0");//BAja
+        //        pstmc.setString(54, CveVivienda);//idVisita
+        //        pstmc.setString(55, Descripcion);//TipoOrdenNoR
+        //        pstmc.setString(56, AyudaVenta);//NumOrdenNoR
+        //        pstmc.setString(57, "0");//TipoMud
+        //        pstmc.setString(58, CveVivienda);//Cancela
+        //        pstmc.setString(59, Descripcion);//VtaXVisita
+        //        pstmc.setString(60, AyudaVenta);//UltimoUsuario
+                //pstmc.setString(61, "0");//CorreoElectronico
+
+                pstmc.execute();
+                pstmc.close();
+                 System.out.println("Datos Agregados");
+                 JOptionPane.showMessageDialog(null,"Se agregaron los datos");
+                }
+                          catch(SQLException e)
+                {
+                      System.out.println(e);
+                } catch (UnsupportedEncodingException ex) {
+                 Logger.getLogger(Cotizaciones.class.getName()).log(Level.SEVERE, null, ex);
+             } catch (MalformedURLException ex) {
+                 Logger.getLogger(Cotizaciones.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             
+        }
+}
+    int registro;
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
+        guardarDatos();
+        int reg=0;
+         boolean existe= false;
+           conexion con = new conexion();
+        //jTable1.setModel(m);
+       //obtener la cantidad de registro de una tabla
+        registro =0;
+       
+       try{
+           PreparedStatement pstm = (PreparedStatement)
+           con.getConnection().prepareStatement("SELECT count(1) as total FROM cotizaciones");
+           ResultSet res = pstm.executeQuery();
+           res.next();
+           registro = res.getInt("total");
+           System.out.println(registro);
+           res.close();
+                  reg= registro; 
+       }
+       
+       catch(SQLException e)
+       {
+           System.out.println(e);
+       }
+       
+       
+       int año = FechaProbable.getCalendar().get(Calendar.YEAR);
+   
+       int mes = 1+ FechaProbable.getCalendar().get(Calendar.MONTH);
+        int dia = FechaProbable.getCalendar().get(Calendar.DAY_OF_MONTH);
+        String FechaServicio = año+"-"+mes+"-"+dia;
+        
+          año = txtFechaActual.getCalendar().get(Calendar.YEAR);
+   
+        mes = 1+ txtFechaActual.getCalendar().get(Calendar.MONTH);
+         dia = txtFechaActual.getCalendar().get(Calendar.DAY_OF_MONTH);
+        String FechaActual = año+"-"+mes+"-"+dia;
+       
+    
+
+        if(txtTotal.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar las cantidades");
+        //////////////////////
+        else if(txtNombre.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar el nombre del cliente");
+        //////////////////////
+        else if(txtApellidos.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
+        //////////////////////
+        else if(txtDireccion.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar la direccion del cliente");
+        //////////////////////
+        else if(txtApellidos.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
+        
+        else
+        {
+         for(int i=0;i<TablaArticulos.getRowCount();i++)
+       {
+         
+             try{
+        PreparedStatement pstmc=(PreparedStatement)
+                //con.getConnection().prepareStatement("INSERT INTO cotizaciones (CvePlaza, Serie, FolioCliente, NombreQuienCotiza, FechaCotizacion, FechaProbServ, Usuario, CveTipoViviendaOrigen, EstadoOrigen, MunicipioOrigen, DirOrigen, PlantaBajaOrigen, NoPisosOrigen, ElevadorOrigen, EscaleraOrigen, TelOrigen, TelCelOrigen, RefOrigen, CveTipoViviendaDestino, NombreRecibe, EstadoDestino, MunicipioDestino, DirDestino, PlantaBajaDestino, NoPisosDestino, ElevadorDestino, EscaleraDestino, TelDestino, TelCelDestino, RefDestino, Maniobras, Menaje, Almacenaje, ServAgreg, Rentas, VentasArt, Seguro, PorcSeguro, SumaAseg, Anticipo, Saldo, Subtotal, IVA, Total, Retencion, VolTotal, CostoCriterioXUser, TipoPresup, Observaciones, Nota1, Nota2, Generada, Baja, IdVisita, TipoOrdenNoR, NumOrdenNoR, TipoMud, Cancelada, VtaXVisita, UltimoUsuario, CorreoElectronico) VALUES ('Casa','C','1','Jose','2016-04-06','2016-05-06','Admin','Casa','1','1','Reg.228 M.20 L.20','0','1','0','0','132-51-29','9981018163','Frente a casa blanca','Casa','Juan escutia','1','1','Direccion del destino','0','1','0','0','132-23-33','9981223344','Frente a casa destino','100','200','300','400','500','600','700','7.0','800','900','1000','1100','1200','1300','1400','1500','1700','1','Se va a llevar a una que es prueba','nota1','nota2','0','0','1','R','1','M','0','0','UltimoUs','pablodelhip@gmail.com')");
+        con.getConnection().prepareStatement("INSERT INTO tablaarticulos VALUES (?,?,?,?,?,?)");
+      
+       pstmc.setString(1,""+reg);//claveplaza
+        pstmc.setString(2,TablaArticulos.getValueAt(i, 1).toString());//Serie
+        pstmc.setString(3, TablaArticulos.getValueAt(i, 2).toString());//folioCliente
+        pstmc.setString(4, TablaArticulos.getValueAt(i, 3).toString());//Nombre de quien cotiza
+        pstmc.setString(5,TablaArticulos.getValueAt(i, 4).toString());//Serie
+        pstmc.setString(6, TablaArticulos.getValueAt(i, 5).toString());//folioCliente
+    
+     
+       
+        
+        pstmc.execute();
+        pstmc.close();
+         JOptionPane.showMessageDialog(null, "La cotizacion a sido guardada correctamente");
         }
         
+        
+        catch(SQLException e)
+        {
+              System.out.println(e);
+        }
+       
+       }
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void ComboVivienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboVivienda2ActionPerformed
@@ -2643,6 +2878,18 @@ public class Cotizaciones extends javax.swing.JFrame {
         Reservacion abrir = new Reservacion();
         abrir.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtDireccionDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionDestinoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionDestinoKeyTyped
+
+    private void txtDireccionDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionDestinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionDestinoActionPerformed
+
+    private void TablaArticulosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaArticulosKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TablaArticulosKeyReleased
 
     /**
      * @param args the command line arguments
