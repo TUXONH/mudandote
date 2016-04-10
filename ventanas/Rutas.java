@@ -1,4 +1,5 @@
 package ventanas;
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.UnsupportedEncodingException;
@@ -17,6 +18,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import maps.java.*;
@@ -522,6 +524,14 @@ public class Rutas extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+                  try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+      {
+      e.printStackTrace();
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
