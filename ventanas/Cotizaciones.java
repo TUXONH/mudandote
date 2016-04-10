@@ -2472,62 +2472,17 @@ public class Cotizaciones extends javax.swing.JFrame {
        
         }
     
-<<<<<<< HEAD
-public void guardarDatos()
-{
-     int año = FechaProbable.getCalendar().get(Calendar.YEAR);
-    
-    private void CodiGeograficaOrigen() throws UnsupportedEncodingException, MalformedURLException{
-       if(!this.txtDireccion.getText().isEmpty()){
-            //JText_CD_DireEnc.setText("");
-            Point2D.Double resultado=ObjGeocoding.getCoordinates(txtDireccion.getText());
-            lat= (String.valueOf(resultado.x));
-            lon= (String.valueOf(resultado.y));
-        }        
-    }
-    private void CodiGeograficaDestino() throws UnsupportedEncodingException, MalformedURLException{
-       if(!this.txtDireccionDestino.getText().isEmpty()){
-            //JText_CD_DireEnc.setText("");
-            Point2D.Double resultado=ObjGeocoding.getCoordinates(txtDireccionDestino.getText());
-            lat2= (String.valueOf(resultado.x));
-            lon2= (String.valueOf(resultado.y));
-        }        
-    }
+//public void guardarDatos()
+//{}
+  
     
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         
          int año = FechaProbable.getCalendar().get(Calendar.YEAR);
-=======
-
-
-    private void mostrarMapa(String direccion) throws IOException, URISyntaxException{
-        String direccionMapa=ObjShowMaps.getURLMap(direccion);
-        Desktop.getDesktop().browse(new URI(direccionMapa));
-    }
-
-
 public void guardarDatos()
 {
-     int año = FechaProbable.getCalendar().get(Calendar.YEAR);
+     int año = FechaProbable.getCalendar().get(Calendar.YEAR);    
 
-    
-
-    private void CodiGeograficaOrigen() throws UnsupportedEncodingException, MalformedURLException{
-       if(!this.txtDireccion.getText().isEmpty()){
-            //JText_CD_DireEnc.setText("");
-            Point2D.Double resultado=ObjGeocoding.getCoordinates(txtDireccion.getText());
-            lat= (String.valueOf(resultado.x));
-            lon= (String.valueOf(resultado.y));
-        }        
-    }
-    private void CodiGeograficaDestino() throws UnsupportedEncodingException, MalformedURLException{
-       if(!this.txtDireccionDestino.getText().isEmpty()){
-            //JText_CD_DireEnc.setText("");
-            Point2D.Double resultado=ObjGeocoding.getCoordinates(txtDireccionDestino.getText());
-            lat2= (String.valueOf(resultado.x));
-            lon2= (String.valueOf(resultado.y));
-        }        
-    }
     private void rellenarTablaRuta(String[][] ruta){
         String[] columnas=new String[5];
         columnas[0]="Duración tramo";columnas[1]="Distancia tramo";columnas[2]="Indicaciones";columnas[3]="Latitud";columnas[4]="Longitud";
@@ -2913,7 +2868,7 @@ public void guardarDatos()
 }
 
     int registro;
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
 
         
         guardarDatos();

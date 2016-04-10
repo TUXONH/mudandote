@@ -6,10 +6,12 @@
 package ventanas;
 
 import UpperEssential.UpperEssentialLookAndFeel;
+import clases.Geocoding;
+import clases.Route;
 import clases.conexion;
 import com.toedter.calendar.JDateChooser;
 import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
-<<<<<<< HEAD
+
 import java.awt.Desktop;
 import java.awt.geom.Point2D;
 import java.io.IOException;
@@ -17,8 +19,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-=======
->>>>>>> d96d50242ac7ced1a04c370b3f9afc586f3e0e02
+
+
 //import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +38,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 import javax.swing.UIManager;
+import javax.swing.table.TableModel;
 import maps.java.ShowMaps;
+import org.jsoup.Jsoup;
 
 
 /**
@@ -44,7 +48,7 @@ import maps.java.ShowMaps;
  * @author josegonzalez
  */
 public class Reservacion extends javax.swing.JFrame {
-clases.Route ObjRoute = new clases.Route();
+
     /**
      * Creates new form Reservacion
      */
@@ -53,8 +57,14 @@ clases.Route ObjRoute = new clases.Route();
     DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
     //String date;
     //Date fecha;
-    private ShowMaps ObjShowMaps=new ShowMaps();
+    //private ShowMaps ObjShowMaps=new ShowMaps();
+    //private ShowMaps ObjShowMaps=new ShowMaps();
+    //private Geocoding ObjGeocoding=new Geocoding();
+    //private Geocoding ObjGeocoding = new Geocoding();
+    //private Route ObjRoute = new Route();
+    clases.ShowMaps ObjShowMaps=new clases.ShowMaps();
     clases.Geocoding ObjGeocoding=new clases.Geocoding();
+    clases.Route ObjRoute = new clases.Route();
     String lat,lon,lat2,lon2,time,distance; 
     public Reservacion() {
         initComponents();
@@ -902,6 +912,7 @@ clases.Route ObjRoute = new clases.Route();
        if(!this.DireccionOrigen.getText().isEmpty()){
             //JText_CD_DireEnc.setText("");
             Point2D.Double resultado=ObjGeocoding.getCoordinates(DireccionOrigen.getText());
+            System.out.println("Direccion origen :"+DireccionOrigen.getText());
             lat= (String.valueOf(resultado.x));
             lon= (String.valueOf(resultado.y));
         }        
@@ -910,11 +921,28 @@ clases.Route ObjRoute = new clases.Route();
        if(!this.DireccionDestino.getText().isEmpty()){
             //JText_CD_DireEnc.setText("");
             Point2D.Double resultado=ObjGeocoding.getCoordinates(DireccionDestino.getText());
+            System.out.println("Direccion origen :"+DireccionDestino.getText());
             lat2= (String.valueOf(resultado.x));
             lon2= (String.valueOf(resultado.y));
         }        
     }
+     private void rellenarTablaRuta(String[][] ruta){
+        String[] columnas=new String[5];
+        columnas[0]="Duración tramo";columnas[1]="Distancia tramo";columnas[2]="Indicaciones";columnas[3]="Latitud";columnas[4]="Longitud";
+        for(int i=0;i<ruta.length;i++){
+            try {
+                 ruta[i][2]=Jsoup.parse(ruta[i][2]).text();
+            } catch (Exception e) {
+            }
+        }
+        TableModel tableModel=new DefaultTableModel(ruta, columnas);
+        //this.jTable_Ruta_Tramos.setModel(tableModel);
+    }
     private void rellenarDatosrRuta(){
+//         this.JLabel_Ruta_Copyright.setText("");
+//         this.JLabel_Ruta_Resumen.setText("");
+//         this.JText_Ruta_Tiempo.setText("");
+//         this.JText_Ruta_Distancia.setText("");
          //this.JLabel_Ruta_Status.setText(MapsJava.getLastRequestStatus());
          ArrayList<Integer> tiempoTotal=ObjRoute.getTotalTime();
          int tiempoAux=0;
@@ -931,19 +959,33 @@ clases.Route ObjRoute = new clases.Route();
          tiempo=redondeoDosDecimales(tiempo);
          double distancia=(double)(distanciaAux);
          distancia=distancia/1000;
-         //this.JLabel_Ruta_Copyright.setText(ObjRoute.getCopyright());
-         //this.JLabel_Ruta_Resumen.setText(ObjRoute.getSummary());
-         //this.JText_Ruta_Tiempo.setText(String.valueOf(tiempo));
-         //this.JText_Ruta_Distancia.setText(String.valueOf(distancia));
-         time=String.valueOf(tiempo);
-         distance=String.valueOf(distancia);
+//         this.JLabel_Ruta_Copyright.setText(ObjRoute.getCopyright());
+//         this.JLabel_Ruta_Resumen.setText(ObjRoute.getSummary());
+         time = (String.valueOf(tiempo));
+         distance = (String.valueOf(distancia));
 
     } 
     double redondeoDosDecimales(double d) {
         return Math.rint(d*1000)/1000;
     }
+    private void crearRuta() throws MalformedURLException, UnsupportedEncodingException{
+         if(!DireccionOrigen.getText().isEmpty() && !DireccionDestino.getText().isEmpty()){
+             ArrayList<String> hitos=new ArrayList<>();
+             //if(jCheckBox_Ruta_Hito.isSelected() && !JText_Ruta_Hito.getText().isEmpty()){
+             //    hitos.add(JText_Ruta_Hito.getText());
+             //}
+             String[][] arrayRoute=ObjRoute.getRoute(DireccionOrigen.getText(), DireccionDestino.getText(),
+                     hitos, Boolean.TRUE,clases.Route.mode.driving,clases.Route.avoids.nothing);               
+             
+//,
+//hitos, Boolean.TRUE,this.seleccionarModoRuta(),this.seleccionarRestricciones());  
+             rellenarTablaRuta(arrayRoute);
+             rellenarDatosrRuta();
+            
+         }
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
         if(jDateChooser1.getDate()!=null && !jTextField26.getText().equals("")){
            if(!jComboBox4.getSelectedItem().equals("Selecione un Usuario")){
                 int anio = jDateChooser1.getCalendar().get(Calendar.YEAR);
@@ -1110,11 +1152,15 @@ clases.Route ObjRoute = new clases.Route();
     try{
         CodiGeograficaOrigen();
         CodiGeograficaDestino();
+        crearRuta();
+        rellenarDatosrRuta();
        // PreparedStatement PreparedStatement = null;
         PreparedStatement pstm =(PreparedStatement)        
         con.getConnection().prepareStatement("insert into catordenesservicios (FechaServicio,NombreCteOrigen,DirOrigen,RefOrigen,NumPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDest,NumPisoDest,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,IVA,SubTotal,Total,Retencion,Anticipo,PorcSeguro,Rentas,HoraServicio,UltimoUsuario,Vendedor,NoPresupuesto,CoordenadaXOrigen,CoordenadaYOrigen,CoordenadaXDestino,CoordenadaYDestino,Tiempo,Distancia) values ('"+TMPfecha+"','"+NombreCteOrigen+"','"+DirOrigen+"','"+RefOrigen+"','"+NumPisosOrigen+"','"+TelOrigen+"','"+NombreRecibe+"','"+DirDestino+"','"+RefDestino+"','"+TelDest+"','"+NumPisoDest+"',"+Almacenaje+","+Menaje+","+Maniobras+","+VentasArt+","+Saldo+","+IVA+","+SubTotal+","+Total+","+Retencion+","+Anticipo+","+Seguro+","+Rentas+",'"+HoraServicio+"','"+UltimoUsuario+"','"+Vendedor+"',"+NoPresupuesto+",'"+lat+"','"+lon+"','"+lat2+"','"+lon2+"','"+time+"','"+distance+"')");
         pstm.execute();   
         pstm.close();
+        JOptionPane.showMessageDialog(null,"Tiempo :"+time+" Distancia :"+distance);
+        
         JOptionPane.showMessageDialog(null,"Se agregaron los datos!");
     
     }catch(SQLException e){
