@@ -971,6 +971,16 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel46.setText("*Direccion");
 
         txtDireccionDestino.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDireccionDestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionDestinoActionPerformed(evt);
+            }
+        });
+        txtDireccionDestino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionDestinoKeyTyped(evt);
+            }
+        });
 
         ComboEstado2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         ComboEstado2.addActionListener(new java.awt.event.ActionListener() {
@@ -1407,6 +1417,9 @@ public class Cotizaciones extends javax.swing.JFrame {
             }
         });
         TablaArticulos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TablaArticulosKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 TablaArticulosKeyTyped(evt);
             }
@@ -2436,11 +2449,9 @@ public class Cotizaciones extends javax.swing.JFrame {
        
         }
     
-    
-    
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
-         int año = FechaProbable.getCalendar().get(Calendar.YEAR);
+public void guardarDatos()
+{
+     int año = FechaProbable.getCalendar().get(Calendar.YEAR);
    
        int mes = 1+ FechaProbable.getCalendar().get(Calendar.MONTH);
         int dia = FechaProbable.getCalendar().get(Calendar.DAY_OF_MONTH);
@@ -2559,7 +2570,97 @@ public class Cotizaciones extends javax.swing.JFrame {
               System.out.println(e);
         }
         }
+}
+    int registro;
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
+        guardarDatos();
+        int reg=0;
+         boolean existe= false;
+           conexion con = new conexion();
+        //jTable1.setModel(m);
+       //obtener la cantidad de registro de una tabla
+        registro =0;
+       
+       try{
+           PreparedStatement pstm = (PreparedStatement)
+           con.getConnection().prepareStatement("SELECT count(1) as total FROM cotizaciones");
+           ResultSet res = pstm.executeQuery();
+           res.next();
+           registro = res.getInt("total");
+           System.out.println(registro);
+           res.close();
+                  reg= registro; 
+       }
+       
+       catch(SQLException e)
+       {
+           System.out.println(e);
+       }
+       
+       
+       int año = FechaProbable.getCalendar().get(Calendar.YEAR);
+   
+       int mes = 1+ FechaProbable.getCalendar().get(Calendar.MONTH);
+        int dia = FechaProbable.getCalendar().get(Calendar.DAY_OF_MONTH);
+        String FechaServicio = año+"-"+mes+"-"+dia;
+        
+          año = txtFechaActual.getCalendar().get(Calendar.YEAR);
+   
+        mes = 1+ txtFechaActual.getCalendar().get(Calendar.MONTH);
+         dia = txtFechaActual.getCalendar().get(Calendar.DAY_OF_MONTH);
+        String FechaActual = año+"-"+mes+"-"+dia;
+       
+    
+
+        if(txtTotal.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar las cantidades");
+        //////////////////////
+        else if(txtNombre.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar el nombre del cliente");
+        //////////////////////
+        else if(txtApellidos.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
+        //////////////////////
+        else if(txtDireccion.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar la direccion del cliente");
+        //////////////////////
+        else if(txtApellidos.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
+        
+        else
+        {
+         for(int i=0;i<TablaArticulos.getRowCount();i++)
+       {
+         
+             try{
+        PreparedStatement pstmc=(PreparedStatement)
+                //con.getConnection().prepareStatement("INSERT INTO cotizaciones (CvePlaza, Serie, FolioCliente, NombreQuienCotiza, FechaCotizacion, FechaProbServ, Usuario, CveTipoViviendaOrigen, EstadoOrigen, MunicipioOrigen, DirOrigen, PlantaBajaOrigen, NoPisosOrigen, ElevadorOrigen, EscaleraOrigen, TelOrigen, TelCelOrigen, RefOrigen, CveTipoViviendaDestino, NombreRecibe, EstadoDestino, MunicipioDestino, DirDestino, PlantaBajaDestino, NoPisosDestino, ElevadorDestino, EscaleraDestino, TelDestino, TelCelDestino, RefDestino, Maniobras, Menaje, Almacenaje, ServAgreg, Rentas, VentasArt, Seguro, PorcSeguro, SumaAseg, Anticipo, Saldo, Subtotal, IVA, Total, Retencion, VolTotal, CostoCriterioXUser, TipoPresup, Observaciones, Nota1, Nota2, Generada, Baja, IdVisita, TipoOrdenNoR, NumOrdenNoR, TipoMud, Cancelada, VtaXVisita, UltimoUsuario, CorreoElectronico) VALUES ('Casa','C','1','Jose','2016-04-06','2016-05-06','Admin','Casa','1','1','Reg.228 M.20 L.20','0','1','0','0','132-51-29','9981018163','Frente a casa blanca','Casa','Juan escutia','1','1','Direccion del destino','0','1','0','0','132-23-33','9981223344','Frente a casa destino','100','200','300','400','500','600','700','7.0','800','900','1000','1100','1200','1300','1400','1500','1700','1','Se va a llevar a una que es prueba','nota1','nota2','0','0','1','R','1','M','0','0','UltimoUs','pablodelhip@gmail.com')");
+        con.getConnection().prepareStatement("INSERT INTO tablaarticulos VALUES (?,?,?,?,?,?)");
+      
+       pstmc.setString(1,""+reg);//claveplaza
+        pstmc.setString(2,TablaArticulos.getValueAt(i, 1).toString());//Serie
+        pstmc.setString(3, TablaArticulos.getValueAt(i, 2).toString());//folioCliente
+        pstmc.setString(4, TablaArticulos.getValueAt(i, 3).toString());//Nombre de quien cotiza
+        pstmc.setString(5,TablaArticulos.getValueAt(i, 4).toString());//Serie
+        pstmc.setString(6, TablaArticulos.getValueAt(i, 5).toString());//folioCliente
+    
+     
+       
+        
+        pstmc.execute();
+        pstmc.close();
+         JOptionPane.showMessageDialog(null, "La cotizacion a sido guardada correctamente");
+        }
+        
+        
+        catch(SQLException e)
+        {
+              System.out.println(e);
+        }
+       
+       }
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void ComboVivienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboVivienda2ActionPerformed
@@ -2641,6 +2742,18 @@ public class Cotizaciones extends javax.swing.JFrame {
         Reservacion abrir = new Reservacion();
         abrir.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtDireccionDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionDestinoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionDestinoKeyTyped
+
+    private void txtDireccionDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionDestinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionDestinoActionPerformed
+
+    private void TablaArticulosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaArticulosKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TablaArticulosKeyReleased
 
     /**
      * @param args the command line arguments
