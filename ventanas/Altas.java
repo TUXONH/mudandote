@@ -24,7 +24,9 @@ import javax.swing.table.DefaultTableModel;
  * @author josegonzalez
  */
 import clases.conexion;
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 public class Altas extends javax.swing.JFrame {
 
     /**
@@ -724,7 +726,14 @@ public class Altas extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-      
+        try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+          {
+      e.printStackTrace();
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Altas().setVisible(true);

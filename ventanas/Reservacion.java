@@ -20,7 +20,11 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+<<<<<<< HEAD
+import javax.swing.JOptionPane;
+=======
 import javax.swing.UIManager;
+>>>>>>> 22ca5ab7078b3f6cbd9bf5d7d9341f98c60e7bb2
 
 /**
  *
@@ -78,7 +82,6 @@ public class Reservacion extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jTextField24 = new javax.swing.JTextField();
         jTextField28 = new javax.swing.JTextField();
@@ -94,6 +97,16 @@ public class Reservacion extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField21 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
@@ -129,6 +142,7 @@ public class Reservacion extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         jLabel24 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -214,21 +228,10 @@ public class Reservacion extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(71, 71, 71))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -296,9 +299,7 @@ public class Reservacion extends javax.swing.JFrame {
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Origen", jPanel2);
@@ -411,15 +412,82 @@ public class Reservacion extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Destino", jPanel4);
 
+        jTextField8.setEnabled(false);
+
+        jTextField21.setEnabled(false);
+
+        jLabel21.setText("Pago");
+
+        jLabel25.setText("Nuevo Saldo");
+
+        jLabel34.setText("Descripcion");
+
+        jLabel35.setText("Saldo Anterio");
+
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setEnabled(false);
+        jScrollPane2.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 627, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel34)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addGap(104, 104, 104))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel35)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(108, 108, 108)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(133, 133, 133))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 339, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel35))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(64, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Cobranza", jPanel3);
@@ -673,6 +741,13 @@ public class Reservacion extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton2.setText("Agregar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -689,9 +764,13 @@ public class Reservacion extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -699,12 +778,15 @@ public class Reservacion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -715,17 +797,18 @@ public class Reservacion extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
      
-      
+      if(!jTextField10.getText().equals("")){
          Ver(jTextField10.getText());
           try{
        // PreparedStatement PreparedStatement = null;
         PreparedStatement pstm =(PreparedStatement)
-        con.getConnection().prepareStatement("Select NombreQuienCotiza,DirOrigen,RefOrigen,NoPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDestino,NoPisosDestino,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,Rentas,IVA,SubTotal,Total,Retencion,Anticipo,Seguro,VentasArt,Rentas,NumOrdenNoR from cotizaciones where FolioCotizacion= '"+jTextField10.getText()+"'");
+        con.getConnection().prepareStatement("Select NombreQuienCotiza,DirOrigen,RefOrigen,NoPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDestino,NoPisosDestino,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,Rentas,IVA,SubTotal,Total,Retencion,Anticipo,Seguro,VentasArt,Rentas,NumOrdenNoR,Observaciones from cotizaciones where FolioCotizacion= '"+jTextField10.getText()+"'");
         ResultSet res1 = pstm.executeQuery();
         res1.next();
        String aux_clientes = res1.getObject("NombreQuienCotiza").toString();
        String aux_dirOrigen=res1.getObject("DirOrigen").toString();
          String aux_refOrigen=res1.getObject("RefOrigen").toString();
+          String aux_Observacion=res1.getObject("Observaciones").toString();
      //  String aux_ColPoblOrigen=res1.getObject("ColPoblOrigen").toString();
         String aux_PisosOrigen=res1.getObject("NoPisosOrigen").toString();
         String aux_TelOrigen=res1.getObject("TelOrigen").toString();
@@ -755,6 +838,7 @@ public class Reservacion extends javax.swing.JFrame {
      // jTextField4.setText(aux_ColPoblOrigen);
       jTextField6.setText(aux_PisosOrigen);
       jTextField7.setText(aux_TelOrigen);
+      jTextField8.setText(aux_Saldo);
       jTextField9.setText(aux_Orden);
       jTextField12.setText(aux_Almacenaje);
       jTextField13.setText(aux_Menaje);
@@ -770,6 +854,7 @@ public class Reservacion extends javax.swing.JFrame {
        jTextField22.setText(aux_Anticipo);
       jTextField17.setText(aux_Maniobras);
       jTextField24.setText(aux_NombreRecibe);
+      jTextArea1.setText(aux_Observacion);
       jTextField28.setText(aux_DirDestino);
       jTextField29.setText(aux_refDestino);
      // jTextField30.setText(aux_ColPoblDestino);
@@ -784,24 +869,47 @@ public class Reservacion extends javax.swing.JFrame {
             
                 System.out.println(e);
             }
-          
-        
+      }
+      else
+      {
+          JOptionPane.showMessageDialog(null,"Llena el campo de Folio");
+         
+      }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     
-
-int anio = jDateChooser1.getCalendar().get(Calendar.YEAR);
-int mes = jDateChooser1.getCalendar().get(Calendar.MONTH) + 1;
-int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
- String fecha =  anio+"/"+mes+"/"+dia;
- NuevoProducto(fecha,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField6.getText(),jTextField7.getText(),jTextField24.getText(),jTextField28.getText(),jTextField29.getText(),jTextField31.getText(),jTextField32.getText(),jTextField12.getText(),jTextField13.getText(),jTextField17.getText(),jTextField15.getText(),jTextField23.getText(),jTextField19.getText(),jTextField18.getText(),jTextField33.getText(),jTextField20.getText(),jTextField22.getText(),jTextField16.getText(),jTextField14.getText(),jComboBox1.getSelectedItem().toString(),jTextField26.getText(),jComboBox4.getSelectedItem().toString(),jTextField9.getText());
-    //   NuevoProducto(fecha, jTextField1.getText(), jTextField2.getText(), jTextField3.getText(),jTextField6.getText(),jTextField7.getText(),jTextField24.getText(),jTextField28.getText(),jTextField29.getText(),jTextField31.getText(),jTextField32.getText(),jTextField12.getText(),jTextField13.getText(),jTextField17.getText(),jTextField15.getText(),jTextField23.getText(),jTextField19.getText(),jTextField18.getText(),jTextField33.getText(),jTextField20.getText(),jTextField22.getText(),jTextField16.getText(),jTextField14.getText());
+        if(jDateChooser1.getDate()!=null && !jTextField26.getText().equals("")){
+           if(jComboBox4.getSelectedItem().equals("Selecione un Usuario")){
+                int anio = jDateChooser1.getCalendar().get(Calendar.YEAR);
+                int mes = jDateChooser1.getCalendar().get(Calendar.MONTH) + 1;
+                int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
+                 String fecha =  anio+"/"+mes+"/"+dia;
+                 NuevoProducto(fecha,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField6.getText(),jTextField7.getText(),jTextField24.getText(),jTextField28.getText(),jTextField29.getText(),jTextField31.getText(),jTextField32.getText(),jTextField12.getText(),jTextField13.getText(),jTextField17.getText(),jTextField15.getText(),jTextField23.getText(),jTextField19.getText(),jTextField18.getText(),jTextField33.getText(),jTextField20.getText(),jTextField22.getText(),jTextField16.getText(),jTextField14.getText(),jComboBox1.getSelectedItem().toString(),jTextField26.getText(),jComboBox4.getSelectedItem().toString(),jTextField9.getText());
+              }
+           else
+           {
+               JOptionPane.showMessageDialog(null,"Seleccione un vendedor");
+           }
+         }
+        else
+        {    
+            JOptionPane.showMessageDialog(null,"Llene todos los campos");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
  VerCombo();
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+       double NuevoSaldo=Double.parseDouble(jTextField8.getText())-Integer.parseInt(jTextField5.getText());
+       System.out.println(NuevoSaldo);
+       String SaldoS= Double.toString(NuevoSaldo);
+       jTextField21.setText(SaldoS);
+       
+    }//GEN-LAST:event_jButton3ActionPerformed
     public void Ver(String id)
 {
 //con.getConnection();
@@ -991,6 +1099,7 @@ public void VerCombo()
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox4;
@@ -1008,9 +1117,11 @@ public void VerCombo()
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -1020,6 +1131,8 @@ public void VerCombo()
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1035,8 +1148,10 @@ public void VerCombo()
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -1050,6 +1165,7 @@ public void VerCombo()
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
@@ -1062,8 +1178,10 @@ public void VerCombo()
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

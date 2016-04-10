@@ -5,12 +5,14 @@
  */
 package ventanas;
 
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -375,6 +377,14 @@ public class Choferes extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+              try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+      {
+      e.printStackTrace();
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {

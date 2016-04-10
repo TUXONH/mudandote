@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import clases.conexion;
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -228,6 +230,14 @@ public class CotiClientes extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+                  try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+      {
+      e.printStackTrace();
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CotiClientes().setVisible(true);
