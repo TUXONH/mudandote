@@ -2652,9 +2652,9 @@ public void guardarDatos()
         JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
         
         else
-        {guardarDatos();
-            
-             
+        {
+            guardarDatos();
+            GuardarArticulos();  
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
