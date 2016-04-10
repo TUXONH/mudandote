@@ -5,6 +5,7 @@
  */
 package ventanas;
 
+import UpperEssential.UpperEssentialLookAndFeel;
 import clases.conexion;
 import com.toedter.calendar.JDateChooser;
 //import java.sql.Date;
@@ -19,7 +20,11 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+<<<<<<< HEAD
 import javax.swing.JOptionPane;
+=======
+import javax.swing.UIManager;
+>>>>>>> 22ca5ab7078b3f6cbd9bf5d7d9341f98c60e7bb2
 
 /**
  *
@@ -1083,6 +1088,7 @@ public void VerCombo()
         //</editor-fold>
 
         /* Create and display the form */
+         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Reservacion().setVisible(true);

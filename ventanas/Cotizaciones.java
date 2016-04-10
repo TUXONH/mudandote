@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import clases.conexion;
 import clases.Estado_Municipio;
 import clases.Encapsuladas;
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.io.UnsupportedEncodingException;
@@ -28,8 +29,12 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
+<<<<<<< HEAD
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+import javax.swing.UIManager;
+>>>>>>> 22ca5ab7078b3f6cbd9bf5d7d9341f98c60e7bb2
 
 
 public class Cotizaciones extends javax.swing.JFrame {
@@ -2792,6 +2797,14 @@ public class Cotizaciones extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+                  try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+      {
+      e.printStackTrace();
+    }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

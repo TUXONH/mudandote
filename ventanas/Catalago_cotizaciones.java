@@ -1,3 +1,7 @@
+
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
+import javax.swing.UIManager;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -495,6 +499,14 @@ public class Catalago_cotizaciones extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+                  try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+      {
+      e.printStackTrace();
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Catalago_cotizaciones().setVisible(true);
