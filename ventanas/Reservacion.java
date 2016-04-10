@@ -906,11 +906,25 @@ public class Reservacion extends javax.swing.JFrame {
         // TODO add your handling code here:
        double NuevoSaldo=Double.parseDouble(jTextField8.getText())-Integer.parseInt(jTextField5.getText());
        System.out.println(NuevoSaldo);
-       String SaldoS= Double.toString(NuevoSaldo);
-       jTextField21.setText(SaldoS);
-      String  Anticipo= jTextField22.getText();
-       String SaldoA=jTextField5.getText();
+       jTextField21.setText(Double.toString(NuevoSaldo));
        double AnticipoA=Double.parseDouble(jTextField22.getText())+Double.parseDouble(jTextField5.getText());
+       jTextField23.setText(Double.toString(NuevoSaldo));
+        jTextField22.setText(Double.toString(AnticipoA));
+       try {            
+            PreparedStatement pst =(PreparedStatement)     
+          
+            con.getConnection().prepareStatement("UPDATE cotizaciones SET Anticipo="+AnticipoA+",Saldo="+NuevoSaldo+" WHERE FolioCotizacion="+jTextField10.getText());                                                        
+           
+            pst.executeUpdate();
+            pst.close();
+         
+            //JOptionPane.showMessageDialog(null,"Se modifico el registro con exito!");
+            
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
        
     }//GEN-LAST:event_jButton3ActionPerformed
     public void Ver(String id)
