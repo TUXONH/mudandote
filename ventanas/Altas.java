@@ -43,7 +43,6 @@ public class Altas extends javax.swing.JFrame {
         initComponents();
         con = new conexion();
         con.getConnection();
-       
           Ver();
         llenar_est();
         jComboBox1.addActionListener(new ActionListener() {
@@ -56,35 +55,32 @@ public class Altas extends javax.swing.JFrame {
             if(jRadioButton1.isSelected()==true)
         {
             maestra =1;
-            ventas=0;
             bandera=true;
         }
         else
         {
              maestra=0;
-             ventas=1;
              bandera=false;
         }
           }
          });
           jRadioButton2.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent arg) {
-            if(jRadioButton2.isSelected()==true)
+            if(jRadioButton1.isSelected()==true)
         {
             ventas =1;
-            maestra=0;
             bandera2=true;
         }
         else
         {
              ventas=0;
-             maestra=1;
              bandera2=false;
         }
           }
          });
           jButton4.setVisible(false);
           jButton5.setVisible(false);
+       
     }
 
     /**
@@ -389,7 +385,14 @@ public class Altas extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -403,7 +406,9 @@ public class Altas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -422,53 +427,13 @@ public class Altas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         boolean flag=true;
-       try {
-                    PreparedStatement   pstm = (PreparedStatement)
-                    con.getConnection().prepareStatement("SELECT nombre_usuario FROM catusuarios WHERE nombre_usuario ='"+jTextField1.getText()+"'");
-                      ResultSet res = pstm.executeQuery();
-                      int i=0;
-                     while(res.next())
-                     {
-                    
-                      String ClaveUs = res.getString("nombre_usuario");
-                    
-                      System.out.println(ClaveUs);
-                      flag=false;
-                       
-                     }           
-        } catch (SQLException ex) {
-             System.out.println(ex);
-        }
-       if(flag==false)
-       {
-           JOptionPane.showMessageDialog(null,"Ese usuario ya existe intenta con otro");
-       }
-       else{
-           System.out.println("MAESTRA: "+maestra+" VENTAS: "+ventas+"");
         NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
         Ver();
-        jButton4.setVisible(false);
-            jButton5.setVisible(false);
-           
-            jButton1.setVisible(true);
-            jButton2.setVisible(true);
-           jButton3.setVisible(true);
-           jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            jTextField4.setText("");
-            jRadioButton1.setSelected(false);
-            jRadioButton2.setSelected(false);
-       }
-       
             
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-          if (jTable1.getSelectedRow()!=-1)
-          {
         int idx = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
         
         try
@@ -486,12 +451,6 @@ public class Altas extends javax.swing.JFrame {
             Logger.getLogger(Altas.class.getName()).log(Level.SEVERE, null, ex);
         }
     Ver();
-          }
-          else
-          {
-               JOptionPane.showMessageDialog(null,"Para Borrar primero debes seleccionar en la tabla que registro quieres borrar");
-          
-          }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -501,7 +460,6 @@ public class Altas extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-          
         if(jRadioButton1.isSelected()==true)
         {
             maestra=1;
@@ -520,50 +478,8 @@ public class Altas extends javax.swing.JFrame {
         }
    
         int idx =Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
-        boolean flag=true;
-       try {
-                    PreparedStatement   pstm = (PreparedStatement)
-                    con.getConnection().prepareStatement("SELECT nombre_usuario FROM catusuarios WHERE nombre_usuario ='"+jTextField1.getText()+"'");
-                      ResultSet res = pstm.executeQuery();
-                      int i=0;
-                     while(res.next())
-                     {
-                    
-                      String ClaveUs = res.getString("nombre_usuario");
-                    
-                      System.out.println(ClaveUs);
-                      flag=false;
-                       
-                     } 
-                     
-                  
-                      
-                    
-        } catch (SQLException ex) {
-             System.out.println(ex);
-        }
       System.out.println("Ventas: "+ventas+" Maestra: "+maestra);
-         
-         if(flag==false)
-          {
-          JOptionPane.showMessageDialog(null,"Ese usuario ya existe intenta con otro");
-          }
-                  else{
-                            
-             Modificar(idx,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
-            jButton4.setVisible(false);
-            jButton5.setVisible(false);
-           
-            jButton1.setVisible(true);
-            jButton2.setVisible(true);
-           jButton3.setVisible(true);
-           jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            jTextField4.setText("");
-            jRadioButton1.setSelected(false);
-            jRadioButton2.setSelected(false);
-                         }
+        Modificar(idx,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
         Ver();
            jButton4.setVisible(false);
             jButton5.setVisible(false);
@@ -768,7 +684,7 @@ public class Altas extends javax.swing.JFrame {
        String aux_idmun = res1.getObject("id_municipio").toString();
         String aux_idest = res1.getObject("id_estado").toString();
         System.out.println("Valor "+ TMPnombre_usuario);
-       pstm = con.getConnection().prepareStatement("insert into catusuarios (nombre_usuario,password,plaza,serie,maestra,ventas,id_municipio,id_estado) values ('"+TMPnombre_usuario+"','"+TMPpassword+"','"+TMPplaza+"','"+TMPserie+"',"+TMPmaestra+","+TMPventas+","+aux_idmun+","+aux_idest+")");
+       pstm = con.getConnection().prepareStatement("insert into catusuarios (nombre_usuario,password,plaza,serie,ventas,maestra,id_municipio,id_estado) values ('"+TMPnombre_usuario+"','"+TMPpassword+"','"+TMPplaza+"','"+TMPserie+"',"+TMPventas+","+TMPmaestra+","+aux_idmun+","+aux_idest+")");
        pstm.execute();   
        pstm.close();
            
