@@ -515,7 +515,18 @@ public class Main2 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       try 
+//       try 
+//    {
+//      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+//    } 
+//    catch (Exception e) 
+//    {
+//      e.printStackTrace();
+//    }
+
+
+        java.awt.EventQueue.invokeLater(() -> {
+              try 
     {
       UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
     } 
@@ -523,9 +534,6 @@ public class Main2 extends javax.swing.JFrame {
     {
       e.printStackTrace();
     }
-
-
-        java.awt.EventQueue.invokeLater(() -> {
             new Main2().setVisible(true);
         });
     }

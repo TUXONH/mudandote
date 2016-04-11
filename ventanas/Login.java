@@ -157,8 +157,12 @@ public class Login extends javax.swing.JFrame
           {
       e.printStackTrace();
     }
-        java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+  
+                new Login().setVisible(true);
+            }
+
         });
     }
 
