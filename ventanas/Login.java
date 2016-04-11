@@ -11,8 +11,10 @@ import javax.swing.JOptionPane;
 
 import clases.conexion;
 import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
+import java.text.ParseException;
 import java.util.Arrays;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 public class Login extends javax.swing.JFrame 
 {
    String aux_maestra;
@@ -93,7 +95,13 @@ public class Login extends javax.swing.JFrame
              jXLoginPane1.setPassword(null);
             }
             JOptionPane.showMessageDialog(null, "COMMITED SUCCESSFULLY!");
-              
+                     try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (   ParseException | UnsupportedLookAndFeelException e) 
+    {
+    }
 //              if(res.next()){ 
 //                aux_maestra = res.getObject("maestra").toString();
 //                aux_ventas = res.getObject("ventas").toString();
