@@ -133,7 +133,7 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(450, 100, 103, 20);
+        jTextField1.setBounds(550, 100, 103, 20);
 
         cotizacion.setText("jButton1");
         getContentPane().add(cotizacion);
@@ -143,13 +143,23 @@ public class Main2 extends javax.swing.JFrame {
         getContentPane().add(reservacion);
         reservacion.setBounds(22, 140, 100, 40);
 
-        combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes", "Cotizacion", "Reservacion", "Articulos", "Choferes", "Unidades" }));
+        combo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(combo1);
-        combo1.setBounds(130, 100, 56, 20);
+        combo1.setBounds(130, 100, 84, 20);
 
         combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(combo2);
-        combo2.setBounds(230, 100, 56, 20);
+        combo2.setBounds(230, 100, 160, 20);
 
         combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         combo3.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +168,7 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(combo3);
-        combo3.setBounds(320, 100, 56, 20);
+        combo3.setBounds(420, 100, 120, 20);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 102, 0));
         jMenuBar1.setBorder(null);
@@ -307,8 +317,13 @@ public class Main2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
-        Clientes cliente = new Clientes();
-        cliente.setVisible(true);
+        Rutas rutas = null;
+        try {
+            rutas = new Rutas();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rutas.setVisible(true);
     }//GEN-LAST:event_ClientesActionPerformed
 
     private void CotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CotizacionesActionPerformed
@@ -318,11 +333,20 @@ public class Main2 extends javax.swing.JFrame {
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ENTER && combo3.getSelectedItem()!="*")
-        {            
+        {   
+            
             String select2 = "SELECT *"+" FROM "+select1+" WHERE "+combo3.getSelectedItem()+" = \""+jTextField1.getText()+"\"";
             try {
-                JTable JTable1;
-                pasar_valores(tabla,select2);
+                if (combo1.getSelectedItem()!="Reservacion")
+                {
+                    pasar_valores(tabla,select2);            
+                }
+                else
+                {
+                    String select4 = "SELECT FolioOrdenServicio,NombreCteOrigen,DirOrigen,DirDestino,VolTotal,FechaServicio"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+jTextField1.getText()+"\"";
+                    pasar_valores(tabla,select4);            
+                }
+                JTable JTable1;                
             } catch (SQLException ex) {
                 Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -339,11 +363,24 @@ public class Main2 extends javax.swing.JFrame {
     }//GEN-LAST:event_ReservacionesActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
-        // TODO add your handling code here:
+         select = "SELECT *"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+combo3.getSelectedItem()+"\"";
+            try {
+                if (combo1.getSelectedItem()!="Reservacion")
+                {
+                    pasar_valores(tabla,select);            
+                }
+                else
+                {
+                    String select4 = "SELECT FolioOrdenServicio,NombreCteOrigen,DirOrigen,DirDestino,VolTotal,FechaServicio"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+combo3.getSelectedItem()+"\"";   
+                    pasar_valores(tabla,select4);            
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_combo3ActionPerformed
 
     private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
@@ -408,6 +445,74 @@ public class Main2 extends javax.swing.JFrame {
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
+            combo2.removeAllItems();
+        combo3.removeAllItems();
+        
+        //combo3.addItem("1");
+        combo2.addItem("*");
+//        String a = (String) tabla.getValueAt(tabla.getSelectedRow(),tabla.getSelectedColumn());
+                
+        if (combo1.getSelectedItem()=="Clientes")
+        {
+            select1="catclientes";
+            select="Select * from catclientes"; 
+        }
+        if (combo1.getSelectedItem()=="Cotizacion")
+        {
+            select1="cotizaciones";
+            select="Select FolioCotizacion,NombreQuienCotiza,FechaCotizacion,FechaProvServ,FechaFinServ,CorreoElectronico from cotizaciones";                        
+        }
+        if (combo1.getSelectedItem()=="Reservacion")
+        {
+            select1="catordenesservicios";
+            select="Select FolioOrdenServicio,NombreCteOrigen,DirOrigen,DirDestino,VolTotal,FechaServicio from catordenesservicios";
+            
+        }
+        if (combo1.getSelectedItem()=="Unidades")
+        {
+            select1="catunidades";
+            select="Select * from catunidades";            
+        }
+        if (combo1.getSelectedItem()=="Choferes")
+        {
+            select1="catchoferes";
+            select="Select * from catchoferes";
+        }
+        if (combo1.getSelectedItem()=="Articulos")
+        {
+            select1="tablaarticulos";
+            select="Select * from tablaarticulos";
+        }
+        if (combo1.getSelectedItem()=="Usuarios")
+        {
+            select1="catusuarios";
+            select="Select * from catusuarios";
+        }
+          
+          try {                             
+                pasar_valores_combo(combo2,select);
+                pasar_valores(tabla,select);   
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_combo1ActionPerformed
+
+    private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
+        combo3.removeAllItems();
+        //combo3.addItem("1");
+        String filas="SELECT "+combo2.getSelectedItem()+" FROM "+select1;                        
+        try {
+            
+            pasar_filas_combo(combo3,filas);  
+            
+            pasar_valores(tabla,select);   
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_combo2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -515,18 +620,7 @@ public class Main2 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-//       try 
-//    {
-//      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
-//    } 
-//    catch (Exception e) 
-//    {
-//      e.printStackTrace();
-//    }
-
-
-        java.awt.EventQueue.invokeLater(() -> {
-              try 
+       try 
     {
       UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
     } 
@@ -534,6 +628,10 @@ public class Main2 extends javax.swing.JFrame {
     {
       e.printStackTrace();
     }
+
+
+        java.awt.EventQueue.invokeLater(() -> {
+   
             new Main2().setVisible(true);
         });
     }
