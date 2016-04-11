@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ventanas;
-import UpperEssential.UpperEssentialLookAndFeel;
 import clases.Encapsuladas;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -631,7 +630,14 @@ public class Main2 extends javax.swing.JFrame {
 
 
         java.awt.EventQueue.invokeLater(() -> {
-   
+                   try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+    {
+      e.printStackTrace();
+    }
             new Main2().setVisible(true);
         });
     }
