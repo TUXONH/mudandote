@@ -10,7 +10,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import clases.conexion;
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import java.util.Arrays;
+import javax.swing.UIManager;
 public class Login extends javax.swing.JFrame 
 {
    String aux_maestra;
@@ -147,6 +149,14 @@ public class Login extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
+         try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+          {
+      e.printStackTrace();
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
