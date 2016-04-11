@@ -45,7 +45,7 @@ public class Login extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(150, 170, 73, 23);
+        jButton1.setBounds(150, 170, 82, 26);
 
         jXLoginPane1.setBackground(new java.awt.Color(255, 102, 0));
         getContentPane().add(jXLoginPane1);
