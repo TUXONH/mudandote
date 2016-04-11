@@ -47,7 +47,7 @@ import java.util.logging.Logger;
 
 import javax.swing.UIManager;
 
->>>>>>> 727798e609d79fe8f08b3cfb2f91b5fb83b86f82
+
 
 
 public class Cotizaciones extends javax.swing.JFrame {

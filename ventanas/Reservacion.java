@@ -1148,7 +1148,6 @@ public class Reservacion extends javax.swing.JFrame {
 }
        public void NuevoProducto(String TMPfecha,String NombreCteOrigen,String DirOrigen,String RefOrigen,String NumPisosOrigen,String TelOrigen,String NombreRecibe,String DirDestino,String RefDestino,String TelDest,String NumPisoDest,String Almacenaje,String Menaje,String Maniobras,String VentasArt,String Saldo,String IVA,String SubTotal,String Total,String Retencion,String Anticipo,String Seguro,String Rentas,String HoraServicio,String UltimoUsuario,String Vendedor,String NoPresupuesto) throws UnsupportedEncodingException, MalformedURLException
 {
-    
     try{
         CodiGeograficaOrigen();
         CodiGeograficaDestino();
