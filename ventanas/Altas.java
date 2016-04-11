@@ -66,7 +66,7 @@ public class Altas extends javax.swing.JFrame {
          });
           jRadioButton2.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent arg) {
-            if(jRadioButton1.isSelected()==true)
+            if(jRadioButton2.isSelected()==true)
         {
             ventas =1;
             bandera2=true;
@@ -349,11 +349,13 @@ public class Altas extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2)))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
@@ -427,15 +429,55 @@ public class Altas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         boolean flag=true;
+       try {
+                    PreparedStatement   pstm = (PreparedStatement)
+                    con.getConnection().prepareStatement("SELECT nombre_usuario FROM catusuarios WHERE nombre_usuario ='"+jTextField1.getText()+"'");
+                      ResultSet res = pstm.executeQuery();
+                      int i=0;
+                     while(res.next())
+                     {
+                    
+                      String ClaveUs = res.getString("nombre_usuario");
+                    
+                      System.out.println(ClaveUs);
+                      flag=false;
+                       
+                     }           
+        } catch (SQLException ex) {
+             System.out.println(ex);
+        }
+       if(flag==false)
+       {
+           JOptionPane.showMessageDialog(null,"Ese usuario ya existe intenta con otro");
+       }
+       else{
+           System.out.println("MAESTRA: "+maestra+" VENTAS: "+ventas+"");
         NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
         Ver();
+        jButton4.setVisible(false);
+            jButton5.setVisible(false);
+           
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
+           jButton3.setVisible(true);
+           jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jRadioButton1.setSelected(false);
+            jRadioButton2.setSelected(false);
+       }
+       
             
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int idx = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
         
+         if (jTable1.getSelectedRow()!=-1)
+         {
+             int idx = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
         try
         {
             PreparedStatement pstm =(PreparedStatement)
@@ -451,6 +493,11 @@ public class Altas extends javax.swing.JFrame {
             Logger.getLogger(Altas.class.getName()).log(Level.SEVERE, null, ex);
         }
     Ver();
+         }
+         else
+         {
+              JOptionPane.showMessageDialog(null,"Para eliminar primero debes seleccionar en la tabla de registro");
+         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -478,10 +525,38 @@ public class Altas extends javax.swing.JFrame {
         }
    
         int idx =Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
+      boolean flag=true;
+       try {
+                    PreparedStatement   pstm = (PreparedStatement)
+                    con.getConnection().prepareStatement("SELECT nombre_usuario FROM catusuarios WHERE nombre_usuario ='"+jTextField1.getText()+"'");
+                      ResultSet res = pstm.executeQuery();
+                      int i=0;
+                     while(res.next())
+                     {
+                    
+                      String ClaveUs = res.getString("nombre_usuario");
+                    
+                      System.out.println(ClaveUs);
+                      flag=false;
+                       
+                     } 
+                     
+                  
+                      
+                    
+        } catch (SQLException ex) {
+             System.out.println(ex);
+        }
       System.out.println("Ventas: "+ventas+" Maestra: "+maestra);
-        Modificar(idx,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
-        Ver();
-           jButton4.setVisible(false);
+         
+         if(flag==false)
+          {
+          JOptionPane.showMessageDialog(null,"Ese usuario ya existe intenta con otro");
+          }
+                  else{
+                            
+             Modificar(idx,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),maestra,ventas,jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
+            jButton4.setVisible(false);
             jButton5.setVisible(false);
            
             jButton1.setVisible(true);
@@ -493,6 +568,8 @@ public class Altas extends javax.swing.JFrame {
             jTextField4.setText("");
             jRadioButton1.setSelected(false);
             jRadioButton2.setSelected(false);
+                         }
+        Ver();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
