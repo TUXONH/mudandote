@@ -25,7 +25,6 @@ public class Login extends javax.swing.JFrame
         initComponents();
          con= new conexion();
         con.getConnection();
-        jPasswordField1.setVisible(true);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,10 +35,9 @@ public class Login extends javax.swing.JFrame
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Login");
         setMinimumSize(new java.awt.Dimension(400, 204));
         setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jButton1.setText("Ingresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -47,9 +45,12 @@ public class Login extends javax.swing.JFrame
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 40, 120, -1));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 111, -1));
+        getContentPane().add(jButton1);
+        jButton1.setBounds(150, 170, 73, 23);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(140, 40, 110, 20);
+        getContentPane().add(jPasswordField1);
+        jPasswordField1.setBounds(140, 80, 6, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,8 +138,7 @@ public class Login extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-<<<<<<< HEAD
-          try 
+        try 
     {
       UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
     } 
@@ -146,9 +146,6 @@ public class Login extends javax.swing.JFrame
       {
       e.printStackTrace();
     }
-=======
-  
->>>>>>> de7049ba9019608862081236137c68ac9632df22
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
   

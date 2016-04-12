@@ -96,8 +96,9 @@ public class AsignacionUnidades extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         progreso = new javax.swing.JProgressBar();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu8 = new javax.swing.JMenu();
+        Clientes1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        Usuarios = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -109,16 +110,13 @@ public class AsignacionUnidades extends javax.swing.JFrame {
         Cotizaciones = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         Reservaciones = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu13 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Asignacion de unidades");
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -293,21 +291,26 @@ public class AsignacionUnidades extends javax.swing.JFrame {
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setBorderPainted(false);
 
+        jMenu8.setBackground(new java.awt.Color(255, 102, 0));
+        jMenu8.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu8.setText("Inicio");
+
+        Clientes1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Clientes1.setBackground(new java.awt.Color(51, 51, 51));
+        Clientes1.setForeground(new java.awt.Color(255, 255, 255));
+        Clientes1.setText("Ir");
+        Clientes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Clientes1ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(Clientes1);
+
+        jMenuBar1.add(jMenu8);
+
         jMenu2.setBackground(new java.awt.Color(255, 102, 0));
         jMenu2.setForeground(new java.awt.Color(255, 255, 255));
         jMenu2.setText("Catalogo");
-        jMenu2.setOpaque(true);
-
-        Usuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        Usuarios.setBackground(new java.awt.Color(51, 51, 51));
-        Usuarios.setForeground(new java.awt.Color(255, 255, 255));
-        Usuarios.setText("Usuario");
-        Usuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuariosActionPerformed(evt);
-            }
-        });
-        jMenu2.add(Usuarios);
 
         jMenuItem3.setText("Articulos");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -354,7 +357,6 @@ public class AsignacionUnidades extends javax.swing.JFrame {
         jMenu3.setBackground(new java.awt.Color(255, 102, 0));
         jMenu3.setForeground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("Rutas");
-        jMenu3.setOpaque(true);
 
         Clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         Clientes.setBackground(new java.awt.Color(51, 51, 51));
@@ -372,7 +374,6 @@ public class AsignacionUnidades extends javax.swing.JFrame {
         jMenu4.setBackground(new java.awt.Color(255, 102, 0));
         jMenu4.setForeground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("Cotizaciones");
-        jMenu4.setOpaque(true);
 
         Cotizaciones.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         Cotizaciones.setBackground(new java.awt.Color(51, 51, 51));
@@ -390,7 +391,6 @@ public class AsignacionUnidades extends javax.swing.JFrame {
         jMenu5.setBackground(new java.awt.Color(255, 102, 0));
         jMenu5.setForeground(new java.awt.Color(255, 255, 255));
         jMenu5.setText("Reservaciones");
-        jMenu5.setOpaque(true);
 
         Reservaciones.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         Reservaciones.setBackground(new java.awt.Color(51, 51, 51));
@@ -405,30 +405,6 @@ public class AsignacionUnidades extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setText("Status de la unidad");
-
-        jMenuItem8.setText("Ver");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem8);
-
-        jMenuBar1.add(jMenu6);
-
-        jMenu7.setText("Menu");
-
-        jMenuItem9.setText("Ver");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem9);
-
-        jMenuBar1.add(jMenu7);
-
         jMenu13.setText("Cotizacion de clientes");
 
         jMenuItem6.setText("Ver");
@@ -440,6 +416,18 @@ public class AsignacionUnidades extends javax.swing.JFrame {
         jMenu13.add(jMenuItem6);
 
         jMenuBar1.add(jMenu13);
+
+        jMenu7.setText("Status");
+
+        jMenuItem9.setText("Ver Status de unidades");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem9);
+
+        jMenuBar1.add(jMenu7);
 
         jMenu1.setText("Cerrar sesion");
 
@@ -615,11 +603,11 @@ public String pasar_filas(String sql)
          
     }//GEN-LAST:event_tablaMouseClicked
 
-    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
-        Altas usuario = new Altas();
-        usuario.setVisible(true);
+    private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
+        Main2 main = new Main2();
+        main.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_UsuariosActionPerformed
+    }//GEN-LAST:event_Clientes1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         try {
@@ -652,11 +640,10 @@ public String pasar_filas(String sql)
         try {
             uni = new Unidades();
             uni.setVisible(true);
-            this.dispose();
+            this.dispose();            
         } catch (SQLException ex) {
             Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -668,7 +655,6 @@ public String pasar_filas(String sql)
         } catch (SQLException ex) {
             Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
@@ -680,7 +666,6 @@ public String pasar_filas(String sql)
         } catch (SQLException ex) {
             Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_ClientesActionPerformed
 
     private void CotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CotizacionesActionPerformed
@@ -699,8 +684,19 @@ public String pasar_filas(String sql)
         // TODO add your handling code here:
         CotiClientes cot = new CotiClientes();
         cot.setVisible(true);
-        this.dispose();  
+        this.dispose();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        try {
+            // TODO add your handling code here:
+            Status sta = new Status();
+            sta.setVisible(true);
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
@@ -708,23 +704,6 @@ public String pasar_filas(String sql)
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-         try {
-             // TODO add your handling code here:
-             Status sta = new Status();
-             sta.setVisible(true);
-             this.dispose();
-         } catch (SQLException ex) {
-             Logger.getLogger(AsignacionUnidades.class.getName()).log(Level.SEVERE, null, ex);
-         }
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        // TODO add your handling code here:
-        Main2 main = new Main2();
-        main.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -980,9 +959,9 @@ public String pasar_filas(String sql)
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Clientes;
+    private javax.swing.JMenuItem Clientes1;
     private javax.swing.JMenuItem Cotizaciones;
     private javax.swing.JMenuItem Reservaciones;
-    private javax.swing.JMenuItem Usuarios;
     private javax.swing.JButton asignar;
     private javax.swing.JComboBox<String> combo1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -997,8 +976,8 @@ public String pasar_filas(String sql)
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -1007,7 +986,6 @@ public String pasar_filas(String sql)
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
