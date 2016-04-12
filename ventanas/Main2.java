@@ -77,6 +77,7 @@ public class Main2 extends javax.swing.JFrame {
         combo1 = new javax.swing.JComboBox<>();
         combo2 = new javax.swing.JComboBox<>();
         combo3 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         Usuarios = new javax.swing.JMenuItem();
@@ -102,7 +103,6 @@ public class Main2 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1211, 458));
         setUndecorated(true);
         setSize(new java.awt.Dimension(1211, 458));
-        getContentPane().setLayout(null);
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,9 +117,6 @@ public class Main2 extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(130, 130, 1062, 254);
-
         jTextField1.setToolTipText("Buscar segun el nombre de columna");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,16 +128,10 @@ public class Main2 extends javax.swing.JFrame {
                 jTextField1KeyPressed(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(550, 100, 103, 20);
 
-        cotizacion.setText("jButton1");
-        getContentPane().add(cotizacion);
-        cotizacion.setBounds(11, 190, 100, 60);
+        cotizacion.setText("Cotizaciones");
 
-        reservacion.setText("cotizacion");
-        getContentPane().add(reservacion);
-        reservacion.setBounds(22, 140, 100, 40);
+        reservacion.setText("Reservacion");
 
         combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes", "Cotizacion", "Reservacion", "Articulos", "Choferes", "Unidades" }));
         combo1.addActionListener(new java.awt.event.ActionListener() {
@@ -148,8 +139,6 @@ public class Main2 extends javax.swing.JFrame {
                 combo1ActionPerformed(evt);
             }
         });
-        getContentPane().add(combo1);
-        combo1.setBounds(130, 100, 84, 20);
 
         combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         combo2.addActionListener(new java.awt.event.ActionListener() {
@@ -157,8 +146,6 @@ public class Main2 extends javax.swing.JFrame {
                 combo2ActionPerformed(evt);
             }
         });
-        getContentPane().add(combo2);
-        combo2.setBounds(230, 100, 160, 20);
 
         combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         combo3.addActionListener(new java.awt.event.ActionListener() {
@@ -166,15 +153,13 @@ public class Main2 extends javax.swing.JFrame {
                 combo3ActionPerformed(evt);
             }
         });
-        getContentPane().add(combo3);
-        combo3.setBounds(420, 100, 120, 20);
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 102, 0));
+        jMenuBar1.setBackground(new java.awt.Color(204, 204, 204));
         jMenuBar1.setBorder(null);
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setBorderPainted(false);
 
-        jMenu2.setBackground(new java.awt.Color(255, 102, 0));
+        jMenu2.setBackground(new java.awt.Color(204, 204, 204));
         jMenu2.setForeground(new java.awt.Color(255, 255, 255));
         jMenu2.setText("Catalogo");
         jMenu2.setOpaque(true);
@@ -232,7 +217,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setBackground(new java.awt.Color(255, 102, 0));
+        jMenu3.setBackground(new java.awt.Color(204, 204, 204));
         jMenu3.setForeground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("Rutas");
         jMenu3.setOpaque(true);
@@ -250,7 +235,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setBackground(new java.awt.Color(255, 102, 0));
+        jMenu4.setBackground(new java.awt.Color(204, 204, 204));
         jMenu4.setForeground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("Cotizaciones");
         jMenu4.setOpaque(true);
@@ -268,7 +253,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setBackground(new java.awt.Color(255, 102, 0));
+        jMenu5.setBackground(new java.awt.Color(204, 204, 204));
         jMenu5.setForeground(new java.awt.Color(255, 255, 255));
         jMenu5.setText("Reservaciones");
         jMenu5.setOpaque(true);
@@ -311,6 +296,54 @@ public class Main2 extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reservacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cotizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1062, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(combo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(combo3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(combo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(reservacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(cotizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -631,7 +664,7 @@ public class Main2 extends javax.swing.JFrame {
       e.printStackTrace();
     }
             new Main2().setVisible(true);
-        });
+        });  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -643,6 +676,7 @@ public class Main2 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combo2;
     private javax.swing.JComboBox<String> combo3;
     private javax.swing.JButton cotizacion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu13;

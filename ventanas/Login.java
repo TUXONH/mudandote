@@ -157,14 +157,7 @@ public class Login extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-      /*   try 
-    {
-      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
-    } 
-    catch (Exception e) 
-          {
-      e.printStackTrace();
-    }*/
+  
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
   
