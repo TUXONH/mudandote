@@ -10,7 +10,11 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import clases.conexion;
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
+import java.text.ParseException;
 import java.util.Arrays;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 public class Login extends javax.swing.JFrame 
 {
    String aux_maestra;
@@ -41,7 +45,9 @@ public class Login extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(150, 170, 73, 23);
+        jButton1.setBounds(150, 170, 82, 26);
+
+        jXLoginPane1.setBackground(new java.awt.Color(255, 102, 0));
         getContentPane().add(jXLoginPane1);
         jXLoginPane1.setBounds(0, 0, 400, 164);
 
@@ -89,7 +95,13 @@ public class Login extends javax.swing.JFrame
              jXLoginPane1.setPassword(null);
             }
             JOptionPane.showMessageDialog(null, "COMMITED SUCCESSFULLY!");
-              
+                     try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (   ParseException | UnsupportedLookAndFeelException e) 
+    {
+    }
 //              if(res.next()){ 
 //                aux_maestra = res.getObject("maestra").toString();
 //                aux_ventas = res.getObject("ventas").toString();
@@ -145,10 +157,20 @@ public class Login extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
+      /*   try 
+    {
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+    } 
+    catch (Exception e) 
+          {
+      e.printStackTrace();
+    }*/
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+  
                 new Login().setVisible(true);
             }
+
         });
     }
 

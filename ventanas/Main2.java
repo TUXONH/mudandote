@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ventanas;
-import UpperEssential.UpperEssentialLookAndFeel;
 import clases.Encapsuladas;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -69,6 +68,7 @@ public class Main2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu12 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
@@ -78,18 +78,25 @@ public class Main2 extends javax.swing.JFrame {
         combo2 = new javax.swing.JComboBox<>();
         combo3 = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        Empresa = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Usuarios = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         Clientes = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         Cotizaciones = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         Reservaciones = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        Unidades = new javax.swing.JMenuItem();
+        jMenu13 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+
+        jMenu12.setText("jMenu12");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1211, 458));
@@ -125,60 +132,57 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(450, 100, 103, 20);
+        jTextField1.setBounds(550, 100, 103, 20);
 
         cotizacion.setText("jButton1");
         getContentPane().add(cotizacion);
-        cotizacion.setBounds(30, 190, 81, 26);
+        cotizacion.setBounds(11, 190, 100, 60);
 
-        reservacion.setText("jButton1");
+        reservacion.setText("cotizacion");
         getContentPane().add(reservacion);
-        reservacion.setBounds(30, 140, 81, 26);
+        reservacion.setBounds(22, 140, 100, 40);
 
-        combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes", "Cotizacion", "Reservacion", "Articulos", "Choferes", "Unidades" }));
+        combo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(combo1);
-        combo1.setBounds(130, 100, 63, 25);
+        combo1.setBounds(130, 100, 84, 20);
 
         combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(combo2);
-        combo2.setBounds(220, 90, 63, 25);
+        combo2.setBounds(230, 100, 160, 20);
 
         combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(combo3);
-        combo3.setBounds(340, 90, 63, 25);
+        combo3.setBounds(420, 100, 120, 20);
 
-        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setBackground(new java.awt.Color(255, 102, 0));
         jMenuBar1.setBorder(null);
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setBorderPainted(false);
 
-        jMenu1.setBackground(new java.awt.Color(51, 51, 51));
-        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu1.setText("Seleccionar Empresa");
-        jMenu1.setOpaque(true);
-
-        Empresa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        Empresa.setBackground(new java.awt.Color(51, 51, 51));
-        Empresa.setForeground(new java.awt.Color(255, 255, 255));
-        Empresa.setText("Agregar");
-        Empresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmpresaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Empresa);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu2.setBackground(new java.awt.Color(255, 102, 0));
         jMenu2.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu2.setText("Usuarios");
+        jMenu2.setText("Catalogo");
         jMenu2.setOpaque(true);
 
         Usuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         Usuarios.setBackground(new java.awt.Color(51, 51, 51));
         Usuarios.setForeground(new java.awt.Color(255, 255, 255));
-        Usuarios.setText("Agregar");
+        Usuarios.setText("Usuario");
         Usuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsuariosActionPerformed(evt);
@@ -186,11 +190,51 @@ public class Main2 extends javax.swing.JFrame {
         });
         jMenu2.add(Usuarios);
 
+        jMenuItem3.setText("Articulos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem2.setText("Vivienda");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem4.setText("Plazas");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Unidades");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenuItem1.setText("Choferes");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu3.setBackground(new java.awt.Color(255, 102, 0));
         jMenu3.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu3.setText("Clientes");
+        jMenu3.setText("Rutas");
         jMenu3.setOpaque(true);
 
         Clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
@@ -206,7 +250,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu4.setBackground(new java.awt.Color(255, 102, 0));
         jMenu4.setForeground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("Cotizaciones");
         jMenu4.setOpaque(true);
@@ -224,7 +268,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu5.setBackground(new java.awt.Color(255, 102, 0));
         jMenu5.setForeground(new java.awt.Color(255, 255, 255));
         jMenu5.setText("Reservaciones");
         jMenu5.setOpaque(true);
@@ -242,54 +286,43 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setBackground(new java.awt.Color(51, 51, 51));
-        jMenu6.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu6.setText("Unidades");
-        jMenu6.setOpaque(true);
+        jMenu13.setText("Cotizacion de clientes");
 
-        Unidades.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        Unidades.setBackground(new java.awt.Color(51, 51, 51));
-        Unidades.setForeground(new java.awt.Color(255, 255, 255));
-        Unidades.setText("Agregar");
-        Unidades.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem6.setText("Ver");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UnidadesActionPerformed(evt);
+                jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu6.add(Unidades);
+        jMenu13.add(jMenuItem6);
 
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(jMenu13);
+
+        jMenu1.setText("Cerrar sesion");
+
+        jMenuItem7.setText("Salir");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnidadesActionPerformed
+    private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
+        Rutas rutas = null;
         try {
-            // Unidades unidad = new Unidades();
-            Unidades unidad = new Unidades();
-            unidad.show(true);
+            rutas = new Rutas();
         } catch (SQLException ex) {
             Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_UnidadesActionPerformed
-
-    private void EmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpresaActionPerformed
-        SeleccionarEmpresa empresa = new SeleccionarEmpresa();
-        empresa.setVisible(true);
-        
-        
-    }//GEN-LAST:event_EmpresaActionPerformed
-
-    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
-       Altas usuario = new Altas(); 
-       usuario.setVisible(true);
-    }//GEN-LAST:event_UsuariosActionPerformed
-
-    private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
-        Clientes cliente = new Clientes();
-        cliente.setVisible(true);
+        rutas.setVisible(true);
     }//GEN-LAST:event_ClientesActionPerformed
 
     private void CotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CotizacionesActionPerformed
@@ -299,11 +332,20 @@ public class Main2 extends javax.swing.JFrame {
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ENTER && combo3.getSelectedItem()!="*")
-        {            
+        {   
+            
             String select2 = "SELECT *"+" FROM "+select1+" WHERE "+combo3.getSelectedItem()+" = \""+jTextField1.getText()+"\"";
             try {
-                JTable JTable1;
-                pasar_valores(tabla,select2);
+                if (combo1.getSelectedItem()!="Reservacion")
+                {
+                    pasar_valores(tabla,select2);            
+                }
+                else
+                {
+                    String select4 = "SELECT FolioOrdenServicio,NombreCteOrigen,DirOrigen,DirDestino,VolTotal,FechaServicio"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+jTextField1.getText()+"\"";
+                    pasar_valores(tabla,select4);            
+                }
+                JTable JTable1;                
             } catch (SQLException ex) {
                 Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -315,12 +357,161 @@ public class Main2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1KeyPressed
 
     private void ReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservacionesActionPerformed
-
+    Reservacion res = new Reservacion();
+    res.setVisible(true);
     }//GEN-LAST:event_ReservacionesActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
+         select = "SELECT *"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+combo3.getSelectedItem()+"\"";
+            try {
+                if (combo1.getSelectedItem()!="Reservacion")
+                {
+                    pasar_valores(tabla,select);            
+                }
+                else
+                {
+                    String select4 = "SELECT FolioOrdenServicio,NombreCteOrigen,DirOrigen,DirDestino,VolTotal,FechaServicio"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+combo3.getSelectedItem()+"\"";   
+                    pasar_valores(tabla,select4);            
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_combo3ActionPerformed
+
+    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
+        Altas usuario = new Altas();
+        usuario.setVisible(true);
+    }//GEN-LAST:event_UsuariosActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        try {
+            // TODO add your handling code here:
+            Articulos art = new Articulos();
+            art.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        CatVivienda vivi = new CatVivienda();
+        vivi.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        Plazas plaz = new Plazas();
+        plaz.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        Unidades uni;
+        try {
+            uni = new Unidades();
+             uni.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            Choferes chof = new Choferes();
+            chof.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        CotiClientes cot = new CotiClientes();
+        cot.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        Login log = new Login();
+        log.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
+            combo2.removeAllItems();
+        combo3.removeAllItems();
+        
+        //combo3.addItem("1");
+        combo2.addItem("*");
+//        String a = (String) tabla.getValueAt(tabla.getSelectedRow(),tabla.getSelectedColumn());
+                
+        if (combo1.getSelectedItem()=="Clientes")
+        {
+            select1="catclientes";
+            select="Select * from catclientes"; 
+        }
+        if (combo1.getSelectedItem()=="Cotizacion")
+        {
+            select1="cotizaciones";
+            select="Select FolioCotizacion,NombreQuienCotiza,FechaCotizacion,FechaProvServ,FechaFinServ,CorreoElectronico from cotizaciones";                        
+        }
+        if (combo1.getSelectedItem()=="Reservacion")
+        {
+            select1="catordenesservicios";
+            select="Select FolioOrdenServicio,NombreCteOrigen,DirOrigen,DirDestino,VolTotal,FechaServicio from catordenesservicios";
+            
+        }
+        if (combo1.getSelectedItem()=="Unidades")
+        {
+            select1="catunidades";
+            select="Select * from catunidades";            
+        }
+        if (combo1.getSelectedItem()=="Choferes")
+        {
+            select1="catchoferes";
+            select="Select * from catchoferes";
+        }
+        if (combo1.getSelectedItem()=="Articulos")
+        {
+            select1="tablaarticulos";
+            select="Select * from tablaarticulos";
+        }
+        if (combo1.getSelectedItem()=="Usuarios")
+        {
+            select1="catusuarios";
+            select="Select * from catusuarios";
+        }
+          
+          try {                             
+                pasar_valores_combo(combo2,select);
+                pasar_valores(tabla,select);   
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_combo1ActionPerformed
+
+    private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
+        combo3.removeAllItems();
+        //combo3.addItem("1");
+        String filas="SELECT "+combo2.getSelectedItem()+" FROM "+select1;                        
+        try {
+            
+            pasar_filas_combo(combo3,filas);  
+            
+            pasar_valores(tabla,select);   
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_combo2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,7 +619,10 @@ public class Main2 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       try 
+
+
+        java.awt.EventQueue.invokeLater(() -> {
+                   try 
     {
       UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
     } 
@@ -436,9 +630,6 @@ public class Main2 extends javax.swing.JFrame {
     {
       e.printStackTrace();
     }
-
-
-        java.awt.EventQueue.invokeLater(() -> {
             new Main2().setVisible(true);
         });
     }
@@ -446,21 +637,27 @@ public class Main2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Clientes;
     private javax.swing.JMenuItem Cotizaciones;
-    private javax.swing.JMenuItem Empresa;
     private javax.swing.JMenuItem Reservaciones;
-    private javax.swing.JMenuItem Unidades;
     private javax.swing.JMenuItem Usuarios;
     private javax.swing.JComboBox<String> combo1;
     private javax.swing.JComboBox<String> combo2;
     private javax.swing.JComboBox<String> combo3;
     private javax.swing.JButton cotizacion;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton reservacion;
