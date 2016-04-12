@@ -110,6 +110,7 @@ public class Clientes extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Clientes");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -616,7 +617,7 @@ public class Clientes extends javax.swing.JFrame {
         
         try {
                     PreparedStatement   pstm = (PreparedStatement)
-                        con.getConnection().prepareStatement("SELECT catclientes.FolioCliente,catclientes.CorreoElectronico,catclientes.RFC,catclientes.NombreContacto,catclientes.NombreComercial,catclientes.RazonSocial,catclientes.Direccion,catclientes.TelCasa,catclientes.TelOficina,catclientes.Movil,catclientes.Activo,estados.nombre,municipios.mun_nombre from catclientes LEFT JOIN estados ON estados.id_estado=catclientes.id_estado LEFT JOIN municipios ON municipios.id_municipio=catclientes.id_municipio");
+                        con.getConnection().prepareStatement("SELECT catclientes.FolioCliente,catclientes.CorreoElectronico,catclientes.RFC,catclientes.NombreContacto,catclientes.NombreComercial,catclientes.RazonSocial,catclientes.Direccion,catclientes.TelCasa,catclientes.TelOficina,catclientes.Movil,catclientes.Activo,estados.nombre,municipios.mun_nombre from catclientes LEFT JOIN estados ON estados.Estado=catclientes.Estado LEFT JOIN municipios ON municipios.Municipio=catclientes.Municipio");
                       ResultSet res = pstm.executeQuery();
                       int i=0;
                       while(res.next()){
@@ -685,7 +686,7 @@ public class Clientes extends javax.swing.JFrame {
            // Class.forName("com.mysql.jdbc.Driver");
           //  Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/mudandote", "root", "");
             Statement st = con.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = st.executeQuery("SELECT * FROM municipios,estados where municipios.id_estado=estados.id_estado and estados.nombre='"+est+"'");
+            ResultSet rs = st.executeQuery("SELECT * FROM municipios,estados where municipios.Estado=estados.Estado and estados.nombre='"+est+"'");
             modeloCombo2.addElement("Seleccione un Municipio");
             this.jComboBox2.setModel(modeloCombo2);
             while (rs.next()) {
@@ -699,18 +700,18 @@ public class Clientes extends javax.swing.JFrame {
         } 
 }
       
-    public void NuevoProducto(String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPMovil,String TMPid_estado,String TMPid_municipio)
+    public void NuevoProducto(String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPMovil,String TMPEstado,String TMPMunicipio)
 {
     try{
        // PreparedStatement PreparedStatement = null;
         PreparedStatement pstm =(PreparedStatement)
-        con.getConnection().prepareStatement("Select id_municipio,id_estado from municipios where mun_nombre= '"+TMPid_municipio+"'");
+        con.getConnection().prepareStatement("Select Municipio,Estado from municipios where mun_nombre= '"+TMPMunicipio+"'");
         ResultSet res1 = pstm.executeQuery();
         res1.next();
-       String aux_idmun = res1.getObject("id_municipio").toString();
-        String aux_idest = res1.getObject("id_estado").toString();
+       String aux_idmun = res1.getObject("Municipio").toString();
+        String aux_idest = res1.getObject("Estado").toString();
         //System.out.println("Valor "+ TMPCorreoElectronico);
-       pstm = con.getConnection().prepareStatement("insert into catclientes(CorreoElectronico,RFC,NombreContacto,NombreComercial,RazonSocial,Direccion,Activo,TelCasa,TelOficina,Movil,id_estado,id_municipio) values ('"+TMPCorreoElectronico+"','"+TMPRFC+"','"+TMPNombreContacto+"','"+TMPNombreComercial+"','"+TMPRazonSocial+"','"+TMPDireccion+"',"+TMPActivo+",'"+TMPTelCasa+"','"+TMPTelOficna+"','"+TMPMovil+"',"+aux_idest+","+aux_idmun+")");
+       pstm = con.getConnection().prepareStatement("insert into catclientes(CorreoElectronico,RFC,NombreContacto,NombreComercial,RazonSocial,Direccion,Activo,TelCasa,TelOficina,Movil,Estado,Municipio) values ('"+TMPCorreoElectronico+"','"+TMPRFC+"','"+TMPNombreContacto+"','"+TMPNombreComercial+"','"+TMPRazonSocial+"','"+TMPDireccion+"',"+TMPActivo+",'"+TMPTelCasa+"','"+TMPTelOficna+"','"+TMPMovil+"',"+aux_idest+","+aux_idmun+")");
        pstm.execute();   
        pstm.close();
            
@@ -721,7 +722,7 @@ public class Clientes extends javax.swing.JFrame {
             }
 
 }
-     public void Modificar(int idx,String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPMovil,String TMPid_estado,String TMPid_municipio)
+     public void Modificar(int idx,String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPMovil,String TMPEstado,String TMPMunicipio)
    {
    
     // TODO add your handling code here:
@@ -729,12 +730,12 @@ public class Clientes extends javax.swing.JFrame {
       
         try {            
             PreparedStatement pst =(PreparedStatement)     
-           con.getConnection().prepareStatement("Select id_municipio,id_estado from municipios where mun_nombre= '"+TMPid_municipio+"'");
+           con.getConnection().prepareStatement("Select Municipio,Estado from municipios where mun_nombre= '"+TMPMunicipio+"'");
              ResultSet res1 = pst.executeQuery();
              res1.next();
-            String aux_idmun = res1.getObject("id_municipio").toString();
-             String aux_idest = res1.getObject("id_estado").toString();
-            pst=con.getConnection().prepareStatement("UPDATE catclientes SET CorreoElectronico='"+TMPCorreoElectronico+"',RFC='"+TMPRFC+"',NombreContacto='"+TMPNombreContacto+"',NombreComercial='"+TMPNombreComercial+"',RazonSocial='"+TMPRazonSocial+"',Activo="+TMPActivo+",Direccion='"+TMPDireccion+"',TelCasa='"+TMPTelCasa+"',TelOficina='"+TMPTelOficna+"',Movil='"+TMPMovil+"',id_municipio="+aux_idmun+",id_estado="+aux_idest+",Movil="+TMPMovil+" WHERE FolioCliente="+idx);                                                        
+            String aux_idmun = res1.getObject("Municipio").toString();
+             String aux_idest = res1.getObject("Estado").toString();
+            pst=con.getConnection().prepareStatement("UPDATE catclientes SET CorreoElectronico='"+TMPCorreoElectronico+"',RFC='"+TMPRFC+"',NombreContacto='"+TMPNombreContacto+"',NombreComercial='"+TMPNombreComercial+"',RazonSocial='"+TMPRazonSocial+"',Activo="+TMPActivo+",Direccion='"+TMPDireccion+"',TelCasa='"+TMPTelCasa+"',TelOficina='"+TMPTelOficna+"',Movil='"+TMPMovil+"',Municipio="+aux_idmun+",Estado="+aux_idest+",Movil="+TMPMovil+" WHERE FolioCliente="+idx);                                                        
             pst.executeUpdate();
             pst.close();
          

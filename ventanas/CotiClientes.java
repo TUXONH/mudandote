@@ -168,6 +168,7 @@ public class CotiClientes extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cotizacion de Clientes");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

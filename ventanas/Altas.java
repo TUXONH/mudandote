@@ -552,6 +552,18 @@ public class Altas extends javax.swing.JFrame {
          if(flag==false)
           {
           JOptionPane.showMessageDialog(null,"Ese usuario ya existe intenta con otro");
+           jButton4.setVisible(false);
+            jButton5.setVisible(false);
+           
+            jButton1.setVisible(true);
+            jButton2.setVisible(true);
+           jButton3.setVisible(true);
+           jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jRadioButton1.setSelected(false);
+            jRadioButton2.setSelected(false);
           }
                   else{
                             

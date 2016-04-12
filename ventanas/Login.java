@@ -21,22 +21,25 @@ public class Login extends javax.swing.JFrame
    String aux_ventas;
    conexion con;
     public Login() {
-        setLocationRelativeTo(null);
+       // setLocationRelativeTo(null);
         initComponents();
          con= new conexion();
         con.getConnection();
+        jPasswordField1.setVisible(true);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jXLoginPane1 = new org.jdesktop.swingx.JXLoginPane();
+        jTextField1 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setMinimumSize(new java.awt.Dimension(400, 204));
         setUndecorated(true);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Ingresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -44,12 +47,9 @@ public class Login extends javax.swing.JFrame
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(150, 170, 82, 26);
-
-        jXLoginPane1.setBackground(new java.awt.Color(255, 102, 0));
-        getContentPane().add(jXLoginPane1);
-        jXLoginPane1.setBounds(0, 0, 400, 164);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 40, 120, -1));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 111, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -57,10 +57,10 @@ public class Login extends javax.swing.JFrame
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
  
-       char [] pass = jXLoginPane1.getPassword();
+       char [] pass = jPasswordField1.getPassword();
        String a = String.valueOf(pass);
        
-        String value1=jXLoginPane1.getUserName();
+        String value1=jTextField1.getText();
        String value2=a;
        
        String user1="";
@@ -91,38 +91,18 @@ public class Login extends javax.swing.JFrame
             }
             else{
             JOptionPane.showMessageDialog(this,"Incorrect login or password","Error",JOptionPane.ERROR_MESSAGE);
-            jXLoginPane1.setUserName("");
-             jXLoginPane1.setPassword(null);
+            jTextField1.setText("");
+             jPasswordField1.setText("");
             }
             JOptionPane.showMessageDialog(null, "COMMITED SUCCESSFULLY!");
-                     try 
-    {
-      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
-    } 
-    catch (   ParseException | UnsupportedLookAndFeelException e) 
-    {
-    }
-//              if(res.next()){ 
-//                aux_maestra = res.getObject("maestra").toString();
-//                aux_ventas = res.getObject("ventas").toString();
-//               
-//                Encapsuladas.setAuxVentas(aux_ventas.toString());
-//                Main2 m = new Main2();
-//                m.setVisible(true);
-//                //form.setVisible(true);
-//                this.hide();
-//                 
-//              }
-//              else
-//              {
-//                JOptionPane.showMessageDialog(null,"Error de contraseña o usuario");
-//                jXLoginPane1.setUserName("");
-//                jXLoginPane1.setPassword(null);
-//              }
-//             
-//       
-            
-        } catch (SQLException ex) {
+//                     try 
+//    {
+//      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+//    } 
+//    catch (   ParseException | UnsupportedLookAndFeelException e) 
+//    {
+//    }
+    } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
              System.out.println("No hay ese usuario");
         }
@@ -157,14 +137,14 @@ public class Login extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-      /*   try 
+          try 
     {
       UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
     } 
     catch (Exception e) 
-          {
+      {
       e.printStackTrace();
-    }*/
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
   
@@ -176,6 +156,7 @@ public class Login extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private org.jdesktop.swingx.JXLoginPane jXLoginPane1;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

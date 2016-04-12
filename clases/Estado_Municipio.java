@@ -35,7 +35,7 @@ public class Estado_Municipio {
         
          try{
            PreparedStatement pstm = (PreparedStatement)
-           con.getConnection().prepareStatement("SELECT count(1) as total FROM aticulos");
+           con.getConnection().prepareStatement("SELECT count(1) as total FROM articulos");
            ResultSet res = pstm.executeQuery();
            res.next();
            registro = res.getInt("total");

@@ -174,6 +174,7 @@ public class Reservacion extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Reservaciones");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1019,12 +1020,33 @@ public class Reservacion extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-       double NuevoSaldo=Double.parseDouble(jTextField8.getText())-Integer.parseInt(jTextField5.getText());
-       System.out.println(NuevoSaldo);
-       jTextField21.setText(Double.toString(NuevoSaldo));
+        try {
+                    PreparedStatement   pstm = (PreparedStatement)
+                    con.getConnection().prepareStatement("SELECT Saldo FROM cotizaciones WHERE FolioCotizacion='"+jTextField10.getText()+"'");
+                      ResultSet res = pstm.executeQuery();
+                      
+                     while(res.next())
+                     {
+                    
+                      String ClaveUs = res.getString("Saldo");
+                    jTextField8.setText(ClaveUs);
+                      System.out.println(ClaveUs);
+                     
+                       
+                     }           
+        } catch (SQLException ex) {
+             System.out.println(ex);
+        }
        double AnticipoA=Double.parseDouble(jTextField22.getText())+Double.parseDouble(jTextField5.getText());
+        double NuevoSaldo=NuevoSaldo=Double.parseDouble(jTextField8.getText())-Double.parseDouble(jTextField5.getText());
+       System.out.println(NuevoSaldo);
+       jTextField22.setText(Double.toString(AnticipoA));
+       
+       jTextField21.setText(Double.toString(NuevoSaldo));
        jTextField23.setText(Double.toString(NuevoSaldo));
-        jTextField22.setText(Double.toString(AnticipoA));
+      
+       
+      
        try {            
             PreparedStatement pst =(PreparedStatement)     
           

@@ -116,6 +116,7 @@ public class Plazas extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Plazas");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 

@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import clases.conexion;
 import clases.Estado_Municipio;
 import clases.Encapsuladas;
+import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.geom.Point2D;
@@ -38,7 +39,7 @@ import javax.swing.table.TableModel;
 import maps.java.Geocoding;
 import maps.java.Route;
 import maps.java.ShowMaps;
-import org.jsoup.Jsoup;
+//import org.jsoup.Jsoup;
 
 import java.text.SimpleDateFormat;
 
@@ -361,6 +362,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cotizaciones");
         setBackground(new java.awt.Color(51, 255, 255));
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -948,28 +950,24 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel19.setText("Almacenaje");
 
         txtAlmacenaje.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtAlmacenaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionDestinoActionPerformed(evt);
+            }
+        });
+        txtAlmacenaje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionDestinoKeyTyped(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel20.setText("(Des)Empaqu");
 
         txtEmpaque.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
-
         jLabel21.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel21.setText("Rentas");
-
-        txtDireccionDestino.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        txtDireccionDestino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionDestinoActionPerformed(evt);
-            }
-        });
-        txtDireccionDestino.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDireccionDestinoKeyTyped(evt);
-            }
-        });
-
 
         txtRentas.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
@@ -1022,7 +1020,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel30.setText("*Anticipo");
 
         jLabel31.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
-        jLabel31.setText("Salto");
+        jLabel31.setText("Saldo");
 
         txtTotalFinal.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
@@ -1044,32 +1042,6 @@ public class Cotizaciones extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-<<<<<<< HEAD
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombreDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel45))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel46)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(txtDireccionDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
-                                .addGap(180, 180, 180))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel47)
-                                .addGap(99, 99, 99)
-                                .addComponent(jLabel48))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ComboEstado2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel50)
-                                    .addComponent(txtTelCasaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-=======
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1098,7 +1070,6 @@ public class Cotizaciones extends javax.swing.JFrame {
                             .addComponent(jLabel31)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel26)
->>>>>>> 408946de33725b7df938d2c59903e76654c990e9
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(SpnIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1270,31 +1241,11 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addComponent(jLabel34))
         );
 
-<<<<<<< HEAD
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(485, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jCheckBox9)
-                        .addGap(356, 356, 356))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(252, 252, 252))))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-=======
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
->>>>>>> 408946de33725b7df938d2c59903e76654c990e9
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1572,8 +1523,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Save.png"))); // NOI18N
-        btnGuardar.setText("Guardar ");
+        btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -1602,15 +1552,8 @@ public class Cotizaciones extends javax.swing.JFrame {
                         .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(81, 81, 81)
-                        .addComponent(btnGuardar)
-=======
                         .addGap(149, 149, 149)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> 408946de33725b7df938d2c59903e76654c990e9
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -2527,94 +2470,16 @@ public class Cotizaciones extends javax.swing.JFrame {
        
         }
     
-<<<<<<< HEAD
-=======
 //public void guardarDatos()
 //{}
   
     
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        
-         int año = FechaProbable.getCalendar().get(Calendar.YEAR);
->>>>>>> 408946de33725b7df938d2c59903e76654c990e9
-public void guardarDatos()
-{
-     int año = FechaProbable.getCalendar().get(Calendar.YEAR);    
 
-    private void rellenarTablaRuta(String[][] ruta){
-        String[] columnas=new String[5];
-        columnas[0]="Duración tramo";columnas[1]="Distancia tramo";columnas[2]="Indicaciones";columnas[3]="Latitud";columnas[4]="Longitud";
-        for(int i=0;i<ruta.length;i++){
-            try {
-                 ruta[i][2]=Jsoup.parse(ruta[i][2]).text();
-            } catch (Exception e) {
-            }
-        }
-        TableModel tableModel=new DefaultTableModel(ruta, columnas);
-        //this.jTable_Ruta_Tramos.setModel(tableModel);
-    }
-    
-    public void crearRuta() throws MalformedURLException, UnsupportedEncodingException, SQLException{
-        String latlon =lat+", "+lon;
-        String latlon2 =lat2+", "+lon2;
-        if(!latlon.isEmpty() && !latlon2.isEmpty()){
-             ArrayList<String> hitos=new ArrayList<>();
-             //if(jCheckBox_Ruta_Hito.isSelected() && !JText_Ruta_Hito.getText().isEmpty()){
-             //    hitos.add(JText_Ruta_Hito.getText());
-             //}
-             String[][] arrayRoute=ObjRoute.getRoute(latlon, latlon2,
-                     hitos, Boolean.TRUE,Route.mode.driving,Route.avoids.nothing);               
-//,
-//hitos, Boolean.TRUE,this.seleccionarModoRuta(),this.seleccionarRestricciones());  
-             //rellenarTablaRuta(arrayRoute);
-             rellenarDatosrRuta();
-            
-         }
-    }
-    private void rellenarDatosrRuta() throws SQLException{         
-         ArrayList<Integer> tiempoTotal=ObjRoute.getTotalTime();
-         int tiempoAux=0;
-         for(Integer item:tiempoTotal){
-             tiempoAux+=item;
-         }
-         ArrayList<Integer> distanciaTotal=ObjRoute.getTotalDistance();
-         int distanciaAux=0;
-         for(Integer item:distanciaTotal){
-             distanciaAux+=item;
-         }
-         double tiempo=(double)(tiempoAux);
-         tiempo=(tiempo/60)/60;
-         Rutas rutas = new Rutas();         
-         tiempo=rutas.redondeoDosDecimales(tiempo);
-         double distancia=(double)(distanciaAux);
-         distancia=distancia/1000;         
-         time=String.valueOf(tiempo);         
-         distance=String.valueOf(distancia);
-    } 
-    
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
-       String[] coordenadas = null,coordenadas2 = null;
-       
-       try {
-            
-            //this.comprobarStatus(JLabel_CD_Status);
-            //this.elevacionCD(this.JText_CD_Lati,this.JText_CD_Long);
-        } catch (Exception ex) {
-        }
-        String fech = txtFechaActual.getDate().toString();
-        System.out.println(fech);
         
 
 
 
-         int año = FechaProbable.getCalendar().get(Calendar.YEAR);
-<<<<<<< HEAD
-=======
->>>>>>> 948f664ba30055c2af5e3149dd836d347779b019
-
->>>>>>> 408946de33725b7df938d2c59903e76654c990e9
-
-public void guardarDatos()      
+    public void guardarDatos()      
 {
      int año = FechaProbable.getCalendar().get(Calendar.YEAR);
 
@@ -2628,214 +2493,6 @@ public void guardarDatos()
         mes = 1+ txtFechaActual.getCalendar().get(Calendar.MONTH);
          dia = txtFechaActual.getCalendar().get(Calendar.DAY_OF_MONTH);
         String FechaActual = año+"-"+mes+"-"+dia;
-
-    
-
-
-        if(txtTotal.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Favor de ingresar las cantidades");
-        //////////////////////
-        else if(txtNombre.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Favor de ingresar el nombre del cliente");
-        //////////////////////
-        else if(txtApellidos.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
-        //////////////////////
-        else if(txtDireccion.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Favor de ingresar la direccion del cliente");
-        //////////////////////
-        else if(txtApellidos.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
-        
-        else
-        {
-            conexion con = new conexion();
-
-//             try{
-//        PreparedStatement pstmc=(PreparedStatement)
-//        con.getConnection().prepareStatement("INSERT INTO cotizaciones VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?"//15
-//                + ",?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?"//60
-//                + ",?)");
-//      
-//       pstmc.setString(1,"CNC");//claveplaza
-//        pstmc.setString(2, "C");//Serie
-//        pstmc.setString(3, "2");//folioCliente
-//        pstmc.setString(4, "Admin");//Nombre de quien cotiza
-////        pstmc.setDate(5,new java.sql.Date(txtFechaActual.getDate().toString()));
-////        pstmc.setString(6, new java.sql.Date(txtFechaActual.getDate()));
-//        pstmc.setString(7, "Admin");//Usuario
-//        pstmc.setString(8, txtCveVivienda.getText());//ClavetipoViviendaOrigen
-//        pstmc.setString(9, txtCveEstado.getText());//EstadoOrigen
-//        pstmc.setString(10, txtCveMunicipio.getText());//EstadoOrigen
-//        pstmc.setString(11, txtDireccion.getText());//DireccionOrigen
-//        pstmc.setString(12, "0");//PlantaBajaOrigen
-//        pstmc.setString(13, "0");//NuymeroDePisosOrigen
-//        pstmc.setString(14, "0");//ElevadorOrigen
-//        pstmc.setString(15, "0");//EscaleraOrigen
-//        pstmc.setString(16, txtTelCasa.getText());//TelOrigen
-//        pstmc.setString(17, txtMovil.getText());//TelCelOrigen
-//        pstmc.setString(18, "Referencia");//RefOrigen
-//        pstmc.setString(19, txtCveVivienda.getText());//CveTipoViviendaDestino
-//        pstmc.setString(20, "Admin");//NombreRecibe
-//        pstmc.setString(21, txtCVeEstado.getText());//EstadoDestino
-//        pstmc.setString(22, txtCveMunicipioDestino.getText());//MunicipioDestino
-//        pstmc.setString(23, txtDireccionDestino.getText());//DirDestino        
-//        pstmc.setString(24, "0");//PlantaBajaDestino
-//        pstmc.setString(25, "0");//NumeroPisosDestino
-//        pstmc.setString(26, "0");//ElevadorDestino
-//        pstmc.setString(27, "0");//EscaleraDestino
-//        pstmc.setString(28, txtTelCasaDestino.getText());//TelDestino
-//        pstmc.setString(29, txtTelCelDestino.getText());//TelCelDestino
-//        pstmc.setString(30, "ReferenciaDestino");//RefDestino
-//        pstmc.setString(31, txtManiobras.getText());//Maniobras
-////        pstmc.setString(32, AyudaVenta);//Menaje
-////        pstmc.setString(33, "0");//Alamacenaje
-////        pstmc.setString(34, CveVivienda);//ServAgreg
-////        pstmc.setString(35, Descripcion);//Rentas
-////        pstmc.setString(36, AyudaVenta);//VentasArt
-////        pstmc.setString(37, "0");//Seguro
-////        pstmc.setString(38, CveVivienda);//PorcSeguro
-////        pstmc.setString(39, Descripcion);//SumaAseg
-////        pstmc.setString(40, AyudaVenta);//Anticipo
-////        pstmc.setString(41, "0");//Saldo
-////        pstmc.setString(42, CveVivienda);//Subtotal
-////        pstmc.setString(43, Descripcion);//IVA
-////        pstmc.setString(44, AyudaVenta);//Total
-////        pstmc.setString(45, "0");//Retencion
-////        pstmc.setString(46, CveVivienda);//VolTotal
-////        pstmc.setString(47, Descripcion);//CostoCriterio
-////        pstmc.setString(48, AyudaVenta);//TipoPresupuesto
-////        pstmc.setString(49, "0");//Observacion
-////        pstmc.setString(50, CveVivienda);//Nota1
-////        pstmc.setString(51, Descripcion);//Nota2
-////        pstmc.setString(52, AyudaVenta);//Generada
-////        pstmc.setString(53, "0");//BAja
-////        pstmc.setString(54, CveVivienda);//idVisita
-////        pstmc.setString(55, Descripcion);//TipoOrdenNoR
-////        pstmc.setString(56, AyudaVenta);//NumOrdenNoR
-////        pstmc.setString(57, "0");//TipoMud
-////        pstmc.setString(58, CveVivienda);//Cancela
-////        pstmc.setString(59, Descripcion);//VtaXVisita
-////        pstmc.setString(60, AyudaVenta);//UltimoUsuario
-//        pstmc.setString(61, "0");//CorreoElectronico
-//        
-//        pstmc.execute();
-//        pstmc.close();
-//         System.out.println("Datos Agregados");
-//        }
-//        
-//        
-//        catch(SQLException e)
-//        {
-//              System.out.println(e);
-//        }
-
-
-                  try{
-            CodiGeograficaOrigen();
-            CodiGeograficaDestino();
-            rellenarDatosrRuta();            
-            PreparedStatement pstmc=(PreparedStatement)
-            con.getConnection().prepareStatement("INSERT INTO CatOrdenesServicio (Serie,Usuario,CveTipoViviendaOrigen,EstadoOrigen,MunicipioOrigen,FolioCliente,NombreCteOrigen,Ape_PatOrigen,Ape_MatOrigen,DirOrigen,RefOrigen,TelOrigen,TelCelOrigen,NumPisosOrigen,NombreRecibe,Maniobras,CoordenadaXOrigen,CoordenadaYOrigen,CoordenadaXDestino,CoordenadaYDestino,EstadoDestino,MunicipioDestino,DirDestino,RefDest,TelDest,TelCelDestino,NumPisosDest,Tiempo,Distancia) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");//27                      
-            //pstmc.setString(1,"CNC");//claveplaza
-            pstmc.setString(1, "C");//Serie*
-            pstmc.setString(2, "Admin");//Usuario
-            pstmc.setString(3, txtCveVivienda.getText());//ClavetipoViviendaOrigen
-            pstmc.setString(4, txtCveEstado.getText());//EstadoOrigen
-            pstmc.setString(5, txtCveMunicipio.getText());//EstadoOrigen        
-            pstmc.setString(6, "2");//folioCliente
-            pstmc.setString(7, txtNombre.getText());//NombreCliente
-            String[] apellidos = txtApellidos.getText().split(" ");
-            //JOptionPane.showMessageDialog(null,"Apellido paterno "+apellidos[0]);
-            //JOptionPane.showMessageDialog(null,"Apellido materno "+apellidos[1]);
-            pstmc.setString(8,apellidos[0]);//ApellidoPaternoCliente
-            pstmc.setString(9,apellidos[1]);//ApellidoMaternoCliente
-            pstmc.setString(10, txtDireccion.getText());//DireccionOrigen
-            pstmc.setString(11, "Referencia");//RefOrigen
-            pstmc.setString(12, txtTelCasa.getText());//TelOrigen
-            pstmc.setString(13, txtMovil.getText());//TelCelOrigen
-            pstmc.setString(14, "0");//NuymeroDePisosOrigen
-            pstmc.setString(15, txtNombreDestino.getText());//NombreRecibe
-            pstmc.setString(16, txtManiobras.getText());//Maniobras
-            pstmc.setString(17, lat);//DirDestino
-            pstmc.setString(18, lon);//DirDestino
-            pstmc.setString(19, lat2);//DirDestino
-            pstmc.setString(20, lon2);//DirDestino
-            pstmc.setString(21, txtCVeEstado.getText());//EstadoDestino
-            pstmc.setString(22, txtCveMunicipioDestino.getText());//MunicipioDestino
-            pstmc.setString(23, txtDireccionDestino.getText());//DirDestino
-            pstmc.setString(24, "ReferenciaDestino");//RefDestino
-            pstmc.setString(25, txtTelCasaDestino.getText());//TelDestino
-            pstmc.setString(26, txtTelCelDestino.getText());//TelCelDestino
-            pstmc.setString(27, "0");//NumeroPisosDestino
-            pstmc.setString(28, time);//NumeroPisosDestino
-            pstmc.setString(29, distance);//NumeroPisosDestino
-            JOptionPane.showMessageDialog(null,"Tiempo :"+time+" Distancia :"+distance);
-    //        pstmc.setString(4, "Admin");//Nombre de quien cotiza
-    //        //pstmc.setString(5,new java.sql.Date(txtFechaActual.getDate.toString()));
-    //        //pstmc.setString(6, new java.sql.Date(txtFechaActual.getDate()));
-    //        //        //        //        
-    //        pstmc.setString(12, "0");//PlantaBajaOrigen
-    //        
-    //        pstmc.setString(14, "0");//ElevadorOrigen
-    //        pstmc.setString(15, "0");//EscaleraOrigen
-    //        
-    //        
-    //        pstmc.setString(19, txtCveVivienda.getText());//CveTipoViviendaDestino
-    //        pstmc.setString(20, "Admin");//NombreRecibe
-    //        
-    //        
-    //        pstmc.setString(24, "0");//PlantaBajaDestino
-    //        
-    //        pstmc.setString(26, "0");//ElevadorDestino
-    //        pstmc.setString(27, "0");//EscaleraDestino                        
-    //        pstmc.setString(32, AyudaVenta);//Menaje
-    //        pstmc.setString(33, "0");//Alamacenaje
-    //        pstmc.setString(34, CveVivienda);//ServAgreg
-    //        pstmc.setString(35, Descripcion);//Rentas
-    //        pstmc.setString(36, AyudaVenta);//VentasArt
-    //        pstmc.setString(37, "0");//Seguro
-    //        pstmc.setString(38, CveVivienda);//PorcSeguro
-    //        pstmc.setString(39, Descripcion);//SumaAseg
-    //        pstmc.setString(40, AyudaVenta);//Anticipo
-    //        pstmc.setString(41, "0");//Saldo
-    //        pstmc.setString(42, CveVivienda);//Subtotal
-    //        pstmc.setString(43, Descripcion);//IVA
-    //        pstmc.setString(44, AyudaVenta);//Total
-    //        pstmc.setString(45, "0");//Retencion
-    //        pstmc.setString(46, CveVivienda);//VolTotal
-    //        pstmc.setString(47, Descripcion);//CostoCriterio
-    //        pstmc.setString(48, AyudaVenta);//TipoPresupuesto
-    //        pstmc.setString(49, "0");//Observacion
-    //        pstmc.setString(50, CveVivienda);//Nota1
-    //        pstmc.setString(51, Descripcion);//Nota2
-    //        pstmc.setString(52, AyudaVenta);//Generada
-    //        pstmc.setString(53, "0");//BAja
-    //        pstmc.setString(54, CveVivienda);//idVisita
-    //        pstmc.setString(55, Descripcion);//TipoOrdenNoR
-    //        pstmc.setString(56, AyudaVenta);//NumOrdenNoR
-    //        pstmc.setString(57, "0");//TipoMud
-    //        pstmc.setString(58, CveVivienda);//Cancela
-    //        pstmc.setString(59, Descripcion);//VtaXVisita
-    //        pstmc.setString(60, AyudaVenta);//UltimoUsuario
-            //pstmc.setString(61, "0");//CorreoElectronico
-
-            pstmc.execute();
-            pstmc.close();
-             System.out.println("Datos Agregados");
-             JOptionPane.showMessageDialog(null,"Se agregaron los datos");
-            }
-                      catch(SQLException e)
-            {
-                  System.out.println(e);
-            } catch (UnsupportedEncodingException ex) {
-               Logger.getLogger(Cotizaciones.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (MalformedURLException ex) {
-               Logger.getLogger(Cotizaciones.class.getName()).log(Level.SEVERE, null, ex);
-           }
-            }
-
-
     conexion con = new conexion();
              try{
         PreparedStatement pstmc=(PreparedStatement)
@@ -2925,21 +2582,6 @@ public void guardarDatos()
               System.out.println(e);
         }
 }
-
-    int registro;
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
-
-        
-        guardarDatos();
-        int reg=0;
-         boolean existe= false;
-           conexion con = new conexion();
-        //jTable1.setModel(m);
-       //obtener la cantidad de registro de una tabla
-        registro =0;
-       
-       try{
-
      public void GuardarArticulos()
      {
          int reg=0;
@@ -2994,10 +2636,80 @@ public void guardarDatos()
      }
 
     
+   public void GuardarCliente()
+     {
+         
+         
+         int reg=0;
+            conexion con = new conexion();
+       
+       
+            boolean bandera = false;
+             try
+       {
+      
+         PreparedStatement pstm = (PreparedStatement)
+            con.getConnection().prepareStatement("SELECT * FROM catclientes where CorreoElectronico='"+txtCorreoElectronico.getText()+"'");
+         ResultSet res = pstm.executeQuery();
+         
+         int i =0;
+         
+         while(res.next())
+         {   
+             bandera = true;
  
+         }
+         
+        
+       
+       }
+       
+       catch(SQLException e)
+       {
+           System.out.println(e);
+          
+       
+       }
+            
+          ///////////////  
+         if(!bandera)
+         {
+             try{
+        PreparedStatement pstmc=(PreparedStatement)
+                //con.getConnection().prepareStatement("INSERT INTO cotizaciones (CvePlaza, Serie, FolioCliente, NombreQuienCotiza, FechaCotizacion, FechaProbServ, Usuario, CveTipoViviendaOrigen, EstadoOrigen, MunicipioOrigen, DirOrigen, PlantaBajaOrigen, NoPisosOrigen, ElevadorOrigen, EscaleraOrigen, TelOrigen, TelCelOrigen, RefOrigen, CveTipoViviendaDestino, NombreRecibe, EstadoDestino, MunicipioDestino, DirDestino, PlantaBajaDestino, NoPisosDestino, ElevadorDestino, EscaleraDestino, TelDestino, TelCelDestino, RefDestino, Maniobras, Menaje, Almacenaje, ServAgreg, Rentas, VentasArt, Seguro, PorcSeguro, SumaAseg, Anticipo, Saldo, Subtotal, IVA, Total, Retencion, VolTotal, CostoCriterioXUser, TipoPresup, Observaciones, Nota1, Nota2, Generada, Baja, IdVisita, TipoOrdenNoR, NumOrdenNoR, TipoMud, Cancelada, VtaXVisita, UltimoUsuario, CorreoElectronico) VALUES ('Casa','C','1','Jose','2016-04-06','2016-05-06','Admin','Casa','1','1','Reg.228 M.20 L.20','0','1','0','0','132-51-29','9981018163','Frente a casa blanca','Casa','Juan escutia','1','1','Direccion del destino','0','1','0','0','132-23-33','9981223344','Frente a casa destino','100','200','300','400','500','600','700','7.0','800','900','1000','1100','1200','1300','1400','1500','1700','1','Se va a llevar a una que es prueba','nota1','nota2','0','0','1','R','1','M','0','0','UltimoUs','pablodelhip@gmail.com')");
+        con.getConnection().prepareStatement("INSERT INTO catclientes(CorreoElectronico, NombreContacto, NombreComercial, Direccion, Estado, Municipio, TelCasa, TelMovil, Activo) VALUES (?,?,?,?,?,?,?,?,?)");
+      
+       pstmc.setString(1,txtCorreoElectronico.getText());//Activo
+        pstmc.setString(2,txtNombre.getText());//CorreoElectronico
+        //pstmc.setString(3, TablaArticulos.getValueAt(i, 2).toString());//Rfc
+        pstmc.setString(3, txtApellidos.getText());//Nombre 
+        pstmc.setString(4,this.txtDireccion.getText());//Apellido
+       // pstmc.setString(6, TablaArticulos.getValueAt(i, 5).toString());//RazonSocial
+         pstmc.setString(5,txtCveEstado.getText());//Direccion
+        pstmc.setString(6, txtCveMunicipio.getText());//Estado
+         pstmc.setString(7,txtTelCasa.getText());//Municipio
+        pstmc.setString(8, txtMovil.getText());//Telmovil
+        pstmc.setString(9, "0");//Telmovil
+  
+        
+        pstmc.execute();
+        pstmc.close();
+         //JOptionPane.showMessageDialog(null, "La cotizacion a sido guardada correctamente");
+        }
+        
+        
+        catch(SQLException e)
+        {
+              System.out.println(e);
+        }
+       
+         }
+     }
 
     int registro;
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+          int registro;
+                                             
         
         int año = FechaProbable.getCalendar().get(Calendar.YEAR);
 
@@ -3032,7 +2744,10 @@ public void guardarDatos()
         {
             guardarDatos();
             GuardarArticulos();  
+            GuardarCliente();
+            
         }
+    
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void ComboVivienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboVivienda2ActionPerformed
@@ -3092,7 +2807,35 @@ public void guardarDatos()
 
         if(CteclaPresionada==KeyEvent.VK_ENTER)
         {
-
+            txtTransporte.setText("");
+            txtAlmacenaje.setText("");
+            txtEmpaque.setText("");
+            txtRentas.setText("");
+            txtVentas.setText("");
+            txtSeguro.setText("");
+            txtManiobras.setText("");
+            txtManiobras.setText("");
+            txtSubtotal.setText("");
+            txtIVA.setText("");
+            txtTotal.setText("");
+            txtAnticipo.setText("");
+            txtAnticipo.setText("");
+            ChkIVA.setSelected(false);
+            ChkSeguro.setSelected(false);
+            txtSumaAsegurada.setText("");
+            jTextArea3.setText("");
+            txtTotalFinal.setText("");
+            jCheckBox3.setSelected(false);
+            jCheckBox4.setSelected(false);
+           txtSalto.setText("");
+            
+            
+            for(int i=0;i<TablaArticulos.getRowCount();i++)
+            {
+                ((DefaultTableModel)TablaArticulos.getModel()).setRowCount(i);
+            }
+            
+            
             buscar();
             ComboMunicipio.removeAllItems();
             String Estado = (String) ComboEstado.getSelectedItem();
@@ -3117,11 +2860,15 @@ public void guardarDatos()
     private void txtDireccionDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionDestinoKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionDestinoKeyTyped
-
+/*
     private void txtDireccionDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionDestinoActionPerformed
-        // TODO add your handling code here:
+       
+        
+        
+        
+        
     }//GEN-LAST:event_txtDireccionDestinoActionPerformed
-
+*/
     private void TablaArticulosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaArticulosKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_TablaArticulosKeyReleased
@@ -3154,15 +2901,15 @@ public void guardarDatos()
         //</editor-fold>
 
 
-
-                  try 
+                try 
     {
-     UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
     } 
     catch (Exception e) 
-      {
+    {
       e.printStackTrace();
     }
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

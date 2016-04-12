@@ -85,6 +85,7 @@ public class Rutas extends javax.swing.JFrame {
         JLabel_SV_Imagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Rutas");
 
         combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ver Origen", "Ver Destino" }));
         combo3.addActionListener(new java.awt.event.ActionListener() {

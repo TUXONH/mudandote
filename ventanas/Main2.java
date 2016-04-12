@@ -93,6 +93,10 @@ public class Main2 extends javax.swing.JFrame {
         Reservaciones = new javax.swing.JMenuItem();
         jMenu13 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
 
@@ -298,6 +302,30 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu13);
 
+        jMenu6.setText("Asignacion de unidades");
+
+        jMenuItem8.setText("Ver");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem8);
+
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setText("Status");
+
+        jMenuItem9.setText("Ver");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem9);
+
+        jMenuBar1.add(jMenu7);
+
         jMenu1.setText("Cerrar sesion");
 
         jMenuItem7.setText("Salir");
@@ -319,10 +347,11 @@ public class Main2 extends javax.swing.JFrame {
         Rutas rutas = null;
         try {
             rutas = new Rutas();
+             rutas.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
         }
-        rutas.setVisible(true);
+       
     }//GEN-LAST:event_ClientesActionPerformed
 
     private void CotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CotizacionesActionPerformed
@@ -513,6 +542,25 @@ public class Main2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_combo2ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        AsignacionUnidades uni = new AsignacionUnidades();
+        uni.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        try {
+            // TODO add your handling code here:
+            Status sta = new Status();
+            sta.setVisible(true);
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -619,10 +667,7 @@ public class Main2 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-
-
-        java.awt.EventQueue.invokeLater(() -> {
-                   try 
+                         try 
     {
       UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
     } 
@@ -630,6 +675,10 @@ public class Main2 extends javax.swing.JFrame {
     {
       e.printStackTrace();
     }
+
+
+        java.awt.EventQueue.invokeLater(() -> {
+  
             new Main2().setVisible(true);
         });
     }
@@ -650,6 +699,8 @@ public class Main2 extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -658,6 +709,8 @@ public class Main2 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton reservacion;

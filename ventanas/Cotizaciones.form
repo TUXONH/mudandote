@@ -7,6 +7,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Cotizaciones"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="33" type="rgb"/>
     </Property>
@@ -51,15 +52,8 @@
                       <Component id="jLabel42" min="-2" pref="57" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel43" min="-2" pref="56" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-=======
                       <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
                       <Component id="btnGuardar" min="-2" pref="107" max="-2" attributes="0"/>
->>>>>>> 408946de33725b7df938d2c59903e76654c990e9
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -1204,23 +1198,12 @@
                               </Group>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="txtDireccionDestino" pref="468" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
-                                  </Group>
-=======
                                   <Component id="txtAlmacenaje" alignment="1" max="32767" attributes="0"/>
                                   <Component id="txtEmpaque" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtTransporte" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtRentas" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtVentas" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtSeguro" alignment="0" max="32767" attributes="0"/>
->>>>>>> 408946de33725b7df938d2c59903e76654c990e9
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -1541,7 +1524,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="11" style="2"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Salto"/>
+                <Property name="text" type="java.lang.String" value="Saldo"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTotalFinal">
@@ -1596,19 +1579,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-<<<<<<< HEAD
-                      <EmptySpace pref="485" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jCheckBox9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="356" max="-2" attributes="0"/>
-=======
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="ChkSeguro" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="ComboSeguro" max="32767" attributes="0"/>
->>>>>>> 408946de33725b7df938d2c59903e76654c990e9
                           </Group>
                           <Component id="ChkIVA" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -2220,10 +2195,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnGuardar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/Save.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Guardar "/>
+        <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
