@@ -51,7 +51,7 @@ public class Rutas extends javax.swing.JFrame {
         initComponents();  
             if(Tipo=="true")
         {
-            jMenu2.setVisible(false);
+      
           
         }
             this.setLocationRelativeTo(null);
