@@ -681,13 +681,7 @@ public class Articulos extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseClicked
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = null;
-        try {
-            main = new Main2();
-        } catch (SQLException ex) {
-            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        main.setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_Clientes1ActionPerformed
 
@@ -707,14 +701,7 @@ public class Articulos extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        Unidades uni;
-        try {
-            uni = new Unidades();
-            uni.setVisible(true);
-            this.dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -866,7 +853,7 @@ public class Articulos extends javax.swing.JFrame {
          conexion con = new conexion();
         
         Map parametros = new HashMap();
-        String REPORTE = System.getProperty("user.dir") + "\\src\\ventanas\\";
+        String REPORTE = System.getProperty("user.dir") + "\\src\\reportes\\";
         
                 parametros.put("Cod1", condi);
                 //parametros.put("cod2", dato2);
