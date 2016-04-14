@@ -20,6 +20,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.Principal;
 
 
 //import java.sql.Date;
@@ -32,6 +33,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -43,6 +46,12 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.TableModel;
 import maps.java.ShowMaps;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 import org.jsoup.Jsoup;
 
 
@@ -1069,6 +1078,39 @@ public class Reservacion extends javax.swing.JFrame {
    
     } 
     else if (response == JOptionPane.YES_OPTION) {
+         int response2 = JOptionPane.showConfirmDialog(null, "¿Deseas Imprimir?", "Confirm",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response2 == JOptionPane.NO_OPTION)
+        {
+        
+   
+        } 
+        else if (response2 == JOptionPane.YES_OPTION) {
+           
+
+        conexion con = new conexion();
+        
+        Map parametros = new HashMap();
+        String REPORTE = System.getProperty("user.dir") + "\\src\\reportes\\";
+        
+                parametros.put("Cod1", jTextField10.getText());
+                //parametros.put("cod2", dato2);
+                REPORTE +="reportefinal.jrxml";
+        System.err.println(REPORTE);
+        JasperReport reporteJasper = null;
+        try {
+            reporteJasper = JasperCompileManager.compileReport(REPORTE);
+        } catch (JRException ex) {
+            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JasperPrint informe = null;
+        try {
+                informe = JasperFillManager.fillReport(reporteJasper, parametros, con.getConnection());
+        } catch (JRException ex) {
+            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JasperViewer.viewReport(informe, false);
+         }
         AsignacionUnidades abrir = new AsignacionUnidades();
         abrir.setVisible(true);
         abrir.setLocationRelativeTo(null);
