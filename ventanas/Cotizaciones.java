@@ -2743,22 +2743,146 @@ char c = evt.getKeyChar();
         pstmc.setString(28, txtTelCasaDestino.getText());//TelDestino
         pstmc.setString(29, txtTelCelDestino.getText());//TelCelDestino
         pstmc.setString(30, "ReferenciaDestino");//RefDestino
-        pstmc.setString(31, txtManiobras.getText());//Maniobras
+        
+        
+        if(txtManiobras.getText().equals(""))
+        {
+            pstmc.setString(31, "0");//Maniobras
+        }
+        
+        else
+        {
+            pstmc.setString(31, txtManiobras.getText());//Maniobras
+        }
+        
+        
+        
         pstmc.setString(32, "0");//Menaje
-        pstmc.setString(33, txtAlmacenaje.getText());//Alamacenaje
+        
+        if(txtAlmacenaje.getText().equals(""))
+        {
+            pstmc.setString(33, "0");//Maniobras
+        }
+        
+        else
+        {
+             pstmc.setString(33, txtAlmacenaje.getText());//Alamacenaje
+        }
+        
+       
         pstmc.setString(34, "0");//ServAgreg
-        pstmc.setString(35, txtRentas.getText());//Rentas
+        
+        
+         if(txtRentas.getText().equals(""))
+        {
+            pstmc.setString(35, "0");//Maniobras
+        }
+        
+        else
+        {
+              pstmc.setString(35, txtRentas.getText());//Rentas
+        }
+        
+       
+         
+       
         pstmc.setString(36, "0");//VentasArt
-        pstmc.setString(37, txtSumaAsegurada.getText());//Seguro
-        pstmc.setString(38, txtSeguro.getText());//PorcSeguro
+        
+        
+        
+           if(txtSumaAsegurada.getText().equals(""))
+        {
+            pstmc.setString(37, "0");//Maniobras
+        }
+        
+        else
+        {
+            pstmc.setString(37, txtSumaAsegurada.getText());//Seguro
+        }
+        
+           
+           if(txtSeguro.getText().equals(""))
+        {
+            pstmc.setString(38, "0");//Maniobras
+        }
+        
+        else
+        {
+            pstmc.setString(38, txtSeguro.getText());//PorcSeguro
+        }
+           
+           
+        
         pstmc.setString(39,"10" );//SumaAseg
-        pstmc.setString(40, txtAnticipo.getText());//Anticipo
-        pstmc.setString(41, txtSalto.getText());//Saldo
-        pstmc.setString(42, txtSubtotal.getText());//Subtotal
-        pstmc.setString(43, txtIVA.getText());//IVA
-        pstmc.setString(44, txtTotal.getText());//Total
+        
+        
+           if(txtAnticipo.getText().equals(""))
+        {
+            pstmc.setString(40, "0");//Maniobras
+        }
+        
+        else
+        {
+            pstmc.setString(40, txtAnticipo.getText());//Anticipo
+        }
+        
+           
+              if(txtSalto.getText().equals(""))
+        {
+            pstmc.setString(41, "0");//Maniobras
+        }
+        
+        else
+        {
+             pstmc.setString(41, txtSalto.getText());//Saldo
+        }
+        
+              
+                    if(txtSubtotal.getText().equals(""))
+        {
+            pstmc.setString(42, "0");//Maniobras
+        }
+        
+        else
+        {
+            pstmc.setString(42, txtSubtotal.getText());//Subtotal
+        }
+        
+                    
+          if(txtIVA.getText().equals(""))
+        {
+            pstmc.setString(43, "0");//Maniobras
+        }
+        
+        else
+        {
+           pstmc.setString(43, txtIVA.getText());//IVA
+        }
+       
+           if(txtTotal.getText().equals(""))
+        {
+            pstmc.setString(44, "0");//Maniobras
+        }
+        
+        else
+        {
+           pstmc.setString(44, txtTotal.getText());//Total
+        }
+        
+          
+          
+        
         pstmc.setString(45, "0");//Retencion
-        pstmc.setString(46, txtVolumenTotal.getText());//VolTotal
+            if(txtVolumenTotal.getText().equals(""))
+        {
+            pstmc.setString(46, "0");//Maniobras
+        }
+        
+        else
+        {
+           pstmc.setString(46, txtVolumenTotal.getText());//VolTotal
+        }
+        
         pstmc.setString(47, "0");//CostoCriterio
         pstmc.setString(48, "1");//TipoPresupuesto
         pstmc.setString(49, "observa");//Observacion
