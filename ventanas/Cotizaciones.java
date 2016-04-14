@@ -285,7 +285,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         jCheckBox7 = new javax.swing.JCheckBox();
         jCheckBox8 = new javax.swing.JCheckBox();
         jPanel6 = new javax.swing.JPanel();
-        ChkRequiereVisita = new javax.swing.JCheckBox();
+        jCheckBox9 = new javax.swing.JCheckBox();
         jPanel11 = new javax.swing.JPanel();
         FechaVisita = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
@@ -358,6 +358,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu8 = new javax.swing.JMenu();
         Clientes1 = new javax.swing.JMenuItem();
@@ -569,7 +570,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGap(52, 52, 52)
                                         .addComponent(jLabel5)
-                                        .addContainerGap(273, Short.MAX_VALUE))
+                                        .addContainerGap(325, Short.MAX_VALUE))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -580,7 +581,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                                         .addContainerGap())))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
-                                .addContainerGap(728, Short.MAX_VALUE))
+                                .addContainerGap(780, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(351, 351, 351)
                                 .addComponent(txtDireccion))))
@@ -805,7 +806,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                                 .addComponent(jLabel46)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(txtDireccionDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                                .addComponent(txtDireccionDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
                                 .addGap(180, 180, 180))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -878,8 +879,8 @@ public class Cotizaciones extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Destino", jPanel4);
 
-        ChkRequiereVisita.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-        ChkRequiereVisita.setText("Requiere visita");
+        jCheckBox9.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        jCheckBox9.setText("Requiere visita");
 
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -924,10 +925,10 @@ public class Cotizaciones extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(414, Short.MAX_VALUE)
+                .addContainerGap(466, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(ChkRequiereVisita)
+                        .addComponent(jCheckBox9)
                         .addGap(356, 356, 356))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -937,7 +938,7 @@ public class Cotizaciones extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ChkRequiereVisita)
+                .addComponent(jCheckBox9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(93, Short.MAX_VALUE))
@@ -1539,6 +1540,13 @@ public class Cotizaciones extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jMenuBar1.setBackground(new java.awt.Color(255, 102, 0));
         jMenuBar1.setBorder(null);
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1712,6 +1720,8 @@ public class Cotizaciones extends javax.swing.JFrame {
                         .addGap(81, 81, 81)
                         .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(122, 122, 122)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1724,17 +1734,22 @@ public class Cotizaciones extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(15, 15, 15)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3036,6 +3051,36 @@ char c = evt.getKeyChar();
      }
 
     int registro;
+    public boolean email(String Email) 
+{
+     
+    Email=Email.trim();
+    boolean sw = false;
+    int a = Email.length() - 1;
+    String letra, letra1 = "";
+            try 
+            {
+                for (int i = 0; 1 < a; i++) 
+                {
+                    letra = "" + Email.charAt(i);
+                    if (letra.equals("@")) 
+                    {
+                        a++;
+                        letra1 = Email.substring(i, a);
+                        letra1=letra1.toLowerCase();
+                        if ((letra1.equals("@hotmail.com")) || (letra1.equals("@gmail.com"))) 
+                        {
+
+                            sw = true;
+                            break;
+                        }
+                    }
+                }
+            } catch (Exception e)
+                {
+                }       
+    return sw;
+}
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if(ChkRequiereVisita.isSelected()==true)
         {
@@ -3084,6 +3129,10 @@ char c = evt.getKeyChar();
         //////////////////////
         else if(txtApellidos.getText().equals(""))
         JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
+        else if(!email(txtCorreoElectronico.getText()))
+        {
+            JOptionPane.showMessageDialog(null,"Favor de ingresar correos con extenciones gmail o hotmail");
+        }
          else
         {
         
@@ -3614,6 +3663,17 @@ public void Limpiar()
         }
     }//GEN-LAST:event_txtNumerosKeyTyped
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       if(!email(txtCorreoElectronico.getText()))
+        {
+            JOptionPane.showMessageDialog(null,"Favor de ingresar correos con extenciones gmail o hotmail");
+        }
+       else
+       {
+           JOptionPane.showMessageDialog(null,"Favor de ingresar o hotmail");
+       }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3662,7 +3722,6 @@ public void Limpiar()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox ChkIVA;
-    private javax.swing.JCheckBox ChkRequiereVisita;
     private javax.swing.JCheckBox ChkSeguro;
     private javax.swing.JMenuItem Clientes;
     private javax.swing.JMenuItem Clientes1;
@@ -3680,12 +3739,14 @@ public void Limpiar()
     private javax.swing.JTable TablaArticulos;
     private javax.swing.JButton btnGuardar;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
