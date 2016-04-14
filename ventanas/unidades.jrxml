@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b219aaf4-e854-45d6-9533-f08c553fdd34">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="16"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -62,11 +65,39 @@
 		<groupHeader>
 			<band height="30">
 				<textField>
-					<reportElement positionType="Float" x="0" y="4" width="802" height="26" forecolor="#000000" uuid="06c5e996-bb3a-424f-befe-8177922c0241"/>
+					<reportElement positionType="Float" x="1" y="2" width="802" height="26" forecolor="#000000" uuid="06c5e996-bb3a-424f-befe-8177922c0241"/>
 					<textElement>
 						<font fontName="Times New Roman" size="16" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{Descripcion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="137" y="0" width="98" height="18" uuid="e844e805-4305-4df8-a5f9-214802945b5d"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Kilometraje}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="252" y="2" width="92" height="18" uuid="6f61181c-c0be-410e-bb19-d5c2f3da1e12"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{EnServicio}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="355" y="0" width="101" height="18" uuid="2ea78e07-a5d6-4193-9598-5f26de9f1bfe"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Descripcion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="472" y="0" width="132" height="18" uuid="e4037816-b580-4b4a-856a-31f0592360f4"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CapacidadActual}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -94,7 +125,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font isBold="false"/>
 					</textElement>
-					<text><![CDATA[Cherry Title]]></text>
+					<text><![CDATA[Mudandote]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="3cb6bef5-7a5e-48f7-9efc-115648e4eb6a"/>
@@ -122,18 +153,39 @@
 	<columnHeader>
 		<band height="18" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="398" height="18" forecolor="#000000" uuid="f9e5fabb-23f5-40f2-9d74-89e73f895c36"/>
+				<reportElement style="Column header" x="137" y="0" width="74" height="18" forecolor="#000000" uuid="f9e5fabb-23f5-40f2-9d74-89e73f895c36"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[Kilometraje]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="398" y="0" width="398" height="18" forecolor="#000000" uuid="f5f35b0b-98ad-4bc6-8f7b-09bad8a8bd20"/>
+				<reportElement style="Column header" x="252" y="0" width="81" height="18" forecolor="#000000" uuid="f5f35b0b-98ad-4bc6-8f7b-09bad8a8bd20"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[EnServicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="2" y="0" width="71" height="18" forecolor="#000000" uuid="96993b85-e35b-4c0e-bdde-2c554d097507"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="355" y="0" width="71" height="18" forecolor="#000000" uuid="ae9abe9b-7092-4f0e-9378-2d5bc0e5bfcd"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Capacidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="472" y="0" width="101" height="18" forecolor="#000000" uuid="5cf737d9-3791-42e5-8dee-99edb8d68f04"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Capacidad Actual]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -141,20 +193,6 @@
 		<band height="18" splitType="Stretch">
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="321fd0e6-01f7-4825-a57b-fed64333d6cf"/>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="398" height="18" uuid="e844e805-4305-4df8-a5f9-214802945b5d"/>
-					<textElement>
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{Kilometraje}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="398" y="0" width="398" height="18" uuid="6f61181c-c0be-410e-bb19-d5c2f3da1e12"/>
-					<textElement>
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{EnServicio}]]></textFieldExpression>
-				</textField>
 			</frame>
 		</band>
 	</detail>
