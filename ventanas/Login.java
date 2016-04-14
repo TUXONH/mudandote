@@ -108,7 +108,7 @@ public class Login extends javax.swing.JFrame
              
                
                 Encapsuladas.setAuxVentas(aux_ventas.toString());
-               ventanas.Filtrados m = new ventanas.Filtrados();
+               ventanas.Main3 m = new ventanas.Main3();
                 m.setVisible(true);
                //form.setVisible(true);
                 this.dispose();

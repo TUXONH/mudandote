@@ -75,8 +75,6 @@ public class Main3 extends javax.swing.JFrame {
         Cotizaciones = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         Reservaciones = new javax.swing.JMenuItem();
-        jMenu13 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -198,18 +196,6 @@ public class Main3 extends javax.swing.JFrame {
         jMenu5.add(Reservaciones);
 
         jMenuBar1.add(jMenu5);
-
-        jMenu13.setText("Cotizacion de clientes");
-
-        jMenuItem6.setText("Ver");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu13.add(jMenuItem6);
-
-        jMenuBar1.add(jMenu13);
 
         jMenu6.setText("Asignacion de unidades");
 
@@ -339,12 +325,6 @@ public class Main3 extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_ReservacionesActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        CotiClientes cot = new CotiClientes();
-        cot.setVisible(true);
-        
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         AsignacionUnidades uni = new AsignacionUnidades();
         uni.setVisible(true);
@@ -365,6 +345,7 @@ public class Main3 extends javax.swing.JFrame {
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         Login log = new Login();
         log.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
@@ -410,7 +391,6 @@ public class Main3 extends javax.swing.JFrame {
     private javax.swing.JMenuItem Usuarios;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu13;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -423,7 +403,6 @@ public class Main3 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
