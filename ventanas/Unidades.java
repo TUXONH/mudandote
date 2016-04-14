@@ -101,10 +101,20 @@ public class Unidades extends javax.swing.JFrame {
         jLabel3.setText("Kilometraje");
 
         km.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        km.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                kmKeyTyped(evt);
+            }
+        });
 
         servicio.setText("En servicio");
 
         capacidad.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        capacidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                capacidadKeyTyped(evt);
+            }
+        });
 
         agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Save.png"))); // NOI18N
         agregar.setText("Agregar");
@@ -334,7 +344,7 @@ public class Unidades extends javax.swing.JFrame {
                 pstm.setString(1,descripcion.getText());
                 pstm.setString(2,capacidad.getText());
                 pstm.setString(3,km.getText());
-                pstm.setBoolean(4,servicio.isSelected());
+                pstm.setBoolean(4,valor);
                 pstm.execute();
                 pstm.close();                                        
                 main.pasar_valores(tabla, sql);
@@ -349,7 +359,7 @@ public class Unidades extends javax.swing.JFrame {
         clases.conexion con = new clases.conexion();
         try {            
             PreparedStatement pstm =(PreparedStatement)                    
-            con.getConnection().prepareStatement("UPDATE catunidades SET Descripcion='"+descripcion.getText()+"',Capacidad='"+capacidad.getText()+"',Kilometraje='"+km.getText()+"',EnServicio='"+servicio.isSelected()+"' WHERE Clave="+idx);                                                        
+            con.getConnection().prepareStatement("UPDATE catunidades SET Descripcion='"+descripcion.getText()+"',Capacidad='"+capacidad.getText()+"',Kilometraje='"+km.getText()+"',EnServicio="+valor+" WHERE Clave="+idx);                                                        
             pstm.executeUpdate();
             pstm.close();                        
             Filtrados main = new Filtrados();
@@ -460,6 +470,28 @@ public class Unidades extends javax.swing.JFrame {
         }
         JasperViewer.viewReport(informe, false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void capacidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_capacidadKeyTyped
+         char c = evt.getKeyChar();
+        char CteclaPresionada=evt.getKeyChar();
+        if (Character.isLetter(c))
+        {
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(null,"Aqui solo van numeros!");            
+            evt.consume();
+        }
+    }//GEN-LAST:event_capacidadKeyTyped
+
+    private void kmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kmKeyTyped
+        char c = evt.getKeyChar();
+        char CteclaPresionada=evt.getKeyChar();
+        if (Character.isLetter(c))
+        {
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(null,"Aqui solo van numeros!");            
+            evt.consume();
+        }
+    }//GEN-LAST:event_kmKeyTyped
 
     /**
      * @param args the command line arguments

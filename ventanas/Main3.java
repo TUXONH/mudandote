@@ -68,7 +68,6 @@ public class Main3 extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         Clientes = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -135,14 +134,6 @@ public class Main3 extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem5);
-
-        jMenuItem1.setText("Choferes");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2);
 
@@ -292,16 +283,6 @@ public class Main3 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            Choferes chof = new Choferes();
-            chof.setVisible(true);            
-        } catch (SQLException ex) {
-            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
         Rutas rutas = null;
         try {
@@ -322,7 +303,6 @@ public class Main3 extends javax.swing.JFrame {
     private void ReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservacionesActionPerformed
         Reservacion res = new Reservacion();
         res.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_ReservacionesActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -345,7 +325,6 @@ public class Main3 extends javax.swing.JFrame {
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         Login log = new Login();
         log.setVisible(true);
-        this.dispose();
         
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
@@ -398,7 +377,6 @@ public class Main3 extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

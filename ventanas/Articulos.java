@@ -36,7 +36,7 @@ public class Articulos extends javax.swing.JFrame {
     String sql2 = "SELECT Descripcion,M3,Grupo,GrupoCosteo FROM aticulos";  
     String description;
     String family;
-    String mm3;
+    float mm3;
     String services;
     String jose;
     /**
@@ -44,6 +44,7 @@ public class Articulos extends javax.swing.JFrame {
      */
     public Articulos() throws SQLException {
         initComponents();
+        this.setLocationRelativeTo(null);
         aceptar.setVisible(false);
         cancelar.setVisible(false);
         Filtrados main = new Filtrados();
@@ -333,9 +334,11 @@ public class Articulos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
-        if ("".equals(descripcion.getText()) || "".equals(m3.getText())) 
-        {
-            JOptionPane.showMessageDialog(null,"Te falta agregar una descripción o metros cubicos");
+        if (tabla.getSelectedRow()==-1){
+            if ("".equals(descripcion.getText()) || "".equals(m3.getText())) 
+            {            
+                JOptionPane.showMessageDialog(null,"Selecciona una celda de la tabla");
+            }
         }
         else
         {
@@ -344,14 +347,14 @@ public class Articulos extends javax.swing.JFrame {
 
                 PreparedStatement pstm =(PreparedStatement)        
 
-                con.getConnection().prepareStatement("INSERT INTO aticulos (Descripcion,M3,Grupo,Baja,EsServicio,GrupoCosteo,GrupoComision) VALUES (?,?,?,?)");                                            
+                con.getConnection().prepareStatement("INSERT INTO aticulos (Descripcion,M3,Grupo,Baja,EsServicio,GrupoCosteo,GrupoComision) VALUES (?,?,?,?,?,?,?)");                                            
                 pstm.setString(1,descripcion.getText());               
                 pstm.setString(2,m3.getText());
                 pstm.setString(3,familia.getSelectedItem().toString());
                 pstm.setString(4,"0");
                 pstm.setString(5,"0");                
                 pstm.setString(6,Servicios.getSelectedItem().toString());
-                pstm.setString(6,"0");
+                pstm.setString(7,"0");
                 pstm.execute();
                 pstm.close();                        
                 Filtrados main = new Filtrados();
@@ -367,11 +370,11 @@ public class Articulos extends javax.swing.JFrame {
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         if (tabla.getSelectedRow()!=-1)
         {
-            int idx = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
+            String idx = (String) tabla.getValueAt(tabla.getSelectedRow(),0);
             clases.conexion con = new clases.conexion();
             try {
                 PreparedStatement pst =(PreparedStatement)            
-                con.getConnection().prepareStatement("DELETE FROM aticulos WHERE Cve_articulo ="+idx);                    
+                con.getConnection().prepareStatement("DELETE FROM aticulos WHERE Descripcion ='"+idx+"'");                    
                 int variable = pst.executeUpdate();
                 if (variable>0)
                 {
@@ -393,6 +396,7 @@ public class Articulos extends javax.swing.JFrame {
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         if (tabla.getSelectedRow()!=-1)
         {
+            tabla.setEnabled(false);
 //            description = (String) tabla.getValueAt(tabla.getSelectedRow(),1);
 //            family = (String) tabla.getValueAt(tabla.getSelectedRow(),2);
 //            mm3 = (String) tabla.getValueAt(tabla.getSelectedRow(),3);
@@ -454,13 +458,13 @@ public class Articulos extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-        description = (String) tabla.getValueAt(tabla.getSelectedRow(),1);
+        description = (String) tabla.getValueAt(tabla.getSelectedRow(),0);
         family = (String) tabla.getValueAt(tabla.getSelectedRow(),2);
-        mm3 = (String) tabla.getValueAt(tabla.getSelectedRow(),3);
-        services = (String) tabla.getValueAt(tabla.getSelectedRow(),4);    
+        mm3 = Float.parseFloat(tabla.getValueAt(tabla.getSelectedRow(),1).toString());
+        services = (String) tabla.getValueAt(tabla.getSelectedRow(),3);    
         descripcion.setText(description);    
         familia.setSelectedItem(family);
-        m3.setText(mm3);
+        m3.setText(""+mm3);
         Servicios.setSelectedItem(services); 
     }//GEN-LAST:event_tablaMouseClicked
 
