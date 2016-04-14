@@ -30,7 +30,7 @@ public class Status extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
             if(Tipo=="true")
         {
-            jMenu2.setVisible(false);
+          
           
         }
         
