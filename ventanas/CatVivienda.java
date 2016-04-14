@@ -557,9 +557,9 @@ public class CatVivienda extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAyudaVentaKeyTyped
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = null;
+        Filtrados main = null;
         try {
-            main = new Main2();
+            main = new Filtrados();
         } catch (SQLException ex) {
             Logger.getLogger(CatVivienda.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -574,7 +574,7 @@ public class CatVivienda extends javax.swing.JFrame {
             art.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -593,7 +593,7 @@ public class CatVivienda extends javax.swing.JFrame {
             uni.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
@@ -604,7 +604,7 @@ public class CatVivienda extends javax.swing.JFrame {
             chof.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -615,7 +615,7 @@ public class CatVivienda extends javax.swing.JFrame {
             rutas.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ClientesActionPerformed
 
@@ -651,7 +651,7 @@ public class CatVivienda extends javax.swing.JFrame {
             sta.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 

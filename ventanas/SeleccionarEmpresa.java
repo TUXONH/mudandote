@@ -297,9 +297,9 @@ public class SeleccionarEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = null;
+        Filtrados main = null;
         try {
-            main = new Main2();
+            main = new Filtrados();
         } catch (SQLException ex) {
             Logger.getLogger(SeleccionarEmpresa.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -313,7 +313,7 @@ public class SeleccionarEmpresa extends javax.swing.JFrame {
             Articulos art = new Articulos();
             art.setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -336,7 +336,7 @@ public class SeleccionarEmpresa extends javax.swing.JFrame {
             uni = new Unidades();
             uni.setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
@@ -346,7 +346,7 @@ public class SeleccionarEmpresa extends javax.swing.JFrame {
             rutas = new Rutas();
             rutas.setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ClientesActionPerformed
 
@@ -380,7 +380,7 @@ public class SeleccionarEmpresa extends javax.swing.JFrame {
             sta.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 

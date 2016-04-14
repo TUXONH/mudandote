@@ -19,7 +19,7 @@ import javax.swing.UIManager;
  * @author danielandrademaglioni
  */
 public class Status extends javax.swing.JFrame {
-    Main2 main = new Main2();
+    Filtrados main = new Filtrados();
     String sql="Select * From catunidades";
     /**
      * Creates new form Status
@@ -293,7 +293,7 @@ public class Status extends javax.swing.JFrame {
             con.getConnection().prepareStatement("UPDATE catunidades SET EnServicio="+Enservicio.getState()+" WHERE Clave="+idx);                                                        
             pstm.executeUpdate();
             pstm.close();                        
-            Main2 main = new Main2();
+            Filtrados main = new Filtrados();
             main.pasar_valores(tabla, sql);
             JOptionPane.showMessageDialog(null,"Se modifico el registro con exito!");
             } catch (SQLException ex) {
@@ -302,9 +302,9 @@ public class Status extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = null;
+        Filtrados main = null;
         try {
-            main = new Main2();
+            main = new Filtrados();
         } catch (SQLException ex) {
             Logger.getLogger(Status.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -319,7 +319,7 @@ public class Status extends javax.swing.JFrame {
             art.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -345,7 +345,7 @@ public class Status extends javax.swing.JFrame {
             uni.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
@@ -356,7 +356,7 @@ public class Status extends javax.swing.JFrame {
             rutas.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ClientesActionPerformed
 

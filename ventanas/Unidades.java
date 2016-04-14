@@ -28,7 +28,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class Unidades extends javax.swing.JFrame {
     String sql="Select * From catunidades";
-    Main2 main = new Main2();
+    Filtrados main = new Filtrados();
     boolean valor;
     String description;
     String capacity;
@@ -352,7 +352,7 @@ public class Unidades extends javax.swing.JFrame {
             con.getConnection().prepareStatement("UPDATE catunidades SET Descripcion='"+descripcion.getText()+"',Capacidad='"+capacidad.getText()+"',Kilometraje='"+km.getText()+"',EnServicio='"+servicio.isSelected()+"' WHERE Clave="+idx);                                                        
             pstm.executeUpdate();
             pstm.close();                        
-            Main2 main = new Main2();
+            Filtrados main = new Filtrados();
             main.pasar_valores(tabla, sql);
             JOptionPane.showMessageDialog(null,"Se modifico el registro con exito!");            
             aceptar.setVisible(false);
@@ -394,7 +394,7 @@ public class Unidades extends javax.swing.JFrame {
                 if (variable>0)
                 {
                     System.out.println("Se elimino");
-                    Main2 main = new Main2();
+                    Filtrados main = new Filtrados();
                     main.pasar_valores(tabla, sql);
                 }
                 pst.close(); 

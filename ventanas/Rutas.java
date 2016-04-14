@@ -28,6 +28,7 @@ import javax.swing.table.TableModel;
 import maps.java.*;
 import static sun.management.Agent.error;
 import org.jsoup.Jsoup;
+import static sun.management.Agent.error;
 /**
  *
  * @author danielandrademaglioni
@@ -37,7 +38,7 @@ public class Rutas extends javax.swing.JFrame {
     //private StreetView ObjStreetView=new StreetView();
     clases.StreetView ObjStreetView = new clases.StreetView();
     clases.Route route = new clases.Route();            
-    Main2 main = new Main2();
+    Filtrados main = new Filtrados();
     String x,y,x2,y2;        
     String seleccion;
     String cxo = null,cyo = null,cxd,cyd;

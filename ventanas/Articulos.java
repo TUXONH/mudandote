@@ -46,7 +46,7 @@ public class Articulos extends javax.swing.JFrame {
         initComponents();
         aceptar.setVisible(false);
         cancelar.setVisible(false);
-        Main2 main = new Main2();
+        Filtrados main = new Filtrados();
         main.pasar_valores(tabla, sql2);
     }
 
@@ -321,9 +321,9 @@ public class Articulos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -354,7 +354,7 @@ public class Articulos extends javax.swing.JFrame {
                 pstm.setString(6,"0");
                 pstm.execute();
                 pstm.close();                        
-                Main2 main = new Main2();
+                Filtrados main = new Filtrados();
                 main.pasar_valores(tabla, sql2);
             } catch (SQLException ex) {
                 Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
@@ -376,7 +376,7 @@ public class Articulos extends javax.swing.JFrame {
                 if (variable>0)
                 {
                     System.out.println("Se elimino");
-                    Main2 main = new Main2();
+                    Filtrados main = new Filtrados();
                     main.pasar_valores(tabla, sql2);
                 }
                 pst.close(); 
@@ -421,7 +421,7 @@ public class Articulos extends javax.swing.JFrame {
             con.getConnection().prepareStatement("UPDATE aticulos SET Descripcion='"+descripcion.getText()+"',M3='"+m3.getText()+"',GrupoCosteo='"+Servicios.getSelectedItem().toString()+"',Grupo='"+familia.getSelectedItem().toString()+"' WHERE Cve_articulo="+idx);                                                        
             pstm.executeUpdate();
             pstm.close();                        
-            Main2 main = new Main2();
+            Filtrados main = new Filtrados();
             main.pasar_valores(tabla, sql2);
             JOptionPane.showMessageDialog(null,"Se modifico el registro con exito!");
             

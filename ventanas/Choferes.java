@@ -19,7 +19,7 @@ import javax.swing.UIManager;
  * @author danielandrademaglioni
  */
 public class Choferes extends javax.swing.JFrame {
-    Main2 main = new Main2();
+    Filtrados main = new Filtrados();
     String sql="Select * From catchoferes";
     String nom,CURP,RFC,TELCEL;
     /**
@@ -540,7 +540,7 @@ public class Choferes extends javax.swing.JFrame {
             art.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -564,7 +564,7 @@ public class Choferes extends javax.swing.JFrame {
             uni.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
@@ -575,7 +575,7 @@ public class Choferes extends javax.swing.JFrame {
             rutas.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ClientesActionPerformed
 
@@ -592,9 +592,9 @@ public class Choferes extends javax.swing.JFrame {
     }//GEN-LAST:event_ReservacionesActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        Main2 cot = null;
+        Filtrados cot = null;
         try {
-            cot = new Main2();
+            cot = new Filtrados();
         } catch (SQLException ex) {
             Logger.getLogger(Choferes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -615,7 +615,7 @@ public class Choferes extends javax.swing.JFrame {
             sta.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 

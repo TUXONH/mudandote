@@ -379,9 +379,9 @@ public class CotiClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = null;
+        Filtrados main = null;
            try {
-               main = new Main2();
+               main = new Filtrados();
            } catch (SQLException ex) {
                Logger.getLogger(CotiClientes.class.getName()).log(Level.SEVERE, null, ex);
            }

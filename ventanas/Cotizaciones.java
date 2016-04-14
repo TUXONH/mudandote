@@ -47,6 +47,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.UIManager;
+import static java.lang.Thread.sleep;
 
 
 
@@ -3039,9 +3040,9 @@ public void Limpiar()
     }//GEN-LAST:event_TablaArticulosKeyReleased
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = null;
+        Filtrados main = null;
        try {
-           main = new Main2();
+           main = new Filtrados();
        } catch (SQLException ex) {
            Logger.getLogger(Cotizaciones.class.getName()).log(Level.SEVERE, null, ex);
        }
@@ -3056,7 +3057,7 @@ public void Limpiar()
             art.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -3082,7 +3083,7 @@ public void Limpiar()
             uni.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
@@ -3093,7 +3094,7 @@ public void Limpiar()
             rutas.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ClientesActionPerformed
 
@@ -3124,7 +3125,7 @@ public void Limpiar()
             sta.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 

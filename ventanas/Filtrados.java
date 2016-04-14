@@ -25,7 +25,7 @@ import java.text.MessageFormat;
  *
  * @author danielandrademaglioni
  */
-public class Main2 extends javax.swing.JFrame {
+public class Filtrados extends javax.swing.JFrame {
     String select=null;
     
     /**
@@ -37,7 +37,7 @@ public class Main2 extends javax.swing.JFrame {
     public String Ventas=Encapsuladas.getAuxVentas();
     String Maestra;
     String select1=null;  
-    public Main2() throws SQLException 
+    public Filtrados() throws SQLException 
     {
         initComponents();
         setLocationRelativeTo(null);
@@ -132,7 +132,7 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(combo1);
-        combo1.setBounds(30, 70, 84, 20);
+        combo1.setBounds(30, 70, 99, 25);
 
         combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         combo2.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +141,7 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(combo2);
-        combo2.setBounds(140, 70, 160, 20);
+        combo2.setBounds(140, 70, 160, 25);
 
         combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         combo3.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +150,7 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(combo3);
-        combo3.setBounds(320, 70, 120, 20);
+        combo3.setBounds(320, 70, 120, 25);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imp.png"))); // NOI18N
         jButton1.setText("Imprimir");
@@ -339,7 +339,7 @@ public class Main2 extends javax.swing.JFrame {
              rutas.setVisible(true);
              this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
        
     }//GEN-LAST:event_ClientesActionPerformed
@@ -368,7 +368,7 @@ public class Main2 extends javax.swing.JFrame {
                     pasar_valores(tabla,select4);            
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
             }
     }//GEN-LAST:event_combo3ActionPerformed
 
@@ -386,7 +386,7 @@ public class Main2 extends javax.swing.JFrame {
             art.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -412,7 +412,7 @@ public class Main2 extends javax.swing.JFrame {
              uni.setVisible(true);
              this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
        
     }//GEN-LAST:event_jMenuItem5ActionPerformed
@@ -424,7 +424,7 @@ public class Main2 extends javax.swing.JFrame {
             chof.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -495,7 +495,7 @@ public class Main2 extends javax.swing.JFrame {
                 pasar_valores(tabla,select);   
                 
             } catch (SQLException ex) {
-                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
             }
     }//GEN-LAST:event_combo1ActionPerformed
 
@@ -509,7 +509,7 @@ public class Main2 extends javax.swing.JFrame {
             
             pasar_valores(tabla,select);   
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_combo2ActionPerformed
 
@@ -527,7 +527,7 @@ public class Main2 extends javax.swing.JFrame {
             sta.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jMenuItem9ActionPerformed
@@ -637,14 +637,15 @@ public class Main2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Filtrados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Filtrados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Filtrados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Filtrados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -661,9 +662,9 @@ public class Main2 extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
   
             try {
-                new Main2().setVisible(true);
+                new Filtrados().setVisible(true);
             } catch (SQLException ex) {
-                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Filtrados.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
