@@ -18,6 +18,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableColumnModel;
  import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
 
 /**
  *
@@ -35,7 +37,7 @@ public class Main2 extends javax.swing.JFrame {
     public String Ventas=Encapsuladas.getAuxVentas();
     String Maestra;
     String select1=null;  
-    public Main2() 
+    public Main2() throws SQLException 
     {
         initComponents();
         setLocationRelativeTo(null);
@@ -47,61 +49,15 @@ public class Main2 extends javax.swing.JFrame {
           String[] items={"Clientes", "Cotización", "Reservacion", "Unidades", "Choferes", "Articulos"};
           if(Ventas=="true")
         {
-            cotizacion.setVisible(false);
-            cotizacion.setVisible(false);
+            select="Select * from catclientes"; 
+            pasar_valores(tabla,select);
             jMenu2.setVisible(false);
             combo3.removeAllItems();
             for (int i =0; i<items.length; i++)
             combo3.addItem(items[i]);
         
         }
-         combo2.addItem("*");
-//        String a = (String) tabla.getValueAt(tabla.getSelectedRow(),tabla.getSelectedColumn());
-                
-        if (combo1.getSelectedItem()=="Clientes")
-        {
-            select1="catclientes";
-            select="Select * from catclientes"; 
-        }
-        if (combo1.getSelectedItem()=="Cotizacion")
-        {
-            select1="cotizaciones";
-            select="Select FolioCotizacion,NombreQuienCotiza,FechaCotizacion,FechaProvServ,FechaFinServ,CorreoElectronico from cotizaciones";                        
-        }
-        if (combo1.getSelectedItem()=="Reservacion")
-        {
-            select1="catordenesservicios";
-            select="Select FolioOrdenServicio,NombreCteOrigen,DirOrigen,DirDestino,VolTotal,FechaServicio from catordenesservicios";
-            
-        }
-        if (combo1.getSelectedItem()=="Unidades")
-        {
-            select1="catunidades";
-            select="Select * from catunidades";            
-        }
-        if (combo1.getSelectedItem()=="Choferes")
-        {
-            select1="catchoferes";
-            select="Select * from catchoferes";
-        }
-        if (combo1.getSelectedItem()=="Articulos")
-        {
-            select1="tablaarticulos";
-            select="Select * from tablaarticulos";
-        }
-        if (combo1.getSelectedItem()=="Usuarios")
-        {
-            select1="catusuarios";
-            select="Select * from catusuarios";
-        }
-          
-          try {                             
-                pasar_valores_combo(combo2,select);
-                pasar_valores(tabla,select);   
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        
         
     }
 
@@ -117,12 +73,10 @@ public class Main2 extends javax.swing.JFrame {
         jMenu12 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        cotizacion = new javax.swing.JButton();
-        reservacion = new javax.swing.JButton();
         combo1 = new javax.swing.JComboBox<>();
         combo2 = new javax.swing.JComboBox<>();
         combo3 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         Usuarios = new javax.swing.JMenuItem();
@@ -149,7 +103,8 @@ public class Main2 extends javax.swing.JFrame {
         jMenu12.setText("jMenu12");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1211, 458));
+        setTitle("Menu");
+        setMinimumSize(new java.awt.Dimension(1127, 483));
         setUndecorated(true);
         setSize(new java.awt.Dimension(1211, 458));
         getContentPane().setLayout(null);
@@ -168,29 +123,7 @@ public class Main2 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabla);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(130, 130, 1062, 254);
-
-        jTextField1.setToolTipText("Buscar segun el nombre de columna");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField1KeyPressed(evt);
-            }
-        });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(550, 100, 103, 26);
-
-        cotizacion.setText("jButton1");
-        getContentPane().add(cotizacion);
-        cotizacion.setBounds(11, 190, 100, 60);
-
-        reservacion.setText("cotizacion");
-        getContentPane().add(reservacion);
-        reservacion.setBounds(22, 140, 100, 40);
+        jScrollPane1.setBounds(20, 150, 1062, 254);
 
         combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes", "Cotizacion", "Reservacion", "Articulos", "Choferes", "Unidades" }));
         combo1.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +132,7 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(combo1);
-        combo1.setBounds(130, 100, 131, 27);
+        combo1.setBounds(30, 70, 84, 20);
 
         combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         combo2.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +141,7 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(combo2);
-        combo2.setBounds(260, 100, 160, 27);
+        combo2.setBounds(140, 70, 160, 20);
 
         combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         combo3.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +150,17 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(combo3);
-        combo3.setBounds(420, 100, 120, 27);
+        combo3.setBounds(320, 70, 120, 20);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imp.png"))); // NOI18N
+        jButton1.setText("Imprimir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(920, 60, 150, 70);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 102, 0));
         jMenuBar1.setBorder(null);
@@ -227,6 +170,7 @@ public class Main2 extends javax.swing.JFrame {
         jMenu2.setBackground(new java.awt.Color(255, 102, 0));
         jMenu2.setForeground(new java.awt.Color(255, 255, 255));
         jMenu2.setText("Catalogo");
+        jMenu2.setOpaque(true);
 
         Usuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         Usuarios.setBackground(new java.awt.Color(51, 51, 51));
@@ -284,6 +228,7 @@ public class Main2 extends javax.swing.JFrame {
         jMenu3.setBackground(new java.awt.Color(255, 102, 0));
         jMenu3.setForeground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("Rutas");
+        jMenu3.setOpaque(true);
 
         Clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         Clientes.setBackground(new java.awt.Color(51, 51, 51));
@@ -301,6 +246,7 @@ public class Main2 extends javax.swing.JFrame {
         jMenu4.setBackground(new java.awt.Color(255, 102, 0));
         jMenu4.setForeground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("Cotizaciones");
+        jMenu4.setOpaque(true);
 
         Cotizaciones.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         Cotizaciones.setBackground(new java.awt.Color(51, 51, 51));
@@ -318,6 +264,7 @@ public class Main2 extends javax.swing.JFrame {
         jMenu5.setBackground(new java.awt.Color(255, 102, 0));
         jMenu5.setForeground(new java.awt.Color(255, 255, 255));
         jMenu5.setText("Reservaciones");
+        jMenu5.setOpaque(true);
 
         Reservaciones.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         Reservaciones.setBackground(new java.awt.Color(51, 51, 51));
@@ -358,7 +305,7 @@ public class Main2 extends javax.swing.JFrame {
 
         jMenu7.setText("Status");
 
-        jMenuItem9.setText("Ver Status de unidades");
+        jMenuItem9.setText("Ver");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem9ActionPerformed(evt);
@@ -385,35 +332,28 @@ public class Main2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER && combo3.getSelectedItem()!="*")
-        {   
-            
-            String select2 = "SELECT *"+" FROM "+select1+" WHERE "+combo3.getSelectedItem()+" = \""+jTextField1.getText()+"\"";
-            try {
-                if (combo1.getSelectedItem()!="Reservacion")
-                {
-                    pasar_valores(tabla,select2);            
-                }
-                else
-                {
-                    String select4 = "SELECT FolioOrdenServicio,NombreCteOrigen,DirOrigen,DirDestino,VolTotal,FechaServicio"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+jTextField1.getText()+"\"";
-                    pasar_valores(tabla,select4);            
-                }
-                JTable JTable1;                
-            } catch (SQLException ex) {
-                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
+        Rutas rutas = null;
+        try {
+            rutas = new Rutas();
+             rutas.setVisible(true);
+             this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER && combo3.getSelectedItem()=="*")
-        {
-            JOptionPane.showMessageDialog(null, "Antes debes seleccionar la columna donde buscar");
-        }
-    }//GEN-LAST:event_jTextField1KeyPressed
+       
+    }//GEN-LAST:event_ClientesActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void CotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CotizacionesActionPerformed
+        Cotizaciones c = new Cotizaciones();
+        c.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_CotizacionesActionPerformed
+
+    private void ReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservacionesActionPerformed
+    Reservacion res = new Reservacion();
+    res.setVisible(true);
+    }//GEN-LAST:event_ReservacionesActionPerformed
 
     private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
          select = "SELECT *"+" FROM "+select1+" WHERE "+combo2.getSelectedItem()+" = \""+combo3.getSelectedItem()+"\"";
@@ -431,6 +371,79 @@ public class Main2 extends javax.swing.JFrame {
                 Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
             }
     }//GEN-LAST:event_combo3ActionPerformed
+
+    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
+        Altas usuario = new Altas();
+        usuario.setLocationRelativeTo(null);
+        usuario.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_UsuariosActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        try {
+            // TODO add your handling code here:
+            Articulos art = new Articulos();
+            art.setVisible(true);
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        CatVivienda vivi = new CatVivienda();
+        vivi.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        Plazas plaz = new Plazas();
+        plaz.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        Unidades uni;
+        try {
+            uni = new Unidades();
+             uni.setVisible(true);
+             this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            Choferes chof = new Choferes();
+            chof.setVisible(true);
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        CotiClientes cot = new CotiClientes();
+        cot.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        Login log = new Login();
+        log.setLocationRelativeTo(null);
+        log.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
             combo2.removeAllItems();
@@ -500,88 +513,8 @@ public class Main2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_combo2ActionPerformed
 
-    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
-        Altas usuario = new Altas();
-        usuario.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_UsuariosActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        try {
-            // TODO add your handling code here:
-            Articulos art = new Articulos();
-            art.setVisible(true);
-            this.dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-                // TODO add your handling code here:
-        Plazas plaz = new Plazas();
-        plaz.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-         try {
-            // TODO add your handling code here:
-            Choferes chof = new Choferes();
-            chof.setVisible(true);
-            this.dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        CatVivienda vivi = new CatVivienda();
-        vivi.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        Unidades uni;
-        try {
-            uni = new Unidades();
-            uni.setVisible(true);
-            this.dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
-        Rutas rutas = null;
-        try {
-            rutas = new Rutas();
-            rutas.setVisible(true);
-            this.dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_ClientesActionPerformed
-
-    private void CotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CotizacionesActionPerformed
-        Cotizaciones c = new Cotizaciones();
-        c.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_CotizacionesActionPerformed
-
-    private void ReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservacionesActionPerformed
-        Reservacion res = new Reservacion();
-        res.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ReservacionesActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        CotiClientes cot = new CotiClientes();
-        cot.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
         AsignacionUnidades uni = new AsignacionUnidades();
         uni.setVisible(true);
         this.dispose();
@@ -596,15 +529,19 @@ public class Main2 extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        Login log = new Login();
-        log.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-                                                                                                                                                                                                                                                                                                                                                                                 
-                                        
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         try{
+            MessageFormat headerFormat = new MessageFormat("Catalogo "+combo1.getSelectedItem());
+            MessageFormat footerFormat = new MessageFormat("- Pagina {0} -");
+            tabla.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Rutas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -723,7 +660,11 @@ public class Main2 extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(() -> {
   
-            new Main2().setVisible(true);
+            try {
+                new Main2().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
 
@@ -735,7 +676,7 @@ public class Main2 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combo1;
     private javax.swing.JComboBox<String> combo2;
     private javax.swing.JComboBox<String> combo3;
-    private javax.swing.JButton cotizacion;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu13;
@@ -756,8 +697,6 @@ public class Main2 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton reservacion;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

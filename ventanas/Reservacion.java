@@ -6,6 +6,7 @@
 package ventanas;
 
 import UpperEssential.UpperEssentialLookAndFeel;
+import clases.Encapsuladas;
 import clases.Geocoding;
 import clases.Route;
 import clases.conexion;
@@ -68,11 +69,18 @@ public class Reservacion extends javax.swing.JFrame {
     clases.Geocoding ObjGeocoding=new clases.Geocoding();
     clases.Route ObjRoute = new clases.Route();
     String lat,lon,lat2,lon2,time,distance; 
+     public String Tipo=Encapsuladas.getAuxVentas();
     public Reservacion() {
         initComponents();
+        this.setLocationRelativeTo(null);
         con =  new conexion();
         Ver();
         VerCombo();
+           if(Tipo=="true")
+        {
+            jMenu2.setVisible(false);
+          
+        }
       
         
     }
@@ -111,6 +119,8 @@ public class Reservacion extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField25 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jTextField24 = new javax.swing.JTextField();
         DireccionDestino = new javax.swing.JTextField();
@@ -125,6 +135,8 @@ public class Reservacion extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
+        jTextField27 = new javax.swing.JTextField();
+        jTextField28 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jTextField5 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
@@ -210,7 +222,7 @@ public class Reservacion extends javax.swing.JFrame {
 
         jTextField3.setEnabled(false);
 
-        jLabel4.setText("Col y Pobl:");
+        jLabel4.setText("Volumen");
 
         jTextField4.setEnabled(false);
 
@@ -271,12 +283,17 @@ public class Reservacion extends javax.swing.JFrame {
 
         jLabel10.setText("Folio O.S.:");
 
-        jButton1.setText("jButton1");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Search.png"))); // NOI18N
+        jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jTextField2.setEnabled(false);
+
+        jTextField25.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -285,39 +302,45 @@ public class Reservacion extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addGap(35, 35, 35)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                                    .addComponent(DireccionOrigen)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel1))
+                                        .addGap(35, 35, 35)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                                            .addComponent(DireccionOrigen)
+                                            .addComponent(jTextField3)
+                                            .addComponent(jTextField4)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,7 +369,9 @@ public class Reservacion extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
@@ -368,7 +393,7 @@ public class Reservacion extends javax.swing.JFrame {
 
         jLabel29.setText("Referencia :");
 
-        jLabel30.setText("Col y Pobl :");
+        jLabel30.setText("Volumen");
 
         jTextField31.setEnabled(false);
 
@@ -390,6 +415,10 @@ public class Reservacion extends javax.swing.JFrame {
         );
 
         jLabel32.setText("Tel");
+
+        jTextField27.setEnabled(false);
+
+        jTextField28.setEnabled(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -419,12 +448,16 @@ public class Reservacion extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField30)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jTextField31)
+                                .addComponent(jTextField31, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel31)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(238, 238, 238))
+                .addGap(53, 53, 53)
+                .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -450,14 +483,18 @@ public class Reservacion extends javax.swing.JFrame {
                     .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30))
                 .addGap(35, 35, 35)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel32))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel31)
+                        .addComponent(jLabel32)))
                 .addGap(30, 30, 30)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Destino", jPanel4);
@@ -474,7 +511,8 @@ public class Reservacion extends javax.swing.JFrame {
 
         jLabel35.setText("Saldo Anterio");
 
-        jButton3.setText("jButton3");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compra.png"))); // NOI18N
+        jButton3.setText("Cobrar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -495,24 +533,27 @@ public class Reservacion extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel34)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(104, 104, 104))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel35)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(108, 108, 108)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel35)
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(108, 108, 108))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel34)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel25)
                             .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(133, 133, 133))))
+                        .addGap(133, 133, 133))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addGap(62, 62, 62))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,15 +570,15 @@ public class Reservacion extends javax.swing.JFrame {
                     .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(64, Short.MAX_VALUE))))
+                        .addContainerGap(100, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88))))
         );
 
         jTabbedPane1.addTab("Cobranza", jPanel3);
@@ -996,14 +1037,18 @@ public class Reservacion extends javax.swing.JFrame {
           try{
        // PreparedStatement PreparedStatement = null;
         PreparedStatement pstm =(PreparedStatement)
-        con.getConnection().prepareStatement("Select NombreQuienCotiza,DirOrigen,RefOrigen,NoPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDestino,NoPisosDestino,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,Rentas,IVA,SubTotal,Total,Retencion,Anticipo,Seguro,VentasArt,Rentas,NumOrdenNoR,Observaciones from cotizaciones where FolioCotizacion= '"+jTextField10.getText()+"'");
+        con.getConnection().prepareStatement("Select NombreQuienCotiza,DirOrigen,RefOrigen,NoPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDestino,NoPisosDestino,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,Rentas,IVA,SubTotal,Total,Retencion,Anticipo,Seguro,VentasArt,Rentas,NumOrdenNoR,Observaciones,VolTotal,EstadoOrigen,MunicipioOrigen,EstadoDestino,MunicipioDestino from cotizaciones where FolioCotizacion= '"+jTextField10.getText()+"'");
         ResultSet res1 = pstm.executeQuery();
         res1.next();
        String aux_clientes = res1.getObject("NombreQuienCotiza").toString();
        String aux_dirOrigen=res1.getObject("DirOrigen").toString();
+       String aux_EstadoO = res1.getObject("EstadoOrigen").toString();
+       String aux_MuniO=res1.getObject("MunicipioOrigen").toString();
+       String aux_EstadoD = res1.getObject("EstadoDestino").toString();
+       String aux_MuniD=res1.getObject("MunicipioDestino").toString();
          String aux_refOrigen=res1.getObject("RefOrigen").toString();
           String aux_Observacion=res1.getObject("Observaciones").toString();
-     //  String aux_ColPoblOrigen=res1.getObject("ColPoblOrigen").toString();
+           String aux_ColPoblOrigen=res1.getObject("VolTotal").toString();
         String aux_PisosOrigen=res1.getObject("NoPisosOrigen").toString();
         String aux_TelOrigen=res1.getObject("TelOrigen").toString();
         String aux_NombreRecibe=res1.getObject("NombreRecibe").toString();
@@ -1026,10 +1071,15 @@ public class Reservacion extends javax.swing.JFrame {
         String aux_Menaje=res1.getObject("Menaje").toString();
         String aux_Renta=res1.getObject("Rentas").toString();
         String aux_Orden=res1.getObject("NumOrdenNoR").toString();
-      jTextField1.setText(aux_clientes);
+     
+        jTextField2.setText(aux_EstadoO);
+        jTextField25.setText(aux_MuniO);
+        jTextField27.setText(aux_EstadoD);
+        jTextField28.setText(aux_MuniD);
+        jTextField1.setText(aux_clientes);
       DireccionOrigen.setText(aux_dirOrigen);
       jTextField3.setText(aux_refOrigen);
-     // jTextField4.setText(aux_ColPoblOrigen);
+     
       jTextField6.setText(aux_PisosOrigen);
       jTextField7.setText(aux_TelOrigen);
       jTextField8.setText(aux_Saldo);
@@ -1051,7 +1101,8 @@ public class Reservacion extends javax.swing.JFrame {
       jTextArea1.setText(aux_Observacion);
       DireccionDestino.setText(aux_DirDestino);
       jTextField29.setText(aux_refDestino);
-     // jTextField30.setText(aux_ColPoblDestino);
+       jTextField4.setText(aux_ColPoblOrigen);
+      jTextField30.setText(aux_ColPoblOrigen);
       jTextField31.setText(aux_TelDest);
        jTextField32.setText(aux_NumPisosDest);
       
@@ -1155,17 +1206,35 @@ public class Reservacion extends javax.swing.JFrame {
 
         if(jDateChooser1.getDate()!=null && !jTextField26.getText().equals("")){
            if(!jComboBox4.getSelectedItem().equals("Selecione un Usuario")){
+               
                 int anio = jDateChooser1.getCalendar().get(Calendar.YEAR);
                 int mes = jDateChooser1.getCalendar().get(Calendar.MONTH) + 1;
                 int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);;
                  String fecha =  anio+"/"+mes+"/"+dia;
                try {
-                   NuevoProducto(fecha,jTextField1.getText(),DireccionOrigen.getText(),jTextField3.getText(),jTextField6.getText(),jTextField7.getText(),jTextField24.getText(),DireccionDestino.getText(),jTextField29.getText(),jTextField31.getText(),jTextField32.getText(),jTextField12.getText(),jTextField13.getText(),jTextField17.getText(),jTextField15.getText(),jTextField23.getText(),jTextField19.getText(),jTextField18.getText(),jTextField33.getText(),jTextField20.getText(),jTextField22.getText(),jTextField16.getText(),jTextField14.getText(),jComboBox1.getSelectedItem().toString(),jTextField26.getText(),jComboBox4.getSelectedItem().toString(),jTextField9.getText());
+                   NuevoProducto(fecha,jTextField1.getText(),DireccionOrigen.getText(),jTextField3.getText(),jTextField6.getText(),jTextField7.getText(),jTextField24.getText(),DireccionDestino.getText(),jTextField29.getText(),jTextField31.getText(),jTextField32.getText(),jTextField12.getText(),jTextField13.getText(),jTextField17.getText(),jTextField15.getText(),jTextField23.getText(),jTextField19.getText(),jTextField18.getText(),jTextField33.getText(),jTextField20.getText(),jTextField22.getText(),jTextField16.getText(),jTextField14.getText(),jComboBox1.getSelectedItem().toString(),jTextField26.getText(),jComboBox4.getSelectedItem().toString(),jTextField9.getText(), jTextField4.getText(),jTextField2.getText(),jTextField25.getText(),jTextField27.getText(),jTextField28.getText());
                } catch (UnsupportedEncodingException ex) {
                    Logger.getLogger(Reservacion.class.getName()).log(Level.SEVERE, null, ex);
                } catch (MalformedURLException ex) {
                    Logger.getLogger(Reservacion.class.getName()).log(Level.SEVERE, null, ex);
                }
+               
+                int response = JOptionPane.showConfirmDialog(null, "¿Asignar unidad?", "Confirm",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.NO_OPTION)
+    {
+        
+   
+    } 
+    else if (response == JOptionPane.YES_OPTION) {
+        AsignacionUnidades abrir = new AsignacionUnidades();
+        abrir.setVisible(true);
+        abrir.setLocationRelativeTo(null);
+        this.dispose();
+    }
+               
+               
+               
               }
            else
            {
@@ -1230,7 +1299,12 @@ public class Reservacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = new Main2();
+        Main2 main = null;
+       try {
+           main = new Main2();
+       } catch (SQLException ex) {
+           Logger.getLogger(Reservacion.class.getName()).log(Level.SEVERE, null, ex);
+       }
         main.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Clientes1ActionPerformed
@@ -1293,6 +1367,7 @@ public class Reservacion extends javax.swing.JFrame {
         // TODO add your handling code here:
         CotiClientes cot = new CotiClientes();
         cot.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -1425,7 +1500,7 @@ public class Reservacion extends javax.swing.JFrame {
              System.out.println(ex);
         }
 }
-       public void NuevoProducto(String TMPfecha,String NombreCteOrigen,String DirOrigen,String RefOrigen,String NumPisosOrigen,String TelOrigen,String NombreRecibe,String DirDestino,String RefDestino,String TelDest,String NumPisoDest,String Almacenaje,String Menaje,String Maniobras,String VentasArt,String Saldo,String IVA,String SubTotal,String Total,String Retencion,String Anticipo,String Seguro,String Rentas,String HoraServicio,String UltimoUsuario,String Vendedor,String NoPresupuesto) throws UnsupportedEncodingException, MalformedURLException
+       public void NuevoProducto(String TMPfecha,String NombreCteOrigen,String DirOrigen,String RefOrigen,String NumPisosOrigen,String TelOrigen,String NombreRecibe,String DirDestino,String RefDestino,String TelDest,String NumPisoDest,String Almacenaje,String Menaje,String Maniobras,String VentasArt,String Saldo,String IVA,String SubTotal,String Total,String Retencion,String Anticipo,String Seguro,String Rentas,String HoraServicio,String UltimoUsuario,String Vendedor,String NoPresupuesto,String VolTotal,String EstadoO,String MuniO,String EstadoD,String MuniD) throws UnsupportedEncodingException, MalformedURLException
 {
     try{
         CodiGeograficaOrigen();
@@ -1434,7 +1509,7 @@ public class Reservacion extends javax.swing.JFrame {
         rellenarDatosrRuta();
        // PreparedStatement PreparedStatement = null;
         PreparedStatement pstm =(PreparedStatement)        
-        con.getConnection().prepareStatement("insert into catordenesservicios (FechaServicio,NombreCteOrigen,DirOrigen,RefOrigen,NumPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDest,NumPisoDest,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,IVA,SubTotal,Total,Retencion,Anticipo,PorcSeguro,Rentas,HoraServicio,UltimoUsuario,Vendedor,NoPresupuesto,CoordenadaXOrigen,CoordenadaYOrigen,CoordenadaXDestino,CoordenadaYDestino,Tiempo,Distancia) values ('"+TMPfecha+"','"+NombreCteOrigen+"','"+DirOrigen+"','"+RefOrigen+"','"+NumPisosOrigen+"','"+TelOrigen+"','"+NombreRecibe+"','"+DirDestino+"','"+RefDestino+"','"+TelDest+"','"+NumPisoDest+"',"+Almacenaje+","+Menaje+","+Maniobras+","+VentasArt+","+Saldo+","+IVA+","+SubTotal+","+Total+","+Retencion+","+Anticipo+","+Seguro+","+Rentas+",'"+HoraServicio+"','"+UltimoUsuario+"','"+Vendedor+"',"+NoPresupuesto+",'"+lat+"','"+lon+"','"+lat2+"','"+lon2+"','"+time+"','"+distance+"')");
+        con.getConnection().prepareStatement("insert into catordenesservicios (FechaServicio,NombreCteOrigen,DirOrigen,RefOrigen,NumPisosOrigen,TelOrigen,NombreRecibe,DirDestino,RefDestino,TelDest,NumPisoDest,Almacenaje,Menaje,Maniobras,VentasArt,Saldo,IVA,SubTotal,Total,Retencion,Anticipo,PorcSeguro,Rentas,HoraServicio,UltimoUsuario,Vendedor,NoPresupuesto,CoordenadaXOrigen,CoordenadaYOrigen,CoordenadaXDestino,CoordenadaYDestino,Tiempo,Distancia,VolTotal,EstadoOrigen,MunicipioOrigen,EstadoDestino,MunicipioDestino) values ('"+TMPfecha+"','"+NombreCteOrigen+"','"+DirOrigen+"','"+RefOrigen+"','"+NumPisosOrigen+"','"+TelOrigen+"','"+NombreRecibe+"','"+DirDestino+"','"+RefDestino+"','"+TelDest+"','"+NumPisoDest+"',"+Almacenaje+","+Menaje+","+Maniobras+","+VentasArt+","+Saldo+","+IVA+","+SubTotal+","+Total+","+Retencion+","+Anticipo+","+Seguro+","+Rentas+",'"+HoraServicio+"','"+UltimoUsuario+"','"+Vendedor+"',"+NoPresupuesto+",'"+lat+"','"+lon+"','"+lat2+"','"+lon2+"','"+time+"','"+distance+"',"+VolTotal+","+EstadoO+","+MuniO+","+EstadoD+","+MuniD+")");
         pstm.execute();   
         pstm.close();
         JOptionPane.showMessageDialog(null,"Tiempo :"+time+" Distancia :"+distance);
@@ -1613,12 +1688,16 @@ public void VerCombo()
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
+    private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField26;
+    private javax.swing.JTextField jTextField27;
+    private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;

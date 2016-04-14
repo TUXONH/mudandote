@@ -9,6 +9,7 @@ import clases.cargar;
 import com.sun.awt.AWTUtilities;
 import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import javax.swing.UIManager;
+import clases.cargarMain;
 
 
 public final class Splash extends javax.swing.JFrame 
@@ -20,6 +21,7 @@ public final class Splash extends javax.swing.JFrame
         initComponents();
         setLocationRelativeTo(null);
         iniciar();
+        clases.cargarMain carga= new clases.cargarMain(jLabel2);
     }
     public void iniciar()
     {
@@ -40,6 +42,7 @@ public final class Splash extends javax.swing.JFrame
         progreso = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
         porciento = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(415, 480));
@@ -52,7 +55,7 @@ public final class Splash extends javax.swing.JFrame
             }
         });
         getContentPane().add(progreso);
-        progreso.setBounds(10, 460, 350, 14);
+        progreso.setBounds(10, 510, 350, 14);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atlas.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -60,7 +63,11 @@ public final class Splash extends javax.swing.JFrame
 
         porciento.setText("100%");
         getContentPane().add(porciento);
-        porciento.setBounds(370, 460, 30, 16);
+        porciento.setBounds(370, 510, 29, 14);
+
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(200, 460, 34, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -130,6 +137,7 @@ public final class Splash extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel porciento;
     private javax.swing.JProgressBar progreso;
     // End of variables declaration//GEN-END:variables

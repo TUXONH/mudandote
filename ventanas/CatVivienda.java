@@ -175,6 +175,7 @@ public class CatVivienda extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -345,6 +346,9 @@ public class CatVivienda extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem4);
+
+        jMenuItem2.setText("Usuario");
+        jMenu2.add(jMenuItem2);
 
         jMenuItem5.setText("Unidades");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -553,7 +557,12 @@ public class CatVivienda extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAyudaVentaKeyTyped
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = new Main2();
+        Main2 main = null;
+        try {
+            main = new Main2();
+        } catch (SQLException ex) {
+            Logger.getLogger(CatVivienda.class.getName()).log(Level.SEVERE, null, ex);
+        }
         main.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Clientes1ActionPerformed
@@ -715,6 +724,7 @@ public class CatVivienda extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

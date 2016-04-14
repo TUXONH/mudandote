@@ -592,7 +592,12 @@ public class Choferes extends javax.swing.JFrame {
     }//GEN-LAST:event_ReservacionesActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        Main2 cot = new Main2();
+        Main2 cot = null;
+        try {
+            cot = new Main2();
+        } catch (SQLException ex) {
+            Logger.getLogger(Choferes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         cot.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem6ActionPerformed

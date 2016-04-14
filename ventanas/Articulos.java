@@ -28,6 +28,7 @@ public class Articulos extends javax.swing.JFrame {
     String family;
     String mm3;
     String services;
+    String jose;
     /**
      * Creates new form Articulos
      */
@@ -70,6 +71,7 @@ public class Articulos extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -220,6 +222,9 @@ public class Articulos extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem4);
+
+        jMenuItem3.setText("Usuario");
+        jMenu2.add(jMenuItem3);
 
         jMenuItem5.setText("Unidades");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -560,7 +565,12 @@ public class Articulos extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseClicked
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = new Main2();
+        Main2 main = null;
+        try {
+            main = new Main2();
+        } catch (SQLException ex) {
+            Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         main.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Clientes1ActionPerformed
@@ -731,6 +741,7 @@ public class Articulos extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

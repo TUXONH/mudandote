@@ -41,6 +41,8 @@ public class Clientes extends javax.swing.JFrame {
         con.getConnection();
           Ver();
            llenar_est();
+           modeloCombo2.addElement("Seleccione Municipio");
+        this.jComboBox2.setModel(modeloCombo2);
         jComboBox1.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent arg) {
            llenar_muni((String) jComboBox1.getSelectedItem());
@@ -307,14 +309,12 @@ public class Clientes extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jComboBox1, 0, 95, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel10)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -388,13 +388,13 @@ public class Clientes extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
                             .addComponent(jButton2)
-                            .addComponent(jButton3))
+                            .addComponent(jButton3)
+                            .addComponent(jButton1))
                         .addContainerGap(49, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(56, 56, 56)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4)
@@ -414,19 +414,19 @@ public class Clientes extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGap(26, 26, 26)
                         .addComponent(jButton3)))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton5)
-                            .addComponent(jButton4))
-                        .addGap(13, 13, 13))
+                            .addComponent(jButton4)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -625,12 +625,24 @@ public class Clientes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),activo,jTextField6.getText(),jTextField7.getText(),jTextField8.getText(),jTextField9.getText(),jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
-        Ver();
+        if(email(jTextField1.getText()))
+        {
+            NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),activo,jTextField6.getText(),jTextField7.getText(),jTextField8.getText(),jTextField9.getText(),jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
+            Ver();
+        }
+        else
+        {
+            System.out.println("No es correo electronico");
+        }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         
+         if (jTable1.getSelectedRow()!=-1)
+         {
          int idx = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
         
         try
@@ -647,6 +659,11 @@ public class Clientes extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Altas.class.getName()).log(Level.SEVERE, null, ex);
         }
+         }
+          else
+         {
+              JOptionPane.showMessageDialog(null,"Para eliminar primero debes seleccionar en la tabla de registro");
+         }
     Ver();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -662,7 +679,7 @@ public class Clientes extends javax.swing.JFrame {
             String Direccion = (String) jTable1.getValueAt(jTable1.getSelectedRow(),6);
              String TelCasa = (String) jTable1.getValueAt(jTable1.getSelectedRow(),7);
               String TelOficina = (String) jTable1.getValueAt(jTable1.getSelectedRow(),8);
-               String Movil = (String) jTable1.getValueAt(jTable1.getSelectedRow(),9);
+               String TelMovil = (String) jTable1.getValueAt(jTable1.getSelectedRow(),9);
                 String Activo = (String) jTable1.getValueAt(jTable1.getSelectedRow(),10);
                  String Estado = (String) jTable1.getValueAt(jTable1.getSelectedRow(),12);
                  String Municipio = (String) jTable1.getValueAt(jTable1.getSelectedRow(),11);
@@ -677,7 +694,7 @@ public class Clientes extends javax.swing.JFrame {
           {
               Baja=false;
           }
-          // int Bajaint2=Integer.parseInt(Maestra.toString());
+          // int Bajaint2=Integer.parseInt(Maestra.toString());Es
             
            System.out.println("Estado: "+Estado+" Muncipio: "+Municipio);
          
@@ -694,7 +711,7 @@ public class Clientes extends javax.swing.JFrame {
             jTextField6.setText(Direccion);
             jTextField7.setText(TelCasa);
             jTextField8.setText(TelOficina);
-            jTextField9.setText(Movil);
+            jTextField9.setText(TelMovil);
             jComboBox1.setSelectedItem(Estado);
             jComboBox2.setSelectedItem(Municipio);
             jCheckBox1.setSelected(Baja);
@@ -763,7 +780,12 @@ public class Clientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        Main2 cot = new Main2();
+        Main2 cot = null;
+        try {
+            cot = new Main2();
+        } catch (SQLException ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         cot.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -862,7 +884,7 @@ public class Clientes extends javax.swing.JFrame {
      public void Ver()
 {
 //con.getConnection();
-        String Titulos[]={"Clave","Email","RFC","Nom.Contacto","Nom.Comercial","RS","Direccion","Tel.Casa","Tel.Oficina","Movil","Activo","Municipio","Estado"};
+        String Titulos[]={"Clave","Email","RFC","Nom.Contacto","Nom.Comercial","RS","Direccion","Tel.Casa","Tel.Oficina","TelMovil","Activo","Municipio","Estado"};
         DefaultTableModel m = new DefaultTableModel(null,Titulos);
         jTable1.setModel(m);
         int registro=0;
@@ -886,7 +908,7 @@ public class Clientes extends javax.swing.JFrame {
         
         try {
                     PreparedStatement   pstm = (PreparedStatement)
-                        con.getConnection().prepareStatement("SELECT catclientes.FolioCliente,catclientes.CorreoElectronico,catclientes.RFC,catclientes.NombreContacto,catclientes.NombreComercial,catclientes.RazonSocial,catclientes.Direccion,catclientes.TelCasa,catclientes.TelOficina,catclientes.Movil,catclientes.Activo,estados.nombre,municipios.mun_nombre from catclientes LEFT JOIN estados ON estados.Estado=catclientes.Estado LEFT JOIN municipios ON municipios.Municipio=catclientes.Municipio");
+                        con.getConnection().prepareStatement("SELECT catclientes.FolioCliente,catclientes.CorreoElectronico,catclientes.RFC,catclientes.NombreContacto,catclientes.NombreComercial,catclientes.RazonSocial,catclientes.Direccion,catclientes.TelCasa,catclientes.TelOficina,catclientes.TelMovil,catclientes.Activo,estados.nombre,municipios.mun_nombre from catclientes LEFT JOIN estados ON estados.id_estado=catclientes.Estado LEFT JOIN municipios ON municipios.id_municipio=catclientes.Municipio");
                       ResultSet res = pstm.executeQuery();
                       int i=0;
                       while(res.next()){
@@ -899,7 +921,7 @@ public class Clientes extends javax.swing.JFrame {
                             String DireccionC = res.getString("catclientes.Direccion");
                             String TelCasaC = res.getString("catclientes.TelCasa");
                             String TelOficinaC = res.getString("catclientes.TelOficina");
-                            String MovilC = res.getString("catclientes.Movil");
+                            String TelMovilC = res.getString("catclientes.TelMovil");
                              String ActivoC = res.getString("catclientes.Activo");
                            String Municipio  = res.getString("municipios.mun_nombre");
                           String Estado = res.getString("estados.nombre");
@@ -912,7 +934,7 @@ public class Clientes extends javax.swing.JFrame {
                           datos[i][6]=DireccionC;
                           datos[i][7]=TelCasaC ;
                           datos[i][8]=TelOficinaC;
-                          datos[i][9]= MovilC;
+                          datos[i][9]= TelMovilC;
                           datos[i][10]=ActivoC;
                            datos[i][11]=Municipio;
                             datos[i][12]=Estado;
@@ -955,7 +977,7 @@ public class Clientes extends javax.swing.JFrame {
            // Class.forName("com.mysql.jdbc.Driver");
           //  Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/mudandote", "root", "");
             Statement st = con.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = st.executeQuery("SELECT * FROM municipios,estados where municipios.Estado=estados.Estado and estados.nombre='"+est+"'");
+            ResultSet rs = st.executeQuery("SELECT * FROM municipios,estados where municipios.id_estado=estados.id_estado and estados.nombre='"+est+"'");
             modeloCombo2.addElement("Seleccione un Municipio");
             this.jComboBox2.setModel(modeloCombo2);
             while (rs.next()) {
@@ -969,18 +991,18 @@ public class Clientes extends javax.swing.JFrame {
         } 
 }
       
-    public void NuevoProducto(String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPMovil,String TMPEstado,String TMPMunicipio)
+    public void NuevoProducto(String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPTelMovil,String TMPEstado,String TMPMunicipio)
 {
     try{
        // PreparedStatement PreparedStatement = null;
         PreparedStatement pstm =(PreparedStatement)
-        con.getConnection().prepareStatement("Select Municipio,Estado from municipios where mun_nombre= '"+TMPMunicipio+"'");
+        con.getConnection().prepareStatement("Select id_municipio,id_estado from municipios where mun_nombre= '"+TMPMunicipio+"'");
         ResultSet res1 = pstm.executeQuery();
         res1.next();
-       String aux_idmun = res1.getObject("Municipio").toString();
-        String aux_idest = res1.getObject("Estado").toString();
+       String aux_idmun = res1.getObject("id_municipio").toString();
+        String aux_idest = res1.getObject("id_estado").toString();
         //System.out.println("Valor "+ TMPCorreoElectronico);
-       pstm = con.getConnection().prepareStatement("insert into catclientes(CorreoElectronico,RFC,NombreContacto,NombreComercial,RazonSocial,Direccion,Activo,TelCasa,TelOficina,Movil,Estado,Municipio) values ('"+TMPCorreoElectronico+"','"+TMPRFC+"','"+TMPNombreContacto+"','"+TMPNombreComercial+"','"+TMPRazonSocial+"','"+TMPDireccion+"',"+TMPActivo+",'"+TMPTelCasa+"','"+TMPTelOficna+"','"+TMPMovil+"',"+aux_idest+","+aux_idmun+")");
+       pstm = con.getConnection().prepareStatement("insert into catclientes(CorreoElectronico,RFC,NombreContacto,NombreComercial,RazonSocial,Direccion,Activo,TelCasa,TelOficina,TelMovil,Estado,Municipio) values ('"+TMPCorreoElectronico+"','"+TMPRFC+"','"+TMPNombreContacto+"','"+TMPNombreComercial+"','"+TMPRazonSocial+"','"+TMPDireccion+"',"+TMPActivo+",'"+TMPTelCasa+"','"+TMPTelOficna+"','"+TMPTelMovil+"',"+aux_idest+","+aux_idmun+")");
        pstm.execute();   
        pstm.close();
            
@@ -991,7 +1013,7 @@ public class Clientes extends javax.swing.JFrame {
             }
 
 }
-     public void Modificar(int idx,String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPMovil,String TMPEstado,String TMPMunicipio)
+     public void Modificar(int idx,String TMPCorreoElectronico,String TMPRFC,String TMPNombreContacto,String TMPNombreComercial,String TMPRazonSocial,int TMPActivo,String TMPDireccion,String TMPTelCasa,String TMPTelOficna,String TMPTelMovil,String TMPEstado,String TMPMunicipio)
    {
    
     // TODO add your handling code here:
@@ -999,12 +1021,12 @@ public class Clientes extends javax.swing.JFrame {
       
         try {            
             PreparedStatement pst =(PreparedStatement)     
-           con.getConnection().prepareStatement("Select Municipio,Estado from municipios where mun_nombre= '"+TMPMunicipio+"'");
+           con.getConnection().prepareStatement("Select id_municipio,id_estado from municipios where mun_nombre= '"+TMPMunicipio+"'");
              ResultSet res1 = pst.executeQuery();
              res1.next();
-            String aux_idmun = res1.getObject("Municipio").toString();
-             String aux_idest = res1.getObject("Estado").toString();
-            pst=con.getConnection().prepareStatement("UPDATE catclientes SET CorreoElectronico='"+TMPCorreoElectronico+"',RFC='"+TMPRFC+"',NombreContacto='"+TMPNombreContacto+"',NombreComercial='"+TMPNombreComercial+"',RazonSocial='"+TMPRazonSocial+"',Activo="+TMPActivo+",Direccion='"+TMPDireccion+"',TelCasa='"+TMPTelCasa+"',TelOficina='"+TMPTelOficna+"',Movil='"+TMPMovil+"',Municipio="+aux_idmun+",Estado="+aux_idest+",Movil="+TMPMovil+" WHERE FolioCliente="+idx);                                                        
+            String aux_idmun = res1.getObject("id_municipio").toString();
+             String aux_idest = res1.getObject("id_estado").toString();
+            pst=con.getConnection().prepareStatement("UPDATE catclientes SET CorreoElectronico='"+TMPCorreoElectronico+"',RFC='"+TMPRFC+"',NombreContacto='"+TMPNombreContacto+"',NombreComercial='"+TMPNombreComercial+"',RazonSocial='"+TMPRazonSocial+"',Activo="+TMPActivo+",Direccion='"+TMPDireccion+"',TelCasa='"+TMPTelCasa+"',TelOficina='"+TMPTelOficna+"',TelMovil='"+TMPTelMovil+"',Municipio="+aux_idmun+",Estado="+aux_idest+",TelMovil="+TMPTelMovil+" WHERE FolioCliente="+idx);                                                        
             pst.executeUpdate();
             pst.close();
          
@@ -1017,6 +1039,36 @@ public class Clientes extends javax.swing.JFrame {
    
    
    }
+public boolean email(String Email) 
+{
+     
+    Email=Email.trim();
+    boolean sw = false;
+    int a = Email.length() - 1;
+    String letra, letra1 = "";
+            try 
+            {
+                for (int i = 0; 1 < a; i++) 
+                {
+                    letra = "" + Email.charAt(i);
+                    if (letra.equals("@")) 
+                    {
+                        a++;
+                        letra1 = Email.substring(i, a);
+                        letra1=letra1.toLowerCase();
+                        if ((letra1.equals("@hotmail.com")) || (letra1.equals("@gmail.com"))) 
+                        {
+
+                            sw = true;
+                            break;
+                        }
+                    }
+                }
+            } catch (Exception e)
+                {
+                }       
+    return sw;
+}
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

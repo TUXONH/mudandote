@@ -297,7 +297,12 @@ public class SeleccionarEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = new Main2();
+        Main2 main = null;
+        try {
+            main = new Main2();
+        } catch (SQLException ex) {
+            Logger.getLogger(SeleccionarEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+        }
         main.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Clientes1ActionPerformed

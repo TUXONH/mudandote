@@ -42,6 +42,7 @@ public class AsignacionUnidades extends javax.swing.JFrame {
     public AsignacionUnidades() {
         initComponents();
          con = new conexion();
+         this.setLocationRelativeTo(null);
         con.getConnection();
            if(Ventas=="true")
         {
@@ -95,6 +96,7 @@ public class AsignacionUnidades extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         progreso = new javax.swing.JProgressBar();
+        camiones = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu8 = new javax.swing.JMenu();
         Clientes1 = new javax.swing.JMenuItem();
@@ -240,16 +242,18 @@ public class AsignacionUnidades extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 234, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(asignar)
-                        .addGap(23, 23, 23))))
+                        .addComponent(asignar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addComponent(progreso, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(camiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(progreso, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                .addGap(71, 71, 71))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,11 +262,12 @@ public class AsignacionUnidades extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(asignar)
+                    .addComponent(asignar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(progreso, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addComponent(camiones, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(progreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -448,13 +453,13 @@ public class AsignacionUnidades extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane1))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -501,7 +506,8 @@ public String pasar_filas(String sql)
     return c;
   }
     private void asignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarActionPerformed
-       int idx=(int) jComboBox2.getSelectedItem();       
+       progreso.setValue(0);
+        int idx=(int) jComboBox2.getSelectedItem();       
          try {
                     PreparedStatement   pstm = (PreparedStatement)
                     con.getConnection().prepareStatement("SELECT CapacidadActual,Kilometraje,EnServicio,Capacidad from catunidades  WHERE Clave="+idx);
@@ -538,11 +544,11 @@ public String pasar_filas(String sql)
 //         }
             System.out.println("kilometraje en la tabla "+tabla.getValueAt(0,3));
             int actual=Integer.parseInt(cap);
-            int kmtabla=Integer.parseInt((String) tabla.getValueAt(0,3));
+            double kmtabla=Double.parseDouble((String) tabla.getValueAt(0,3));
             
             
             actual=actual+Integer.parseInt(volumen.getText());
-            int kmactual=Integer.parseInt(km);
+           double kmactual=Double.parseDouble(km);
             kmactual=kmactual+ kmtabla;
             System.out.println("kilometraje en la tabla "+kmtabla+"kilometraje actualizado"+kmactual);
             servicio="1";
@@ -559,7 +565,7 @@ public String pasar_filas(String sql)
                 pstm.close();   
                 JOptionPane.showMessageDialog(null,"Se modificaron los datos");
                 int numero = (actual*100)/Integer.parseInt(capacidadTotal);
-                clases.Llenar llena = new clases.Llenar(numero,progreso);
+                clases.Llenar llena = new clases.Llenar(numero,progreso,camiones);
                 llena.start();
                 }catch (SQLException ex) {
                     Logger.getLogger(Articulos.class.getName()).log(Level.SEVERE, null, ex);
@@ -585,26 +591,31 @@ public String pasar_filas(String sql)
     }//GEN-LAST:event_combo1ActionPerformed
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-        int idx=(int) jComboBox2.getSelectedItem();
-        String sql="Select CapacidadActual  From catunidades Where Clave = "+idx;
-        String sql2="Select Kilometraje Where From catunidades Clave = "+idx;
-        String sql3="Select EnServicio Where From catunidades Clave="+idx;
-        String sql4="Select Capacidad Where From catunidades Clave="+idx;
-        
-        try {
-             cap=pasar_filas(sql);
-             km=pasar_filas(sql2);
-             servicio=pasar_filas(sql3);
-             
-         } catch (SQLException ex) {
-             Logger.getLogger(AsignacionUnidades.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         combo1.setSelectedItem(idx);
+//        int idx=(int) jComboBox2.getSelectedItem();
+//        String sql="Select CapacidadActual  From catunidades Where Clave = "+idx;
+//        String sql2="Select Kilometraje Where From catunidades Clave = "+idx;
+//        String sql3="Select EnServicio Where From catunidades Clave="+idx;
+//        String sql4="Select Capacidad Where From catunidades Clave="+idx;
+//        
+//        try {
+//             cap=pasar_filas(sql);
+//             km=pasar_filas(sql2);
+//             servicio=pasar_filas(sql3);
+//             
+//         } catch (SQLException ex) {
+//             Logger.getLogger(AsignacionUnidades.class.getName()).log(Level.SEVERE, null, ex);
+//         }
+//         combo1.setSelectedItem(idx);
          
     }//GEN-LAST:event_tablaMouseClicked
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = new Main2();
+        Main2 main = null;
+         try {
+             main = new Main2();
+         } catch (SQLException ex) {
+             Logger.getLogger(AsignacionUnidades.class.getName()).log(Level.SEVERE, null, ex);
+         }
         main.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Clientes1ActionPerformed
@@ -756,7 +767,7 @@ public String pasar_filas(String sql)
              System.out.println(ex);
         }
     int numero = (capa*100)/volunidad;
-   clases.Llenar llena = new clases.Llenar(numero,progreso);
+   clases.Llenar llena = new clases.Llenar(numero,progreso,camiones);
    llena.start();
     
     
@@ -963,6 +974,7 @@ public String pasar_filas(String sql)
     private javax.swing.JMenuItem Cotizaciones;
     private javax.swing.JMenuItem Reservaciones;
     private javax.swing.JButton asignar;
+    private javax.swing.JLabel camiones;
     private javax.swing.JComboBox<String> combo1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;

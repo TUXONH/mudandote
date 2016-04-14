@@ -5,6 +5,7 @@
  */
 package ventanas;
 
+import clases.Encapsuladas;
 import de.javasoft.plaf.synthetica.SyntheticaOrangeMetallicLookAndFeel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -23,8 +24,15 @@ public class Status extends javax.swing.JFrame {
     /**
      * Creates new form Status
      */
+     public String Tipo=Encapsuladas.getAuxVentas();
     public Status() throws SQLException {
         initComponents();
+        this.setLocationRelativeTo(null);
+            if(Tipo=="true")
+        {
+            jMenu2.setVisible(false);
+          
+        }
         
         main.pasar_valores(tabla, sql);
     }
@@ -254,7 +262,7 @@ public class Status extends javax.swing.JFrame {
                         .addGap(82, 82, 82)
                         .addComponent(Enservicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -263,8 +271,8 @@ public class Status extends javax.swing.JFrame {
                 .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Enservicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -294,7 +302,12 @@ public class Status extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = new Main2();
+        Main2 main = null;
+        try {
+            main = new Main2();
+        } catch (SQLException ex) {
+            Logger.getLogger(Status.class.getName()).log(Level.SEVERE, null, ex);
+        }
         main.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Clientes1ActionPerformed

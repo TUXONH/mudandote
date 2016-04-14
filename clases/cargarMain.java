@@ -6,45 +6,33 @@
 package clases;
 
 import java.awt.Image;
-import static java.lang.Thread.sleep;
-import java.util.concurrent.Semaphore;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JProgressBar;
 
 /**
  *
- * @author danielandrademaglioni
+ * @author josegonzalez
  */
-public class Llenar extends Thread{
-          public JProgressBar progress;
-  
-    public int numero;
-    protected Semaphore Finp1;
+public class cargarMain extends Thread {
     public JLabel label;
-    public Llenar(int numero, JProgressBar progress,JLabel label)
-    {
-        this.numero = numero;
-        this.progress = progress;
-        this.label = label;
-    }
     
+    public cargarMain(JLabel label)
+            {
+                
+                this.label = label;
+        
+    }
     public void run()
     {
+                    
+          label.setSize(240, 60);
+        for(int i=0;i<100;i++)
+        {
+            label.setSize(240, 60);
         
         
-        
-       progress.setStringPainted(true);
-       label.setSize(240, 60);
-      
-                    try
-                {
-          
-                 for(int i=0;i<=numero;i++)
-                    {
-                        label.setSize(240, 60);
-                        if(i>=0&&i<11)
+                    if(i>=0&&i<11)
                             {
                                 ImageIcon fot = new ImageIcon("C:\\Users\\josegonzalez\\Desktop\\mudandote\\src\\img\\camion1.png");
                                 Icon icono = new ImageIcon(fot.getImage().getScaledInstance(label.getWidth(),label.getHeight(), Image.SCALE_DEFAULT));
@@ -123,24 +111,7 @@ public class Llenar extends Thread{
                                  label.setIcon(icono);
         
                             }
-                        
-                        
-                        progress.setValue(i);
-                        
-                        
-                        sleep((int) Math.round(numero* Math.random()-0.5));
-                        label.setSize(240, 60);
-                        
-                    }
         }
-        
-        catch(InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-        
-       
     }
-
     
 }

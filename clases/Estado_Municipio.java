@@ -130,7 +130,7 @@ public class Estado_Municipio {
         
          try{
            PreparedStatement pstm = (PreparedStatement)
-           con.getConnection().prepareStatement("SELECT count(1) as total FROM municipios where Poblacion='"+condi+"'");
+           con.getConnection().prepareStatement("SELECT count(1) as total FROM municipios where mun_nombre='"+condi+"'");
            ResultSet res = pstm.executeQuery();
            res.next();
            registro = res.getInt("total");
@@ -149,7 +149,7 @@ public class Estado_Municipio {
        {
        Object[][] datos = new String[registro][4];
          PreparedStatement pstm = (PreparedStatement)
-            con.getConnection().prepareStatement("SELECT id_Municipio FROM municipios where Poblacion='"+condi+"'");
+            con.getConnection().prepareStatement("SELECT id_Municipio FROM municipios where mun_nombre='"+condi+"'");
          ResultSet res = pstm.executeQuery();
          int i =0;
          
@@ -244,7 +244,7 @@ public class Estado_Municipio {
        {
        Object[][] datos = new String[registro][4];
          PreparedStatement pstm = (PreparedStatement)
-            con.getConnection().prepareStatement("SELECT Poblacion FROM municipios where id_estado='"+Encapsuladas.getMunicipio()+"'");
+            con.getConnection().prepareStatement("SELECT mun_nombre FROM municipios where id_estado='"+Encapsuladas.getMunicipio()+"'");
          ResultSet res = pstm.executeQuery();
          int i =0;
          
@@ -252,7 +252,7 @@ public class Estado_Municipio {
          {
             
              //Encapsuladas.setMunicipio(res.getString("Nombre"));
-             ComboMunicipio.addItem(res.getString("Poblacion"));
+             ComboMunicipio.addItem(res.getString("mun_nombre"));
              
 
              i++;

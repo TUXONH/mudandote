@@ -84,13 +84,20 @@ public class Cotizaciones extends javax.swing.JFrame {
     String TitulosCita[] = {"Hora","Numero Visita","Selec","Vendedor","Resultado Visita"};
  
        
-       
+     public String Tipo=Encapsuladas.getAuxVentas();
+
        
        
        
        
     public Cotizaciones() {
         initComponents();
+        this.setLocationRelativeTo(null);
+           if(Tipo=="true")
+        {
+            jMenu2.setVisible(false);
+
+        }
         
         estado_municipio.items(txtArticulos);
         estado_municipio.itemsCombo(ComboEstado);
@@ -229,18 +236,12 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtCorreoElectronico = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtTelCasa = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtMovil = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         ComboEstado = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
@@ -253,7 +254,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         txtCveVivienda = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        txtPisosOrigen = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         FechaProbable = new com.toedter.calendar.JDateChooser();
@@ -268,8 +269,6 @@ public class Cotizaciones extends javax.swing.JFrame {
         ComboMunicipio2 = new javax.swing.JComboBox<>();
         txtCVeEstado = new javax.swing.JTextField();
         txtCveMunicipioDestino = new javax.swing.JTextField();
-        jLabel49 = new javax.swing.JLabel();
-        jTextField42 = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
         txtTelCasaDestino = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
@@ -279,7 +278,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         txtViviendaDestino = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel53 = new javax.swing.JLabel();
-        jTextField46 = new javax.swing.JTextField();
+        txtPisosDestino = new javax.swing.JTextField();
         jCheckBox7 = new javax.swing.JCheckBox();
         jCheckBox8 = new javax.swing.JCheckBox();
         jPanel6 = new javax.swing.JPanel();
@@ -366,15 +365,13 @@ public class Cotizaciones extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         Clientes = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         Cotizaciones = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        Reservaciones = new javax.swing.JMenuItem();
         jMenu13 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
@@ -423,19 +420,6 @@ public class Cotizaciones extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
-        jLabel6.setText("Ult.Cot");
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
-        jLabel7.setText("Ult.OS");
-
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-
-        jLabel8.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
-        jLabel8.setText("Ult. Fact");
-
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-
         jLabel9.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel9.setText("Tel.Casa");
 
@@ -455,8 +439,6 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel11.setText("Direccion");
 
         txtDireccion.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel12.setText("Estado");
@@ -516,7 +498,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPisosOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jCheckBox1)
                 .addGap(18, 18, 18)
@@ -530,7 +512,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel16)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPisosOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jCheckBox1))
                     .addComponent(jCheckBox2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -552,26 +534,51 @@ public class Cotizaciones extends javax.swing.JFrame {
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel10)
-                            .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(407, 407, 407))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(89, 89, 89)
                                 .addComponent(jLabel4)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGap(52, 52, 52)
                                         .addComponent(jLabel5)
-                                        .addContainerGap(238, Short.MAX_VALUE))
+                                        .addContainerGap(273, Short.MAX_VALUE))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtCorreoElectronico)
-                                        .addContainerGap())))))
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                                .addComponent(jLabel11)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(txtCorreoElectronico))
+                                        .addContainerGap())))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addContainerGap(728, Short.MAX_VALUE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(351, 351, 351)
+                                .addComponent(txtDireccion))))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addComponent(ComboViviendas, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtCveVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(431, 431, 431))
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtTelCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel13))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel14)
+                            .addGap(463, 463, 463)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
@@ -584,42 +591,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtCveMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FechaProbable, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                            .addComponent(ComboViviendas, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtCveVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(42, 42, 42)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                            .addComponent(jLabel8)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtTelCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel12))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel13))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel14)
-                                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(FechaProbable, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
@@ -663,26 +635,12 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ComboViviendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCveVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ComboViviendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCveVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Origen", jPanel5);
@@ -722,9 +680,6 @@ public class Cotizaciones extends javax.swing.JFrame {
             }
         });
 
-        jLabel49.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
-        jLabel49.setText("Municipio");
-
         jLabel50.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel50.setText("Tel Casa.");
 
@@ -760,7 +715,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel53)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPisosDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jCheckBox7)
                 .addGap(18, 18, 18)
@@ -774,7 +729,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel53)
-                        .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPisosDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jCheckBox7))
                     .addComponent(jCheckBox8))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -797,7 +752,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                                 .addComponent(jLabel46)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(txtDireccionDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                                .addComponent(txtDireccionDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                                 .addGap(180, 180, 180))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -820,17 +775,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtCVeEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtCveMunicipioDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel49)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jTextField42)
-                                .addGap(180, 180, 180))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtCveMunicipioDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jLabel52)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(ComboVivienda2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -852,15 +797,13 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
-                    .addComponent(jLabel48)
-                    .addComponent(jLabel49))
+                    .addComponent(jLabel48))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ComboEstado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboMunicipio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCVeEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCveMunicipioDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCveMunicipioDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50)
@@ -877,7 +820,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                     .addComponent(txtViviendaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Destino", jPanel4);
@@ -928,7 +871,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(387, Short.MAX_VALUE)
+                .addContainerGap(414, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addComponent(jCheckBox9)
@@ -1546,6 +1489,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Save.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1595,6 +1539,14 @@ public class Cotizaciones extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
+        jMenuItem1.setText("Usuario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
         jMenuItem4.setText("Plazas");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1610,14 +1562,6 @@ public class Cotizaciones extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem5);
-
-        jMenuItem1.setText("Choferes");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2);
 
@@ -1640,7 +1584,7 @@ public class Cotizaciones extends javax.swing.JFrame {
 
         jMenu4.setBackground(new java.awt.Color(255, 102, 0));
         jMenu4.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu4.setText("Cotizaciones");
+        jMenu4.setText("Reservaciones");
 
         Cotizaciones.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         Cotizaciones.setBackground(new java.awt.Color(51, 51, 51));
@@ -1654,23 +1598,6 @@ public class Cotizaciones extends javax.swing.JFrame {
         jMenu4.add(Cotizaciones);
 
         jMenuBar1.add(jMenu4);
-
-        jMenu5.setBackground(new java.awt.Color(255, 102, 0));
-        jMenu5.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu5.setText("Reservaciones");
-
-        Reservaciones.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
-        Reservaciones.setBackground(new java.awt.Color(51, 51, 51));
-        Reservaciones.setForeground(new java.awt.Color(255, 255, 255));
-        Reservaciones.setText("Agregar");
-        Reservaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReservacionesActionPerformed(evt);
-            }
-        });
-        jMenu5.add(Reservaciones);
-
-        jMenuBar1.add(jMenu5);
 
         jMenu13.setText("Cotizacion de clientes");
 
@@ -1744,8 +1671,8 @@ public class Cotizaciones extends javax.swing.JFrame {
                         .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(122, 122, 122)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -1755,15 +1682,17 @@ public class Cotizaciones extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1772,7 +1701,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -2383,7 +2312,7 @@ public class Cotizaciones extends javax.swing.JFrame {
             
             if(bandera)
             {
-              JOptionPane.showMessageDialog(null, "aqui entro al dos");
+              
                  txtSubtotal.setText(""+Transporte);
             }
             
@@ -2703,7 +2632,7 @@ public class Cotizaciones extends javax.swing.JFrame {
        pstmc.setString(1,"CASA");//claveplaza
         pstmc.setString(2, "C");//Serie
         pstmc.setString(3, "2");//folioCliente
-        pstmc.setString(4, "Admin");//Nombre de quien cotiza
+        pstmc.setString(4, txtNombre.getText() + txtApellidos.getText());//Nombre de quien cotiza
         pstmc.setString(5,FechaActual);
         pstmc.setString(6, FechaServicio);
         pstmc.setString(7, "Admin");//Usuario
@@ -2712,19 +2641,36 @@ public class Cotizaciones extends javax.swing.JFrame {
         pstmc.setString(10, txtCveMunicipio.getText());//EstadoOrigen
         pstmc.setString(11, txtDireccion.getText());//DireccionOrigen
         pstmc.setString(12, "0");//PlantaBajaOrigen
-        pstmc.setString(13, "1");//NuymeroDePisosOrigen
+        if(txtPisosOrigen.getText().equals(""))    
+        {
+         pstmc.setString(13, "0");//NuymeroDePisosOrigen
+        
+        }
+       else
+        {
+            pstmc.setString(13, txtPisosOrigen.getText());//NuymeroDePisosOrigen
+        }
         pstmc.setString(14, "0");//ElevadorOrigen
         pstmc.setString(15, "0");//EscaleraOrigen
         pstmc.setString(16, txtTelCasa.getText());//TelOrigen
         pstmc.setString(17, txtMovil.getText());//TelCelOrigen
         pstmc.setString(18, "Referencia");//RefOrigen
         pstmc.setString(19, txtCveVivienda.getText());//CveTipoViviendaDestino
-        pstmc.setString(20, "Admin");//NombreRecibe
+        pstmc.setString(20, txtNombreDestino.getText());//NombreRecibe
         pstmc.setString(21, txtCVeEstado.getText());//EstadoDestino
         pstmc.setString(22, txtCveMunicipioDestino.getText());//MunicipioDestino
         pstmc.setString(23, txtDireccionDestino.getText());//DirDestino
         pstmc.setString(24, "0");//PlantaBajaDestino
-        pstmc.setString(25, "1");//NumeroPisosDestino
+        if(txtPisosOrigen.getText().equals(""))    
+        {
+         pstmc.setString(25, "0");//NuymeroDePisosOrigen
+        
+        }
+       else
+        {
+            pstmc.setString(25, txtPisosDestino.getText());//NuymeroDePisosOrigen
+        }
+      
         pstmc.setString(26, "0");//ElevadorDestino
         pstmc.setString(27, "0");//EscaleraDestino
         pstmc.setString(28, txtTelCasaDestino.getText());//TelDestino
@@ -2900,7 +2846,17 @@ public class Cotizaciones extends javax.swing.JFrame {
 
     int registro;
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-          int registro;
+         
+       int response = JOptionPane.showConfirmDialog(null, "¿Realizar cotizacion?", "Confirm",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.NO_OPTION)
+    {
+        
+   
+    } 
+    else if (response == JOptionPane.YES_OPTION) {
+        
+        int registro;
                                              
         
         int año = FechaProbable.getCalendar().get(Calendar.YEAR);
@@ -2937,8 +2893,22 @@ public class Cotizaciones extends javax.swing.JFrame {
             guardarDatos();
             GuardarArticulos();  
             GuardarCliente();
+            Limpiar();
+              int respons = JOptionPane.showConfirmDialog(null, "¿Realizar Reservacion?", "Confirm",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (respons == JOptionPane.YES_OPTION)
+        {
+            Reservacion abrir = new Reservacion();
+            abrir.setVisible(true);
+            this.dispose();
+   
+        } 
             
         }
+      
+    } 
+        
+        
     
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -2992,14 +2962,9 @@ public class Cotizaciones extends javax.swing.JFrame {
     private void txtTelCasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelCasaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelCasaActionPerformed
-
-    private void txtCorreoElectronicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoKeyTyped
-
-        char CteclaPresionada=evt.getKeyChar();
-
-        if(CteclaPresionada==KeyEvent.VK_ENTER)
-        {
-            txtTransporte.setText("");
+public void Limpiar()
+{
+    txtTransporte.setText("");
             txtAlmacenaje.setText("");
             txtEmpaque.setText("");
             txtRentas.setText("");
@@ -3020,7 +2985,15 @@ public class Cotizaciones extends javax.swing.JFrame {
             jCheckBox3.setSelected(false);
             jCheckBox4.setSelected(false);
            txtSalto.setText("");
+}
+    private void txtCorreoElectronicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoKeyTyped
+
+        char CteclaPresionada=evt.getKeyChar();
+
+        if(CteclaPresionada==KeyEvent.VK_ENTER)
+        {
             
+            Limpiar();
             
             for(int i=0;i<TablaArticulos.getRowCount();i++)
             {
@@ -3066,7 +3039,12 @@ public class Cotizaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_TablaArticulosKeyReleased
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
-        Main2 main = new Main2();
+        Main2 main = null;
+       try {
+           main = new Main2();
+       } catch (SQLException ex) {
+           Logger.getLogger(Cotizaciones.class.getName()).log(Level.SEVERE, null, ex);
+       }
         main.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Clientes1ActionPerformed
@@ -3108,17 +3086,6 @@ public class Cotizaciones extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            Choferes chof = new Choferes();
-            chof.setVisible(true);
-            this.dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
         Rutas rutas = null;
         try {
@@ -3131,21 +3098,16 @@ public class Cotizaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_ClientesActionPerformed
 
     private void CotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CotizacionesActionPerformed
-        Cotizaciones c = new Cotizaciones();
+       Reservacion c = new Reservacion();
         c.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_CotizacionesActionPerformed
-
-    private void ReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservacionesActionPerformed
-        Reservacion res = new Reservacion();
-        res.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_ReservacionesActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
         CotiClientes cot = new CotiClientes();
         cot.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -3172,6 +3134,14 @@ public class Cotizaciones extends javax.swing.JFrame {
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        Altas a = new Altas();
+        a.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3201,12 +3171,13 @@ public class Cotizaciones extends javax.swing.JFrame {
         //</editor-fold>
 
 
-                try 
+
+                  try 
     {
-      UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
+     UIManager.setLookAndFeel(new SyntheticaOrangeMetallicLookAndFeel());
     } 
     catch (Exception e) 
-    {
+      {
       e.printStackTrace();
     }
 
@@ -3233,7 +3204,6 @@ public class Cotizaciones extends javax.swing.JFrame {
     private javax.swing.JMenuItem Cotizaciones;
     private com.toedter.calendar.JDateChooser FechaProbable;
     private com.toedter.calendar.JDateChooser FechaVisita;
-    private javax.swing.JMenuItem Reservaciones;
     private javax.swing.JSpinner SpnIVA;
     private javax.swing.JTable TablaArticulos;
     private javax.swing.JButton btnGuardar;
@@ -3287,7 +3257,6 @@ public class Cotizaciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
@@ -3295,16 +3264,12 @@ public class Cotizaciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu13;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
@@ -3336,14 +3301,8 @@ public class Cotizaciones extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField txtAlmacenaje;
     private javax.swing.JTextField txtAnticipo;
     private javax.swing.JTextField txtApellidos;
@@ -3366,6 +3325,8 @@ public class Cotizaciones extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreDestino;
     private javax.swing.JTextField txtNumeros;
+    private javax.swing.JTextField txtPisosDestino;
+    private javax.swing.JTextField txtPisosOrigen;
     private javax.swing.JTextField txtPropietario;
     private javax.swing.JTextField txtRentas;
     private javax.swing.JTextField txtRetencion;
