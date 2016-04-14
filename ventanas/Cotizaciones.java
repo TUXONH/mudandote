@@ -47,7 +47,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.UIManager;
-import static java.lang.Thread.sleep;
 
 
 
@@ -92,6 +91,9 @@ public class Cotizaciones extends javax.swing.JFrame {
        
        
     public Cotizaciones() {
+        
+        
+       
         initComponents();
         this.setLocationRelativeTo(null);
            if(Tipo=="true")
@@ -283,7 +285,7 @@ public class Cotizaciones extends javax.swing.JFrame {
         jCheckBox7 = new javax.swing.JCheckBox();
         jCheckBox8 = new javax.swing.JCheckBox();
         jPanel6 = new javax.swing.JPanel();
-        jCheckBox9 = new javax.swing.JCheckBox();
+        ChkRequiereVisita = new javax.swing.JCheckBox();
         jPanel11 = new javax.swing.JPanel();
         FechaVisita = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
@@ -338,13 +340,9 @@ public class Cotizaciones extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
         txtPropietario = new javax.swing.JTextField();
-        jLabel55 = new javax.swing.JLabel();
-        jTextField32 = new javax.swing.JTextField();
         jPanel15 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         txtVolumenTotal = new javax.swing.JTextField();
-        jLabel36 = new javax.swing.JLabel();
-        jTextField34 = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         TablaArticulos = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -392,6 +390,11 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel1.setText("Nombre:");
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel2.setText("Apellidos");
@@ -430,11 +433,21 @@ public class Cotizaciones extends javax.swing.JFrame {
                 txtTelCasaActionPerformed(evt);
             }
         });
+        txtTelCasa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelCasaKeyTyped(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel10.setText("Tel. Cel:");
 
         txtMovil.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtMovil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMovilKeyTyped(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel11.setText("Direccion");
@@ -480,10 +493,21 @@ public class Cotizaciones extends javax.swing.JFrame {
         });
 
         txtCveVivienda.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtCveVivienda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCveViviendaKeyTyped(evt);
+            }
+        });
 
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel16.setText("(Piso 0 -cero-para Planta baja)");
+
+        txtPisosOrigen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPisosOrigenKeyTyped(evt);
+            }
+        });
 
         jCheckBox1.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
         jCheckBox1.setText("Escaleras");
@@ -641,7 +665,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                     .addComponent(txtCveVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Origen", jPanel5);
@@ -650,6 +674,11 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel45.setText("*Nombre");
 
         txtNombreDestino.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNombreDestino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreDestinoKeyTyped(evt);
+            }
+        });
 
         jLabel46.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel46.setText("*Direccion");
@@ -685,8 +714,19 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel50.setText("Tel Casa.");
 
         txtTelCasaDestino.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtTelCasaDestino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelCasaDestinoKeyTyped(evt);
+            }
+        });
 
         jLabel51.setText("Tel Cel.");
+
+        txtTelCelDestino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelCelDestinoKeyTyped(evt);
+            }
+        });
 
         jLabel52.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel52.setText("Vivienda");
@@ -698,9 +738,21 @@ public class Cotizaciones extends javax.swing.JFrame {
             }
         });
 
+        txtViviendaDestino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtViviendaDestinoKeyTyped(evt);
+            }
+        });
+
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel53.setText("(Piso 0 -cero-para Planta baja)");
+
+        txtPisosDestino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPisosDestinoKeyTyped(evt);
+            }
+        });
 
         jCheckBox7.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
         jCheckBox7.setText("Escaleras");
@@ -821,13 +873,13 @@ public class Cotizaciones extends javax.swing.JFrame {
                     .addComponent(txtViviendaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Destino", jPanel4);
 
-        jCheckBox9.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-        jCheckBox9.setText("Requiere visita");
+        ChkRequiereVisita.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        ChkRequiereVisita.setText("Requiere visita");
 
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -875,7 +927,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addContainerGap(414, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jCheckBox9)
+                        .addComponent(ChkRequiereVisita)
                         .addGap(356, 356, 356))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -885,7 +937,7 @@ public class Cotizaciones extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jCheckBox9)
+                .addComponent(ChkRequiereVisita)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(93, Short.MAX_VALUE))
@@ -1231,6 +1283,11 @@ public class Cotizaciones extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtNumeros.setText("1");
+        txtNumeros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumerosKeyTyped(evt);
+            }
+        });
 
         txtArticulos.setText("Articulo/Servicio");
         txtArticulos.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1283,24 +1340,15 @@ public class Cotizaciones extends javax.swing.JFrame {
 
         txtPropietario.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
-        jLabel55.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
-        jLabel55.setText("Ultimo usuario");
-
-        jTextField32.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel55)
-                    .addComponent(jLabel54))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                    .addComponent(jTextField32))
+                .addComponent(jLabel54)
+                .addGap(21, 21, 21)
+                .addComponent(txtPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
@@ -1310,11 +1358,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel54)
                     .addComponent(txtPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel55)
-                    .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1324,27 +1368,16 @@ public class Cotizaciones extends javax.swing.JFrame {
 
         txtVolumenTotal.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
-        jLabel36.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
-        jLabel36.setText("Kilometros");
-
-        jTextField34.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel36)
-                    .addComponent(jLabel35))
+                .addComponent(jLabel35)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addComponent(txtVolumenTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField34))
-                .addContainerGap())
+                .addComponent(txtVolumenTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1353,11 +1386,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
                     .addComponent(txtVolumenTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
-                    .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -1386,9 +1415,9 @@ public class Cotizaciones extends javax.swing.JFrame {
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         TablaArticulos.setModel(new javax.swing.table.DefaultTableModel(
@@ -1439,9 +1468,21 @@ public class Cotizaciones extends javax.swing.JFrame {
         jLabel38.setForeground(new java.awt.Color(102, 0, 0));
         jLabel38.setText("No. Identificacion del cliente");
 
+        txtIdentificacionCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdentificacionClienteKeyTyped(evt);
+            }
+        });
+
         jLabel39.setFont(new java.awt.Font("SansSerif", 3, 12)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(102, 0, 0));
         jLabel39.setText("Folio");
+
+        txtFolio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFolioKeyTyped(evt);
+            }
+        });
 
         jLabel40.setFont(new java.awt.Font("SansSerif", 3, 12)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(102, 0, 0));
@@ -1668,7 +1709,7 @@ public class Cotizaciones extends javax.swing.JFrame {
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(81, 81, 81)
                         .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2197,13 +2238,22 @@ public class Cotizaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSumaAseguradaActionPerformed
 
     private void txtAnticipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnticipoKeyTyped
+        char c = evt.getKeyChar();
         char CteclaPresionada=evt.getKeyChar();
-       // String colum = TablaArticulos.getValueAt(TablaArticulos.getSelectedRow(),TablaArticulos.getSelectedColumn());
-        if(CteclaPresionada==KeyEvent.VK_ENTER)
+        if (Character.isLetter(c))
         {
-            Saldo = Double.parseDouble(txtAnticipo.getText());
-            Saldo =  Double.parseDouble(txtTotalFinal.getText())-Saldo;
-            txtSalto.setText(""+Saldo);
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(null,"Aqui solo van numeros tonto!");            
+            evt.consume();
+        }
+        else{       
+           // String colum = TablaArticulos.getValueAt(TablaArticulos.getSelectedRow(),TablaArticulos.getSelectedColumn());
+            if(CteclaPresionada==KeyEvent.VK_ENTER)
+            {
+                Saldo = Double.parseDouble(txtAnticipo.getText());
+                Saldo =  Double.parseDouble(txtTotalFinal.getText())-Saldo;
+                txtSalto.setText(""+Saldo);
+            }
         }
     }//GEN-LAST:event_txtAnticipoKeyTyped
 
@@ -2222,11 +2272,20 @@ public class Cotizaciones extends javax.swing.JFrame {
                 }
     }
     private void txtTransporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTransporteKeyTyped
-       
+        char c = evt.getKeyChar();
         char CteclaPresionada=evt.getKeyChar();
-        
+        if (Character.isLetter(c))
+        {
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(null,"Aqui solo van numeros tonto!");            
+            evt.consume();
+        }
+        else{
+            
         if(CteclaPresionada==KeyEvent.VK_ENTER)
         {
+            
+        
              Transporte =0;
             if(txtSeguro.getText().equals(""))
             {
@@ -2273,86 +2332,93 @@ public class Cotizaciones extends javax.swing.JFrame {
              
 
         }
-        
+        }
         
     }//GEN-LAST:event_txtTransporteKeyTyped
 
     
     private void txtManiobrasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtManiobrasKeyTyped
-       
-         char CteclaPresionada=evt.getKeyChar();
-        Maniobras=0;
-        if(CteclaPresionada==KeyEvent.VK_ENTER)
+char c = evt.getKeyChar();
+        char CteclaPresionada=evt.getKeyChar();
+        if (Character.isLetter(c))
         {
-            Transporte=Double.parseDouble(txtManiobras.getText());
-            boolean bandera=false;
-            
-            if(!txtTransporte.getText().equals("") )
-            {
-                
-                 Transporte = Transporte  +SinPorcentaje  + Double.parseDouble(txtTransporte.getText());
-                 bandera=true;
-              
-            }
-            
-             
-             if(!txtSeguro.getText().equals("") )
-            {
-                
-                if(bandera)
-                {
-                     Transporte = Transporte  +Double.parseDouble(txtSeguro.getText());
-                }
-                else
-                {
-                     Transporte = Transporte +SinPorcentaje +Double.parseDouble(txtSeguro.getText());
-                     bandera = true;
-                }
- 
-            }
-            
-            if(bandera)
-            {
-              
-                 txtSubtotal.setText(""+Transporte);
-            }
-            
-            else
-            {
-                  Transporte = Transporte + SinPorcentaje;
-                txtSubtotal.setText(""+Transporte);
-                bandera=true;
-                
-            }
-            
-             if(!txtIVA.getText().equals(""))
-             {
-                if(bandera)
-                {
-                    Transporte = Double.parseDouble(txtIVA.getText())+ Transporte;
-                    
-                    
-                }
-                else
-                {
-                      Transporte = Double.parseDouble(txtIVA.getText())+ Transporte + SinPorcentaje;
-                      
-                }
-                   
-     
-             }
-             
-             
-           
-             
-             
-                txtTotalFinal.setText(""+Transporte);
-                txtTotal.setText(""+Transporte);
-                txtSalto.setText(""+Transporte);
-                AnticipoVacio();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(null,"Aqui solo van numeros tonto!");            
+            evt.consume();
         }
+        else{                            
+            Maniobras=0;
+            if(CteclaPresionada==KeyEvent.VK_ENTER)
+            {
+                Transporte=Double.parseDouble(txtManiobras.getText());
+                boolean bandera=false;
+
+                if(!txtTransporte.getText().equals("") )
+                {
+
+                     Transporte = Transporte  +SinPorcentaje  + Double.parseDouble(txtTransporte.getText());
+                     bandera=true;
+
+                }
+
+
+                 if(!txtSeguro.getText().equals("") )
+                {
+
+                    if(bandera)
+                    {
+                         Transporte = Transporte  +Double.parseDouble(txtSeguro.getText());
+                    }
+                    else
+                    {
+                         Transporte = Transporte +SinPorcentaje +Double.parseDouble(txtSeguro.getText());
+                         bandera = true;
+                    }
+
+                }
+
+                if(bandera)
+                {
+
+                     txtSubtotal.setText(""+Transporte);
+                }
+
+                else
+                {
+                      Transporte = Transporte + SinPorcentaje;
+                    txtSubtotal.setText(""+Transporte);
+                    bandera=true;
+
+                }
+
+                 if(!txtIVA.getText().equals(""))
+                 {
+                    if(bandera)
+                    {
+                        Transporte = Double.parseDouble(txtIVA.getText())+ Transporte;
+
+
+                    }
+                    else
+                    {
+                          Transporte = Double.parseDouble(txtIVA.getText())+ Transporte + SinPorcentaje;
+
+                    }
+
+
+                 }
+
+
+
+
+
+                    txtTotalFinal.setText(""+Transporte);
+                    txtTotal.setText(""+Transporte);
+                    txtSalto.setText(""+Transporte);
+                    AnticipoVacio();
+            }
         
-        
+        }
         
     }//GEN-LAST:event_txtManiobrasKeyTyped
 
@@ -2847,7 +2913,31 @@ public class Cotizaciones extends javax.swing.JFrame {
 
     int registro;
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         
+        if(ChkRequiereVisita.isSelected()==true)
+        {
+              int registro;
+                                             
+        
+        int año = FechaVisita.getCalendar().get(Calendar.YEAR);
+           int año2= txtFechaActual.getCalendar().get(Calendar.YEAR);
+          
+           if(año<año2)
+           {
+               JOptionPane.showConfirmDialog(null, "La fecha provable de servicio no puede ser menor a la fecha actual");
+           }
+           else
+           {
+                int mes = 1+ FechaVisita.getCalendar().get(Calendar.MONTH);
+                int mes2 = 1+ txtFechaActual.getCalendar().get(Calendar.MONTH);
+               
+                if(mes<mes2)
+                {
+                    JOptionPane.showMessageDialog(null, "La fecha provable de servicio no puede ser menor a la fecha actual");
+                }
+                else
+                {
+                   
+              
        int response = JOptionPane.showConfirmDialog(null, "¿Realizar cotizacion?", "Confirm",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     if (response == JOptionPane.NO_OPTION)
@@ -2856,25 +2946,7 @@ public class Cotizaciones extends javax.swing.JFrame {
    
     } 
     else if (response == JOptionPane.YES_OPTION) {
-        
-        int registro;
-                                             
-        
-        int año = FechaProbable.getCalendar().get(Calendar.YEAR);
-
-   
-       int mes = 1+ FechaProbable.getCalendar().get(Calendar.MONTH);
-        int dia = FechaProbable.getCalendar().get(Calendar.DAY_OF_MONTH);
-        String FechaServicio = año+"-"+mes+"-"+dia;
-        
-          año = txtFechaActual.getCalendar().get(Calendar.YEAR);
-   
-        mes = 1+ txtFechaActual.getCalendar().get(Calendar.MONTH);
-         dia = txtFechaActual.getCalendar().get(Calendar.DAY_OF_MONTH);
-        String FechaActual = año+"-"+mes+"-"+dia;
-    
-
-        if(txtTotal.getText().equals(""))
+         if(txtTotal.getText().equals(""))
         JOptionPane.showMessageDialog(null,"Favor de ingresar las cantidades");
         //////////////////////
         else if(txtNombre.getText().equals(""))
@@ -2888,26 +2960,162 @@ public class Cotizaciones extends javax.swing.JFrame {
         //////////////////////
         else if(txtApellidos.getText().equals(""))
         JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
-        
-        else
+         else
         {
+        
+                                             
+        
+         año = FechaProbable.getCalendar().get(Calendar.YEAR);
+            año2= txtFechaActual.getCalendar().get(Calendar.YEAR);
+          
+           if(año<año2)
+           {
+               JOptionPane.showConfirmDialog(null, "La fecha provable de servicio no puede ser menor a la fecha actual");
+           }
+           else
+           {
+                 mes = 1+ FechaProbable.getCalendar().get(Calendar.MONTH);
+                 mes2 = 1+ txtFechaActual.getCalendar().get(Calendar.MONTH);
+               
+                if(mes<mes2)
+                {
+                    JOptionPane.showMessageDialog(null, "La fecha provable de servicio no puede ser menor a la fecha actual");
+                }
+                else
+                {
+                    int dia = FechaProbable.getCalendar().get(Calendar.DAY_OF_MONTH);
+                    int dia2 = txtFechaActual.getCalendar().get(Calendar.DAY_OF_MONTH);
+                     
+                    if(dia<dia2)
+                    {
+                        JOptionPane.showMessageDialog(null, "La fecha provable de servicio no puede ser menor a la fecha actual");
+                    }
+                    else
+                    {
+                                       String FechaServicio = año2+"-"+mes2+"-"+dia2;         
+                    String FechaActual = año+"-"+mes+"-"+dia;
+        
+        
             guardarDatos();
             GuardarArticulos();  
             GuardarCliente();
             Limpiar();
               int respons = JOptionPane.showConfirmDialog(null, "¿Realizar Reservacion?", "Confirm",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (respons == JOptionPane.YES_OPTION)
-        {
+             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+             if (respons == JOptionPane.YES_OPTION)
+             {
             Reservacion abrir = new Reservacion();
             abrir.setVisible(true);
             this.dispose();
    
-        } 
+            } 
+                
+                    }
+      
+        
+           }
+   
+      
             
+        }
         }
       
     } 
+        
+           }
+   
+      
+            
+        }
+        }
+      else
+        {
+            ////////////////////
+                       
+       int response = JOptionPane.showConfirmDialog(null, "¿Realizar cotizacion?", "Confirm",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.NO_OPTION)
+    {
+        
+   
+    } 
+    else if (response == JOptionPane.YES_OPTION) {
+         if(txtTotal.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar las cantidades");
+        //////////////////////
+        else if(txtNombre.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar el nombre del cliente");
+        //////////////////////
+        else if(txtApellidos.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
+        //////////////////////
+        else if(txtDireccion.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar la direccion del cliente");
+        //////////////////////
+        else if(txtApellidos.getText().equals(""))
+        JOptionPane.showMessageDialog(null,"Favor de ingresar los apellidos del cliente");
+         else
+        {
+        
+                                             
+        
+        int  año = FechaProbable.getCalendar().get(Calendar.YEAR);
+           int año2= txtFechaActual.getCalendar().get(Calendar.YEAR);
+          
+           if(año<año2)
+           {
+               JOptionPane.showConfirmDialog(null, "La fecha provable de servicio no puede ser menor a la fecha actual");
+           }
+           else
+           {
+                 int mes = 1+ FechaProbable.getCalendar().get(Calendar.MONTH);
+                int mes2 = 1+ txtFechaActual.getCalendar().get(Calendar.MONTH);
+               
+                if(mes<mes2)
+                {
+                    JOptionPane.showMessageDialog(null, "La fecha provable de servicio no puede ser menor a la fecha actual");
+                }
+                else
+                {
+                    int dia = FechaProbable.getCalendar().get(Calendar.DAY_OF_MONTH);
+                    int dia2 = txtFechaActual.getCalendar().get(Calendar.DAY_OF_MONTH);
+                     
+                    if(dia<dia2)
+                    {
+                        JOptionPane.showMessageDialog(null, "La fecha provable de servicio no puede ser menor a la fecha actual");
+                    }
+                    else
+                    {
+                                       String FechaServicio = año2+"-"+mes2+"-"+dia2;         
+                    String FechaActual = año+"-"+mes+"-"+dia;
+        
+        
+            guardarDatos();
+            GuardarArticulos();  
+            GuardarCliente();
+            Limpiar();
+              int respons = JOptionPane.showConfirmDialog(null, "¿Realizar Reservacion?", "Confirm",
+             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+             if (respons == JOptionPane.YES_OPTION)
+             {
+            Reservacion abrir = new Reservacion();
+            abrir.setVisible(true);
+            this.dispose();
+   
+            } 
+                
+                    }
+      
+        
+           }
+   
+      
+            
+        }
+        }
+      
+    } 
+        }
         
         
     
@@ -3016,7 +3224,13 @@ public void Limpiar()
     }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
 
     private void txtApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyTyped
-
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c))
+        {
+           getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui no van numeros tonto!");
+            evt.consume();
+        }
     }//GEN-LAST:event_txtApellidosKeyTyped
 
     private void txtDireccionDestinoActionPerformed(java.awt.event.ActionEvent evt) {                                                    
@@ -3040,12 +3254,14 @@ public void Limpiar()
     }//GEN-LAST:event_TablaArticulosKeyReleased
 
     private void Clientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clientes1ActionPerformed
+        //Filtrados m = null;
         Filtrados main = null;
        try {
            main = new Filtrados();
        } catch (SQLException ex) {
            Logger.getLogger(Cotizaciones.class.getName()).log(Level.SEVERE, null, ex);
        }
+        //main = new Filtrados();
         main.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Clientes1ActionPerformed
@@ -3144,6 +3360,136 @@ public void Limpiar()
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui no van numeros tonto!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtCveViviendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCveViviendaKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui no van numeros tonto!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCveViviendaKeyTyped
+
+    private void txtTelCasaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelCasaKeyTyped
+         char c = evt.getKeyChar();
+        if (Character.isLetter(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui solo van numeros tonto!");            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelCasaKeyTyped
+
+    private void txtMovilKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMovilKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui solo van numeros tonto!");            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMovilKeyTyped
+
+    private void txtPisosOrigenKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPisosOrigenKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui solo van numeros tonto!");            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPisosOrigenKeyTyped
+
+    private void txtIdentificacionClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificacionClienteKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui solo van numeros tonto!");            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdentificacionClienteKeyTyped
+
+    private void txtFolioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFolioKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c))
+        {
+            getToolkit().beep();
+           // JOptionPane.showMessageDialog(null,"Aqui solo van numeros tonto!");            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtFolioKeyTyped
+
+    private void txtNombreDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreDestinoKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui no van numeros tonto!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreDestinoKeyTyped
+
+    private void txtViviendaDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtViviendaDestinoKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui no van numeros tonto!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtViviendaDestinoKeyTyped
+
+    private void txtTelCasaDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelCasaDestinoKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui no van numeros tonto!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelCasaDestinoKeyTyped
+
+    private void txtTelCelDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelCelDestinoKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui no van numeros tonto!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelCelDestinoKeyTyped
+
+    private void txtPisosDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPisosDestinoKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui no van numeros tonto!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPisosDestinoKeyTyped
+
+    private void txtNumerosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumerosKeyTyped
+       char c = evt.getKeyChar();
+        if (!Character.isDigit(c))
+        {
+            getToolkit().beep();
+            //JOptionPane.showMessageDialog(null,"Aqui no van numeros tonto!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumerosKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -3192,6 +3538,7 @@ public void Limpiar()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox ChkIVA;
+    private javax.swing.JCheckBox ChkRequiereVisita;
     private javax.swing.JCheckBox ChkSeguro;
     private javax.swing.JMenuItem Clientes;
     private javax.swing.JMenuItem Clientes1;
@@ -3215,7 +3562,6 @@ public void Limpiar()
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -3245,7 +3591,6 @@ public void Limpiar()
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -3264,7 +3609,6 @@ public void Limpiar()
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu13;
@@ -3302,8 +3646,6 @@ public void Limpiar()
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField34;
     private javax.swing.JTextField txtAlmacenaje;
     private javax.swing.JTextField txtAnticipo;
     private javax.swing.JTextField txtApellidos;
