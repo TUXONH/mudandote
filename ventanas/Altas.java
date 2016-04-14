@@ -620,8 +620,8 @@ public class Altas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       // if(jTextField1.getText().equals("")&&jTextField2.getText().equals("")&&jComboBox1.getSelectedItem("Seleccione un Plaza")&&)
-        //{
+       if(!jTextField1.getText().equals("")&&!jTextField2.getText().equals("")&&!jComboBox4.getSelectedItem().equals("Seleccione una Plaza")&&!jComboBox1.getSelectedItem().equals("Seleccione Estado")&&!jComboBox2.getSelectedItem().equals("Seleccione Municipio"))
+        {
          boolean flag=true;
        try {
                     PreparedStatement   pstm = (PreparedStatement)
@@ -660,6 +660,10 @@ public class Altas extends javax.swing.JFrame {
             jComboBox3.setSelectedIndex(0);
             jRadioButton1.setSelected(false);
             jRadioButton2.setSelected(false);
+       }
+        }
+       else{
+        JOptionPane.showMessageDialog(null,"Llene todo los campos");
        }
        
             
@@ -975,7 +979,7 @@ public class Altas extends javax.swing.JFrame {
            // Connection conexion =DriverManager.getConnection("jdbc:mysql://localhost/mudandote", "root", "");
             Statement st = con.getConnection().createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM estados");
-            modeloCombo.addElement("Seleccione un Estado");
+            modeloCombo.addElement("Seleccione Estado");
             this.jComboBox1.setModel(modeloCombo);
             while (rs.next()) {
                 modeloCombo.addElement(rs.getObject("nombre"));
@@ -1121,7 +1125,7 @@ public class Altas extends javax.swing.JFrame {
            
             Statement st = con.getConnection().createStatement();
             ResultSet rs = st.executeQuery("SELECT nombre_plaza FROM catplazas");
-            modeloCombo4.addElement("Seleccione un Plaza");
+            modeloCombo4.addElement("Seleccione una Plaza");
             this.jComboBox4.setModel(modeloCombo4);
             while (rs.next()) {
                 modeloCombo4.addElement(rs.getObject("nombre_plaza"));
