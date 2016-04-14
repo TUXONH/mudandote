@@ -154,6 +154,12 @@ public class Articulos extends javax.swing.JFrame {
 
         jLabel3.setText("M3");
 
+        m3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                m3KeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Servicios");
 
         Servicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MENAJE", "ALMACENAJE", "VENTAS", "RENTAS", "EMPAQUE", "SERVICIOS" }));
@@ -910,6 +916,15 @@ public class Articulos extends javax.swing.JFrame {
        
        
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void m3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_m3KeyTyped
+        char c = evt.getKeyChar();
+        if(!Character.isDigit(c))
+        {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_m3KeyTyped
 
     /**
      * @param args the command line arguments
