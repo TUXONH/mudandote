@@ -1091,11 +1091,11 @@ public class Reservacion extends javax.swing.JFrame {
         conexion con = new conexion();
         
         Map parametros = new HashMap();
-        String REPORTE = System.getProperty("user.dir") + "\\src\\reportes\\";
+        String REPORTE = System.getProperty("user.dir") + "\\src\\ventanas\\";
         
-                parametros.put("Cod1", jTextField10.getText());
+                parametros.put("cod1", jTextField10.getText());
                 //parametros.put("cod2", dato2);
-                REPORTE +="reportefinal.jrxml";
+                REPORTE +="reportefinal1.jrxml";
         System.err.println(REPORTE);
         JasperReport reporteJasper = null;
         try {
