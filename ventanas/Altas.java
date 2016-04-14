@@ -620,6 +620,8 @@ public class Altas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+       // if(jTextField1.getText().equals("")&&jTextField2.getText().equals("")&&jComboBox1.getSelectedItem("Seleccione un Plaza")&&)
+        //{
          boolean flag=true;
        try {
                     PreparedStatement   pstm = (PreparedStatement)

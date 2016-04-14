@@ -727,7 +727,7 @@ public class Unidades extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-            String REPORTE = System.getProperty("user.dir") + "\\src\\reports\\report1.jrxml";
+            String REPORTE = System.getProperty("user.dir") + "\\src\\ventanas\\unidades.jrxml";
         JasperReport reporteJasper = null;
         try
         {
