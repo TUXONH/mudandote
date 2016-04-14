@@ -176,6 +176,11 @@ public class Clientes extends javax.swing.JFrame {
         jLabel8.setText("Tel.Oficina");
 
         jTextField7.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 2, 11)); // NOI18N
         jLabel9.setText("Tel.Movil");
@@ -332,6 +337,7 @@ public class Clientes extends javax.swing.JFrame {
         );
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Save.png"))); // NOI18N
+        jButton1.setText("Agregar");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -341,6 +347,7 @@ public class Clientes extends javax.swing.JFrame {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
+        jButton2.setText("Eliminar");
         jButton2.setToolTipText("");
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
@@ -351,6 +358,7 @@ public class Clientes extends javax.swing.JFrame {
         });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/list.png"))); // NOI18N
+        jButton3.setText("Editar");
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -391,7 +399,7 @@ public class Clientes extends javax.swing.JFrame {
                             .addComponent(jButton2)
                             .addComponent(jButton3)
                             .addComponent(jButton1))
-                        .addContainerGap(49, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
@@ -625,16 +633,21 @@ public class Clientes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(email(jTextField1.getText()))
+          if(!jTextField1.getText().equals("")&&!jTextField2.getText().equals("")&&!jTextField3.getText().equals("")&&!jTextField4.getText().equals("")&&!jTextField5.getText().equals("")&&!jTextField6.getText().equals("")&&!jTextField7.getText().equals("")&&!jTextField8.getText().equals("")&&!jTextField9.getText().equals("")&&!jComboBox1.getSelectedItem().equals("Seleccione Estado")&&!jComboBox2.getSelectedItem().equals("Seleccione Municipio"))
+       {
+           if(email(jTextField1.getText()))
         {
             NuevoProducto(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),activo,jTextField6.getText(),jTextField7.getText(),jTextField8.getText(),jTextField9.getText(),jComboBox1.getSelectedItem().toString(),jComboBox2.getSelectedItem().toString());
             Ver();
         }
         else
         {
-            System.out.println("No es correo electronico");
+             JOptionPane.showMessageDialog(null,"Coloque correctamente un @gmail.com o @hotmail.com");
         }
-        
+       }
+          else{
+                JOptionPane.showMessageDialog(null,"Llene todo los campos");
+          }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -877,6 +890,15 @@ public class Clientes extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isDigit(c))
+        {
+            System.out.print("lo que sea");
+        }
+    }//GEN-LAST:event_jTextField7KeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -957,7 +979,7 @@ public class Clientes extends javax.swing.JFrame {
            // Connection conexion =DriverManager.getConnection("jdbc:mysql://localhost/mudandote", "root", "");
             Statement st = con.getConnection().createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM estados");
-            modeloCombo.addElement("Seleccione un Estado");
+            modeloCombo.addElement("Seleccione Estado");
             this.jComboBox1.setModel(modeloCombo);
             while (rs.next()) {
                 modeloCombo.addElement(rs.getObject("nombre"));
